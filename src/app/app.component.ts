@@ -17,8 +17,7 @@ import {
   IonRouterOutlet,
   IonHeader,
   IonToolbar,
-  IonTitle,
-} from '@ionic/angular/standalone';
+  IonTitle, IonButton } from '@ionic/angular/standalone';
 // import { addIcons } from 'ionicons';
 // import {
 //   mailOutline,
@@ -44,7 +43,7 @@ register();
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [
+  imports: [IonButton, 
     IonTitle,
     IonToolbar,
     IonHeader,
@@ -69,12 +68,25 @@ export class AppComponent {
   public appPages = [
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
     { title: 'Pos', url: '/pos', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
+    // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
+    // { title: 'Trash', url: '/folder/trash', icon: 'trash' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
     // addIcons({
     //   mailOutline,
@@ -94,5 +106,11 @@ export class AppComponent {
     //   addOutline,
     //   removeOutline,
     // });
+  }
+
+  menuTogle: boolean = false
+
+  togle(){
+    this.menuTogle = !this.menuTogle
   }
 }

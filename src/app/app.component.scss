@@ -118,11 +118,29 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 }
 
+ion-content {
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-menu {
+  --side-min-width: 50px;
+  --side-max-width: 8%;
+  --ion-background-color: plum;
+}
+
+#inner-remove ion-item {
+  // --inner-padding-start: 0px
+  --inner-padding-end: 0px;
+}
+
 .scrollerBar {
   &::-webkit-scrollbar {
     width: 0px;
     height: 0px;
   }
 }
-
-
