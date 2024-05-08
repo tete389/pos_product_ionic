@@ -1,0 +1,174 @@
+<ion-backdrop *ngIf="openAddDetail" [visible]="true"></ion-backdrop>
+<ion-content class="ion-padding scrollerBar" scrollY="false">
+  <div class="flex-row flex divide-x-2">
+    <div class="w-3/5">
+      <ion-item id="top-scroll">
+        <div class="flex flex-row w-full pb-[16px]" id="chevron-arrow">
+          <ion-button
+            class="c11"
+            (click)="select_group_left(select_group_page)"
+            fill="clear"
+            size="small"
+            slot="icon-only"
+            [disabled]="select_group_page == 0"
+          >
+            <!-- {{ " <" }} -->
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </ion-button>
+          <ion-segment
+            [scrollable]="true"
+            class="scrollerBar mx-[2px]"
+            [value]="select_group_page"
+            (ionChange)="select_group_even($event)"
+          >
+            <ion-segment-button [value]="0" class="mx-[2px]">
+              <ion-label> {{ "ทั้งหมด" }}</ion-label>
+            </ion-segment-button>
+
+            <ng-container *ngFor="let group of prods_group_temp; let i = index">
+              <ion-segment-button [value]="i + 1" class="mx-[2px]">
+                <ion-label>{{ group.pg_name }}</ion-label>
+              </ion-segment-button>
+            </ng-container>
+          </ion-segment>
+          <ion-button
+            class="c22"
+            (click)="select_group_right(select_group_page)"
+            fill="clear"
+            size="small"
+            slot="icon-only"
+            [disabled]="select_group_page == prods_group.length"
+          >
+            <!-- {{ " >" }} -->
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+
+      <swiper-container
+        #swiper
+        (swiperreachbeginning)="swiperReady()"
+        (swiperslidechange)="swiperSlideCharge()"
+        [config]="VerSlideOpts"
+      >
+        <swiper-slide
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-scroll h-[90vh] scrollerBar"
+          *ngFor="let group of prods_group; let j = index"
+        >
+          <div *ngFor="let prod of group.prods; let i = index" class="relative">
+            <ion-badge
+              color="primary"
+              class="absolute z-[9999] right-[5px] top-[15px]"
+              *ngIf="prod.count"
+              >{{ prod.count }}</ion-badge
+            >
+            <ion-card (click)="add_basket_group_select(prod)">
+              <img
+                alt="Silhouette of mountains"
+                src="https://ionicframework.com/docs/img/demos/card-media.png"
+                class="h-1/2 w-full"
+              />
+              <ion-card-content class="h-1/2">
+                <p>{{ prod.p_name }}</p>
+                <span>{{ prod.price }}</span>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <div class="w-2/5">
+      <ion-item>
+        <div class="flex-row flex justify-between w-full">
+          <div>
+            <p>เพิ่มอาหาร</p>
+            <p>โดย: Piyada</p>
+          </div>
+          <div class="items-center">
+            <p class="text-4xl">
+              <span class="text-lg">table</span>
+              A02
+            </p>
+          </div>
+        </div>
+      </ion-item>
+
+      <div class="overflow-scroll h-[75vh] scrollerBar">
+        <ion-list>
+          <ng-container *ngFor="let bask of basket; let i = index">
+            <ion-item class="py-3">
+              <ion-thumbnail slot="start">
+                <img
+                  alt="Silhouette of mountains"
+                  src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+                />
+              </ion-thumbnail>
+              <ion-label>
+                <ion-label>{{ bask.p_name }}</ion-label>
+                <ion-label>{{ bask.price * bask.count }}</ion-label>
+              </ion-label>
+              <div class="bg-slate-200 rounded-3xl h-fit" slot="end">
+                <ion-button
+                  shape="round"
+                  class="m-0 p-0"
+                  (click)="remove(bask.p_id, i)"
+                >
+                  <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" class="w-9">
+                  <span class="justify-items-center">
+                    {{ bask.count }}
+                  </span>
+                </ion-button>
+                <ion-button
+                  shape="round"
+                  class="m-0 p-0"
+                  (click)="add(bask.p_id)"
+                >
+                  <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+          </ng-container>
+        </ion-list>
+      </div>
+
+      <div>
+        <div class="flex flex-row justify-between">
+          <span>รวมทั้งสิ้น</span>
+          <span>{{ price_all }}</span>
+        </div>
+        <ion-button (click)="cancel()">{{ "ยกเลิก" }} </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ion-button id="open-modal" expand="block">Open</ion-button> -->
+  <!-- <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancelAddDetail()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirmAddDetail()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Enter your name"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Your name"
+            [(ngModel)]="newValue"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+</ion-content>

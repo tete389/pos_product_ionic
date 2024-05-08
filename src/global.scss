@@ -36,6 +36,11 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+.fullscreen {
+    --width:98% !important;
+    --height:98% !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
