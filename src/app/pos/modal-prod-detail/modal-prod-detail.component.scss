@@ -2,3 +2,45 @@
 //     background: var(--ion-color-dark);
 //     opacity: 0.3;
 //   }
+
+ion-content {
+    --offset-bottom: auto !important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+ion-grid {
+    // height: 100%;
+    --ion-grid-padding: 0px;
+  
+    --ion-grid-padding-xs: 0px;
+    --ion-grid-padding-sm: 0px;
+    --ion-grid-padding-md: 0px;
+    --ion-grid-padding-lg: 0px;
+    --ion-grid-padding-xl: 0px;
+  
+    --ion-grid-column-padding: 0px;
+  
+    --ion-grid-column-padding-xs: 0px;
+    --ion-grid-column-padding-sm: 0px;
+    --ion-grid-column-padding-md: 0px;
+    --ion-grid-column-padding-lg: 0px;
+    --ion-grid-column-padding-xl: 0px;
+  }
+  
+  ion-col {
+    // background-color: #135d54;
+    // border: solid 1px #fff;
+    // color: #fff;
+    // text-align: center;
+  }
+
+
+//   ion-card{
+//     --tw-shadow: 0 0 #0000;
+//     --tw-shadow-colored: 0 0 #0000;
+//     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+//   }

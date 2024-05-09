@@ -140,7 +140,9 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     this.openAddDetail = true
     const modal = await this.modalCtrl.create({
       component: ModalProdDetailComponent,
-      showBackdrop: true
+      mode: 'ios',
+      cssClass: 'nodalscreen'
+      
     });
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
