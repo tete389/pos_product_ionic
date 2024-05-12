@@ -52,7 +52,10 @@
       height: 0px;
     }
   }
-
+  .split-pane-visible >.split-pane-side {
+    min-width: 55px !important;
+    max-width: 55px !important;
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
