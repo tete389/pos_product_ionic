@@ -1,10 +1,13 @@
 .card-top-one,
-.card-top-two,
-.card-top-tree {
+.card-top-two{
     max-width: 385px;
-    height: 427px;
+    height: auto;
 }
-
+.card-top-tree {
+    max-width: 308px;
+    height: 427px;
+    margin-left: 60px;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -189,8 +192,10 @@
 .card-top-two {
     .grid2 {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        margin-top: 23px;
+        grid-row-gap: 0px;
+        column-gap: 42px;
         .a,
         .b,
         .c,
@@ -199,6 +204,8 @@
         .f {
             width: 135px;
             height: 135px;
+            margin: 5px 11px 4px;
+
         }
     }
 }
