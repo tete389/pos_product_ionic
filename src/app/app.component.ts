@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -17,6 +17,8 @@ import {
   IonRouterOutlet,
   IonHeader,
   IonToolbar,
+  IonButtons,
+  IonMenuButton,
   IonTitle, IonButton } from '@ionic/angular/standalone';
 // import { addIcons } from 'ionicons';
 // import {
@@ -44,6 +46,8 @@ register();
   styleUrls: ['app.component.scss'],
   standalone: true,
   imports: [IonButton, 
+    IonButtons,
+    IonMenuButton,
     IonTitle,
     IonToolbar,
     IonHeader,
@@ -70,24 +74,13 @@ export class AppComponent {
     { title: 'Pos', url: '/pos', icon: 'paper-plane' },
     // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    // { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
-  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
+  screen_width: number = 0;
+
   constructor() {
+    this.screen_width = window.screen.width;
     // addIcons({
     //   mailOutline,
     //   mailSharp,
@@ -109,6 +102,11 @@ export class AppComponent {
   }
 
   menuTogle: boolean = false
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screen_width = event.target.innerWidth;
+  }
 
   togle(){
     this.menuTogle = !this.menuTogle

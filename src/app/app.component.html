@@ -1,68 +1,93 @@
 <ion-app>
-  <ion-split-pane contentId="main-content" class="scrollerBar">
-    <ion-menu
-      contentId="main-content"
-      type="overlay"
-      [ngClass]="menuTogle ? 'max-w-64 ' : ' md:max-w-16 lg:max-w-64'"
-    >
-      <!-- class="md:max-w-16 lg:max-w-[250px] scrollerBar p-0 m-0" -->
+
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-content>
+      <ion-list id="inbox-list">
+        <ion-list-header>Inbox</ion-list-header>
+        <ion-note>hi&#64;ionicframework.com</ion-note>
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+            routerLinkActive="selected">
+            <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list id="labels-list">
+        <ion-list-header>Labels</ion-list-header>
+
+        <ion-item *ngFor="let label of labels" lines="none">
+          <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+          <ion-label>{{ label }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-split-pane contentId="main-content" class="scrollerBar" when="(min-width: 992px)">
+    <!-- <ion-menu contentId="main-content" type="overlay">
       <ion-content class="scrollerBar">
         <ion-button (click)="togle()" class="lg:!hidden">-</ion-button>
         <ion-list id="inbox-list" class="scrollerBar" class="p-0 m-0">
-          <ion-menu-toggle
-            id="inner-remove"
-            auto-hide="false"
-            *ngFor="let p of appPages; let i = index"
-          >
-            <ion-item
-              routerDirection="root"
-              [routerLink]="[p.url]"
-              lines="none"
-              detail="false"
-              routerLinkActive="selected" 
-              mode="ios"
-              class="inner-remove"
-            >
-              <ion-icon
-                aria-hidden="true"
-                slot="start"
-                [name]="p.icon + '-outline'"
-                [ngClass]="menuTogle ? 'lg:pr-1 ' : 'md:p-0 md:m-0 lg:pr-1 '"
-              ></ion-icon>
-              <!-- class=" max-lg:!hidden"  -->
-              <ion-label
-                mode="ios"
-                [ngClass]="
+          <ion-menu-toggle id="inner-remove" auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected" mode="ios" class="inner-remove">
+              <ion-icon aria-hidden="true" slot="start" [name]="p.icon + '-outline'"
+                [ngClass]="menuTogle ? 'lg:pr-1 ' : 'md:p-0 md:m-0 lg:pr-1 '"></ion-icon>
+              <ion-label mode="ios" [ngClass]="
                   menuTogle
                     ? 'lg:w-[250px]'
                     : 'max-lg:!hidden md:w-16 lg:w-[250px]'
-                "
-                >{{ p.title }}</ion-label
-              >
+                ">{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
 
         <ion-list id="labels-list" mode="ios">
-          <!-- <ion-list-header mode="ios">Labels</ion-list-header> -->
-
-          <!-- <ion-item *ngFor="let label of labels" lines="none" mode="ios">
-            <ion-icon
-              aria-hidden="true"
-              slot="start"
-              ios="bookmark-outline"
-              md="bookmark-sharp"
-              mode="ios"
-            ></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item> -->
         </ion-list>
       </ion-content>
-    </ion-menu>
+    </ion-menu> -->
     <!-- <ion-menu-toggle [autoHide]="false">
       <ion-button (click)="togle()">Click to close the menu</ion-button>
     </ion-menu-toggle> -->
 
-    <ion-router-outlet id="main-content" mode="ios"></ion-router-outlet>
+    <!-- box-left -->
+    <div class="sidebar-mini" [hidden]="screen_width < 992">
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button disabled="false" autoHide="false"></ion-menu-button>
+          </ion-buttons>
+
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <!-- <ion-menu-toggle autoHide="false">
+                  <ion-button>Click to close the menu</ion-button>
+                </ion-menu-toggle>
+                <ion-button (click)="closed()">close menu</ion-button> -->
+
+        <ion-list id="inbox-list">
+
+          <div class="ion-text-center" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon aria-hidden="true" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            </ion-item>
+          </div>
+        </ion-list>
+
+
+
+      </ion-content>
+    </div>
+
+    <!-- box-rigth -->
+    <div  id="main-content" [ngClass]="{'hide-hamburger': screen_width > 991}">
+      <ion-router-outlet id="main-content" mode="ios"></ion-router-outlet>
+    </div>
   </ion-split-pane>
 </ion-app>

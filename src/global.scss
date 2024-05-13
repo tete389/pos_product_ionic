@@ -59,3 +59,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hide-hamburger ion-header{
+  ion-menu-button{
+    display: none;
+  }
+}
