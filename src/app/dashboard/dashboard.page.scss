@@ -11,8 +11,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2px;
-    margin-top: -19px;
+ 
 }
 
 .card-top-one {
@@ -193,7 +192,7 @@
     .grid2 {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        margin-top: 23px;
+       
         grid-row-gap: 0px;
         column-gap: 42px;
         .a,
@@ -213,7 +212,7 @@
 .card-buttom-one {
     max-width: 370px;
     height: 311px;
-    margin-top: -9px;
+ 
 
 
 }
@@ -221,11 +220,11 @@
 .card-buttom-two {
     max-width: 514px;
     height: 311px;
-    margin-top: -9px;
+  
 }
 
 .card-buttom-tree {
     max-width: 240px;
     height: 257px;
-    margin-top: -9px;
+ 
 }
