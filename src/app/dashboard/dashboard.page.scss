@@ -186,10 +186,29 @@
     }
 }
 
+.card-top-two {
+    .grid2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+        .a,
+        .b,
+        .c,
+        .d,
+        .e,
+        .f {
+            width: 135px;
+            height: 135px;
+        }
+    }
+}
+
 .card-buttom-one {
     max-width: 370px;
     height: 311px;
     margin-top: -9px;
+
+
 }
 
 .card-buttom-two {
