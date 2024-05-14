@@ -35,15 +35,99 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/*
+===================================================
+==================== CSS Custom ===================
+===================================================
+*/  
+@import "../src/theme/setting-font.scss";
+
+// @font-face {
+//   font-family: "Kanit", sans-serif;
+
+//   src: url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'");
+// }
+
+// =============================================================
+// ================= Font Kanit For CSS File ===================
+// =============================================================
 @font-face {
-  font-family: "Kanit", sans-serif;
-
-  src: url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'");
+  font-family: "kanit";
+  font-style: normal;
+  font-weight: 100;
+  src: url("./assets/fonts/Kanit/Kanit-ExtraLight.ttf");
 }
 
-:root {
-  --ion-font-family: Kanit;
+@font-face {
+  font-family: "kanit";
+  font-style: light;
+  font-weight: 300;
+  src: url("./assets/fonts/Kanit/Kanit-Light.ttf");
 }
+
+@font-face {
+  font-family: "kanit";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Kanit/Kanit-Regular.ttf");
+}
+
+@font-face {
+  font-family: "kanit";
+  font-style: medium;
+  font-weight: 500;
+  src: url("./assets/fonts/Kanit/Kanit-Medium.ttf");
+}
+
+@font-face {
+  font-family: "kanit";
+  font-style: bold;
+  font-weight: 700;
+  src: url("./assets/fonts/Kanit/Kanit-Bold.ttf");
+}
+/*
+=========================================================
+// ========== Font Kanit For HTML File ==================
+=========================================================
+*/
+@font-face {
+  font-family: "Kanit-extralight";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/Kanit/Kanit-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "kanit-light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/Kanit/Kanit-Light.ttf");
+}
+@font-face {
+  font-family: "kanit-regular";
+  font-style: normal;
+  // font-weight: normal;
+  src: url("./assets/fonts/Kanit/Kanit-Regular.ttf");
+}
+
+@font-face {
+  font-family: "kanit-medium";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/Kanit/Kanit-Medium.ttf");
+}
+
+@font-face {
+  font-family: "kanit-bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./assets/fonts/Kanit/Kanit-Bold.ttf");
+}
+
+
+
+
 .fullscreen {
     --width:98% !important;
     --height:98% !important;

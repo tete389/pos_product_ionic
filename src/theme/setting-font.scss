@@ -1,0 +1,126 @@
+// * {
+//     font-family: "kanit-regular", sans-serif;
+// }
+
+:root {
+
+    /*
+=========================================================
+======================== Fonts ==========================
+=========================================================
+*/
+    // --ion-font-family: "kanit-regular", sans-serif;
+    --ion-font-family: "kanit";
+    --ion-font-family-light: "kanit-light", sans-serif;
+
+    /*
+=========================================================
+===================== Background Colors =================
+=========================================================
+*/
+    --primary-color: #37C839;
+    --primary-second: #4F9BEC;
+    // --primary-light: #549FF9;
+    // --primary-light2: #3DABFF;
+    // --primary-gradient-color: linear-gradient(90deg, rgba(24, 143, 241, 1) 0%, rgba(25, 99, 229, 1) 100%);
+    --white-color: #ffffff;
+    // --dark-gray-color: #818798;
+    // --dark-gray-color2: #E0E6EE;
+    // --dark-gray-color3: #AFAFAF;
+    // --dark-gray-color4: #EAEFF6;
+    // --dark-gray-color5: #ADB5CC;
+    // --light-gray-color3: #F1F4F9;
+    // --light-gray-mono: #E7ECF2;
+    // --light-gray-mono2: #E8EAED;
+    // --light-blue: #DFECFD;
+    // --light-blue2: #E2F6FF;
+    // --green-color-light: #8FCC20;
+    // --dark-green-color: #30B536;
+    // --green-color: #2FB132;
+    // --green-color2:#4DB54F;
+    // --green-colo3:#00B406;
+    // --red-color: #FA6469;
+    // --red-color2:#FC595E;
+    // --red-color3:#F86363;
+    // --dark-red-color:#EB3325;
+    // --brown-color: #707070;
+    // --dark-brown-color: #A1A1A1;
+    // --darked-brown-color: #545454;
+    // --color-gray-border:#D5DEE5;
+    // --darked-brown-color2: #4B4B4B;
+
+    /*
+=========================================================
+===================== Text-Colors =======================
+=========================================================
+*/
+    --text-primary: #1979EB;
+    --text-primary-dark: #4C8FCC;
+    --text-second-memba: #199CEB;
+    --text-white: #ffffff;
+    --text-dark: #212121;
+    --text-mono-dark: #232323;
+    --text-mono-dark2: #383838;
+    --text-mono-dark3: #5c5c5c;
+    --text-dark-plachoder: #949494;
+    --text-oranged: #F7941D;
+    --text-redges: #F92229;
+    /*
+=========================================================
+============== Font-Weight For CSS File =================
+* ตัวแปรสำหรับเรียกใช้ขนาด Font ในไฟล์ css (font-weight )
+  ** Example : font-weight: var(--text-regular);
+=========================================================*/
+    --text-extralight: 100;
+    --text-light: 300;
+    --text-regular: 400;
+    --text-medium: 500;
+    --text-bold: 700;
+    // ======================================================
+    //dark-mode
+    // --dark-primary-color: #20232A;
+    // --dark-card-color: #41454a;
+
+}
+
+/*
+=========================================================
+============== Font-Weight For HTML File ================
+* ตัวแปรสำหรับเรียกใช้ขนาด Font ในไฟล์ HTML (font-weight)
+  ** Example : <div class="text-light">Banana</div>
+=========================================================*/
+
+.text-extralight {
+    font-family: "Kanit-extralight", sans-serif;
+}
+
+.text-light {
+    font-family: "Kanit-light", sans-serif;
+}
+
+.text-regular {
+    font-family: "Kanit-regular", sans-serif;
+}
+
+.text-medium {
+    font-family: "Kanit-medium", sans-serif;
+}
+
+.text-bold {
+    font-family: "Kanit-bold", sans-serif;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        // --text-mono-dark: #ffffff;
+        // --text-mono-dark2: #ffffff;
+        // --dark-brown-color: #ffffff;
+        //    --text-primary: #ffffff;
+        //    --text-label: #ffffff;
+        //    --text-white: #ffffff;
+        //    --text-dark-gray: #5F6676;
+        //    --text-gray-line-color: #9EA2AC;
+    }
+
+}
