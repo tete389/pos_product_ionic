@@ -54,7 +54,7 @@
 ===================== Text-Colors =======================
 =========================================================
 */
-    --text-primary: #1979EB;
+    --text-primary: ##37C839;
     --text-primary-dark: #4C8FCC;
     --text-second-memba: #199CEB;
     --text-white: #ffffff;
@@ -91,23 +91,23 @@
 =========================================================*/
 
 .text-extralight {
-    font-family: "Kanit-extralight", sans-serif;
+   font-weight: var(--text-extralight);
 }
 
 .text-light {
-    font-family: "Kanit-light", sans-serif;
+    font-weight: var(--text-light);
 }
 
 .text-regular {
-    font-family: "Kanit-regular", sans-serif;
+    font-weight: var(--text-regular);
 }
 
 .text-medium {
-    font-family: "Kanit-medium", sans-serif;
+    font-weight: var(--text-medium);
 }
 
 .text-bold {
-    font-family: "Kanit-bold", sans-serif;
+    font-weight: var(--text-bold);
 }
 
 
