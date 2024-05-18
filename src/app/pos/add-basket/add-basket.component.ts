@@ -32,7 +32,10 @@ import {
   IonNavLink,
   IonThumbnail,
   IonicSlides,
-  IonModal
+  IonModal,
+  IonGrid,
+  IonCol,
+  IonRow,
 } from '@ionic/angular/standalone';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ModalProdDetailComponent } from '../modal-prod-detail/modal-prod-detail.component';
@@ -63,7 +66,9 @@ import { SwiperOptions } from 'swiper/types';
     IonThumbnail,
     FormsModule,
     CommonModule,
-    
+    IonGrid,
+    IonCol,
+    IonRow
   ],
 })
 export class AddBasketComponent implements OnInit, OnDestroy {
@@ -146,9 +151,11 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     });
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
-    this.openAddDetail = false
+   
     if (role === 'confirm') {
     }
+
+    this.openAddDetail = false
   }
 
   public async AlertLoadding() {
@@ -174,9 +181,10 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   }
 
   public async add_basket_group_select(p: any) {
-    if (p?.detail?.length > 0) {
+    // if (p?.detail?.length > 0) {
       await this.openModalDetail();
-    }
+    // }
+    
     const findBasket = this.basket.find(
       (e: { price: number; p_id: number; count: number }) => {
         if (e.p_id == p.p_id) {

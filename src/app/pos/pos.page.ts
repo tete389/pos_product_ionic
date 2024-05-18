@@ -42,6 +42,7 @@ export class PosPage implements OnInit {
       component: AddBasketComponent,
       cssClass: 'fullscreen',
       mode: 'ios',
+      
       // showBackdrop: false
     });
     await modal.present();

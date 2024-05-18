@@ -1,7 +1,9 @@
 <ion-backdrop *ngIf="openAddDetail" [visible]="true"></ion-backdrop>
-<ion-content class="ion-padding scrollerBar" scrollY="false">
-  <div class="flex-row flex divide-x-2">
-    <div class="w-3/5">
+<ion-content class="scrollerBar" scrollY="false">
+  <div class="lg:flex-row flex-col flex divide-x-2">
+    <!-- <ion-row> -->
+    <!-- <ion-col size="8" class="border-r-2 border-black ion-padding"> -->
+    <div class="border-r-2 border-black ion-padding lg:w-3/4 w-full h-4/5">
       <ion-item id="top-scroll">
         <div class="flex flex-row w-full pb-[16px]" id="chevron-arrow">
           <ion-button
@@ -52,7 +54,7 @@
         [config]="VerSlideOpts"
       >
         <swiper-slide
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-scroll h-[90vh] scrollerBar"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-scroll h-[60vh] lg:h-[90vh] scrollerBar"
           *ngFor="let group of prods_group; let j = index"
         >
           <div *ngFor="let prod of group.prods; let i = index" class="relative">
@@ -77,24 +79,28 @@
         </swiper-slide>
       </swiper-container>
     </div>
+    <!-- </ion-col> -->
 
-    <div class="w-2/5">
-      <ion-item>
-        <div class="flex-row flex justify-between w-full">
-          <div>
-            <p>เพิ่มอาหาร</p>
-            <p>โดย: Piyada</p>
-          </div>
-          <div class="items-center">
-            <p class="text-4xl">
-              <span class="text-lg">table</span>
-              A02
-            </p>
-          </div>
+    <!-- <ion-col size="4" class="ion-padding overflow-scroll h-[100vh] scrollerBar"> -->
+    <div
+      class="on-padding overflow-scroll lg:h-[100vh] scrollerBar lg:w-1/4 w-full h-[20vh]"
+    >
+      <!-- <div> -->
+      <div class="flex-row flex justify-between w-full border-b border-black">
+        <div>
+          <p>เพิ่มอาหาร</p>
+          <p>โดย: Piyada</p>
         </div>
-      </ion-item>
+        <div class="items-center">
+          <p class="text-4xl">
+            <span class="text-lg">table</span>
+            A02
+          </p>
+        </div>
+      </div>
+      <!-- </div> -->
 
-      <div class="overflow-scroll h-[75vh] scrollerBar">
+      <div class="overflow-scroll h-[73vh] scrollerBar">
         <ion-list>
           <ng-container *ngFor="let bask of basket; let i = index">
             <ion-item class="py-3">
@@ -134,41 +140,44 @@
         </ion-list>
       </div>
 
-      <div>
-        <div class="flex flex-row justify-between">
+      <div class="border-t border-[#B6C0CF] border-dashed">
+        <div
+          class="flex flex-row justify-between bg-[#E7EBF1] my-3 p-3 rounded-xl"
+        >
           <span>รวมทั้งสิ้น</span>
           <span>{{ price_all }}</span>
         </div>
-        <ion-button (click)="cancel()">{{ "ยกเลิก" }} </ion-button>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              shape="round"
+              (click)="cancel()"
+              class="button-basket-cancel"
+              >{{ "ยกเลิก" }}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              shape="round"
+              (click)="cancel()"
+              class="button-basket-confirm"
+              >{{ "สั่งอาหาร" }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <!-- <div class="">
+          <ion-segment-button
+            class="segment-button-basket-cancel"
+            >{{ "ยกเลิก" }}
+          </ion-segment-button>
+          <ion-segment-button
+            class="segment-button-basket-confirm"
+            >{{ "ยกเลิก" }}
+          </ion-segment-button>
+        </div> -->
       </div>
     </div>
+    <!-- </ion-col> -->
   </div>
-
-  <!-- <ion-button id="open-modal" expand="block">Open</ion-button> -->
-  <!-- <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancelAddDetail()">Cancel</ion-button>
-          </ion-buttons>
-          <ion-title>Welcome</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirmAddDetail()" [strong]="true">Confirm</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <ion-item>
-          <ion-input
-            label="Enter your name"
-            labelPlacement="stacked"
-            type="text"
-            placeholder="Your name"
-            [(ngModel)]="newValue"
-          ></ion-input>
-        </ion-item>
-      </ion-content>
-    </ng-template>
-  </ion-modal> -->
+  <!-- </ion-row> -->
 </ion-content>
