@@ -72,6 +72,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
     { title: 'Pos', url: '/pos', icon: 'paper-plane' },
+    { title: 'จัดการเมนู', url: '/menu-managment', icon: 'fast-food' },
     // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
   ];
