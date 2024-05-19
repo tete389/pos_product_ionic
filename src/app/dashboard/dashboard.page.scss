@@ -24,11 +24,13 @@
 .card-cus {
     width: 135px;
     height: 135px;
-    margin: 0; /* Remove default margin */
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+
 .flex-all {
     display: flex;
     flex-direction: column;
@@ -219,6 +221,26 @@
         .card-top-mid {
             width: 427px;
             height: 427px;
+
+            .card-cus-in01{
+                .top{
+                    font-size: 15PX;
+                    color: black; 
+                }
+                .mid{
+                    font-size: 30px;
+                    color: #FF9F37;
+            
+                }
+                .mid span{
+                    color: black;
+                }
+                .button{
+                    font-size: 15PX;
+                    color: black; 
+                }
+            
+            }
         }
 
         .card-top-right {
