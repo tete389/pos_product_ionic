@@ -1,112 +1,112 @@
 <ion-content [fullscreen]="true">
 
-  <div class="grid grid-col-3 content-normal">
-
-    <ion-card class="card-top-one">
-      <div class="header-card-top-one">
-        <p class="sale-amount-th">ยอดขายวันนี้</p>
-        <p class="sale-amount-en">(Total Sales Amount)</p>
-      </div>
-      <div class="total-number">
-        <p class="p-total-number">6,634.00</p>
-        <p class="p-bath">บาท</p>
-      </div>
-      <div class="cash-money-length">
-
-        <div class="length-text-top">
-          <div>เงินโอน</div>
-          <div>4,643.80</div>
-          <div class="length-score-money">
-            <div class="length-sum-a">
-
+  <div class="flex-all">
+    <div class="report-top">
+      <div class="report-top-left">
+        <ion-card class="card-top-left">
+          <div class="header-card-top-one">
+            <p class="sale-amount-th">ยอดขายวันนี้</p>
+            <p class="sale-amount-en">(Total Sales Amount)</p>
+          </div>
+          <div class="total-number">
+            <p class="p-total-number">6,634.00</p>
+            <p class="p-bath">บาท</p>
+          </div>
+          <div class="cash-money-length">
+    
+            <div class="length-text-top">
+              <div>เงินโอน</div>
+              <div>4,643.80</div>
+              <div class="length-score-money">
+                <div class="length-sum-a">
+    
+                </div>
+              </div>
+              <div>70.0%</div>
+            </div>
+    
+    
+            <div class="length-text-bottom">
+              <div>เงินสด</div>
+              <div>1,990.20</div>
+              <div class="length-score-cash">
+                <div class="length-sum-b">
+    
+                </div>
+              </div>
+              <div>30.0%</div>
+    
             </div>
           </div>
-          <div>70.0%</div>
-        </div>
-
-
-        <div class="length-text-bottom">
-          <div>เงินสด</div>
-          <div>1,990.20</div>
-          <div class="length-score-cash">
-            <div class="length-sum-b">
-
+          <div class="report-all">
+            <div class="sales">
+              <p class="sales-text">ยอดขายก่อนส่วนลด และ ภาษี</p>
+              <p class="sales-number">7,200.00</p>
+            </div>
+            <div class="discount">
+              <p class="discount-text"> ส่วนลด รวม</p>
+              <p class="discount-number">-1000.00</p>
+    
+            </div>
+            <div class="after-deducting">
+              <p class="after-deducting-text" > ยอดขายหลังหักส่วนลด</p>
+              <p class="after-deducting-number" >6,200.00</p>
+    
+            </div>
+            <div class="vat">
+              <p class="vat-text"> VAT 7%</p>
+              <p class="vat-number">+434.00</p>
+    
+            </div>
+            <div class="vat-all">
+              <p class="vat-all-text"> ยอดขายหลังส่วนลด รวม Vat</p>
+              <p class="vat-all-number">6,634.00</p>
             </div>
           </div>
-          <div>30.0%</div>
-
-        </div>
+        </ion-card>
       </div>
-      <div class="report-all">
-        <div class="sales">
-          <p class="sales-text">ยอดขายก่อนส่วนลด และ ภาษี</p>
-          <p class="sales-number">7,200.00</p>
-        </div>
-        <div class="discount">
-          <p class="discount-text"> ส่วนลด รวม</p>
-          <p class="discount-number">-1000.00</p>
-
-        </div>
-        <div class="after-deducting">
-          <p class="after-deducting-text" > ยอดขายหลังหักส่วนลด</p>
-          <p class="after-deducting-number" >6,200.00</p>
-
-        </div>
-        <div class="vat">
-          <p class="vat-text"> VAT 7%</p>
-          <p class="vat-number">+434.00</p>
-
-        </div>
-        <div class="vat-all">
-          <p class="vat-all-text"> ยอดขายหลังส่วนลด รวม Vat</p>
-          <p class="vat-all-number">6,634.00</p>
+      <div class="report-top-mid">
+        <div class="card-top-mid" >
+          <ion-grid class="grid-custom">
+            <ion-row class="row-custom">
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>ยังไม่เช็กบิล</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>เช็กบิลแล้ว</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>เฉลี่ย/บิล</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>ทานที่ร้าน</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>สั่งกลับบ้าน</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>6</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>ยกเลิกบิล</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>Time spent</p></ion-card></ion-col>
+              <ion-col class="col-custom" size="4"><ion-card class="card-cus"><p>yesterday</p></ion-card></ion-col>
+          </ion-row>
+          </ion-grid>
         </div>
       </div>
 
+      <div class="report-top-right">
+        <ion-card  class="card-top-right">
+          3
+        </ion-card>
+      </div>
+    </div>
+    <div class="report-button">
+      <div class="report-button-left">
+        <ion-card  class="card-button-left">
+          <p>4</p>
+        </ion-card>
+      </div>
+      <div class="report-button-mid">
+        <ion-card class="card-button-mid">
+          5
+        </ion-card>
+      </div>
 
-  </ion-card>
-  <div class="card-top-two">
-    <div class="grid2">
-      <ion-card class="a">
-        <p>A</p>
-      </ion-card>
-      <ion-card class="b">
-        <p>B</p>
-      </ion-card>
-      <ion-card  class="c">
-        <p>C</p>
-      </ion-card>
-      <ion-card class="d">
-        <p>D</p>
-      </ion-card>
-      <ion-card class="e">
-        <p>E</p>
-      </ion-card>
-      <ion-card class="f">
-        <p>F</p>
-      </ion-card>
-      <ion-card class="d">
-        <p>D</p>
-      </ion-card>
-      <ion-card class="e">
-        <p>E</p>
-      </ion-card>
-      <ion-card class="f">
-        <p>F</p>
-      </ion-card>
+      <div class="report-button-right">
+        <ion-card class="card-button-right">
+          6
+        </ion-card>
+      </div>
     </div>
   </div>
-  <ion-card class="card-top-tree">
-    <p>3</p>
-  </ion-card>
-  <ion-card class="card-buttom-one">
-    <p>4</p>
-  </ion-card>
-  <ion-card class="card-buttom-two">
-    <p>5</p>
-  </ion-card>
-  <ion-card class="card-buttom-tree">
-    <p>6</p>
-  </ion-card>
-  </div>
+
 </ion-content>
