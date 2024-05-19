@@ -40,7 +40,7 @@
 ===================================================
 ==================== CSS Custom ===================
 ===================================================
-*/  
+*/
 @import "../src/theme/setting-font.scss";
 
 // @font-face {
@@ -87,34 +87,132 @@
   src: url("./assets/fonts/Kanit/Kanit-Bold.ttf");
 }
 
+ion-button.ios {
+  --background-hover: transparent;
+  --background-focused: transparent;
+  --background-activated: transparent;
+  --border-style: none;
+  --opacity: 1;
+}
+
+ion-button {
+  text-transform: capitalize;
+}
 
 
 .fullscreen {
-    --width:98% !important;
-    --height:98% !important;
+  --width: 98% !important;
+  --height: 98% !important;
 }
 
 .nodalscreen {
-  --width:80% !important;
-  --height:80% !important;
+  --width: 80% !important;
+  --height: 80% !important;
 }
 
 .scrollerBar {
-    &::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-    }
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
   }
-  .split-pane-visible >.split-pane-side {
-    min-width: 55px !important;
-    max-width: 55px !important;
-  }
+}
+
+.split-pane-visible>.split-pane-side {
+  min-width: 55px !important;
+  max-width: 55px !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.hide-hamburger ion-header{
-  ion-menu-button{
+.hide-hamburger ion-header {
+  ion-menu-button {
     display: none;
+  }
+}
+
+//===============================================
+//=================  CSS ion-searchbar ==========
+//===============================================
+ion-searchbar.searches-fuller {
+  --box-shadow: none;
+  padding-inline-end: 20px;
+  .searchbar-input-container {
+
+    //    background: plum!important;
+    input {
+      // margin-left: 40px;
+      background: var(--light-gray-color3) !important;
+      width: 233px;
+      height: 45px;
+      font-size: 18px;
+      padding: 7px 38px;
+      border-radius: 22px;
+      font-weight: var(--text-light);
+      border: 1px solid var(--dark-gray-color);
+    }
+
+    ion-icon {
+      inset-inline-start: 6px;
+      background: transparent !important;
+      color: var(--text-dark);
+      width: 30px;
+      height: 22px;
+    }
+
+    button[aria-label="reset"] {
+      background: transparent !important;
+      width: 40px;
+      padding-top: 8px;
+      inset-inline-end: 0px;
+    }
+  }
+}
+
+//===============================================
+//=================  CSS ion-popover ==========
+//===============================================
+ion-popover.my-custom-customPopover-printer {
+  --min-width: 350px;
+  --width: fit-content;
+  margin-top: 5px;
+
+  // // margin-right: 40px;
+  // // background: rgba(40, 173, 218, 0.6);
+  ion-select-popover {
+      ion-list {
+          ion-item {
+              // width: 100%;
+              text-align: center;
+              font-size: 16px;
+              font-weight: var(--text-light);
+              color: var(--text-dark);
+              --background-hover: transparent;
+              --background-activated: transparent;
+              --background-focused: transparent;
+
+              .ion-focused .item-native::after {
+                  --background: var(--white-color) !important;
+                  background: var(--white-color) !important;
+                  opacity: 0;
+              }
+          }
+
+          ion-item:not(:last-child) {
+              border-bottom: 1px solid var(--light-gray-color3);
+          }
+
+          // ion-item:last-child {
+          //   color: var(--primary-color);
+          // }
+
+          ion-item:hover,
+          ion-item:focus,
+          ion-item:active {
+              --background: transparent;
+              --color: var(--primary-light2);
+          }
+      }
   }
 }
