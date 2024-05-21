@@ -68,17 +68,26 @@ import { SwiperOptions } from 'swiper/types';
     CommonModule,
     IonGrid,
     IonCol,
-    IonRow
+    IonRow,
   ],
 })
 export class AddBasketComponent implements OnInit, OnDestroy {
-  // swiperModules = [IonicSlides];
+  swiperModules = [IonicSlides];
   @ViewChild('swiper')
-  swiperRef: ElementRef | undefined;
+  swiperRef?: ElementRef | undefined;
   swiper?: Swiper;
-  VerSlideOpts?: SwiperOptions;
+  // VerSlideOpts?: SwiperOptions;
 
-  @ViewChild(IonModal) 
+  @ViewChild('swiper2')
+  swiperRef2: ElementRef | undefined;
+  swiper2?: Swiper;
+  // VerSlideOpts2?: SwiperOptions = {
+  //   autoplay: {
+  //     delay: 200,
+  //   },
+  // };
+
+  @ViewChild(IonModal)
   modal?: IonModal;
 
   url: string = '../../../assets/product.json';
@@ -99,7 +108,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
 
   newValue: any = 0;
 
-  openAddDetail: boolean = false
+  openAddDetail: boolean = false;
   constructor(
     // private alertCtr: AlertController,
     private loadingCtrl: LoadingController,
@@ -108,7 +117,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.timeout);
-    this.swiper?.destroy();
+    // this.swiper?.destroy();
   }
 
   ngOnInit() {
@@ -133,6 +142,15 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
+  swiper2Ready() {
+    this.swiper2 = this.swiperRef2?.nativeElement.swiper;
+    this.swiper2?.disable();
+  }
+
+  swiper2SlideCharge() {
+    this.swiper2?.disable();
+  }
+
   swiperSlideCharge() {
     const index = this.swiperRef?.nativeElement.swiper.activeIndex;
     if (this.select_group_page != index) {
@@ -141,32 +159,26 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     }
   }
 
-  public async openModalDetail() {
-    this.openAddDetail = true
-    const modal = await this.modalCtrl.create({
-      component: ModalProdDetailComponent,
-      mode: 'ios',
-      cssClass: 'nodalscreen'
-      
-    });
-    await modal.present();
-    const { data, role } = await modal.onWillDismiss();
-   
-    if (role === 'confirm') {
-    }
+  public openSli() {
+    this.swiper2?.enable();
+    this.swiper?.slideTo(0);
+    this.swiper?.disable();
+    // this.swiper2?.loopCreate();
+    // this.swiper2?.startAutoplay();
+    this.swiper2?.slideNext();
+    // this.swiper2?.autoplay.start();
 
-    this.openAddDetail = false
+    
   }
 
-  public async AlertLoadding() {
-    const alert = await this.loadingCtrl.create({
-      // message: 'Dismissing after 3 seconds...',
-      // duration: 3000,
-    });
+  public closeSli() {
+    this.swiper2?.enable();
+    this.swiper?.enable();
+    this.swiper2?.slidePrev();
   }
 
   public async set_group_select() {
-   this.prods_group.forEach((e1: any) => {
+    this.prods_group.forEach((e1: any) => {
       const prods: any[] = [];
       this.prods.forEach((e2: any) => {
         if (e2.pg_id == e1.pg_id || e1.pg_id == 0) {
@@ -175,16 +187,13 @@ export class AddBasketComponent implements OnInit, OnDestroy {
       });
       e1.prods = prods;
     });
-
-    
-    
   }
 
   public async add_basket_group_select(p: any) {
     // if (p?.detail?.length > 0) {
-      await this.openModalDetail();
+    await this.openModalDetail(p);
     // }
-    
+
     const findBasket = this.basket.find(
       (e: { price: number; p_id: number; count: number }) => {
         if (e.p_id == p.p_id) {
@@ -228,7 +237,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
 
   public async add_basket(p: any) {
     if (p?.detail?.length > 0) {
-      await this.openModalDetail();
+      await this.openModalDetail(p);
     }
     const findBasket = this.basket.find(
       (e: { price: number; p_id: number; count: number }) => {
@@ -289,7 +298,6 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     return this.modalCtrl.dismiss('', 'confirm');
   }
 
-
   // public cancelAddDetail() {
   //   return this.modalCtrl.dismiss(this.newValue, 'cancel');
   // }
@@ -304,4 +312,28 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   //     // this.message = `Hello, ${ev.detail.data}!`;
   //   }
   // }
+
+  public async openModalDetail(prod: any) {
+    this.openAddDetail = true;
+    const modal = await this.modalCtrl.create({
+      component: ModalProdDetailComponent,
+      mode: 'ios',
+      cssClass: 'nodalscreen',
+      componentProps: { prod: prod },
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+    }
+
+    this.openAddDetail = false;
+  }
+
+  public async AlertLoadding() {
+    const alert = await this.loadingCtrl.create({
+      // message: 'Dismissing after 3 seconds...',
+      // duration: 3000,
+    });
+  }
 }

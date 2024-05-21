@@ -10,8 +10,7 @@ import {
   IonMenuButton,
   ModalController,
   IonButton,
-  IonIcon,
-} from '@ionic/angular/standalone';
+  IonIcon, IonRow, IonCol } from '@ionic/angular/standalone';
 import { AddBasketComponent } from './add-basket/add-basket.component';
 
 @Component({
@@ -19,7 +18,7 @@ import { AddBasketComponent } from './add-basket/add-basket.component';
   templateUrl: './pos.page.html',
   styleUrls: ['./pos.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonCol, IonRow, 
     IonButton,
     IonButtons,
     IonMenuButton,
@@ -42,7 +41,6 @@ export class PosPage implements OnInit {
       component: AddBasketComponent,
       cssClass: 'fullscreen',
       mode: 'ios',
-      
       // showBackdrop: false
     });
     await modal.present();

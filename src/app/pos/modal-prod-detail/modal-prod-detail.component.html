@@ -1,39 +1,91 @@
 <ion-content class="">
-  <ion-grid class="">
-    <ion-row class="">
-      <ion-col class="border-r-2 border-[#E7EBF1]">
-        <div class="flex flex-col justify-between h-[80vh]">
-          <div>
-            <ion-card
-              ><img
-                alt="Silhouette of mountains"
-                src="https://ionicframework.com/docs/img/demos/card-media.png"
-                class="h-1/2 w-full"
-            /></ion-card>
-
-            <ion-card class="shadow-none">
-              <ion-card-header>
-                <!-- <ion-card-subtitle>80</ion-card-subtitle> -->
-                <ion-card-title>80</ion-card-title>
-               
-                <ion-card-title>ไก่ย่าง</ion-card-title>
-              </ion-card-header>
-
-              <ion-card-content>
-                {{'ไก่ย่างแท้ๆ เขาวนกวาง'}}
-              </ion-card-content>
-
-              <!-- <ion-button fill="clear">Action 2</ion-button> -->
-            </ion-card>
+  <ion-row class="">
+    <!-- /////////////// detail left /////////////// -->
+    <ion-col
+      class="border-r border-[#E7EBF1] flex flex-col justify-between h-[80vh]"
+    >
+      <div>
+        <ion-card>
+          <img
+            alt="Silhouette of mountains"
+            src="https://ionicframework.com/docs/img/demos/card-media.png"
+            class="h-1/2 w-full"
+          />
+        </ion-card>
+        <ion-card class="shadow-none">
+          <ion-card-header>
+            <!-- <ion-card-subtitle>80</ion-card-subtitle> -->
+            <ion-card-title>{{ prod.price }}</ion-card-title>
+            <ion-card-title>{{ prod.p_name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ "ไก่ย่างแท้ๆ เขาวนกวาง" }}
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-card class="shadow-none mx-16 p-0 my-0">
+        <ion-button expand="block" color="danger" shape="round"
+          >ยกเลิก</ion-button
+        >
+      </ion-card>
+    </ion-col>
+    <!-- /////////////// detail right /////////////// -->
+    <ion-col
+      class="border-l border-[#E7EBF1] h-[80vh] overflow-scroll scrollerBar flex flex-col"
+    >
+      <div class="scrollerBar overflow-scroll basis-4/5">
+        <ng-container *ngIf="prod?.detail?.length > 0">
+          <div *ngFor="let detail of prod?.detail; let i = index">
+            {{ detail.pd_name }}
           </div>
-          <ion-card class="shadow-none items-center mx-16"
-            ><ion-button expand="block" shape="round">ยกเลิก</ion-button></ion-card
-          >
+        </ng-container>
+        <div>
+          <ion-card class="shadow-none mb-0">
+            <ion-row>
+              <ion-col>
+                {{ "add request" }}
+              </ion-col>
+              <ion-col class="text-end">
+                {{ "0/50" }}
+              </ion-col>
+            </ion-row>
+          </ion-card>
+          <ion-card class="shadow-none mt-0">
+            <ion-textarea
+              [autoGrow]="true"
+              label=""
+              placeholder="p.s"
+              class="bg-[#E7EBF1]"
+            ></ion-textarea>
+          </ion-card>
         </div>
-      </ion-col>
-
-      <!-- <ion-col>2</ion-col> -->
-      <ion-col class="h-full bg-slate-300">3</ion-col>
-    </ion-row>
-  </ion-grid>
+      </div>
+      <div class="basis-1/5 border-t border-[#B6C0CF] border-dashed">
+        <ion-card class="shadow-none mx-16 p-0 mb-0 mt-2">
+          <div
+            class="bg-[#E7EBF1] rounded-3xl flex flex-row justify-between p-0 m-0 mb-4"
+          >
+            <div class="flex justify-start">
+              <ion-button class="radius30-button p-0 m-0" color="medium">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+            </div>
+            <div class="flex justify-center">
+              <ion-button fill="clear" class="p-0 m-0" color="dark">
+                {{ 0 }}
+              </ion-button>
+            </div>
+            <div class="flex justify-end">
+              <ion-button class="radius30-button p-0 m-0" color="medium">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+          <ion-button expand="block" color="dark" shape="round">
+            เพิ่มลงตะกร้า
+          </ion-button>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

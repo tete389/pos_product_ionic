@@ -1,92 +1,156 @@
 <ion-backdrop *ngIf="openAddDetail" [visible]="true"></ion-backdrop>
 <ion-content class="scrollerBar" scrollY="false">
-  <div class="lg:flex-row flex-col flex divide-x-2">
-    <!-- <ion-row> -->
-    <!-- <ion-col size="8" class="border-r-2 border-black ion-padding"> -->
-    <div class="border-r-2 border-black ion-padding lg:w-3/4 w-full h-4/5">
-      <ion-item id="top-scroll">
-        <div class="flex flex-row w-full pb-[16px]" id="chevron-arrow">
-          <ion-button
-            class="c11"
-            (click)="select_group_left(select_group_page)"
-            fill="clear"
-            size="small"
-            slot="icon-only"
-            [disabled]="select_group_page == 0"
-          >
-            <!-- {{ " <" }} -->
-            <ion-icon name="chevron-back-outline"></ion-icon>
-          </ion-button>
-          <ion-segment
-            [scrollable]="true"
-            class="scrollerBar mx-[2px]"
-            [value]="select_group_page"
-            (ionChange)="select_group_even($event)"
-          >
-            <ion-segment-button [value]="0" class="mx-[2px]">
-              <ion-label> {{ "ทั้งหมด" }}</ion-label>
-            </ion-segment-button>
+  <!-- <div class="lg:flex-row flex-col flex divide-x-2"> -->
+  <ion-row class="divide-x-2">
+    <ion-col size="8" class="ion-padding">
+      <!-- <div class="border-r-2 border-black ion-padding lg:w-3/4 w-full h-4/5"> -->
+      <swiper-container
+        #swiper2
+        (swiperreachbeginning)="swiper2Ready()"
+        (swiperslidechange)="swiper2SlideCharge()"
+      >
+        <swiper-slide>
+          <ion-item class="top-scroll w-full">
+            <div class="flex flex-row w-full pb-[16px] chevron-arrow">
+              <ion-button
+                class="c11"
+                (click)="select_group_left(select_group_page)"
+                fill="clear"
+                size="small"
+                [disabled]="select_group_page == 0"
+              >
+                <ion-icon
+                  slot="icon-only"
+                  name="chevron-back-outline"
+                ></ion-icon>
+              </ion-button>
+              <ion-segment
+                scrollable="true"
+                class="scrollerBar mx-[2px]"
+                [value]="select_group_page"
+                (ionChange)="select_group_even($event)"
+              >
+                <ion-segment-button [value]="0" class="mx-[2px]">
+                  <ion-label> {{ "ทั้งหมด" }}</ion-label>
+                </ion-segment-button>
+                <ion-segment-button
+                  [value]="i + 1"
+                  class="mx-[2px]"
+                  type="submit"
+                  *ngFor="let group of prods_group_temp; let i = index"
+                >
+                  <ion-label>{{ group.pg_name }}</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-button
+                class="c22"
+                (click)="select_group_right(select_group_page)"
+                fill="clear"
+                size="small"
+                [disabled]="select_group_page == prods_group_temp.length"
+              >
+                <ion-icon
+                  slot="icon-only"
+                  name="chevron-forward-outline"
+                ></ion-icon>
+              </ion-button>
 
-            <ng-container *ngFor="let group of prods_group_temp; let i = index">
-              <ion-segment-button [value]="i + 1" class="mx-[2px]">
-                <ion-label>{{ group.pg_name }}</ion-label>
-              </ion-segment-button>
-            </ng-container>
-          </ion-segment>
-          <ion-button
-            class="c22"
-            (click)="select_group_right(select_group_page)"
-            fill="clear"
-            size="small"
-            slot="icon-only"
-            [disabled]="select_group_page == prods_group_temp.length"
-          >
-            <!-- {{ " >" }} -->
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-      </ion-item>
-
+              <div class="ml-1">
+                <ion-button
+                  class="search-button h-10"
+                  size="small"
+                  color="dark"
+                  (click)="openSli()"
+                >
+                  <ion-icon
+                    color="light"
+                    class="icon-button"
+                    name="search"
+                  ></ion-icon>
+                </ion-button>
+              </div>
+            </div>
+          </ion-item>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-item class="w-full">
+            <div class="ml-1">
+              <ion-button
+                class="search-button h-10"
+                size="small"
+                color="dark"
+                (click)="closeSli()"
+              >
+                <ion-icon
+                  color="light"
+                  class="icon-button"
+                  name="close"
+                ></ion-icon>
+              </ion-button>
+            </div>
+          </ion-item>
+        </swiper-slide>
+      </swiper-container>
       <swiper-container
         #swiper
         (swiperreachbeginning)="swiperReady()"
         (swiperslidechange)="swiperSlideCharge()"
-        [config]="VerSlideOpts"
       >
         <swiper-slide
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-scroll h-[60vh] lg:h-[90vh] scrollerBar"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 overflow-scroll h-[88vh] scrollerBar"
           *ngFor="let group of prods_group; let j = index"
         >
+          <!-- <ng-container *ngIf="select_group_page == j"> -->
           <div *ngFor="let prod of group.prods; let i = index" class="relative">
             <ion-badge
-              color="primary"
-              class="absolute z-[9999] right-[5px] top-[15px]"
+              color="dark"
+              class="absolute z-[9999] right-[0px] top-[5px] badge-size"
               *ngIf="prod.count"
-              >{{ prod.count }}</ion-badge
+              >{{ " " }}{{ prod.count }}{{ " " }}</ion-badge
             >
-            <ion-card (click)="add_basket_group_select(prod)">
-              <img
-                alt="Silhouette of mountains"
-                src="https://ionicframework.com/docs/img/demos/card-media.png"
-                class="h-1/2 w-full"
-              />
+            <ion-card
+              (click)="add_basket_group_select(prod)"
+              class="m-1 mt-3 shadow" 
+            >
+              <ion-card class="m-1">
+                <img
+                  alt="Silhouette of mountains"
+                  src="https://ionicframework.com/docs/img/demos/card-media.png"
+                  class="h-full w-full"
+                />
+              </ion-card>
+
               <ion-card-content class="h-1/2">
                 <p>{{ prod.p_name }}</p>
                 <span>{{ prod.price }}</span>
               </ion-card-content>
             </ion-card>
           </div>
+          <!-- </ng-container> -->
         </swiper-slide>
       </swiper-container>
-    </div>
-    <!-- </ion-col> -->
+    </ion-col>
 
-    <!-- <ion-col size="4" class="ion-padding overflow-scroll h-[100vh] scrollerBar"> -->
-    <div
+    <ion-col size="4" class="ion-padding overflow-scroll h-[100vh] scrollerBar flex flex-col">
+      <!-- <div
       class="on-padding overflow-scroll lg:h-[100vh] scrollerBar lg:w-1/4 w-full h-[20vh]"
-    >
-      <!-- <div> -->
-      <div class="flex-row flex justify-between w-full border-b border-black">
+    > -->
+      <!-- /////////// -->
+      <div class="border-b border-[#B6C0CF] basis-[15%]" >
+        <ion-row>
+          <ion-col size="6">
+            <p>เพิ่มอาหาร</p>
+            <p>โดย: Piyada</p>
+          </ion-col>
+          <ion-col>
+            <p class="text-4xl">
+              <span class="text-lg">table</span>
+              A02
+            </p>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- <div class="flex-row flex justify-between w-full border-b border-black">
         <div>
           <p>เพิ่มอาหาร</p>
           <p>โดย: Piyada</p>
@@ -97,10 +161,11 @@
             A02
           </p>
         </div>
-      </div>
-      <!-- </div> -->
+      </div> -->
+      <!-- /////////// -->
 
-      <div class="overflow-scroll h-[73vh] scrollerBar">
+      <!-- /////////// -->
+      <div class="overflow-scroll  scrollerBar basis-[70%]">
         <ion-list>
           <ng-container *ngFor="let bask of basket; let i = index">
             <ion-item class="py-3">
@@ -114,7 +179,36 @@
                 <ion-label>{{ bask.p_name }}</ion-label>
                 <ion-label>{{ bask.price * bask.count }}</ion-label>
               </ion-label>
-              <div class="bg-slate-200 rounded-3xl h-fit" slot="end">
+              <div
+                class="bg-[#E7EBF1] rounded-3xl flex flex-row justify-between p-0 m-0 mb-4"
+              >
+                <div class="flex justify-start">
+                  <ion-button
+                    class="radius-button-x p-0 m-0"
+                    color="medium"
+                    size="small"
+                    (click)="remove(bask.p_id, i)"
+                  >
+                    <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
+                  </ion-button>
+                </div>
+                <div class="flex justify-center">
+                  <ion-button fill="clear" class="p-0 m-0" color="dark">
+                    {{ 0 }}
+                  </ion-button>
+                </div>
+                <div class="flex justify-end">
+                  <ion-button
+                    class="radius-button-x p-0 m-0"
+                    color="medium"
+                    size="small"
+                    (click)="add(bask.p_id)"
+                  >
+                    <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+                  </ion-button>
+                </div>
+              </div>
+              <!-- <div class="bg-slate-200 rounded-3xl h-fit" slot="end">
                 <ion-button
                   shape="round"
                   class="m-0 p-0"
@@ -134,50 +228,73 @@
                 >
                   <ion-icon slot="icon-only" name="add-outline"></ion-icon>
                 </ion-button>
-              </div>
+              </div> -->
             </ion-item>
           </ng-container>
         </ion-list>
       </div>
+      <!-- /////////// -->
 
-      <div class="border-t border-[#B6C0CF] border-dashed">
+      <!-- /////////// -->
+      <div class="border-t border-[#B6C0CF] border-dashed basis-[15%]">
+        <ion-row class="bg-[#E7EBF1] mt-2 p-2 rounded-xl">
+          <ion-col>
+            <span>รวมทั้งสิ้น</span>
+          </ion-col>
+          <ion-col class="text-end">
+            <span>{{ price_all }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <ion-button
+              (click)="cancel()"
+              color="danger"
+              size="small"
+              class="button-basket-cancel"
+              >{{ "ยกเลิก" }}
+            </ion-button>
+            <!-- <ion-segment-button (click)="cancel()"  class="segment-button-basket-cancel ">
+              <ion-label> {{ "ยกเลิก" }}</ion-label>
+            </ion-segment-button> -->
+          </ion-col>
+          <ion-col size="8">
+            <ion-button
+              (click)="cancel()"
+              color="dark"
+              expand="block"
+              size="small"
+              class="button-basket-confirm"
+              >{{ "สั่งอาหาร" }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- <div class="border-t border-[#B6C0CF] border-dashed">
         <div
           class="flex flex-row justify-between bg-[#E7EBF1] my-3 p-3 rounded-xl"
         >
           <span>รวมทั้งสิ้น</span>
           <span>{{ price_all }}</span>
         </div>
-        <ion-row>
-          <ion-col>
-            <ion-button
-              shape="round"
-              (click)="cancel()"
-              class="button-basket-cancel"
-              >{{ "ยกเลิก" }}
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button
-              shape="round"
-              (click)="cancel()"
-              class="button-basket-confirm"
-              >{{ "สั่งอาหาร" }}
-            </ion-button>
-          </ion-col>
-        </ion-row>
-        <!-- <div class="">
-          <ion-segment-button
-            class="segment-button-basket-cancel"
+        <ion-col>
+          <ion-button
+            shape="round"
+            (click)="cancel()"
+            class="button-basket-cancel"
             >{{ "ยกเลิก" }}
-          </ion-segment-button>
-          <ion-segment-button
-            class="segment-button-basket-confirm"
-            >{{ "ยกเลิก" }}
-          </ion-segment-button>
-        </div> -->
-      </div>
-    </div>
-    <!-- </ion-col> -->
-  </div>
-  <!-- </ion-row> -->
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            shape="round"
+            (click)="cancel()"
+            class="button-basket-confirm"
+            >{{ "สั่งอาหาร" }}
+          </ion-button>
+        </ion-col>
+      </div> -->
+      <!-- /////////// -->
+    </ion-col>
+  </ion-row>
 </ion-content>

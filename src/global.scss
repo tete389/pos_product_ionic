@@ -34,13 +34,13 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
 
 /*
 ===================================================
 ==================== CSS Custom ===================
 ===================================================
-*/  
+*/
 @import "../src/theme/setting-font.scss";
 
 // @font-face {
@@ -87,34 +87,35 @@
   src: url("./assets/fonts/Kanit/Kanit-Bold.ttf");
 }
 
-
-
 .fullscreen {
-    --width:98% !important;
-    --height:98% !important;
+  --width: 100% !important;
+  --height: 100% !important;
+  --border-radius: none;
 }
 
 .nodalscreen {
-  --width:80% !important;
-  --height:80% !important;
+  --width: 80% !important;
+  --height: 80% !important;
 }
 
 .scrollerBar {
-    &::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-    }
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
   }
-  .split-pane-visible >.split-pane-side {
-    min-width: 55px !important;
-    max-width: 55px !important;
-  }
+}
+
+.split-pane-visible > .split-pane-side {
+  min-width: 55px !important;
+  max-width: 55px !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.hide-hamburger ion-header{
-  ion-menu-button{
+.hide-hamburger ion-header {
+  ion-menu-button {
     display: none;
   }
 }
