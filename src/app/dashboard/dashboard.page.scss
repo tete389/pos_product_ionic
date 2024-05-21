@@ -24,14 +24,20 @@
         align-items: center;
     }
 
-    .sale-amount-th {
-        font-size: 20px;
-        color: black;
-    }
+.card-cus {
+    width: 135px;
+    height: 135px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .sale-amount-en {
-        font-size: 12px;
-    }
+.flex-all {
+    display: flex;
+    flex-direction: column;
+    min-width: 1300px;
 
     .total-number {
         display: flex;
@@ -43,10 +49,30 @@
         color: black;
         align-items: center;
 
-        .p-total-number {
-            font-size: 30px;
-            font-weight: 500;
-            padding-left: 40px;
+        .card-top-mid {
+            width: 427px;
+            height: 427px;
+
+            .card-cus-in01{
+                .top{
+                    font-size: 15PX;
+                    color: black; 
+                }
+                .mid{
+                    font-size: 30px;
+                    color: #FF9F37;
+            
+                }
+                .mid span{
+                    color: black;
+                }
+                .button{
+                    font-size: 15PX;
+                    color: black; 
+                }
+            
+            }
+        }
 
         }
 
