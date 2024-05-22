@@ -24,6 +24,8 @@
         {
           "pd_id": 2,
           "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 2,
@@ -45,6 +47,8 @@
         {
           "pd_id": 3,
           "pd_name": "เพิ่มไก่",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 3,
@@ -69,6 +73,8 @@
         {
           "pd_id": 4,
           "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 6,
@@ -87,6 +93,8 @@
         {
           "pd_id": 5,
           "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 8,
@@ -105,6 +113,8 @@
         {
           "pd_id": 6,
           "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 10,

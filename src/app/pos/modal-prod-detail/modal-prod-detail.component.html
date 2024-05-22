@@ -1,91 +1,124 @@
 <ion-content class="">
-  <ion-row class="">
+  <div class="flex flex-row">
     <!-- /////////////// detail left /////////////// -->
-    <ion-col
-      class="border-r border-[#E7EBF1] flex flex-col justify-between h-[80vh]"
+    <div
+      class="ion-padding border-r-2 border-[#E7EBF1] flex flex-col justify-end h-[80vh] basis-1/2"
     >
-      <div>
-        <ion-card>
+      <div class="basis-[90%]">
+        <!-- <ion-card class="mx-2 mt-2 mb-0"> -->
+        <ion-card class="mb-0">
           <img
             alt="Silhouette of mountains"
             src="https://ionicframework.com/docs/img/demos/card-media.png"
             class="h-1/2 w-full"
           />
         </ion-card>
-        <ion-card class="shadow-none">
-          <ion-card-header>
+        <ion-card class="shadow-none m-0">
+          <!-- <ion-card-header class="px-2"> -->
+          <ion-card-header class="">
             <!-- <ion-card-subtitle>80</ion-card-subtitle> -->
             <ion-card-title>{{ prod.price }}</ion-card-title>
             <ion-card-title>{{ prod.p_name }}</ion-card-title>
           </ion-card-header>
-          <ion-card-content>
+          <!-- <ion-card-content class="px-2"> -->
+          <ion-card-content class="">
             {{ "ไก่ย่างแท้ๆ เขาวนกวาง" }}
           </ion-card-content>
         </ion-card>
       </div>
-      <ion-card class="shadow-none mx-16 p-0 my-0">
-        <ion-button expand="block" color="danger" shape="round"
+      <div class="basis-[10%] flex justify-center">
+        <ion-button
+          class="basis-[70%] button-cancel"
+          shape="round"
+          (click)="cancel()"
           >ยกเลิก</ion-button
         >
-      </ion-card>
-    </ion-col>
+      </div>
+    </div>
     <!-- /////////////// detail right /////////////// -->
-    <ion-col
-      class="border-l border-[#E7EBF1] h-[80vh] overflow-scroll scrollerBar flex flex-col"
+    <div
+      class="border-l border-[#E7EBF1] h-[80vh] overflow-scroll scrollerBar flex flex-col basis-1/2 ion-padding"
     >
-      <div class="scrollerBar overflow-scroll basis-4/5">
+      <div class="scrollerBar overflow-scroll basis-[80%]">
         <ng-container *ngIf="prod?.detail?.length > 0">
-          <div *ngFor="let detail of prod?.detail; let i = index">
-            {{ detail.pd_name }}
-          </div>
+          <ng-container *ngFor="let detail of prod?.detail; let i = index">
+            <ion-card class="shadow-none border-b flex flex-col">
+              <div class="flex flex-row justify-between mb-2">
+                <ion-checkbox labelPlacement="end"
+                  ><span>
+                    {{ detail.pd_name }}
+                  </span>
+                </ion-checkbox>
+                <div class="text-end ">
+                  <span>
+                    {{ detail.max }}
+                  </span>
+                </div>
+              </div>
+
+              <ng-container *ngFor="let option of detail.option">
+                <ion-card class="shadow-none check-box-opt my-[12px] flex flex-row justify-between">
+                  <ion-checkbox labelPlacement="end"
+                    ><span>
+                      {{ option.po_name }}
+                    </span>
+                  </ion-checkbox>
+                  <div class="text-end ">
+                    <span>
+                     + {{ option.po_price }}
+                    </span>
+                  </div>
+                </ion-card>
+              </ng-container>
+            </ion-card>
+          </ng-container>
         </ng-container>
-        <div>
-          <ion-card class="shadow-none mb-0">
-            <ion-row>
-              <ion-col>
-                {{ "add request" }}
-              </ion-col>
-              <ion-col class="text-end">
-                {{ "0/50" }}
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="shadow-none mt-0">
+        <ion-card class="shadow-none basis-[15%]">
+          <div class="flex flex-row mb-2">
+            <p class="basis-1/2">
+              {{ "add request" }}
+            </p>
+            <p class="basis-1/2 text-end">
+              {{ "0/50" }}
+            </p>
+          </div>
+          <div>
             <ion-textarea
               [autoGrow]="true"
               label=""
               placeholder="p.s"
-              class="bg-[#E7EBF1]"
+              class="bg-[#E7EBF1] rounded-2xl"
             ></ion-textarea>
-          </ion-card>
-        </div>
-      </div>
-      <div class="basis-1/5 border-t border-[#B6C0CF] border-dashed">
-        <ion-card class="shadow-none mx-16 p-0 mb-0 mt-2">
-          <div
-            class="bg-[#E7EBF1] rounded-3xl flex flex-row justify-between p-0 m-0 mb-4"
-          >
-            <div class="flex justify-start">
-              <ion-button class="radius30-button p-0 m-0" color="medium">
-                <ion-icon name="remove-outline"></ion-icon>
-              </ion-button>
-            </div>
-            <div class="flex justify-center">
-              <ion-button fill="clear" class="p-0 m-0" color="dark">
-                {{ 0 }}
-              </ion-button>
-            </div>
-            <div class="flex justify-end">
-              <ion-button class="radius30-button p-0 m-0" color="medium">
-                <ion-icon name="add-outline"></ion-icon>
-              </ion-button>
-            </div>
           </div>
-          <ion-button expand="block" color="dark" shape="round">
-            เพิ่มลงตะกร้า
-          </ion-button>
         </ion-card>
       </div>
-    </ion-col>
-  </ion-row>
+      <!-- /////////////// - button + /////////////// -->
+      <div
+        class="basis-[10%] border-t-2 border-[#B6C0CF] border-dashed flex justify-center"
+      >
+        <div
+          class="bg-[#E7EBF1] rounded-3xl flex flex-row p-0 basis-[60%] justify-between my-4"
+        >
+          <ion-button class="radius30-button p-0 m-0 button-add-minus">
+            <ion-icon name="remove-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" class="p-0 m-0" color="dark">
+            {{ 0 }}
+          </ion-button>
+          <ion-button class="radius30-button p-0 m-0 button-add-minus">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+      <!-- ///////////////  button confrim /////////////// -->
+      <div class="basis-[10%] flex justify-center">
+        <ion-button
+          class="basis-[70%] button-confrim"
+          shape="round"
+          (click)="confirm()"
+          >เพิ่มลงตะกร้า</ion-button
+        >
+      </div>
+    </div>
+  </div>
 </ion-content>

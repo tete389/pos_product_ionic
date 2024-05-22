@@ -37,10 +37,10 @@ import {
   IonCol,
   IonRow,
 } from '@ionic/angular/standalone';
-import { OverlayEventDetail } from '@ionic/core/components';
+// import { OverlayEventDetail } from '@ionic/core/components';
 import { ModalProdDetailComponent } from '../modal-prod-detail/modal-prod-detail.component';
 import Swiper from 'swiper';
-import { SwiperOptions } from 'swiper/types';
+// import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-add-basket',
@@ -76,7 +76,6 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   @ViewChild('swiper')
   swiperRef?: ElementRef | undefined;
   swiper?: Swiper;
-  // VerSlideOpts?: SwiperOptions;
 
   @ViewChild('swiper2')
   swiperRef2: ElementRef | undefined;
@@ -91,12 +90,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   modal?: IonModal;
 
   url: string = '../../../assets/product.json';
-  prods_group: any[] = [
-    // {
-    //   pg_id: 0,
-    //   pg_name: 'ทั้งหมด',
-    // },
-  ];
+  prods_group: any[] = [];
   prods_group_temp: any[] = [];
   prods: any = [];
   prods_temp: any = [];
@@ -107,8 +101,9 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   timeout: any;
 
   newValue: any = 0;
-
-  openAddDetail: boolean = false;
+  // slidesPerView_search: number = 1.1
+  open_search: boolean = false;
+  open_add_detail: boolean = false;
   constructor(
     // private alertCtr: AlertController,
     private loadingCtrl: LoadingController,
@@ -160,6 +155,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   }
 
   public openSli() {
+    this.open_search = true;
     this.swiper2?.enable();
     this.swiper?.slideTo(0);
     this.swiper?.disable();
@@ -167,11 +163,10 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     // this.swiper2?.startAutoplay();
     this.swiper2?.slideNext();
     // this.swiper2?.autoplay.start();
-
-    
   }
 
   public closeSli() {
+    this.open_search = false;
     this.swiper2?.enable();
     this.swiper?.enable();
     this.swiper2?.slidePrev();
@@ -193,7 +188,6 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     // if (p?.detail?.length > 0) {
     await this.openModalDetail(p);
     // }
-
     const findBasket = this.basket.find(
       (e: { price: number; p_id: number; count: number }) => {
         if (e.p_id == p.p_id) {
@@ -314,7 +308,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   // }
 
   public async openModalDetail(prod: any) {
-    this.openAddDetail = true;
+    this.open_add_detail = true;
     const modal = await this.modalCtrl.create({
       component: ModalProdDetailComponent,
       mode: 'ios',
@@ -327,7 +321,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     if (role === 'confirm') {
     }
 
-    this.openAddDetail = false;
+    this.open_add_detail = false;
   }
 
   public async AlertLoadding() {

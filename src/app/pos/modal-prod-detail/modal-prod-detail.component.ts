@@ -15,7 +15,9 @@ import {
   IonButton,
   IonTextarea,
   IonIcon,
-} from '@ionic/angular/standalone';
+  ModalController,
+  AlertController,
+  LoadingController, IonCheckbox } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 @Component({
@@ -23,7 +25,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './modal-prod-detail.component.html',
   styleUrls: ['./modal-prod-detail.component.scss'],
   standalone: true,
-  imports: [
+  imports: [IonCheckbox, 
     IonIcon,
     IonTextarea,
     IonButton,
@@ -44,9 +46,21 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModalProdDetailComponent implements OnInit {
   @Input('prod') prod: any;
-  constructor() {}
+  constructor(
+    private alertCtr: AlertController,
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController
+  ) {}
 
   ngOnInit() {
     console.log(this.prod);
+  }
+
+  public cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  public confirm() {
+    return this.modalCtrl.dismiss('', 'confirm');
   }
 }
