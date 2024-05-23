@@ -30,194 +30,183 @@
     align-items: center;
     flex-direction: column;
 }
+.card-top-left {
+    width: 385px;
+    height: 427px;
 
-.flex-all {
-    // display: flex;
-    // flex-direction: column;
-    // min-width: 1300px;
+    .header-card-top-one {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-left: 24px;
+        margin-top: 20px;
+        align-items: center;
+    }
 
-    .report-top {
-        // display: flex;
-        // flex-direction: row;
-        // flex-wrap: wrap;
+    .sale-amount-th {
+        font-size: 20px;
+        color: black;
+    }
 
-        .card-top-left {
-            width: 385px;
-            height: 427px;
+    .sale-amount-en {
+        font-size: 12px;
+    }
 
-            .header-card-top-one {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                margin-left: 24px;
-                margin-top: 20px;
-                align-items: center;
+    .total-number {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-left: 1px;
+        margin-top: 5px;
+        align-items: center;
+        color: black;
+        align-items: center;
+
+        .p-total-number {
+            font-size: 30px;
+            font-weight: 500;
+            padding-left: 40px;
+
+        }
+
+        .p-bath {
+            font-weight: 500;
+            font-size: 20px;
+        }
+    }
+
+    .cash-money-length {
+
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        gap: 8px;
+        color: black;
+
+        .length-text-top {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            .length-score-money {
+                border: 2px solid #EAF2F6;
+                background-color: #EAF2F6;
+                width: 150px;
+                height: 12px;
+                border-radius: 20px;
+
+                .length-sum-a {
+                    border-radius: 20px;
+                    width: 97px;
+                    border: 3px solid #FF9F37;
+                    padding: 2px;
+                    margin: -1px;
+                    background: #FF9F37;
+                }
             }
-        
-            .sale-amount-th {
-                font-size: 20px;
+
+        }
+
+        .length-text-bottom {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            .length-score-cash {
+                border-radius: 20px;
+                border: 2px solid #EAF2F6;
+                background-color: #EAF2F6;
+                width: 150px;
+                height: 12px;
+
+                .length-sum-b {
+                    border-radius: 20px;
+                    width: 47px;
+                    border: 3px solid #65CF21;
+                    padding: 2px;
+                    margin: -1px;
+                    background: #65CF21;
+                }
+            }
+
+
+        }
+    }
+
+    .report-all {
+        display: flex;
+        flex-direction: column;
+        margin-top: 31px;
+
+        .sales,
+        .discount,
+        .after-deducting,
+        .vat,
+        .vat-all {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 6px 22px;
+        }
+
+        .sales {
+            .sales-text {
                 color: black;
             }
-        
-            .sale-amount-en {
-                font-size: 12px;
-            }
-        
-            .total-number {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                margin-left: 1px;
-                margin-top: 5px;
-                align-items: center;
+
+            .sales-number {
                 color: black;
-                align-items: center;
-        
-                .p-total-number {
-                    font-size: 30px;
-                    font-weight: 500;
-                    padding-left: 40px;
-        
-                }
-        
-                .p-bath {
-                    font-weight: 500;
-                    font-size: 20px;
-                }
-            }
-        
-            .cash-money-length {
-        
-                display: flex;
-                flex-direction: column;
-                padding: 8px;
-                gap: 8px;
-                color: black;
-        
-                .length-text-top {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 8px;
-        
-                    .length-score-money {
-                        border: 2px solid #EAF2F6;
-                        background-color: #EAF2F6;
-                        width: 150px;
-                        height: 12px;
-                        border-radius: 20px;
-        
-                        .length-sum-a {
-                            border-radius: 20px;
-                            width: 97px;
-                            border: 3px solid #FF9F37;
-                            padding: 2px;
-                            margin: -1px;
-                            background: #FF9F37;
-                        }
-                    }
-        
-                }
-        
-                .length-text-bottom {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 8px;
-        
-                    .length-score-cash {
-                        border-radius: 20px;
-                        border: 2px solid #EAF2F6;
-                        background-color: #EAF2F6;
-                        width: 150px;
-                        height: 12px;
-        
-                        .length-sum-b {
-                            border-radius: 20px;
-                            width: 47px;
-                            border: 3px solid #65CF21;
-                            padding: 2px;
-                            margin: -1px;
-                            background: #65CF21;
-                        }
-                    }
-        
-        
-                }
-            }
-        
-            .report-all {
-                display: flex;
-                flex-direction: column;
-                margin-top: 31px;
-        
-                .sales,
-                .discount,
-                .after-deducting,
-                .vat,
-                .vat-all {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    padding: 6px 22px;
-                }
-        
-                .sales {
-                    .sales-text {
-                        color: black;
-                    }
-        
-                    .sales-number {
-                        color: black;
-                    }
-                }
-        
-                .discount {
-                    .discount-text {
-                        color: black;
-                    }
-        
-                    .discount-number {
-                        color: red;
-                    }
-                }
-        
-                .after-deducting {
-                    .after-deducting-text {
-                        color: black;
-                    }
-        
-                    .after-deducting-number {
-                        color: black;
-                    }
-                }
-        
-                .vat {
-        
-                    .vat-text {
-                        color: black;
-                    }
-        
-                    .vat-number {
-                        color: green;
-                    }
-                }
-        
-                .vat-all {
-                    .vat-all-text {
-                        color: black;
-                    }
-        
-                    .vat-all-number {
-                        color: black;
-                    }
-                }
-        
             }
         }
 
+        .discount {
+            .discount-text {
+                color: black;
+            }
+
+            .discount-number {
+                color: red;
+            }
+        }
+
+        .after-deducting {
+            .after-deducting-text {
+                color: black;
+            }
+
+            .after-deducting-number {
+                color: black;
+            }
+        }
+
+        .vat {
+
+            .vat-text {
+                color: black;
+            }
+
+            .vat-number {
+                color: green;
+            }
+        }
+
+        .vat-all {
+            .vat-all-text {
+                color: black;
+            }
+
+            .vat-all-number {
+                color: black;
+            }
+        }
+
+    }
+}
+.flex-all {
         .card-top-mid {
             width: 427px;
             height: 427px;
@@ -310,7 +299,7 @@
                     }
                 }
             }
-        }
+        
     }
 
     .report-button {
