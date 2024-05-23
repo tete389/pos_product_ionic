@@ -1,34 +1,109 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar >
+  <ion-toolbar>
     <!-- Humberger -->
     <ion-buttons slot="start">
-      <ion-menu-button  autoHide="false"></ion-menu-button>
+      <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
+
+    <div class="header-box">
+      <div class="header-box-1">
+        <div class="header-box-1-left">
+          <ion-button [ngClass]="{'select-tab-active': select_tab_menu == 0}" (click)="select_tab_menu = 0">
+            <ion-label>รายการอาหาร</ion-label>
+          </ion-button>
+          <ion-button [ngClass]="{'select-tab-active': select_tab_menu == 1}" (click)="select_tab_menu = 1">
+            <ion-label>หมวดหมู่</ion-label>
+          </ion-button>
+        </div>
+        <div class="header-box-1-right">
+
+          <div class="search">
+            <ion-searchbar #input class="searches-fuller" [formControl]="searchControl" (ionCancel)="onCancel()"
+              (ngModelChange)="onSearchInput(search_text)" [(ngModel)]="search_text"
+              (keyup.enter)="search_enter(input.value)" cancelButtonText="Cancel" animated search-icon="search-outline"
+              cancel-button-icon="chevron-back-outline" [placeholder]="placho_text" mode="md">
+            </ion-searchbar>
+          </div>
+
+          <ion-label class="sortby">Sort by</ion-label>
+
+          <div class="popop">
+            <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop" toggleIcon="chevron-down-outline"
+              expandedIcon="chevron-forward-outline" placeholder="ทั้งหมด" interface="popover">
+              <ion-select-option value="1">ทั้งหมด</ion-select-option>
+              <ion-select-option value="2">อาหาร</ion-select-option>
+              <ion-select-option value="3">เครื่องดืม</ion-select-option>
+            </ion-select>
+          </div>
+
+  <div class="">
+    <ion-button class="btn-add-product">
+      <ion-label><span>+</span>เพิ่ม</ion-label>
+    </ion-button>
+  </div>
+
+          <div class="popop-dot">
+            <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-dot" toggleIcon="ellipsis-vertical"
+              interface="popover">
+              <ion-select-option value="1">ลบเมนู</ion-select-option>
+              <ion-select-option value="2">ปิดออก</ion-select-option>
+            </ion-select>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="header-box-2">2</div>
+    </div>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-sadsds
 
-<div class="" style="display: flex; flex-direction: row;">
-  <div class="" style="font-size: 54px; border: 1px solid red; padding: 5px;">
-    <div class="text-extralight">AA</div>
-    <div class="text-light">AA</div>
-    <div class="">AA</div>
-    <div class="text-medium">AA</div>
-    <div class="text-bold ">AA</div>
+
+  <ion-card class="carded" *ngFor="let item of [1,2,3,4,5,6,7]">
+    <ion-card-content>
+
+      <div class="box-img">
+        <img src="assets/image/img-product.png" alt="">
+      </div>
+      <div class="box-name">1</div>
+      <div class="box-price">2</div>
+      <div class="box-category">3</div>
+      <div class="box-description">4</div>
+      <div class="box-toggle">5</div>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <div class="" style="display: flex; flex-direction: row;">
+    <div class="" style="font-size: 54px; border: 1px solid red; padding: 5px;">
+      <div class="text-extralight">AA</div>
+      <div class="text-light">AA</div>
+      <div class="">AA</div>
+      <div class="text-medium">AA</div>
+      <div class="text-bold ">AA</div>
+    </div>
+
+    <div class="" style="font-size: 54px; border: 1px solid greenyellow; padding: 5px;">
+      <div style="font-weight: var(--text-extralight);">AA</div>
+      <div style="font-weight: var(--text-light);">AA</div>
+      <div style="font-weight: var(--text-regular);">AA</div>
+      <div style="font-weight: var(--text-medium);">AA</div>
+      <div style="font-weight: var(--text-bold);">AA</div>
+    </div>
   </div>
-  
-  <div class="" style="font-size: 54px; border: 1px solid greenyellow; padding: 5px;">
-  <div style="font-weight: var(--text-extralight);">AA</div>
-  <div style="font-weight: var(--text-light);">AA</div>
-  <div style="font-weight: var(--text-regular);">AA</div>
-  <div style="font-weight: var(--text-medium);">AA</div>
-  <div style="font-weight: var(--text-bold);">AA</div>
-  </div>
-</div>
+
+
+
 
 
 </ion-content>
 
+
+<!-- https://stackblitz.com/edit/tabs-standalone-angular-animate-yt4b8t?file=app%2Ftabs-template-label-example.ts,app%2Ftabs-template-label-example.html,styles.css
+https://stackoverflow.com/questions/54505293/how-to-add-tab-animation-on-change-in-ionic-4 -->

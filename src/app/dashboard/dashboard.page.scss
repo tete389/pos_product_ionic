@@ -1,25 +1,28 @@
-.card-top-left,
-.card-top-mid,
-.card-top-right,
-.card-button-left,
-.card-button-mid,
-.card-button-right {
-    margin: 6px;
+.card-top-one,
+.card-top-two{
+    max-width: 385px;
+    height: auto;
+}
+.card-top-tree {
+    max-width: 308px;
+    height: 427px;
+    margin-left: 60px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ 
+}
 
-}
-.grid-custom {
-    .row-custom {
-        margin-top: -8px; /* This keeps the top margin adjustment as needed */
+.card-top-one {
+    .header-card-top-one {
         display: flex;
-        flex-wrap: wrap;
-    }
-    .col-custom {
-        display: flex;
-        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        margin-left: 24px;
+        margin-top: 20px;
         align-items: center;
-        
     }
-}
 
 .card-cus {
     width: 135px;
@@ -243,102 +246,183 @@
             }
         }
 
-        .card-top-right {
-            width: 308px;
-            height: 427px;
         }
 
-        .flex-all {
-            display: flex;
-            flex-direction: column;
-            min-width: 1300px;
-
-            .report-top {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-
-                .card-top-left {
-                    width: 385px;
-                    height: 427px;
-                }
-
-                .report-top-mid {
-                    .card-top-mid {
-                        width: 427px;
-                        height: 427px;
-
-                    
-                    }
-                    
-                }
-
-
-
-                .card-top-right {
-                    width: 308px;
-                    height: 427px;
-                }
-            }
-
-            .report-button {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                .report-button-left {
-                    .card-button-left {
-                        width: 370px;
-                        height: 311px;
-                    }
-
-                }
-
-                .report-button-mid {
-                    .card-button-mid {
-                        width: 514px;
-                        height: 311px;
-                    }
-                }
-
-                .report-button-right {
-
-                    .card-button-right {
-                        width: 240px;
-                        height: 257px;
-                    }
-                }
-            }
+        .p-bath {
+            font-weight: 500;
+            font-size: 20px;
         }
     }
 
-    .report-button {
+    .cash-money-length {
+
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 8px;
+        gap: 8px;
+        color: black;
 
-        .report-button-left {
-            .card-button-left {
-                width: 370px;
-                height: 311px;
+        .length-text-top {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            .length-score-money {
+                border: 2px solid #EAF2F6;
+                background-color: #EAF2F6;
+                width: 150px;
+                height: 12px;
+                border-radius: 20px;
+
+                .length-sum-a {
+                    border-radius: 20px;
+                    width: 97px;
+                    border: 3px solid #FF9F37;
+                    padding: 2px;
+                    margin: -1px;
+                    background: #FF9F37;
+                }
             }
 
         }
 
-        .report-button-mid {
-            .card-button-mid {
-                width: 514px;
-                height: 311px;
-            }
-        }
+        .length-text-bottom {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
 
-        .report-button-right {
+            .length-score-cash {
+                border-radius: 20px;
+                border: 2px solid #EAF2F6;
+                background-color: #EAF2F6;
+                width: 150px;
+                height: 12px;
 
-            .card-button-right {
-                width: 240px;
-                height: 257px;
+                .length-sum-b {
+                    border-radius: 20px;
+                    width: 47px;
+                    border: 3px solid #65CF21;
+                    padding: 2px;
+                    margin: -1px;
+                    background: #65CF21;
+                }
             }
+
+
         }
     }
+
+    .report-all {
+        display: flex;
+        flex-direction: column;
+        margin-top: 31px;
+
+        .sales,
+        .discount,
+        .after-deducting,
+        .vat,
+        .vat-all {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 6px 22px;
+        }
+
+        .sales {
+            .sales-text {
+                color: black;
+            }
+
+            .sales-number {
+                color: black;
+            }
+        }
+
+        .discount {
+            .discount-text {
+                color: black;
+            }
+
+            .discount-number {
+                color: red;
+            }
+        }
+
+        .after-deducting {
+            .after-deducting-text {
+                color: black;
+            }
+
+            .after-deducting-number {
+                color: black;
+            }
+        }
+
+        .vat {
+
+            .vat-text {
+                color: black;
+            }
+
+            .vat-number {
+                color: green;
+            }
+        }
+
+        .vat-all {
+            .vat-all-text {
+                color: black;
+            }
+
+            .vat-all-number {
+                color: black;
+            }
+        }
+
+    }
+}
+
+.card-top-two {
+    .grid2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+       
+        grid-row-gap: 0px;
+        column-gap: 42px;
+        .a,
+        .b,
+        .c,
+        .d,
+        .e,
+        .f {
+            width: 135px;
+            height: 135px;
+            margin: 5px 11px 4px;
+
+        }
+    }
+}
+
+.card-buttom-one {
+    max-width: 370px;
+    height: 311px;
+ 
+
+
+}
+
+.card-buttom-two {
+    max-width: 514px;
+    height: 311px;
+  
+}
+
+.card-buttom-tree {
+    max-width: 240px;
+    height: 257px;
+ 
 }

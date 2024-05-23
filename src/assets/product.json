@@ -5,109 +5,13 @@
       "p_name": "ไก่ย่าง",
       "img": "",
       "price": 40,
-      "pg_id": 2
-    },
-    {
-      "p_id": 2,
-      "p_name": "ไก่ย่าง2",
-      "img": "",
-      "price": 50,
-      "pg_id": 2
-    },
-    {
-      "p_id": 3,
-      "p_name": "ไก่ย่าง3",
-      "img": "",
-      "price": 60,
-      "pg_id": 2
-    },
-    {
-      "p_id": 4,
-      "p_name": "ไก่ย่าง4",
-      "img": "",
-      "price": 70,
-      "pg_id": 1
-    },
-    {
-      "p_id": 5,
-      "p_name": "ไก่ย่าง5",
-      "img": "",
-      "price": 40,
-      "pg_id": 1
-    },
-    {
-      "p_id": 6,
-      "p_name": "ไก่ย่าง6",
-      "img": "",
-      "price": 50,
-      "pg_id": 3
-    },
-    {
-      "p_id": 7,
-      "p_name": "ไก่ย่าง7",
-      "img": "",
-      "price": 60,
-      "pg_id": 4
-    },
-    {
-      "p_id": 8,
-      "p_name": "ไก่ย่าง8",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 9,
-      "p_name": "ต้มยำ",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 10,
-      "p_name": "สัมตำ",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 11,
-      "p_name": "ไก่ทอด",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 12,
-      "p_name": "ไก่ปิ้ง",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 13,
-      "p_name": "ไก่ต้ม",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 14,
-      "p_name": "ไก่อบ",
-      "img": "",
-      "price": 70,
-      "pg_id": 4
-    },
-    {
-      "p_id": 15,
-      "p_name": "ไก่ตุ๋น",
-      "img": "",
-      "price": 70,
-      "pg_id": 4,
+      "pg_id": 2,
       "detail": [
         {
           "pd_id": 1,
           "pd_name": "เพิ่มไก่",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 1,
@@ -120,6 +24,8 @@
         {
           "pd_id": 2,
           "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
           "option": [
             {
               "po_id": 2,
@@ -130,6 +36,205 @@
           ]
         }
       ]
+    },
+    {
+      "p_id": 2,
+      "p_name": "ไก่ย่าง2",
+      "img": "",
+      "price": 50,
+      "pg_id": 2,
+      "detail": [
+        {
+          "pd_id": 3,
+          "pd_name": "เพิ่มไก่",
+          "min": 1,
+          "max": 2,
+          "option": [
+            {
+              "po_id": 3,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 3
+            },
+            {
+              "po_id": 4,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 3
+            },
+            {
+              "po_id": 5,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 3
+            }
+          ]
+        },
+        {
+          "pd_id": 4,
+          "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
+          "option": [
+            {
+              "po_id": 6,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 4
+            },
+            {
+              "po_id": 7,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 4
+            }
+          ]
+        },
+        {
+          "pd_id": 5,
+          "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
+          "option": [
+            {
+              "po_id": 8,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 5
+            },
+            {
+              "po_id": 9,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 5
+            }
+          ]
+        },
+        {
+          "pd_id": 6,
+          "pd_name": "เพิ่มเส้น",
+          "min": 1,
+          "max": 2,
+          "option": [
+            {
+              "po_id": 10,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 6
+            },
+            {
+              "po_id": 11,
+              "po_name": " ตีนไก่",
+              "po_price": 10,
+              "pd_id": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "p_id": 3,
+      "p_name": "ไก่ย่าง3",
+      "img": "",
+      "price": 60,
+      "pg_id": 2,
+      "detail": []
+    },
+    {
+      "p_id": 4,
+      "p_name": "ไก่ย่าง4",
+      "img": "",
+      "price": 70,
+      "pg_id": 1,
+      "detail": []
+    },
+    {
+      "p_id": 5,
+      "p_name": "ไก่ย่าง5",
+      "img": "",
+      "price": 40,
+      "pg_id": 1,
+      "detail": []
+    },
+    {
+      "p_id": 6,
+      "p_name": "ไก่ย่าง6",
+      "img": "",
+      "price": 50,
+      "pg_id": 3,
+      "detail": []
+    },
+    {
+      "p_id": 7,
+      "p_name": "ไก่ย่าง7",
+      "img": "",
+      "price": 60,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 8,
+      "p_name": "ไก่ย่าง8",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 9,
+      "p_name": "ต้มยำ",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 10,
+      "p_name": "สัมตำ",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 11,
+      "p_name": "ไก่ทอด",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 12,
+      "p_name": "ไก่ปิ้ง",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 13,
+      "p_name": "ไก่ต้ม",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 14,
+      "p_name": "ไก่อบ",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
+    },
+    {
+      "p_id": 15,
+      "p_name": "ไก่ตุ๋น",
+      "img": "",
+      "price": 70,
+      "pg_id": 4,
+      "detail": []
     },
     {
       "p_id": 16,
