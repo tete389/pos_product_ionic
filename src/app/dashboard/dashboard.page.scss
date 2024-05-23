@@ -7,17 +7,20 @@
     margin: 6px;
 
 }
+
 .grid-custom {
     .row-custom {
-        margin-top: -8px; /* This keeps the top margin adjustment as needed */
+        margin-top: -8px;
+        /* This keeps the top margin adjustment as needed */
         display: flex;
         flex-wrap: wrap;
     }
+
     .col-custom {
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
 }
 
@@ -30,6 +33,7 @@
     align-items: center;
     flex-direction: column;
 }
+
 .card-top-left {
     width: 385px;
     height: 427px;
@@ -206,128 +210,207 @@
 
     }
 }
-.flex-all {
-        .card-top-mid {
-            width: 427px;
-            height: 427px;
 
-            .card-cus-in01{
-                .top{
-                    font-size: 15PX;
-                    color: black; 
-                }
-                .mid{
-                    font-size: 30px;
-                    color: #FF9F37;
-            
-                }
-                .mid span{
-                    color: black;
-                }
-                .button{
-                    font-size: 15PX;
-                    color: black; 
-                }
-            
-            }
+.card-top-mid {
+    width: 427px;
+    height: 427px;
+
+    .card-cus-in01 {
+        text-align: center;
+
+        .top {
+            font-size: 15PX;
+            color: black;
         }
 
-        .card-top-right {
-            width: 308px;
-            height: 427px;
+        .mid {
+            font-size: 30px;
+            color: #FF9F37;
+
         }
 
-        .flex-all {
-            display: flex;
-            flex-direction: column;
-            min-width: 1300px;
+        .mid span {
+            color: black;
+        }
 
-            .report-top {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
+        .button {
+            font-size: 15PX;
+            color: black;
+        }
 
-
-                .card-top-left {
-                    width: 385px;
-                    height: 427px;
-                }
-
-                .report-top-mid {
-                    .card-top-mid {
-                        width: 427px;
-                        height: 427px;
-
-                    
-                    }
-                    
-                }
-
-
-
-                .card-top-right {
-                    width: 308px;
-                    height: 427px;
-                }
-            }
-
-            .report-button {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                .report-button-left {
-                    .card-button-left {
-                        width: 370px;
-                        height: 311px;
-                    }
-
-                }
-
-                .report-button-mid {
-                    .card-button-mid {
-                        width: 514px;
-                        height: 311px;
-                    }
-                }
-
-                .report-button-right {
-
-                    .card-button-right {
-                        width: 240px;
-                        height: 257px;
-                    }
-                }
-            }
-        
     }
 
-    .report-button {
+    .card-cus-in02 {
+        text-align: center;
+
+        .top02 {
+            font-size: 15PX;
+            color: black;
+        }
+
+        .mid02 {
+            font-size: 30px;
+            color: #66ff37;
+
+        }
+
+        .button02 {
+            font-size: 15PX;
+            color: black;
+        }
+
+    }
+
+    .card-cus-in03 {
+        text-align: center;
+
+        .top03 {
+            font-size: 15PX;
+            color: black;
+        }
+
+        .mid03 {
+            font-size: 30px;
+            color: #379eff;
+
+        }
+
+
+
+    }
+
+    .card-cus-in04 {
+        text-align: center;
+        color: black;
+
+        .top04 {
+            font-size: 15PX;
+
+        }
+
+        .mid04 {
+            font-size: 30px;
+
+        }
+
+        .mid041 {
+            font-size: 14px;
+
+
+        }
+
+        .button04 {
+            font-size: 10PX;
+
+        }
+
+
+    }
+
+    .card-cus-in05 {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        .report-button-left {
-            .card-button-left {
-                width: 370px;
-                height: 311px;
+        flex-direction: column;
+        color: black;
+        .flex-05-top {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            align-items: center;
+            .left-top {
+                font-size: 25px;
             }
 
-        }
-
-        .report-button-mid {
-            .card-button-mid {
-                width: 514px;
-                height: 311px;
+            .right-top {
+                font-size: 15px;
             }
         }
 
-        .report-button-right {
+        .flex-05-bt {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+            .left-bt {
+                font-size: 25px;
+            }
 
-            .card-button-right {
-                width: 240px;
-                height: 257px;
+            .right-bt {
+                font-size: 15px;
             }
         }
     }
+    .card-cus-in06 {
+        text-align: center;
+        color: black;
+        .top06 {
+            font-size: 15PX;
+           
+        }
+
+        .mid06 {
+            font-size: 30px;
+            color: #fa5757;
+
+        }
+
+        .button06 {
+            font-size: 15PX;
+         
+        }
+
+    }
+    .card-cus-in07 {
+        text-align: center;
+        color: black;
+        .top07 {
+            font-size: 15PX;
+            
+        }
+
+        .mid07 {
+            font-size: 19px;
+        
+
+        }
+
+
+
+    }
+    .card-cus-in08 {
+        text-align: center;
+        color: black;
+        .top08 {
+            font-size: 15PX;
+            
+        }
+
+        .mid08 {
+            font-size: 19px;
+        
+
+        }
+
+
+
+    }
+}
+
+.card-top-right {
+    width: 308px;
+    height: 427px;
+}
+
+.card-button-left {
+    width: 370px;
+    height: 311px;
+}
+
+.card-button-mid {
+    width: 514px;
+    height: 311px;
+}
+
+.card-button-right {
+    width: 240px;
+    height: 257px;
 }
