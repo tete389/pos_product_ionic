@@ -119,26 +119,26 @@
                                 </div>
                             </ion-card></ion-col>
                         <ion-col class="col-custom" size="4"><ion-card class="card-cus">
-                            <div class="card-cus-in06">
-                                <p class="top06">ยกเลิกบิล</p>
-                                <p class="mid06">2</p>
-                                <p class="button06">฿ 1,200</p>
-                            </div>
-                            </ion-card></ion-col>
-                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
-                              
-                                <div class="card-cus-in07">
-                                    <p class="top07">Time spent</p>
-                                    <p class="mid07">01.43 h</p>
-                                   
+                                <div class="card-cus-in06">
+                                    <p class="top06">ยกเลิกบิล</p>
+                                    <p class="mid06">2</p>
+                                    <p class="button06">฿ 1,200</p>
                                 </div>
                             </ion-card></ion-col>
                         <ion-col class="col-custom" size="4"><ion-card class="card-cus">
-                         
+
+                                <div class="card-cus-in07">
+                                    <p class="top07">Time spent</p>
+                                    <p class="mid07">01.43 h</p>
+
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+
                                 <div class="card-cus-in08">
                                     <p class="top08">yesterday</p>
                                     <p class="mid08">01.35 h</p>
-                                   
+
                                 </div>
                             </ion-card></ion-col>
                     </ion-row>
@@ -148,7 +148,41 @@
 
         <div class="report-top-right basis-full md:basis-1/2 lg:basis-1/5 xl:basis-1/4">
             <ion-card class="card-top-right">
-                3
+                <div class="flex-header">
+                    <div class="header-top-selling">
+                        <p class="en-top">Top Selling</p>
+                        <p class="th-top">เมนูขายดี</p>
+                    </div>
+                    <div class="drop-down">
+                        <p>Today</p>
+                    </div>
+                </div>
+                <div class="title">
+                    <p class="title-left">การแสดงผล:</p>
+                    <p class="title-end">จำนวน</p>
+                </div>
+                <div class="container w-full">
+                        <table class=" w-full">
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>category</th>
+                        <th>QTY</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-cus01" *ngFor="let item of items; let i = index">
+                      <tr  class="py-2">
+                        <td>{{ i + 1 }}. Food name</td>
+                        <td>เมนูทอด</td>
+                        <td>34</td>
+                        <td>฿1,400</td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+            
             </ion-card>
         </div>
 

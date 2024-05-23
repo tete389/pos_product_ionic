@@ -95,18 +95,20 @@
             gap: 8px;
 
             .length-score-money {
-                border: 2px solid #EAF2F6;
-                background-color: #EAF2F6;
                 width: 150px;
                 height: 12px;
+                border: 2px solid #EAF2F6;
+                background-color: #EAF2F6;
                 border-radius: 20px;
 
                 .length-sum-a {
-                    border-radius: 20px;
+
                     width: 97px;
-                    border: 3px solid #FF9F37;
                     padding: 2px;
                     margin: -1px;
+
+                    border: 3px solid #FF9F37;
+                    border-radius: 20px;
                     background: #FF9F37;
                 }
             }
@@ -121,19 +123,22 @@
             gap: 8px;
 
             .length-score-cash {
+                width: 150px;
+                height: 12px;
                 border-radius: 20px;
                 border: 2px solid #EAF2F6;
                 background-color: #EAF2F6;
-                width: 150px;
-                height: 12px;
+
 
                 .length-sum-b {
-                    border-radius: 20px;
+
                     width: 47px;
-                    border: 3px solid #65CF21;
                     padding: 2px;
                     margin: -1px;
+                    border: 3px solid #65CF21;
                     background: #65CF21;
+                    border-radius: 20px;
+
                 }
             }
 
@@ -311,11 +316,13 @@
         display: flex;
         flex-direction: column;
         color: black;
+
         .flex-05-top {
             display: flex;
             flex-direction: row;
             gap: 25px;
             align-items: center;
+
             .left-top {
                 font-size: 25px;
             }
@@ -330,6 +337,7 @@
             flex-direction: row;
             align-items: center;
             gap: 25px;
+
             .left-bt {
                 font-size: 25px;
             }
@@ -339,12 +347,14 @@
             }
         }
     }
+
     .card-cus-in06 {
         text-align: center;
         color: black;
+
         .top06 {
             font-size: 15PX;
-           
+
         }
 
         .mid06 {
@@ -355,38 +365,42 @@
 
         .button06 {
             font-size: 15PX;
-         
+
         }
 
     }
+
     .card-cus-in07 {
         text-align: center;
         color: black;
+
         .top07 {
             font-size: 15PX;
-            
+
         }
 
         .mid07 {
             font-size: 19px;
-        
+
 
         }
 
 
 
     }
+
     .card-cus-in08 {
         text-align: center;
         color: black;
+
         .top08 {
             font-size: 15PX;
-            
+
         }
 
         .mid08 {
             font-size: 19px;
-        
+
 
         }
 
@@ -398,6 +412,80 @@
 .card-top-right {
     width: 308px;
     height: 427px;
+
+    .flex-header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        .header-top-selling {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 9px;
+            margin-left: 20px;
+
+            .en-top {
+                font-size: 16px;
+                font-weight: 500;
+                color: black;
+            }
+
+            .th-top {
+                font-size: 12px;
+            }
+
+        }
+
+        .drop-down {
+
+            width: 50%;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            margin-top: 25px;
+            margin-left: 40px;
+
+            background: #EAF2F6;
+            color: black;
+            font-size: 14px;
+
+        }
+
+    }
+
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 50px;
+        padding-right: 50px;
+
+        .title-left {
+            font-size: 14px;
+        }
+
+        .title-end {
+            font-size: 14px;
+            color: #1492E6;
+        }
+
+    }
+
+    .table-cus01 {
+        font-size: 12px;
+        text-align: center;
+
+     
+        
+    
+
+        
+    }
 }
 
 .card-button-left {
@@ -414,3 +502,7 @@
     width: 240px;
     height: 257px;
 }
+td ,th {
+    color: black;
+    padding: 5px !important;
+} 
