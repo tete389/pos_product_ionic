@@ -16,11 +16,7 @@
                     <div class="length-text-top">
                         <div>เงินโอน</div>
                         <div>4,643.80</div>
-                        <div class="length-score-money">
-                            <div class="length-sum-a">
-
-                            </div>
-                        </div>
+                        <ion-progress-bar value="0.7"></ion-progress-bar>
                         <div>70.0%</div>
                     </div>
 
@@ -28,11 +24,7 @@
                     <div class="length-text-bottom">
                         <div>เงินสด</div>
                         <div>1,990.20</div>
-                        <div class="length-score-cash">
-                            <div class="length-sum-b">
-
-                            </div>
-                        </div>
+                        <ion-progress-bar value="0.3"></ion-progress-bar>
                         <div>30.0%</div>
 
                     </div>
@@ -154,7 +146,15 @@
                         <p class="th-top">เมนูขายดี</p>
                     </div>
                     <div class="drop-down">
-                        <p>Today</p>
+                        <ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="Today">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select>
                     </div>
                 </div>
                 <div class="title">
@@ -194,7 +194,15 @@
                         <div class="title">ยอดขายแยกตามวัน</div>
                         <div class="title02">10 Jan, 2024 -17 Jan, 2024</div>
                     </div>
-                    <div class="title-dropdown">This week <ion-icon name="chevron-down-outline"></ion-icon></div>
+                    <div class="title-dropdown"><ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="This week">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select></div>
                 </div>
                 <div class="apexchart-button-left">
                     <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
@@ -213,11 +221,19 @@
                         <div class="title">ยอดขายตามช่วงเวลา</div>
                         <div class="title02">17 Jan, 2024</div>
                     </div>
-                    <div class="title-dropdown02">This day<ion-icon name="chevron-down-outline"></ion-icon></div>
+                    <div class="title-dropdown02"><ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="Today">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select></div>
                 </div>
                 <div class="apexchart-button-left02">
-                    <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [xaxis]="chartOptions2.xaxis"
-                        [title]="chartOptions2.title" [colors]="chartOptions2.colors"
+                    <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart"
+                        [xaxis]="chartOptions2.xaxis" [title]="chartOptions2.title" [colors]="chartOptions2.colors"
                         [dataLabels]="chartOptions2.dataLabels" [plotOptions]="chartOptions2.plotOptions"
                         [yaxis]="chartOptions2.yaxis"></apx-chart>
                 </div>
@@ -225,9 +241,42 @@
         </div>
 
         <div class="report-button-right basis-full md:basis-1/2 lg:basis-1/5 xl:basis-1/4">
-            <ion-card class="card-button-right">
-                6
+            <ion-card class="header-top-right">
+                <div class="flex-header-tr">
+                    <p class="inventory">INVENTORY</p>
+                    <div class="item"> <ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                            placeholder="ALL ITEM">
+                            <ion-select-option value="item1">Today</ion-select-option>
+                            <ion-select-option value="item2">Yesterday</ion-select-option>
+                            <ion-select-option value="item3">This week</ion-select-option>
+                            <ion-select-option value="item4">This month</ion-select-option>
+                            <ion-select-option value="item5">Last monthh</ion-select-option>
+                            <ion-select-option value="item6">This Year</ion-select-option>
+                        </ion-select></div>
+                </div>
             </ion-card>
+            <div class="card-button-right">
+                <ion-card class="card-inventory" *ngFor="let item of items02; let i = index">
+                    <div class="flex-in-inventory">
+                        <div class="left">
+                            <div class="img-left"><ion-img
+                                    src="https://www.bakerpedia.com/wp-content/uploads/2020/03/Egg_baking-ingredients-e1584136402126.jpg"
+                                    alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img></div>
+                            <div class="title">
+                                <p class="title-en">ไข่ไก่ {{ i + 1 }}</p>
+                                <p class="title-th">egg</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <p class="number">40 / 200</p>
+                            <div class="score">
+                                <ion-progress-bar value="0.2"></ion-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+                
+            </div>
         </div>
     </div>
 </ion-content>
