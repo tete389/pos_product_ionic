@@ -4,7 +4,7 @@
 //   }
 
 ion-content {
-    --offset-bottom: auto !important;
+    // --offset-bottom: auto !important;
     --overflow: hidden;
     overflow: auto;
     &::-webkit-scrollbar {
@@ -50,4 +50,28 @@ ion-grid {
     // margin-left: 20px;
     --border-radius: 50px;
   }
+
+  .button-cancel {
+    --background: var(--danger-color);
+  }
+
+  .button-confrim {
+    --background: var(--dark-color);
+  }
+
+  .button-add-minus {
+    --background: var( --dark-gray-color);
+  }
+
+
+  .check-box-opt ion-checkbox {
+    // --size: 32px;
+    // --checkbox-background-checked: #6815ec;
+  }
+  
+  .check-box-opt ion-checkbox::part(container) {
+    border-radius: 6px;
+    // border: 2px solid #6815ec;
+  }
+
   

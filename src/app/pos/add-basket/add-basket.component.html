@@ -1,17 +1,18 @@
-<ion-backdrop *ngIf="openAddDetail" [visible]="true"></ion-backdrop>
+<ion-backdrop *ngIf="open_add_detail" [visible]="true"></ion-backdrop>
 <ion-content class="scrollerBar" scrollY="false">
-  <!-- <div class="lg:flex-row flex-col flex divide-x-2"> -->
-  <ion-row class="divide-x-2">
-    <ion-col size="8" class="ion-padding">
-      <!-- <div class="border-r-2 border-black ion-padding lg:w-3/4 w-full h-4/5"> -->
+  <div class="flex-row flex">
+    <!-- ///// left side ///// -->
+    <div class="ion-padding w-2/3 border-r-2">
+      <!-- /////////// head ///////////-->
       <swiper-container
         #swiper2
         (swiperreachbeginning)="swiper2Ready()"
         (swiperslidechange)="swiper2SlideCharge()"
+        [slidesPerView]="1.1"
       >
         <swiper-slide>
-          <ion-item class="top-scroll w-full">
-            <div class="flex flex-row w-full pb-[16px] chevron-arrow">
+          <div class="top-scroll w-full border-b border-[--dark-gray-color] pb-[16px]">
+            <div class="flex flex-row w-full  chevron-arrow">
               <ion-button
                 class="c11"
                 (click)="select_group_left(select_group_page)"
@@ -55,7 +56,7 @@
                 ></ion-icon>
               </ion-button>
 
-              <div class="ml-1">
+              <!-- <div class="ml-3">
                 <ion-button
                   class="search-button h-10"
                   size="small"
@@ -68,15 +69,15 @@
                     name="search"
                   ></ion-icon>
                 </ion-button>
-              </div>
+              </div> -->
             </div>
-          </ion-item>
+          </div>
         </swiper-slide>
         <swiper-slide>
-          <ion-item class="w-full">
-            <div class="ml-1">
+          <div class="flex flex-row w-full pl-5">
+            <ng-container *ngIf="open_search">
               <ion-button
-                class="search-button h-10"
+                class="search-button h-10 pl-0 my-0"
                 size="small"
                 color="dark"
                 (click)="closeSli()"
@@ -87,10 +88,33 @@
                   name="close"
                 ></ion-icon>
               </ion-button>
+            </ng-container>
+            <ng-container *ngIf="!open_search">
+              <ion-button
+                class="search-button h-10 pl-0 my-0"
+                size="small"
+                color="dark"
+                (click)="openSli()"
+              >
+                <ion-icon
+                  color="light"
+                  class="icon-button"
+                  name="search"
+                ></ion-icon> </ion-button
+            ></ng-container>
+            <div class="w-full ml-4 border-b border-[--dark-gray-color] pb-[16px]">
+              <ion-searchbar
+                class="min-h-[40px] py-0"
+                animated="true"
+                placeholder=""
+                show-clear-button="always"
+              ></ion-searchbar>
             </div>
-          </ion-item>
+          </div>
         </swiper-slide>
+        <swiper-slide> </swiper-slide>
       </swiper-container>
+      <!-- /////////// body ///////////-->
       <swiper-container
         #swiper
         (swiperreachbeginning)="swiperReady()"
@@ -100,7 +124,6 @@
           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 overflow-scroll h-[88vh] scrollerBar"
           *ngFor="let group of prods_group; let j = index"
         >
-          <!-- <ng-container *ngIf="select_group_page == j"> -->
           <div *ngFor="let prod of group.prods; let i = index" class="relative">
             <ion-badge
               color="dark"
@@ -110,7 +133,7 @@
             >
             <ion-card
               (click)="add_basket_group_select(prod)"
-              class="m-1 mt-3 shadow" 
+              class="m-1 mt-3 shadow"
             >
               <ion-card class="m-1">
                 <img
@@ -126,46 +149,30 @@
               </ion-card-content>
             </ion-card>
           </div>
-          <!-- </ng-container> -->
         </swiper-slide>
       </swiper-container>
-    </ion-col>
+    </div>
 
-    <ion-col size="4" class="ion-padding overflow-scroll h-[100vh] scrollerBar flex flex-col">
-      <!-- <div
-      class="on-padding overflow-scroll lg:h-[100vh] scrollerBar lg:w-1/4 w-full h-[20vh]"
-    > -->
-      <!-- /////////// -->
-      <div class="border-b border-[#B6C0CF] basis-[15%]" >
-        <ion-row>
-          <ion-col size="6">
-            <p>เพิ่มอาหาร</p>
-            <p>โดย: Piyada</p>
-          </ion-col>
-          <ion-col>
-            <p class="text-4xl">
-              <span class="text-lg">table</span>
-              A02
-            </p>
-          </ion-col>
-        </ion-row>
-      </div>
-      <!-- <div class="flex-row flex justify-between w-full border-b border-black">
-        <div>
+    <!-- ///// right side ///// -->
+    <div
+      class="ion-padding overflow-scroll h-[100vh] scrollerBar flex flex-col w-1/3 border-l-2"
+    >
+      <!-- /////////// top ///////////-->
+      <div class="flex-row flex border-b-2 border-[#B6C0CF] basis-auto">
+        <div class="basis-1/2">
           <p>เพิ่มอาหาร</p>
           <p>โดย: Piyada</p>
         </div>
-        <div class="items-center">
-          <p class="text-4xl">
-            <span class="text-lg">table</span>
+        <div class="basis-1/2 text-end align-middle">
+          <span class="text-4xl">
+            <span class="text-lg align-middle">table</span>
             A02
-          </p>
+          </span>
         </div>
-      </div> -->
-      <!-- /////////// -->
+      </div>
 
-      <!-- /////////// -->
-      <div class="overflow-scroll  scrollerBar basis-[70%]">
+      <!-- /////////// center ///////////-->
+      <div class="overflow-scroll scrollerBar basis-[80%]">
         <ion-list>
           <ng-container *ngFor="let bask of basket; let i = index">
             <ion-item class="py-3">
@@ -208,93 +215,32 @@
                   </ion-button>
                 </div>
               </div>
-              <!-- <div class="bg-slate-200 rounded-3xl h-fit" slot="end">
-                <ion-button
-                  shape="round"
-                  class="m-0 p-0"
-                  (click)="remove(bask.p_id, i)"
-                >
-                  <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
-                </ion-button>
-                <ion-button fill="clear" class="w-9">
-                  <span class="justify-items-center">
-                    {{ bask.count }}
-                  </span>
-                </ion-button>
-                <ion-button
-                  shape="round"
-                  class="m-0 p-0"
-                  (click)="add(bask.p_id)"
-                >
-                  <ion-icon slot="icon-only" name="add-outline"></ion-icon>
-                </ion-button>
-              </div> -->
             </ion-item>
           </ng-container>
         </ion-list>
       </div>
-      <!-- /////////// -->
 
-      <!-- /////////// -->
+      <!-- /////////// botton ///////////-->
       <div class="border-t border-[#B6C0CF] border-dashed basis-[15%]">
-        <ion-row class="bg-[#E7EBF1] mt-2 p-2 rounded-xl">
-          <ion-col>
-            <span>รวมทั้งสิ้น</span>
-          </ion-col>
-          <ion-col class="text-end">
-            <span>{{ price_all }}</span>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4">
-            <ion-button
-              (click)="cancel()"
-              color="danger"
-              size="small"
-              class="button-basket-cancel"
-              >{{ "ยกเลิก" }}
-            </ion-button>
-            <!-- <ion-segment-button (click)="cancel()"  class="segment-button-basket-cancel ">
-              <ion-label> {{ "ยกเลิก" }}</ion-label>
-            </ion-segment-button> -->
-          </ion-col>
-          <ion-col size="8">
-            <ion-button
-              (click)="cancel()"
-              color="dark"
-              expand="block"
-              size="small"
-              class="button-basket-confirm"
-              >{{ "สั่งอาหาร" }}
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </div>
-      <!-- <div class="border-t border-[#B6C0CF] border-dashed">
-        <div
-          class="flex flex-row justify-between bg-[#E7EBF1] my-3 p-3 rounded-xl"
-        >
-          <span>รวมทั้งสิ้น</span>
-          <span>{{ price_all }}</span>
+        <div class="flex flex-row bg-[#E7EBF1] my-2 p-4 rounded-2xl">
+          <span class="basis-1/2">รวมทั้งสิ้น</span>
+          <span class="basis-1/2 text-end">{{ price_all }}</span>
         </div>
-        <ion-col>
+        <div class="flex flex-row justify-between">
           <ion-button
-            shape="round"
             (click)="cancel()"
-            class="button-basket-cancel"
+            class="button-basket-cancel basis-[30%]"
             >{{ "ยกเลิก" }}
           </ion-button>
-        </ion-col>
-        <ion-col>
+
           <ion-button
-            shape="round"
             (click)="cancel()"
-            class="button-basket-confirm"
+            color="dark"
+            class="button-basket-confirm basis-[60%]"
             >{{ "สั่งอาหาร" }}
           </ion-button>
-        </ion-col>
-      </div> -->
-      <!-- /////////// -->
-    </ion-col>
-  </ion-row>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
