@@ -14,7 +14,11 @@ import {
   IonSelect,
   IonSelectOption,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonInput,
+  IonList,
+  IonItem,
+  IonToggle
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -38,19 +42,38 @@ import {
     IonSelect,
     IonSelectOption,
     IonCard,
-    IonCardContent
+    IonCardContent,
+    IonInput,
+    IonList,
+    IonItem,
+    IonToggle
   ],
 })
 export class MenuManagmentPage implements OnInit {
-  customPopoverOptions = {
-    cssClass: 'my-custom-customPopover-printer',
+  customPopoverOptionsStyle1 = {
+    cssClass: 'my-custom-customPopover-select-style-1',
   };
+  customPopoverOptionsStyle2 = {
+    cssClass: 'my-custom-customPopover-select-style-2',
+  };
+
+  customPopoverOptions={
+
+  }
 
   select_tab_menu: number = 0;
   searchControl: FormControl;
   search_text = '';
   placho_text = 'ค้นหา';
 
+  ischangeToggle: boolean = false;
+  ischangeToggle2: boolean = false;
+
+ sort_by:any ="1";
+ screened:string = '1';
+
+ new_product:any=[];
+is_edit:boolean= false;
   constructor() {
     this.searchControl = new FormControl();
   }
@@ -64,4 +87,18 @@ export class MenuManagmentPage implements OnInit {
   search_enter(val: any) {
     console.log(typeof val);
   }
+
+  openprintSystem(event: any) {
+    console.log(event.detail.checked);
+  }
+
+  addNewProduct(){
+    this.new_product.push(1)
+  }
+
+  cancelAddNewProduct(){
+    this.new_product.pop();
+  }
+
+  
 }

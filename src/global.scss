@@ -138,6 +138,7 @@ ion-button {
 ion-searchbar.searches-fuller {
   --box-shadow: none;
   padding-inline-end: 20px;
+
   .searchbar-input-container {
 
     //    background: plum!important;
@@ -173,46 +174,194 @@ ion-searchbar.searches-fuller {
 //===============================================
 //=================  CSS ion-popover ==========
 //===============================================
-ion-popover.my-custom-customPopover-printer {
-  --min-width: 350px;
+
+
+// ion-popover style-1
+ion-popover.my-custom-customPopover-select-style-1 {
+  --min-width: 163px;
   --width: fit-content;
-  margin-top: 5px;
 
-  // // margin-right: 40px;
-  // // background: rgba(40, 173, 218, 0.6);
+  // margin-top: 10px;
+  // margin-right: 40px;
+  // background: rgba(40, 173, 218, 0.6);
   ion-select-popover {
-      ion-list {
-          ion-item {
-              // width: 100%;
-              text-align: center;
-              font-size: 16px;
-              font-weight: var(--text-light);
-              color: var(--text-dark);
-              --background-hover: transparent;
-              --background-activated: transparent;
-              --background-focused: transparent;
+    ion-list {
+      padding: 14px 0;
 
-              .ion-focused .item-native::after {
-                  --background: var(--white-color) !important;
-                  background: var(--white-color) !important;
-                  opacity: 0;
-              }
-          }
+      ion-item {
+        // width: 100%;
+        --min-height: 40px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: var(--text-light);
+        color: var(--text-dark);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
 
-          ion-item:not(:last-child) {
-              border-bottom: 1px solid var(--light-gray-color3);
-          }
-
-          // ion-item:last-child {
-          //   color: var(--primary-color);
-          // }
-
-          ion-item:hover,
-          ion-item:focus,
-          ion-item:active {
-              --background: transparent;
-              --color: var(--primary-light2);
-          }
       }
+
+      ion-item.item-radio-checked::part(native) {
+        background: var(--light-sky-blue);
+        font-weight: var(--text-regular);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --background-hover-opacity: 1;
+        color: var(--text-dark);
+      }
+
+
+
+      ion-item ion-radio {
+        // background: plum;
+        text-align: center;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      ion-item:last-child {
+        color: var(--primary-color);
+      }
+
+      // ion-item:not(:last-child) {
+      //   border-bottom: 1px solid var(--light-gray-color3);
+      // }
+
+      ion-item:hover,
+      ion-item:focus,
+      ion-item:active {
+        // --background: var(--light-sky-blue);
+        --background: transparent;
+        --color: var(--primary-light2);
+      }
+    }
+
   }
+}
+
+ion-popover.my-custom-customPopover-select-style-1::part(content) {
+  margin-top: 5px;
+  border-radius: 12px;
+}
+
+ion-popover.my-custom-customPopover-select-style-1::part(backdrop) {
+  background: var(--text-dark);
+  --backdrop-opacity: 0.2;
+}
+
+// ion-popover style-2
+ion-popover.my-custom-customPopover-select-style-2 {
+  --min-width: 163px;
+  --width: fit-content;
+
+  // margin-top: 10px;
+  // margin-right: 40px;
+  // background: rgba(40, 173, 218, 0.6);
+  ion-select-popover {
+    ion-list {
+      padding: 14px 0;
+
+      ion-item {
+        // width: 100%;
+        --min-height: 40px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: var(--text-light);
+        color: var(--text-dark);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+
+      }
+
+      ion-item.item-radio-checked::part(native) {
+        background: transparent;
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --background-hover-opacity: 1;
+      }
+
+      ion-item ion-radio {
+        // background: plum;
+        text-align: center;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      ion-item:hover,
+      ion-item:focus,
+      ion-item:active {
+        --background: transparent;
+        --color: var(--primary-light2);
+      }
+    }
+
+  }
+}
+
+ion-popover.my-custom-customPopover-select-style-2::part(content) {
+  margin-top: 28px;
+  border-radius: 12px;
+}
+
+
+//===============================================
+//=================  CSS ion-input ==============
+//===============================================
+ion-input.custom-ion-input-name {
+  // width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  --border-style: none;
+  --highlight-color-focused: none;
+  --highlight-color-invalid: none;
+  --highlight-color-valid: none;
+  --placeholder-color: var(--dark-gray-color);
+  --color: var(--text-dark2);
+  --placeholder-opacity: 0.8;
+  // font-weight: var(--text-light);
+  // --padding-top: 0;
+  // --padding-start:20px;
+  // --padding-end:15px;
+  // --border-radius:6px;
+}
+
+ion-input.custom-ion-input-name input[type="text"],
+ion-input.custom-ion-input-name input[type="tel"],
+ion-input.custom-ion-input-number input[type="number"] {
+  border-radius: 6px;
+  background: var(--white-color);
+  padding: 7px 15px;
+  height: 35px;
+  border: 1px solid var(--dark-gray-color);
+}
+
+// ซ่อนลูกศร ขึ้น-ลง ใน input type number
+
+ion-input.custom-ion-input-number input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-button,
+.custom-ion-input-number input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+ion-input.custom-ion-input-number input[type="number"]:focus {
+  // border: none;
+  outline: none;
 }
