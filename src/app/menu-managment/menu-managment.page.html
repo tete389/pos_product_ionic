@@ -207,22 +207,29 @@
   </div>
 
   <!-- all-product -->
-  <div class="content-1" *ngFor="let item of [1,2,3,4,5,6]">
+  <div class="content-1" *ngFor="let item of [1,2,3,4,5,6];let i = index">
     <ion-card class="carded">
       <ion-card-content>
 
         <div class="box-img">
           <img src="assets/image/img-product.png" alt="">
+         
+        </div>
+        <div *ngIf="i==1" class="out-stock">
+          <ion-label>หมด</ion-label>
         </div>
         <!-- ชื่ออาหาร -->
         <div class="box-name">
           <div class="box-style-1">
             <div class="box-style-1-top">
-              <ion-label class="text-sub-name">ชื่ออาหาร (TH)</ion-label>
+              <ion-label class="text-sub-name">ชื่ออาหาร (TH){{i}}</ion-label>
               <ion-label class="text-sub-count">100/100</ion-label>
             </div>
             <div class="box-style-1-bottom">
-              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า"></ion-input>
+              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า" 
+              [disabled]="!is_edit" 
+              [ngClass]="{'active-edit': is_edit}"
+              ></ion-input>
             </div>
           </div>
           <div class="box-style-1">
@@ -231,7 +238,10 @@
               <ion-label class="text-sub-count">100/100</ion-label>
             </div>
             <div class="box-style-1-bottom">
-              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า"></ion-input>
+              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า"
+              [disabled]="!is_edit" 
+              [ngClass]="{'active-edit': is_edit}"
+              ></ion-input>
             </div>
           </div>
         </div>
@@ -243,8 +253,12 @@
               <ion-label class="text-sub-name-2">ราคาที่ลดแล้ว</ion-label>
             </div>
             <div class="box-style-2-bottom">
-              <ion-input class="custom-ion-input-number" type="number" value="10"></ion-input>
-              <ion-input class="custom-ion-input-number" type="number" placeholder="0"></ion-input>
+              <ion-input class="custom-ion-input-number" type="number" value="10"
+              [disabled]="!is_edit" 
+              [ngClass]="{'active-edit': is_edit}"></ion-input>
+              <ion-input class="custom-ion-input-number" type="number" placeholder="0"
+              [disabled]="!is_edit" 
+              [ngClass]="{'active-edit': is_edit}"></ion-input>
             </div>
           </div>
           <div class="box-style-3">
@@ -252,11 +266,18 @@
               <ion-label class="text-sub-name">เลือกเป็นเมนูแนะนำ / ติด Tag</ion-label>
             </div>
             <div class="box-style-3-bottom">
-              <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3" toggleIcon="chevron-down-outline"
-                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover">
-                <ion-select-option>AAA</ion-select-option>
-                <ion-select-option>BBB</ion-select-option>
-                <ion-select-option>CCC</ion-select-option>
+              <ion-select [interfaceOptions]="customPopoverMultiSelect" 
+                class="css-pop-3" toggleIcon="chevron-down-outline"
+                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover"
+                [disabled]="!is_edit" 
+                [ngClass]="{'active-edit': is_edit}"
+                [multiple]="true" 
+                mode="md">
+                <ion-select-option>เมนูแนะนำ</ion-select-option>
+                <ion-select-option>ยอดสั่งเยอะที่สุด</ion-select-option>
+                <ion-select-option>เมนูขายดี</ion-select-option>
+                <ion-select-option>ลด 20%</ion-select-option>
+                <ion-select-option>เมนูต้องลอง</ion-select-option>
               </ion-select>
             </div>
           </div>
@@ -269,7 +290,9 @@
             </div>
             <div class="box-style-3-bottom">
               <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3" toggleIcon="chevron-down-outline"
-                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover">
+                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover"
+                [disabled]="!is_edit" 
+                [ngClass]="{'active-edit': is_edit}">
                 <ion-select-option>AAA</ion-select-option>
                 <ion-select-option>BBB</ion-select-option>
                 <ion-select-option>CCC</ion-select-option>
@@ -282,7 +305,9 @@
             </div>
             <div class="box-style-3-bottom">
               <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3" toggleIcon="chevron-down-outline"
-                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover">
+                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover"
+                [disabled]="!is_edit" 
+                [ngClass]="{'active-edit': is_edit}">
                 <ion-select-option>AAA</ion-select-option>
                 <ion-select-option>BBB</ion-select-option>
                 <ion-select-option>CCC</ion-select-option>
@@ -298,7 +323,9 @@
               <ion-label class="text-sub-count">250/250</ion-label>
             </div>
             <div class="box-style-1-bottom">
-              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า"></ion-input>
+              <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า" 
+              [disabled]="!is_edit" 
+              [ngClass]="{'active-edit': is_edit}"></ion-input>
             </div>
           </div>
           <div class="box-style-3">
@@ -307,7 +334,9 @@
             </div>
             <div class="box-style-3-bottom">
               <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3" toggleIcon="chevron-down-outline"
-                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover">
+                expandedIcon="chevron-forward-outline" placeholder="เลือก" interface="popover"
+                [disabled]="!is_edit" 
+                [ngClass]="{'active-edit': is_edit}">
                 <ion-select-option>AAA</ion-select-option>
                 <ion-select-option>BBB</ion-select-option>
                 <ion-select-option>CCC</ion-select-option>

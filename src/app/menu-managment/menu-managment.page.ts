@@ -57,6 +57,10 @@ export class MenuManagmentPage implements OnInit {
     cssClass: 'my-custom-customPopover-select-style-2',
   };
 
+  customPopoverMultiSelect = {
+    cssClass: 'my-custom-customPopover-multiSelect',
+  }
+
   customPopoverOptions={
 
   }

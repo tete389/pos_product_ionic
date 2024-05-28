@@ -304,6 +304,13 @@ ion-toolbar {
 //     }
 //   }
 
+.input-disabled,
+.textarea-disabled,
+.toggle-disabled,
+.select-disabled {
+    opacity: 1;
+}
+
 ion-content {
     --padding-end: 25px;
     --offset-bottom: auto !important;
@@ -409,7 +416,7 @@ ion-content {
 
                     .box-style-2-bottom {
                         height: 35px;
-                        margin: 8px 0;
+                        margin: 0px 0 16px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -466,8 +473,9 @@ ion-content {
                             --placeholder-color: var(--text-dark2);
                             -webkit-text-fill-color: var(--text-dark2);
                             --placeholder-opacity: 1 !important;
-                            // --padding-start: 10px;
-                            --highlight-color-valid: transparent;
+                            --highlight-color-focused: none !important;
+                            --highlight-color-invalid: transparent !important;
+                            --highlight-color-valid: transparent !important;
                             border-radius: 6px;
 
 
@@ -534,6 +542,24 @@ ion-content {
                     img {
                         height: 100%;
                         width: 150px;
+                    }
+
+                   
+                }
+                .out-stock {
+                    width: 150px;
+                    height: 150px;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 0;
+                    border-radius: 16px;
+                    background: rgba(0, 0, 0, 0.55);
+                    z-index: 99;
+                    ion-label {
+                        font-size: 34px;
+                        color: var(--text-white);
                     }
                 }
 
@@ -611,7 +637,7 @@ ion-content {
                         height: 22px;
                         padding: 0;
                         margin: 0 0;
-                        --handle-width: 25px;
+                        --handle-width: 22px;
                         --handle-height: 15px;
                         --handle-max-height: auto;
                         --handle-spacing: 5px;
