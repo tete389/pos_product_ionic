@@ -18,7 +18,8 @@ import {
   IonInput,
   IonList,
   IonItem,
-  IonToggle
+  IonToggle,
+  IonTextarea
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -46,7 +47,8 @@ import {
     IonInput,
     IonList,
     IonItem,
-    IonToggle
+    IonToggle,
+    IonTextarea
   ],
 })
 export class MenuManagmentPage implements OnInit {
@@ -65,7 +67,7 @@ export class MenuManagmentPage implements OnInit {
 
   }
 
-  select_tab_menu: number = 0;
+  select_tab_menu: number = 1;
   searchControl: FormControl;
   search_text = '';
   placho_text = 'ค้นหา';
