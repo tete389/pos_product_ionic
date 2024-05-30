@@ -302,6 +302,7 @@
               <div class="box-style-3-top">
                 <ion-label class="text-sub-name">เลือกเป็นเมนูแนะนำ / ติด Tag</ion-label>
               </div>
+
               <div class="box-style-3-bottom">
                 <ion-select [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
                   toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
@@ -314,6 +315,7 @@
                   <ion-select-option>เมนูต้องลอง</ion-select-option>
                 </ion-select>
               </div>
+
             </div>
           </div>
           <!-- หมวดหมู่ -->
@@ -323,12 +325,15 @@
                 <ion-label class="text-sub-name">หมวดหมู่</ion-label>
               </div>
               <div class="box-style-3-bottom">
-                <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3"
+                <ion-select [interfaceOptions]="customPopoverMultiSelect2" class="css-pop-3"
                   toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
-                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}">
-                  <ion-select-option>AAA</ion-select-option>
-                  <ion-select-option>BBB</ion-select-option>
-                  <ion-select-option>CCC</ion-select-option>
+                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}" [multiple]="true"
+                  mode="md">
+                  <ion-select-option>เมนูแนะนำ</ion-select-option>
+                  <ion-select-option>ยอดสั่งเยอะที่สุด</ion-select-option>
+                  <ion-select-option>เมนูขายดี</ion-select-option>
+                  <ion-select-option>ลด 20%</ion-select-option>
+                  <ion-select-option>เมนูต้องลอง</ion-select-option>
                 </ion-select>
               </div>
             </div>
@@ -337,12 +342,15 @@
                 <ion-label class="text-sub-name">Allergen Information</ion-label>
               </div>
               <div class="box-style-3-bottom">
-                <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3"
+                <ion-select [interfaceOptions]="customPopoverMultiSelect2" class="css-pop-3"
                   toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
-                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}">
-                  <ion-select-option>AAA</ion-select-option>
-                  <ion-select-option>BBB</ion-select-option>
-                  <ion-select-option>CCC</ion-select-option>
+                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}" [multiple]="true"
+                  mode="md">
+                  <ion-select-option>เมนูแนะนำ</ion-select-option>
+                  <ion-select-option>ยอดสั่งเยอะที่สุด</ion-select-option>
+                  <ion-select-option>เมนูขายดี</ion-select-option>
+                  <ion-select-option>ลด 20%</ion-select-option>
+                  <ion-select-option>เมนูต้องลอง</ion-select-option>
                 </ion-select>
               </div>
             </div>
@@ -364,12 +372,15 @@
                 <ion-label class="text-sub-name">ตัวเลือกเสริม</ion-label>
               </div>
               <div class="box-style-3-bottom">
-                <ion-select [interfaceOptions]="customPopoverOptions" class="css-pop-3"
+                <ion-select [interfaceOptions]="customPopoverMultiSelect2" class="css-pop-3"
                   toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
-                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}">
-                  <ion-select-option>AAA</ion-select-option>
-                  <ion-select-option>BBB</ion-select-option>
-                  <ion-select-option>CCC</ion-select-option>
+                  interface="popover" [disabled]="!is_edit" [ngClass]="{'active-edit': is_edit}" [multiple]="true"
+                  mode="md">
+                  <ion-select-option>เมนูแนะนำ</ion-select-option>
+                  <ion-select-option>ยอดสั่งเยอะที่สุด</ion-select-option>
+                  <ion-select-option>เมนูขายดี</ion-select-option>
+                  <ion-select-option>ลด 20%</ion-select-option>
+                  <ion-select-option>เมนูต้องลอง</ion-select-option>
                 </ion-select>
               </div>
             </div>
@@ -400,10 +411,10 @@
     </div>
   </div>
 
-   <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
+  <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
   <div *ngIf="select_tab_menu == 1">
     <!-- new-product ปิดไว้ก่อน-->
-    <div   class="content-2" *ngFor="let item of new_product">
+    <div class="content-2" *ngFor="let item of new_product">
       <ion-card class="carded">
         <ion-card-content>
 
@@ -439,7 +450,7 @@
                 <ion-label class="text-sub-count">250/250</ion-label>
               </div>
               <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" >
+                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3">
                 </ion-textarea>
               </div>
             </div>
@@ -453,7 +464,7 @@
                 <ion-label class="text-sub-count">250/250</ion-label>
               </div>
               <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" >
+                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3">
                 </ion-textarea>
               </div>
             </div>
@@ -506,7 +517,7 @@
               </div>
             </div>
           </div>
-    
+
           <!-- หมวดหมู่ -->
           <div class="box-detail">
             <div class="box-style-4">
@@ -515,7 +526,8 @@
                 <ion-label class="text-sub-count">250/250</ion-label>
               </div>
               <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" >
+                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" [disabled]="!is_edit"
+                  [ngClass]="{'active-edit': is_edit}">
                 </ion-textarea>
               </div>
             </div>
@@ -529,7 +541,8 @@
                 <ion-label class="text-sub-count">250/250</ion-label>
               </div>
               <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" >
+                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" [disabled]="!is_edit"
+                  [ngClass]="{'active-edit': is_edit}">
                 </ion-textarea>
               </div>
             </div>
@@ -563,8 +576,8 @@
   </div>
 
 
-     <!-- จัดการเมนู select_tab_menu == 0 -->
-   <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
+  <!-- จัดการเมนู select_tab_menu == 0 -->
+  <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
 
   <!-- <div class="" style="display: flex; flex-direction: row;">
     <div class="" style="font-size: 54px; border: 1px solid red; padding: 5px;">
@@ -593,3 +606,4 @@
 
 <!-- https://stackblitz.com/edit/tabs-standalone-angular-animate-yt4b8t?file=app%2Ftabs-template-label-example.ts,app%2Ftabs-template-label-example.html,styles.css
 https://stackoverflow.com/questions/54505293/how-to-add-tab-animation-on-change-in-ionic-4 -->
+<!-- https://stackblitz.com/edit/ionic6-angular13-cwnryp?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.component.css -->

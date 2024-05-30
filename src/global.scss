@@ -323,11 +323,12 @@ ion-popover.my-custom-customPopover-multiSelect {
   // margin-right: 40px;
   // background: rgba(40, 173, 218, 0.6);
   ion-select-popover {
-       &::-webkit-scrollbar {
-        display: none;
-        /* ความกว้าง scrollbar */
-        width: 0.325rem;
+    &::-webkit-scrollbar {
+      display: none;
+      /* ความกว้าง scrollbar */
+      width: 0.325rem;
     }
+
     // &::-webkit-scrollbar-track{
     //     /* สีพื้นหลังแนว scrollbar */
     //     background: var(--light-gray-color3);
@@ -361,7 +362,7 @@ ion-popover.my-custom-customPopover-multiSelect {
           --checkmark-color: var(--white-color);
           margin-right: 10px;
         }
-    
+
         ion-checkbox::part(container) {
           width: 22px;
           height: 22px;
@@ -369,14 +370,14 @@ ion-popover.my-custom-customPopover-multiSelect {
           border: 2px solid var(--dark-gray-color2);
           padding: 4px;
         }
-    
+
         ion-checkbox::part(mark) {
           background: none;
           transition: none;
           transform: none;
           border-radius: 0;
         }
-    
+
         ion-checkbox.checkbox-checked::part(container) {
           background: var(--primary-color);
           border-color: transparent;
@@ -392,6 +393,7 @@ ion-popover.my-custom-customPopover-multiSelect {
         --background-hover-opacity: 1;
         color: var(--text-dark);
       }
+
       ion-item:hover,
       ion-item:focus,
       ion-item:active {
@@ -401,7 +403,7 @@ ion-popover.my-custom-customPopover-multiSelect {
       }
     }
 
- 
+
 
   }
 }
@@ -412,6 +414,129 @@ ion-popover.my-custom-customPopover-multiSelect::part(content) {
 }
 
 ion-popover.my-custom-customPopover-multiSelect::part(backdrop) {
+  background: var(--text-dark);
+  --backdrop-opacity: 0.2;
+}
+
+// ion-popover style-4 multi select V2
+ion-popover.my-custom-customPopover-multiSelect-2 {
+  --min-width: 180px;
+  // --width: fit-content;
+  --width: calc(30% - 220px);
+
+  // width: calc(30% - 161px);
+  // margin-top: 10px;
+  // margin-right: 40px;
+  // background: rgba(40, 173, 218, 0.6);
+  ion-select-popover {
+    &::-webkit-scrollbar {
+      display: none;
+      /* ความกว้าง scrollbar */
+      // width: 0.325rem;
+    }
+
+    // &::-webkit-scrollbar-track{
+    //     /* สีพื้นหลังแนว scrollbar */
+    //     background: var(--light-gray-color3);
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //     /* สีพื้นหลังตัว scrollbar*/
+    //     background: var(--primary-color);
+    //     // border-radius:0 12px 12px 0;
+    //     border-radius: 10px;
+
+    // }
+    ion-list {
+      padding: 14px 0;
+
+      ion-item {
+        // width: 100%;
+        --min-height: 60px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: var(--text-light);
+        color: var(--text-dark);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+
+        ion-checkbox {
+          // margin-bottom: 20px;
+          color: var(--text-mono-dark2);
+          --checkmark-width: 4px;
+          --checkmark-color: var(--text-dark2);
+          // margin-right: 10px;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          padding: 0 15px;
+          text-align: center;
+          align-items: center;
+        }
+
+        ion-checkbox::part(container) {
+          width: 15px;
+          height: 15px;
+          padding: 0px;
+          margin: 0;
+          position: absolute;
+          right: 0px;
+          border: none;
+          outline: none;
+          background: transparent;
+        }
+
+        ion-checkbox::part(mark) {
+          background: none;
+          transition: none;
+          transform: none;
+          border-radius: 0;
+        }
+
+        ion-checkbox.checkbox-checked::part(container) {
+          background: transparent;
+          border-color: transparent;
+        }
+      }
+
+      ion-item::part(native) {
+        padding: 0 !important;
+
+        .item-inner {
+          padding: 0;
+        }
+      }
+
+      ion-item.item-checkbox-checked::part(native) {
+        background: var(--light-sky-blue);
+        font-weight: var(--text-regular);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --background-hover-opacity: 1;
+        color: var(--text-dark);
+      }
+
+      ion-item:hover,
+      ion-item:focus,
+      ion-item:active {
+        --background: transparent;
+        --color: var(--primary-light2);
+      }
+    }
+
+
+
+  }
+}
+
+ion-popover.my-custom-customPopover-multiSelect-2::part(content) {
+  margin-top: 8px;
+  border-radius: 12px;
+  background: plum !important;
+}
+
+ion-popover.my-custom-customPopover-multiSelect-2::part(backdrop) {
   background: var(--text-dark);
   --backdrop-opacity: 0.2;
 }

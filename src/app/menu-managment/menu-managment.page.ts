@@ -19,7 +19,8 @@ import {
   IonList,
   IonItem,
   IonToggle,
-  IonTextarea
+  IonTextarea,
+  IonCheckbox
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -48,7 +49,8 @@ import {
     IonList,
     IonItem,
     IonToggle,
-    IonTextarea
+    IonTextarea,
+    IonCheckbox
   ],
 })
 export class MenuManagmentPage implements OnInit {
@@ -62,12 +64,15 @@ export class MenuManagmentPage implements OnInit {
   customPopoverMultiSelect = {
     cssClass: 'my-custom-customPopover-multiSelect',
   }
-
+  customPopoverMultiSelect2 = {
+    cssClass: 'my-custom-customPopover-multiSelect-2',
+  }
+  
   customPopoverOptions={
 
   }
 
-  select_tab_menu: number = 1;
+  select_tab_menu: number = 0;
   searchControl: FormControl;
   search_text = '';
   placho_text = 'ค้นหา';
@@ -79,7 +84,7 @@ export class MenuManagmentPage implements OnInit {
  screened:string = '1';
 
  new_product:any=[];
-is_edit:boolean= false;
+is_edit:boolean= true;
   constructor() {
     this.searchControl = new FormControl();
   }
