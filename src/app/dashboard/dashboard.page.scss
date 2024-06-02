@@ -1,3 +1,7 @@
+ion-content {
+    --background: #F3F7FF;
+}
+
 .card-top-left,
 .card-top-mid,
 .card-top-right,
@@ -94,24 +98,12 @@
             align-items: center;
             gap: 8px;
 
-            .length-score-money {
+            ion-progress-bar {
+                --ion-color-primary: orange;
+                padding: 6px;
                 width: 150px;
-                height: 12px;
-                border: 2px solid #EAF2F6;
-                background-color: #EAF2F6;
-                border-radius: 20px;
-
-                .length-sum-a {
-
-                    width: 97px;
-                    padding: 2px;
-                    margin: -1px;
-
-                    border: 3px solid #FF9F37;
-                    border-radius: 20px;
-                    background: #FF9F37;
-                }
             }
+
 
         }
 
@@ -122,24 +114,10 @@
             align-items: center;
             gap: 8px;
 
-            .length-score-cash {
+            ion-progress-bar {
+                --ion-color-primary: #65CF21;
+                padding: 6px;
                 width: 150px;
-                height: 12px;
-                border-radius: 20px;
-                border: 2px solid #EAF2F6;
-                background-color: #EAF2F6;
-
-
-                .length-sum-b {
-
-                    width: 47px;
-                    padding: 2px;
-                    margin: -1px;
-                    border: 3px solid #65CF21;
-                    background: #65CF21;
-                    border-radius: 20px;
-
-                }
             }
 
 
@@ -447,12 +425,12 @@
             justify-content: center;
             align-items: center;
             border-radius: 50px;
-            margin-top: 25px;
+            margin-top: 11px;
             margin-left: 40px;
-
             background: #EAF2F6;
             color: black;
             font-size: 14px;
+            padding-left: 39px;
 
         }
 
@@ -498,11 +476,13 @@
         justify-content: space-around;
         font-size: 18px;
         margin-top: 15px;
-        .title02{
-            color : #5cc9ff;
+
+        .title02 {
+            color: #5cc9ff;
             font-size: 14px;
         }
-        .title-dropdown{
+
+        .title-dropdown {
             width: 38%;
             height: 45px;
             display: flex;
@@ -512,6 +492,7 @@
             background: #EAF2F6;
             color: black;
             font-size: 14px;
+            padding-left: 36px;
         }
     }
 
@@ -524,18 +505,21 @@
 .card-button-mid {
     width: 514px;
     height: 311px;
+
     .flex-title02 {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         font-size: 18px;
         margin-top: 15px;
-        .title02{
-            color : #5cc9ff;
+
+        .title02 {
+            color: #5cc9ff;
             font-size: 14px;
         }
-        .title-dropdown02{
-            width: 38%;
+
+        .title-dropdown02 {
+            width: 31%;
             height: 45px;
             display: flex;
             justify-content: center;
@@ -544,6 +528,7 @@
             background: #EAF2F6;
             color: black;
             font-size: 14px;
+            padding-left: 50px;
         }
     }
 
@@ -553,9 +538,93 @@
     }
 }
 
-.card-button-right {
+.header-top-right {
+    min-height: 50px;
     width: 240px;
-    height: 257px;
+    min-height: 50px;
+    width: 240px;
+    /* margin: 0px; */
+    margin: 7px 5px;
+
+    .flex-header-tr {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 0px;
+        font-size: 14px;
+        color: black;
+        align-items: center;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        .inventory {}
+
+        .item {
+
+            background: #EAF2F6;
+            border-radius: 50px;
+            padding: 0px 15px 0px;
+            /* margin-bottom: 10px; */
+            margin-top: 3px;
+        }
+
+    }
+}
+
+.card-button-right {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    max-width: 240px;
+    margin-left: -10px;
+
+
+    .card-inventory {
+        width: 100%;
+        height: 54px;
+        margin-top: -18px;
+
+    }
+
+    .flex-in-inventory {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .left {
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+            gap: 20px;
+
+            .img-left {
+                max-width: 40px;
+                max-height: 40px;
+
+                ion-img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+
+            .score {
+                margin-left: -30px;
+                width: 85px;
+
+                ion-progress-bar {
+                    --ion-color-primary: orange;
+                    padding: 4px;
+                }
+            }
+
+        }
+    }
 }
 
 td,
