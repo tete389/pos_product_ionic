@@ -6,19 +6,24 @@
     </ion-buttons>
 
     <div class="header-box">
+
       <div class="header-box-1">
         <div class="header-box-1-left">
-          <ion-button size="small" [ngClass]="{'select-tab-active': select_tab_menu == 0}"
-            (click)="select_tab_menu = 0">
-            <ion-label>รายการอาหาร</ion-label>
-          </ion-button>
           <ion-button size="small" [ngClass]="{'select-tab-active': select_tab_menu == 1}"
             (click)="select_tab_menu = 1">
+            <ion-label>รายการอาหาร</ion-label>
+          </ion-button>
+          <ion-button size="small" [ngClass]="{'select-tab-active': select_tab_menu == 2}"
+            (click)="select_tab_menu = 2">
             <ion-label>หมวดหมู่</ion-label>
           </ion-button>
+          <ion-button size="small" [ngClass]="{'select-tab-active': select_tab_menu == 3}"
+            (click)="select_tab_menu = 3">
+            <ion-label>Options</ion-label>
+          </ion-button>
         </div>
-        <!-- จัดการเมนู select_tab_menu == 0 -->
-        <div *ngIf="select_tab_menu == 0" class="header-box-1-right">
+        <!-- จัดการเมนู select_tab_menu == 1 -->
+        <div *ngIf="select_tab_menu == 1" class="header-box-1-right">
 
           <div class="search">
             <ion-searchbar #input class="searches-fuller" [formControl]="searchControl" (ionCancel)="onCancel()"
@@ -56,8 +61,8 @@
           </div>
 
         </div>
-        <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
-        <div *ngIf="select_tab_menu == 1" class="header-box-1-right">
+        <!-- จัดการหมวดหมู่ select_tab_menu == 2 -->
+        <div *ngIf="select_tab_menu == 2" class="header-box-1-right">
 
           <div class="search">
             <ion-searchbar #input class="searches-fuller" [formControl]="searchControl" (ionCancel)="onCancel()"
@@ -83,10 +88,19 @@
           </div>
 
         </div>
+
+        <!-- จัดการ Options select_tab_menu == 3 -->
+        <div *ngIf="select_tab_menu == 3" class="header-box-1-right">
+          <div class="">
+            <ion-button size="small" class="btn-add-product" (click)="addNewProduct()">
+              <ion-label><span>+</span>เพิ่ม</ion-label>
+            </ion-button>
+          </div>
+        </div>
       </div>
 
-      <!-- จัดการเมนู select_tab_menu == 0 -->
-      <div *ngIf="select_tab_menu == 0" class="header-box-2">
+      <!-- จัดการเมนู select_tab_menu == 1 -->
+      <div *ngIf="select_tab_menu == 1" class="header-box-2">
         <div class="header-box-2-left">
           <ion-label>จัดการเมนู</ion-label>
           <ion-label>ทั้งหมด (19 รายการ)</ion-label>
@@ -105,11 +119,18 @@
           </div>
         </div>
       </div>
-      <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
-      <div *ngIf="select_tab_menu == 1" class="header-box-2">
+      <!-- จัดการหมวดหมู่ select_tab_menu == 2 -->
+      <div *ngIf="select_tab_menu == 2" class="header-box-2">
         <div class="header-box-2-left">
           <ion-label>จัดการหมวดหมู่</ion-label>
           <ion-label>ทั้งหมด (4 หมวดหมู่)</ion-label>
+        </div>
+      </div>
+      <!-- จัดการ Optionsselect_tab_menu == 3 -->
+      <div *ngIf="select_tab_menu == 3" class="header-box-2">
+        <div class="header-box-2-left">
+          <ion-label>ตัวเลือกที่สร้างไว้</ion-label>
+          <ion-label>ทั้งหมด (10 รายการ)</ion-label>
         </div>
       </div>
     </div>
@@ -120,8 +141,8 @@
 <ion-content [fullscreen]="true">
 
 
-  <!-- จัดการเมนู select_tab_menu == 0 -->
-  <div *ngIf="select_tab_menu == 0">
+  <!-- จัดการเมนู select_tab_menu == 1 -->
+  <div *ngIf="select_tab_menu == 1">
     <!-- new-product -->
     <div class="content-1" *ngFor="let item of new_product">
       <ion-card class="carded">
@@ -279,7 +300,7 @@
                 <ion-label class="text-sub-count">100/100</ion-label>
               </div>
               <div class="box-style-1-bottom">
-                <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า" [disabled]="!is_edit"
+                <ion-input class="custom-ion-input-name " placeholder="ชื่อสินค้า" [disabled]="!is_edit"
                   [ngClass]="{'active-edit': is_edit}"></ion-input>
               </div>
             </div>
@@ -411,8 +432,8 @@
     </div>
   </div>
 
-  <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
-  <div *ngIf="select_tab_menu == 1">
+  <!-- จัดการหมวดหมู่ select_tab_menu == 2 -->
+  <div *ngIf="select_tab_menu == 2">
     <!-- new-product ปิดไว้ก่อน-->
     <div class="content-2" *ngFor="let item of new_product">
       <ion-card class="carded">
@@ -575,9 +596,214 @@
     </div>
   </div>
 
+  <!-- จัดการ Options select_tab_menu == 3 -->
+  <div *ngIf="select_tab_menu == 3">
 
-  <!-- จัดการเมนู select_tab_menu == 0 -->
-  <!-- จัดการหมวดหมู่ select_tab_menu == 1 -->
+    <div class="content-3">
+      <div class="content-3-left">
+
+
+
+        <ion-accordion-group class="my-custum-accordion" mode="md">
+
+          <ion-accordion *ngFor="let item of arr_options" [value]="item.id" (click)="select_accordion(item.id)">
+            <!-- header แนะนำ tag ion-item  -->
+            <ion-item slot="header">
+              <div class="accord-head">
+                <div class="accord-head-top">
+                  <ion-label>เลือก Toppingเลือก</ion-label>
+                  <ion-label>(Optional, Max 4)</ion-label>
+                </div>
+                <div class="accord-head-bottom">
+                  <ion-label (click)="openDetailOption()">ใช้กับ 10 รายการ</ion-label>
+                </div>
+              </div>
+
+            </ion-item>
+            <!-- content ใช่ tag อะไรก็ได้ ยกเว้น ion-content -->
+            <div slot="content">First Content</div>
+          </ion-accordion>
+          <!-- <ion-accordion value="second">
+            <ion-item slot="header" >
+              <div class="accord-head">
+                <div class="accord-head-top">First Content</div>
+                <div class="accord-head-bottom">First Content</div>
+              </div>
+            </ion-item>
+            <div class="ion-padding" slot="content">Second Content</div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header" >
+              <div class="accord-head">
+                <div class="accord-head-top">First Content</div>
+                <div class="accord-head-bottom">First Content</div>
+              </div>
+            </ion-item>
+            <div class="ion-padding" slot="content">Third Content</div>
+          </ion-accordion> -->
+        </ion-accordion-group>
+
+      </div>
+      <div class="content-3-right">
+
+        <div class="content-3-right-box-0">
+          <div class="head-3-sub">
+            <ion-label>สร้างตัวเลือกใหม่</ion-label>
+          </div>
+          <div class="head-3-btns">
+            <ion-button class="btn-close" size="small">ยกเลิก</ion-button>
+            <ion-button class="btn-save" size="small">บันทึก</ion-button>
+          </div>
+        </div>
+
+        <div class="content-3-right-box-1">
+          <div class="content-3-right-box-1-detail">
+
+            <div class="detail-box-top-1">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <ion-label class="text-sub">1. หัวข้อตัวเลือก</ion-label>
+            </div>
+
+            <div class="detail-box-top-2">
+              <div class="detail-box-top-2-left">
+
+                <div class="box-styler-1">
+                  <div class="box-styler-1-top">
+                    <ion-label class="text-sub-name">1.ชื่อหัวข้อ Option</ion-label>
+                  </div>
+                  <div class="box-styler-1-bottom">
+                    <ion-input class="custom-ion-input-name-2 " placeholder="ชื่อสินค้า"></ion-input>
+                  </div>
+                </div>
+
+              </div>
+              <div class="detail-box-top-2-right">
+
+                <div class="box-styler-2">
+                  <div class="box-styler-2-top">
+                    <ion-label class="text-sub-name">2.ลูกค้าจำเป็นต้องเลือกตัวเลือกนี้หรือไม่</ion-label>
+                  </div>
+                  <div class="box-styler-2-bottom">
+                    <!-- <ion-input class="custom-ion-input-name-2" placeholder="ชื่อสินค้า"></ion-input> -->
+                    <ion-radio-group class="custom-radio" value="end" mode="md">
+                      <ion-radio value="end" labelPlacement="end">จำเป็น</ion-radio>
+                      <ion-radio value="ss" labelPlacement="end">ไม่จำเป็น</ion-radio>
+                    </ion-radio-group>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-3-right-box-2">
+
+          <div class="content-3-right-box-2-detail-1">
+            <div class="box-styler-2">
+              <div class="box-styler-2-top">
+                <ion-label class="text-sub-name">3.ลูกค้าสามารถเลือกได้กี่ตัวเลือก</ion-label>
+              </div>
+              <div class="box-styler-2-bottom">
+                <!-- <ion-input class="custom-ion-input-name-2" placeholder="ชื่อสินค้า"></ion-input> -->
+                <ion-radio-group class="custom-radio" [(ngModel)]="cc" mode="md">
+                  <ion-radio value="1" labelPlacement="end">1 ตัวเลือก</ion-radio>
+                  <ion-radio value="2" labelPlacement="end">หลายตัวเลือก</ion-radio>
+                </ion-radio-group>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="cc == 2" class="content-3-right-box-2-detail-2">
+            <div class="box-styler-3">
+              <div class="box-styler-3-input">
+                <ion-label class="text-sub-name">ขั้นต่ำ</ion-label>
+                <div class="box-styler-1-bottom">
+                  <ion-input class="custom-ion-input-number cen" type="number" value="0"></ion-input>
+                </div>
+              </div>
+              <div class="box-styler-3-input">
+                <ion-label class="text-sub-name">สูงสุด</ion-label>
+                <div class="box-styler-1-bottom">
+                  <ion-input class="custom-ion-input-number cen " type="number" value="0"></ion-input>
+                </div>
+              </div>
+              <div class="box-styler-3-lebel">
+                <ion-label>*จำนวนสูงสุดต้องมากกว่า 1</ion-label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-3-right-box-1 shadow">
+          <div class="content-3-right-box-1-detail">
+
+            <div class="detail-box-top-1">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <ion-label class="text-sub">2. ตัวเลือก</ion-label>
+            </div>
+
+            <div class="detail-box-top-2">
+              <div class="detail-box-top-2-left">
+
+                <div class="box-styler-1">
+                  <div class="box-styler-1-top">
+                    <ion-label class="text-sub-name">ชื่อตัวเลือก</ion-label>
+                  </div>
+                  <div class="box-styler-1-bottom">
+                    <ion-input class="custom-ion-input-name-2" placeholder="เช่นหวานน้อย"></ion-input>
+                  </div>
+                </div>
+
+              </div>
+              <div class="detail-box-top-2-right">
+
+                <div class="box-styler-3">
+                  <div class="box-styler-3-input">
+                    <ion-label class="text-sub-name">ราคา</ion-label>
+                    <div class="box-styler-1-bottom">
+                      <ion-input class="custom-ion-input-number cen" type="number" value="0"></ion-input>
+                    </div>
+                  </div>
+                  <div class="box-styler-3-toggle">
+                    <ion-label class="text-sub-name">สถานะ</ion-label>
+                    <div class="box-toggle">
+                      <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle"
+                        (ionChange)="openprintSystem($event)">
+                        <ion-label *ngIf="!ischangeToggle" class="close">หมด</ion-label>
+                        <ion-label *ngIf="ischangeToggle" class="open">มีอยู่</ion-label>
+                      </ion-toggle>
+                    </div>
+
+                  </div>
+                  <div class="box-styler-3-btn-del">
+                    <ion-button size="small">
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box-add-new-option">
+         <ion-label>+ เพิ่มตัวเลือกใหม่</ion-label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- จัดการเมนู select_tab_menu == 1 -->
+  <!-- จัดการหมวดหมู่ select_tab_menu == 2 -->
+  <!-- จัดการ Options select_tab_menu == 3 -->
 
   <!-- <div class="" style="display: flex; flex-direction: row;">
     <div class="" style="font-size: 54px; border: 1px solid red; padding: 5px;">
@@ -607,3 +833,5 @@
 <!-- https://stackblitz.com/edit/tabs-standalone-angular-animate-yt4b8t?file=app%2Ftabs-template-label-example.ts,app%2Ftabs-template-label-example.html,styles.css
 https://stackoverflow.com/questions/54505293/how-to-add-tab-animation-on-change-in-ionic-4 -->
 <!-- https://stackblitz.com/edit/ionic6-angular13-cwnryp?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.component.css -->
+<!-- https://stackblitz.com/angular/qmpjdxkexvd?file=src%2Fapp%2Fapp.component.ts -->
+<!-- https://medium.com/sirisoft/angular-animation-%E0%B8%89%E0%B8%9A%E0%B8%B1%E0%B8%9A%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%A3%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B9%89%E0%B8%99-1-hello-angular-animation-411b71a76c0f -->

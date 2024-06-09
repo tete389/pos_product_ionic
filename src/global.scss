@@ -566,7 +566,8 @@ ion-input.custom-ion-input-name {
 
 ion-input.custom-ion-input-name input[type="text"],
 ion-input.custom-ion-input-name input[type="tel"],
-ion-input.custom-ion-input-number input[type="number"] {
+ion-input.custom-ion-input-number input[type="number"],
+ion-input.custom-ion-input-name-2 input[type="text"]  {
   outline: none;
   border-radius: 6px;
   background: var(--light-gray-color3);
@@ -574,6 +575,15 @@ ion-input.custom-ion-input-number input[type="number"] {
   height: 35px;
   border: none;
   // border: 1px solid var(--dark-gray-color);
+}
+
+ion-input.custom-ion-input-name-2 input[type="text"]  {
+  border-radius: 12px;
+  // border: 1px solid var(--dark-gray-color);
+}
+ion-input.custom-ion-input-name-2 input[type="text"]:focus  {
+  outline: none;
+  border: 1px solid var(--primary-color);
 }
 
 ion-input.custom-ion-input-name.active-edit input[type="text"],
@@ -591,6 +601,10 @@ ion-input.custom-ion-input-number input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+ion-input.custom-ion-input-number.cen input[type="number"] {
+  text-align: center;
+}
+
 
 ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-button,
 .custom-ion-input-number input[type="number"]::-webkit-outer-spin-button {
@@ -603,4 +617,99 @@ ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-butto
 ion-input.custom-ion-input-number input[type="number"]:focus {
   // border: none;
   outline: none;
+}
+
+
+
+
+//===============================================
+//=================  CSS ion-accordion ==============
+//===============================================
+// ion-accordion.accordion-expanding ion-item[slot="header"]{
+//   min-height: 100px;
+// }
+// div[slot='content'] {
+//   background: rgba(var(--ion-color-rose-rgb), 0.25);
+// }
+
+ion-accordion-group.my-custum-accordion {
+  background: red;
+
+  ion-accordion {
+    margin: 0 auto 5px;
+    background: pink;
+
+    .ion-accordion-toggle-icon {
+      // transition: 300ms transform cubic-bezier(0.25, 0.8, 0.5, 1);
+      color: var(--dark-gray-color);
+      background: var(--light-gray-color3);
+      border-radius: 50%;
+      padding: 5px 5px;
+      font-size: 24px;
+    }
+  }
+
+
+  // ใช้ตอน accordion กำลังขยายตัว (1)
+  ion-accordion.accordion-expanding {
+    background: gold;
+  }
+
+  // ใช้ตอน accordion เปิดจนสุด (2)
+  ion-accordion.accordion-expanded {
+    background: salmon;
+  }
+
+  // ใช้ตอน accordion กำลังปิด (3)
+  ion-accordion.accordion-collapsing {
+    background: green;
+  }
+
+  ion-accordion ion-item[slot="header"] {
+    border-radius: 12px;
+
+    .accord-head {
+      height: 100px;
+      background: pink;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      width: 385px;
+      padding-left: 5px;
+    }
+
+    .accord-head-top {
+      background: lightblue;
+      color: var(--text-dark2);
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+      ion-label:first-child {
+        font-size: 18px;
+        font-weight: var(--text-medium);
+        background: gold;
+        width: 65%;
+      }
+
+      ion-label:last-child {
+        font-size: 16px;
+        font-weight: var(--text-light);
+      }
+    }
+
+    .accord-head-bottom {
+      background: greenyellow;
+      display: flex;
+      width: 100%;
+
+      ion-label {
+        font-size: 16px;
+        font-weight: var(--text-light);
+        color: var(--primary-light);
+      }
+    }
+  }
 }
