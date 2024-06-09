@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonCard,IonCol,IonRow,IonContent, IonHeader, IonTitle, IonToolbar , IonGrid,IonButton,IonIcon,IonSelect,IonSelectOption,IonImg ,IonProgressBar,IonInfiniteScroll} from '@ionic/angular/standalone';
+import { IonCard,IonCol,IonRow,IonContent, IonHeader, IonTitle, IonToolbar , IonGrid,IonButton,IonIcon,IonSelect,IonSelectOption,IonImg ,IonProgressBar,IonInfiniteScroll
+  ,IonInfiniteScrollContent,IonList,IonItem
+} from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
 
 import { ApexDataLabels, ApexYAxis, NgApexchartsModule } from 'ng-apexcharts';
@@ -29,14 +31,14 @@ export type ChartOptions = {
   styleUrls: ['./dashboard.page.scss'],
   standalone: true,
   imports: [NgFor,IonCard,IonCol,IonRow,IonContent,IonGrid, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,NgApexchartsModule,IonButton
-    ,IonIcon,IonSelect,IonSelectOption,IonImg,IonProgressBar, IonInfiniteScroll]
+    ,IonIcon,IonSelect,IonSelectOption,IonImg,IonProgressBar, IonInfiniteScroll,IonInfiniteScrollContent,IonList,IonItem]
 })
 export class DashboardPage implements OnInit {
   @ViewChild("chart") chart: any;
   public chartOptions: any;
   public chartOptions2: any;
   items = [1, 2, 3, 4,6,7,8,9,10,11,12];
-  items02 = [1, 2, 3, 4];
+  items02 = [1, 2, 3, 4,1, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4];
   constructor() { 
     const generateRandomData = () => {
       return Array.from({ length: 7 }, () => Math.floor(Math.random() * (14000 - 2000 + 1)) + 2000);
@@ -153,8 +155,10 @@ export class DashboardPage implements OnInit {
   }
   
   ngOnInit() {
-    
-  }
+    for (let i = 1; i < 10; i++) {
+      this.items02.push(i); 
+    }
+    }
   update() {
     this.chartOptions.series[0].data = this.generateRandomData();
     console.log(this.chartOptions.series[0].data);
