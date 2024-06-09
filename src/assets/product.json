@@ -6,32 +6,56 @@
       "img": "",
       "price": 40,
       "pg_id": 2,
-      "detail": [
+      "options": [
         {
           "pd_id": 1,
           "pd_name": "เพิ่มไก่",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 1,
+          "choice_max": 1,
+          "force": true,
+          "choice": [
             {
               "po_id": 1,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 1
+              "pd_id": 1,
+              "default": true
+            },
+            {
+              "po_id": 10,
+              "po_name": " ตีนไก่ดำ",
+              "po_price": 10,
+              "pd_id": 1,
+              "default": false
             }
           ]
         },
         {
           "pd_id": 2,
           "pd_name": "เพิ่มเส้น",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 1,
+          "choice_max": 1,
+          "choice": [
             {
               "po_id": 2,
-              "po_name": " ตีนไก่",
+              "po_name": "เส้นเล็ก",
               "po_price": 10,
-              "pd_id": 2
+              "pd_id": 2,
+              "default": false
+            },
+            {
+              "po_id": 23,
+              "po_name": "เส้นใหญ่",
+              "po_price": 10,
+              "pd_id": 2,
+              "default": false
+            },
+            {
+              "po_id": 33,
+              "po_name": "เส้นหมี่",
+              "po_price": 10,
+              "pd_id": 2,
+              "default": false
             }
           ]
         }
@@ -43,90 +67,103 @@
       "img": "",
       "price": 50,
       "pg_id": 2,
-      "detail": [
+      "options": [
         {
           "pd_id": 3,
           "pd_name": "เพิ่มไก่",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 1,
+          "choice_max": 2,
+          "force": true,
+          "choice": [
             {
               "po_id": 3,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 3
+              "pd_id": 3,
+              "default": false
             },
             {
               "po_id": 4,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 3
+              "pd_id": 3,
+              "default": false
             },
             {
               "po_id": 5,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 3
+              "pd_id": 3,
+              "default": false
             }
           ]
         },
         {
           "pd_id": 4,
           "pd_name": "เพิ่มเส้น",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 1,
+          "choice_max": 2,
+          "force": false,
+          "choice": [
             {
               "po_id": 6,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 4
+              "pd_id": 4,
+              "default": false
             },
             {
               "po_id": 7,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 4
+              "pd_id": 4,
+              "default": false
             }
           ]
         },
         {
           "pd_id": 5,
           "pd_name": "เพิ่มเส้น",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 1,
+          "choice_max": 2,
+          "force": true,
+          "choice": [
             {
               "po_id": 8,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 5
+              "pd_id": 5,
+              "default": false
             },
             {
               "po_id": 9,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 5
+              "pd_id": 5,
+              "default": false
             }
           ]
         },
         {
           "pd_id": 6,
           "pd_name": "เพิ่มเส้น",
-          "min": 1,
-          "max": 2,
-          "option": [
+          "choice_min": 0,
+          "choice_max": 2,
+          "force": true,
+          "choice": [
             {
               "po_id": 10,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 6
+              "pd_id": 6,
+              "default": false
             },
             {
               "po_id": 11,
               "po_name": " ตีนไก่",
               "po_price": 10,
-              "pd_id": 6
+              "pd_id": 6,
+              "default": false
             }
           ]
         }
@@ -138,7 +175,7 @@
       "img": "",
       "price": 60,
       "pg_id": 2,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 4,
@@ -146,7 +183,7 @@
       "img": "",
       "price": 70,
       "pg_id": 1,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 5,
@@ -154,7 +191,7 @@
       "img": "",
       "price": 40,
       "pg_id": 1,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 6,
@@ -162,7 +199,7 @@
       "img": "",
       "price": 50,
       "pg_id": 3,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 7,
@@ -170,7 +207,7 @@
       "img": "",
       "price": 60,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 8,
@@ -178,7 +215,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 9,
@@ -186,7 +223,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 10,
@@ -194,7 +231,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 11,
@@ -202,7 +239,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 12,
@@ -210,7 +247,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 13,
@@ -218,7 +255,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 14,
@@ -226,7 +263,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 15,
@@ -234,7 +271,7 @@
       "img": "",
       "price": 70,
       "pg_id": 4,
-      "detail": []
+      "options": []
     },
     {
       "p_id": 16,

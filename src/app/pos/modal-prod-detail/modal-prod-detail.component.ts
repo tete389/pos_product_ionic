@@ -17,7 +17,10 @@ import {
   IonIcon,
   ModalController,
   AlertController,
-  LoadingController, IonCheckbox } from '@ionic/angular/standalone';
+  LoadingController,
+  IonCheckbox,
+  IonList,
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 @Component({
@@ -25,7 +28,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './modal-prod-detail.component.html',
   styleUrls: ['./modal-prod-detail.component.scss'],
   standalone: true,
-  imports: [IonCheckbox, 
+  imports: [
+    IonList,
+    IonCheckbox,
     IonIcon,
     IonTextarea,
     IonButton,
@@ -54,6 +59,7 @@ export class ModalProdDetailComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.prod);
+    this.check_seleced_detail()
   }
 
   public cancel() {
@@ -62,5 +68,115 @@ export class ModalProdDetailComponent implements OnInit {
 
   public confirm() {
     return this.modalCtrl.dismiss('', 'confirm');
+  }
+
+  public selected_choice(i_detail: number, i_choice: number) {
+    let uniqueElements = new Set();
+    let option = this.prod.options[i_detail];
+    for (let check_set of option.selected_array) {
+      uniqueElements.add(check_set);
+    }
+    for (let i = 0; i < option.choice.length; i++) {
+      option.choice[i].selected = false;
+    }
+    ///////////////////  if min == max ///////////////////
+    if (
+      option.choice_min - 0 == option.choice_max - 0 &&
+      option.choice_min - 0 > 0
+    ) {
+      if (!uniqueElements.has(i_choice)) {
+        if (option.selected_array.length >= option.choice_max) {
+          option.selected_array.shift();
+        }
+        option.selected_array.push(i_choice);
+      }
+      for (let index_select of option.selected_array) {
+        option.choice[index_select].selected = true;
+      }
+    } else {
+      ///////////////////  if min != max ///////////////////
+      if (!uniqueElements.has(i_choice)) {
+        if (option.selected_array.length >= option.choice_max) {
+          option.selected_array.shift();
+        }
+        option.selected_array.push(i_choice);
+      }
+      if (uniqueElements.has(i_choice)) {
+        if (option.selected_array.length > option.choice_min) {
+          option.selected_array = option.selected_array.filter(
+            (e: number) => e != i_choice
+          );
+        }
+      }
+      for (let index_select of option.selected_array) {
+        option.choice[index_select].selected = true;
+      }
+    }
+
+    ///////////////////  check  unselected  ///////////////////
+    if (this.index_options_unselected.length > 0) {
+      let check_set = -1;
+      let index_check = 0;
+      for (let ind of this.index_options_unselected) {
+        if (
+          this.prod.options[ind]?.selected_array?.length ==
+            this.prod.options[ind]?.choice_min &&
+          (this.index_options_unselected[index_check] ||
+            this.index_options_unselected[index_check] == 0)
+        ) {
+          check_set = index_check;
+        }
+        index_check++;
+      }
+      if (check_set > -1) {
+        delete this.index_options_unselected[check_set];
+      }
+      if (this.index_options_unselected.filter(() => true).length == 0) {
+        this.check_can_save = true;
+        this.index_options_unselected = [];
+      }
+    }
+  }
+
+  check_can_save: boolean = false;
+  index_options_unselected: number[] = [];
+  public check_seleced_detail() {
+    let count_check = 0;
+    let index_option = 0;
+    for (let option of this.prod.options) {
+      option.selected_array = [];
+      if (option.choice_min > 0) {
+        let check_choice = 0;
+        let index_choice = 0;
+        for (let choice of option.choice) {
+          if (choice.default) {
+            choice.selected = true
+            check_choice += 1;
+            option.selected_array.push(index_choice);
+          }else{
+            choice.selected = false
+          }
+          index_choice++;
+        }
+        if (option.choice_min == check_choice) {
+          count_check += 1;
+        } else {
+          this.index_options_unselected.push(index_option);
+        }
+      } else {
+        count_check += 1;
+        let index_sub = 0;
+        for (let choice of option.choice) {
+          if (choice.default) {
+            option.selected_array.push(index_sub);
+          }
+          index_sub++;
+        }
+      }
+      index_option++;
+    }
+    if (count_check == this.prod.options.length) {
+      this.check_can_save = true;
+    }
   }
 }

@@ -25,6 +25,15 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// * {
+//    margin: 0;
+//    padding: 0;
+//    box-sizing: border-box;
+// }
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -122,9 +131,6 @@ ion-button {
   max-width: 55px !important;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .hide-hamburger ion-header {
   ion-menu-button {

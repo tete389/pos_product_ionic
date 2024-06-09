@@ -6,14 +6,14 @@
     >
       <div class="basis-[90%]">
         <!-- <ion-card class="mx-2 mt-2 mb-0"> -->
-        <ion-card class="mb-0 h-[30vh] ">
+        <ion-card class="mb-0 h-[30vh]">
           <img
             alt="Silhouette of mountains"
             src="assets/image/img-product.png"
             class="h-full w-full object-cover"
           />
         </ion-card>
-        <ion-card class="shadow-none m-0 ">
+        <ion-card class="shadow-none m-0">
           <!-- <ion-card-header class="px-2"> -->
           <ion-card-header class="">
             <!-- <ion-card-subtitle>80</ion-card-subtitle> -->
@@ -40,36 +40,55 @@
       class="border-l border-[#E7EBF1] h-[80vh] overflow-scroll scrollerBar flex flex-col basis-1/2 ion-padding"
     >
       <div class="scrollerBar overflow-scroll basis-[80%]">
-        <ng-container *ngIf="prod?.detail?.length > 0">
-          <ng-container *ngFor="let detail of prod?.detail; let i = index">
+        <ng-container *ngIf="prod?.options?.length > 0">
+          <ng-container
+            *ngFor="let option of prod?.options; let i_option = index"
+          >
             <ion-card class="shadow-none border-b flex flex-col">
-              <div class="flex flex-row justify-between mb-2">
+              <div class="flex flex-row justify-between">
                 <ion-checkbox labelPlacement="end"
                   ><span>
-                    {{ detail.pd_name }}
+                    {{ option.pd_name }}
                   </span>
                 </ion-checkbox>
-                <div class="text-end ">
+                <div class="text-end">
                   <span>
-                    {{ detail.max }}
+                   min {{ option.choice_min }}
+                  </span>
+                  -
+                  <span>
+                   max {{ option.choice_max }}
                   </span>
                 </div>
               </div>
 
-              <ng-container *ngFor="let option of detail.option">
-                <ion-card class="shadow-none check-box-opt my-[12px] flex flex-row justify-between">
-                  <ion-checkbox labelPlacement="end"
-                    ><span>
-                      {{ option.po_name }}
-                    </span>
-                  </ion-checkbox>
-                  <div class="text-end ">
-                    <span>
-                     + {{ option.po_price }}
-                    </span>
-                  </div>
-                </ion-card>
-              </ng-container>
+              <!-- <ng-container
+                *ngFor="let choice of option.choice; let i_choice = index"
+              > -->
+              <!-- <ion-card class="shadow-none check-box-opt my-[12px] flex flex-row justify-between"> -->
+              <ion-card-content>
+                <ion-list lines="none">
+                  <ion-item
+                    *ngFor="let choice of option.choice; let i_choice = index"
+                    (click)="selected_choice(i_option, i_choice)"
+                    class="check-box-opt"
+                  >
+                    <ion-checkbox
+                      labelPlacement="end"
+                      justify="start"
+                     
+                      [(ngModel)]="choice.selected"
+                    >
+                      {{ choice.po_name }}
+                    </ion-checkbox>
+                    <div class="text-end">
+                      <span> + {{ choice.po_price }} </span>
+                    </div>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+              <!-- </ion-card> -->
+              <!-- </ng-container> -->
             </ion-card>
           </ng-container>
         </ng-container>
