@@ -1,0 +1,171 @@
+ion-header {
+    ion-toolbar {
+        --background: #ffffff;
+       
+
+
+        .flex-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+
+            height: 60px;
+        }
+
+        .title-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+        
+        }
+
+        .total-table {
+            font-size: 16px;
+            color: #181818;
+         
+            font-size: 32px;
+
+            .description {
+                font-weight: normal;
+                color: #000000;
+              
+                font-size: 23px;
+            }
+
+            .total-real {
+                font-weight: normal;
+                color: #11C542;
+                padding-left: 20px;
+                font-size: 32px;
+            }
+        }
+    }
+}
+
+.custom-section {
+    display: flex;
+    flex-direction: row;
+
+
+    .section-left {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+
+        .title-th {
+            font-size: 20px;
+            
+            padding-left: 27px;
+            margin-top: 20px;
+        }
+
+        .flex-card {
+            display: flex;
+            flex-direction: column;
+
+            .detail-zone1 {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                height: 85px;
+                align-items: center;
+                font-size: 26px;
+                margin-bottom: -17px;
+
+                p {
+                    color: rgb(87, 87, 87);
+                }
+
+                &:hover {
+                    background-color: #11C542;
+            
+                }
+
+                &.selected {
+                    background-color: #11C542;
+                 
+
+                    p {
+                        color: white;
+                  
+                    }
+                }
+            }
+
+
+
+        }
+
+        .custom-btn-addzone {
+
+            display: flex;
+            justify-content: center;
+            margin-top: 35px;
+
+            .add-zone {
+                --border-radius: 30px;
+                --background: #0091F2;
+            }
+
+            .add-zone p {
+                padding: 0px 20px;
+            }
+            .del-zone {
+                --border-radius: 30px;
+                --background: #a5a5a5;
+            }
+
+            .del-zone p {
+                padding: 0px 25px;
+            }
+        }
+        
+    }
+
+    .section-right {
+
+        .title-table-custom {
+            display: flex;
+            align-items: center;
+            margin: 10px 45px;
+            border-bottom: 2px solid #B6C0CF;
+
+            .zone-name {
+                font-size: 27px;
+                font-weight: 500;
+                padding-left: 40px;
+                color: black;
+            }
+
+            .number-table {
+                font-size: 16px;
+                padding-left: 30px;
+                padding-top: 5px;
+
+                span {
+                    color: black;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .table-custom {
+            padding: 0px 124px;
+            margin-top: 108px;
+
+            .grid-cus {
+                width: 100px;
+                height: 100px;
+                margin-top: -30px;
+                border-radius: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #0091f2;
+                color: white;
+                
+            }
+        }
+    }
+}

@@ -73,6 +73,8 @@ export class AppComponent {
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
     { title: 'Pos', url: '/pos', icon: 'paper-plane' },
     { title: 'จัดการเมนู', url: '/menu-managment', icon: 'fast-food' },
+    { title: 'โต๊ะและโซน', url: '/table-zone', icon: 'paper-plane' },
+    
     // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
   ];

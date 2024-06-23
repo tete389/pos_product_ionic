@@ -22,5 +22,9 @@ export const routes: Routes = [
     path: 'menu-managment',
     loadComponent: () => import('./menu-managment/menu-managment.page').then( m => m.MenuManagmentPage)
   },
+  {
+    path: 'table-zone',
+    loadComponent: () => import('./table-zone/table-zone.page').then( m => m.TableZonePage)
+  },
 
 ];
