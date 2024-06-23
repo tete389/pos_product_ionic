@@ -1,0 +1,53 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="ion-text-left">
+    <ion-buttons slot="end" (click)="close()">
+      <!-- <ion-icon name="chevron-back-outline"></ion-icon> -->
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-start">
+      <span>ตัวเลือก:</span>
+      ระดับความเผ็ด
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+
+
+  <div class="box-1">
+    <div class="tabin">
+      <div *ngFor="let zone of [1,2,3,4,5,6,7,8,9,1,1,1,1,]; let i=index">
+        <ion-button class="btn-tabin" [ngClass]="{'btn-selected-tab ': i == 2 }">จานเดียว</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-2">
+    <div class="box-2-sub">
+      <ion-label class="text-sub">ใช้กับ (10 รายการ)</ion-label>
+    </div>
+    <div class="box-2-list">
+      <ion-card *ngFor="let m of [1,2,2,2,3,3,3,12,31,3,4,5,6,7]; let i = index">
+        <ion-card-content>
+          <div class="box-left">
+            <div class="box-img">
+              <img src="assets/image/img-product.png" alt="">
+            </div>
+            <div class="box-name">
+              <ion-label>Food name</ion-label>
+            </div>
+          </div>
+          <div class="box-right">
+            <div class="box-toggle">
+              <ion-toggle class="box-toggle-swicth" [(ngModel)]="checked">
+                <ion-label *ngIf="!checked" class="close">หมด</ion-label>
+                <ion-label *ngIf="checked" class="open">มีอยู่</ion-label>
+              </ion-toggle>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
