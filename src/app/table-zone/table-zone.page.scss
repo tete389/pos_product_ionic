@@ -1,3 +1,37 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn-del {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown-del {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 ion-header {
     ion-toolbar {
         --background: #ffffff;
@@ -93,7 +127,12 @@ ion-header {
                 }
             }
 
-
+            .fade-in {
+                animation: fadeIn 0.5s ease-in-out forwards, slideDown 0.5s ease-in-out forwards;
+            }
+            .fade-in-del {
+                animation: fadeIn-del 0.5s ease-in-out forwards, slideDown-del 0.5s ease-in-out forwards;
+            }
 
         }
 
@@ -130,7 +169,41 @@ ion-header {
             align-items: center;
             margin: 10px 45px;
             border-bottom: 2px solid #B6C0CF;
-
+            justify-content: space-between;
+              
+            .right{
+                ion-item{
+                    // --background: #F1F4F9;
+            
+                .table-count {
+                  font-size: 24px;
+                  font-weight: bold;
+                  margin: 0 10px;
+                }
+              
+                .decrement-button,
+                .increment-button {
+                  width: 40px;
+                  height: 40px;
+                  --border-radius: 100%;
+                  padding: 0;
+              
+                  ion-icon {
+                    font-size: 24px;
+                  }
+                }
+              
+                .decrement-button {
+                    --border-radius: 100%;
+                 
+                }
+              
+                .increment-button {
+                  --border-radius: 100%;
+                  
+                }
+            }
+        }
             .zone-name {
                 font-size: 27px;
                 font-weight: 500;
@@ -152,7 +225,7 @@ ion-header {
 
         .table-custom {
             padding: 0px 124px;
-            margin-top: 108px;
+            margin-top: 73px;
 
             .grid-cus {
                 width: 100px;
@@ -165,6 +238,26 @@ ion-header {
                 background-color: #0091f2;
                 color: white;
                 
+            }
+        }
+        .edite-total{
+            display: flex;
+            justify-content: end;
+            margin-top: -15px;
+            padding-right: 20px;
+            .edit  {
+                --background:#F1F4F9;
+                 p {
+                    padding: 0px 25px;
+                    color: black;
+                }
+            }
+            .edit-save  {
+                --background:#11C542;
+                 p {
+                    padding: 0px 25px;
+                    color: rgb(255, 255, 255);
+                }
             }
         }
     }

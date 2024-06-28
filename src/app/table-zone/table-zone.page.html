@@ -1,45 +1,60 @@
-
- 
-    <ion-header no-border>
-        <ion-toolbar>
-          <ion-title>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-title>
             <div class="flex-title">
                 <p class="title-header">จัดการโต๊ะและโซน</p>
                 <p class="total-table">
-                  <span class="description">จำนวนโต๊ะที่มี:</span> <span class="total-real">10</span> /30
+                    <span class="description">จำนวนโต๊ะที่มี:</span> <span class="total-real">10</span> /30
                 </p>
-              </div>
-          </ion-title>
-        </ion-toolbar>
-      </ion-header>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" style="--background:#F1F4F9">
     <div class="custom-section">
 
         <div class="section-left">
             <div class="title-th">โซนในร้านคุณ</div>
             <div class="flex-card">
-              <ion-card class="detail-zone1" *ngFor="let zone of zones" (click)="onCardClick(zone.id)" [class.selected]="selectedCard === zone.id">
-                <p>{{ zone.name }}</p>
-                <p>{{ zone.count }}</p>
-                <ion-button *ngIf="isEditMode" fill="clear" color="danger" (click)="deleteZone(zone.id, $event)">
-                  <ion-icon name="trash"></ion-icon>
-                </ion-button>
-              </ion-card>
+                <ion-card class="detail-zone1" *ngFor="let zone of zones" (click)="onCardClick(zone.id)"
+                    [class.selected]="selectedCard === zone.id">
+                    <p>{{ zone.name }}</p>
+                    <p>{{ zone.count }}</p>
+                    <ion-button *ngIf="isEditMode" fill="clear" color="danger" (click)="deleteZone(zone.id, $event)">
+                        <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                </ion-card>
             </div>
             <div class="custom-btn-addzone">
-              <ion-button class="add-zone" (click)="addZone()">
-                <p>เพิ่มโซน</p>
-              </ion-button>
-              <ion-button class="del-zone" (click)="toggleEditMode()">
-                <p>แก้ไข</p>
-              </ion-button>
+                <ion-button class="add-zone" (click)="addZone()">
+                    <p>เพิ่มโซน</p>
+                </ion-button>
+                <ion-button class="del-zone" (click)="toggleEditMode()">
+                    <p>แก้ไข</p>
+                </ion-button>
             </div>
-          </div>
+        </div>
         <div class="section-right " style="width: 100%;">
-            <ion-card style="height: 675px;">
+            <ion-card style="height: 685px;">
                 <div class="title-table-custom">
-                    <p class="zone-name">Zone A</p>
-                    <p class="number-table">มีทั้งหมด <span>20</span> โต๊ะ</p>
+                    <div class="left">
+                        <p class="zone-name">Zone A</p>
+                        <p class="number-table">มีทั้งหมด <span>20</span> โต๊ะ</p>
+                    </div>
+                    <div class="right">
+                        <ng-container *ngIf="isShowCount">
+                        <ion-item lines="none">
+                            <ion-button class="decrement-button" color="danger" (click)="decrement()">
+                                <ion-icon name="remove-outline"></ion-icon>
+                            </ion-button>
+                            <span class="table-count">{{ tableCount }}</span>
+                            <ion-button class="increment-button"  color="success" (click)="increment()">
+                                <ion-icon name="add-outline"></ion-icon>
+                            </ion-button>
+                        </ion-item>
+                        </ng-container>
+                    </div>
+                    
                 </div>
                 <div class="grid grid-cols-5 gap-8 table-custom ">
                     <div *ngFor="let item of items; let i = index">
@@ -50,7 +65,19 @@
 
                 </div>
 
-
+                <div class="edite-total">
+                    <ion-button class="edit" *ngIf="!isEditing" (click)="toggleEdit()">
+                        <p>แก้ไข</p>
+                    </ion-button>
+                    <div *ngIf="isEditing" class="edit-buttons">
+                        <ion-button class="edit-save" (click)="saveChanges()">
+                            <p>บันทึก</p>
+                        </ion-button>
+                        <ion-button class="edit" color="light" (click)="cancelEdit()">
+                            <p>ยกเลิก</p>
+                        </ion-button>
+                    </div>
+                </div>
             </ion-card>
         </div>
     </div>
