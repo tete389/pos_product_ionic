@@ -18,7 +18,8 @@ export const routes: Routes = [
   {
     path: 'pos',
     loadComponent: () => import('./pos/pos.page').then( m => m.PosPage)
-  },  {
+  },
+  {
     path: 'menu-managment',
     loadComponent: () => import('./menu-managment/menu-managment.page').then( m => m.MenuManagmentPage)
   },
@@ -27,8 +28,8 @@ export const routes: Routes = [
     loadComponent: () => import('./table-zone/table-zone.page').then( m => m.TableZonePage)
   },
   {
-    path: 'discounts-taxe',
-    loadComponent: () => import('./discounts-taxe/discounts-taxe.page').then( m => m.DiscountsTaxePage)
+    path: 'best-sale-menu',
+    loadComponent: () => import('./best-sale-menu/best-sale-menu.page').then( m => m.BestSaleMenuPage)
   },
 
 ];

@@ -1,5 +1,5 @@
 ion-toolbar {
-    // --background: plum;
+    --background: var(--white-color);
     --min-height: 110px;
     --padding-bottom: 0;
     --padding-end: 0;
@@ -327,6 +327,7 @@ ion-content {
     --offset-bottom: auto !important;
     --overflow: hidden;
     overflow: hidden;
+    overflow-y: scroll;
 
     &::-webkit-scrollbar {
         display: none;
@@ -338,6 +339,7 @@ ion-content {
     .content-1 {
         margin: 0;
         padding: 0;
+        margin-right: 30px;
 
         ion-card.carded {
             // background: pink;
@@ -728,6 +730,7 @@ ion-content {
     .content-2 {
         margin: 0;
         padding: 0;
+        margin-right: 30px;
 
         ion-card.carded {
             // background: pink;
@@ -1202,14 +1205,15 @@ ion-content {
             // background: plum;
             overflow-y: scroll;
 
-          
+
         }
 
         .content-3-right {
             width: calc(100% - 465px);
             overflow-y: scroll;
             margin-right: 7px;
-            .box-background{
+
+            .box-background {
                 background: var(--white-color);
                 border-radius: 10px;
                 margin: 0 7px 20px 5px;
