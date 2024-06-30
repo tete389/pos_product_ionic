@@ -26,5 +26,9 @@ export const routes: Routes = [
     path: 'table-zone',
     loadComponent: () => import('./table-zone/table-zone.page').then( m => m.TableZonePage)
   },
+  {
+    path: 'discounts-taxe',
+    loadComponent: () => import('./discounts-taxe/discounts-taxe.page').then( m => m.DiscountsTaxePage)
+  },
 
 ];
