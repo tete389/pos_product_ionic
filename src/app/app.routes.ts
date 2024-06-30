@@ -31,5 +31,9 @@ export const routes: Routes = [
     path: 'best-sale-menu',
     loadComponent: () => import('./best-sale-menu/best-sale-menu.page').then( m => m.BestSaleMenuPage)
   },
+  {
+    path: 'discounts-taxe',
+    loadComponent: () => import('./discounts-taxe/discounts-taxe.page').then( m => m.DiscountsTaxePage)
+  },
 
 ];
