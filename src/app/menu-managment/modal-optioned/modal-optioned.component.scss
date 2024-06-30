@@ -16,7 +16,7 @@ ion-toolbar {
 
     ion-buttons ion-icon {
         // background: red;
-        color: var(--text-dark);
+        color: var(--brown-color);
         font-size: 32px;
         cursor: pointer;
     }
@@ -39,7 +39,7 @@ ion-content {
         &::-webkit-scrollbar {
             // display: none;
             /* ความกว้าง scrollbar */
-            height: 5px;
+            height: 10px;
             // margin-left: 110px;
         }
 
@@ -100,7 +100,7 @@ ion-content {
         .box-2-list {
             overflow-y: scroll;
             height: 55vh;
-            padding: 10px 10px 50px 0;
+            padding: 10px 20px 50px 0;
 
             &::-webkit-scrollbar {
                 // display: none;
