@@ -13,18 +13,18 @@
       <div class="box-left-content-2">
         <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 1}"
           (click)="select_period(1)">
-          <ion-label>รายการอาหาร</ion-label>
+          <ion-label>Today</ion-label>
         </ion-button>
         <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 2}"
           (click)="select_period(2)">
-          <ion-label>รายการอาหาร</ion-label>
+          <ion-label>Week</ion-label>
         </ion-button>
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
             toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">ทั้งหมด</ion-select-option>
+            <ion-select-option value="1">Month</ion-select-option>
             <ion-select-option value="2">อาหาร</ion-select-option>
             <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
           </ion-select>
@@ -34,7 +34,7 @@
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
             toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">ทั้งหมด</ion-select-option>
+            <ion-select-option value="1">Year</ion-select-option>
             <ion-select-option value="2">อาหาร</ion-select-option>
             <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
           </ion-select>
@@ -50,14 +50,8 @@
           Data of: <span>Month - May</span>
         </ion-label>
         <div class="box-chart">
-          <apx-chart 
-          [series]="PieOptions.series"
-           [chart]="PieOptions.chart"
-            [labels]="PieOptions.labels"
-            [colors]="PieOptions.colors"
-             [legend]="PieOptions.legend" 
-             [responsive]="PieOptions.responsive"
-             ></apx-chart>
+          <apx-chart [series]="PieOptions.series" [chart]="PieOptions.chart" [labels]="PieOptions.labels"
+            [colors]="PieOptions.colors" [legend]="PieOptions.legend" [responsive]="PieOptions.responsive"></apx-chart>
 
         </div>
 
@@ -66,18 +60,18 @@
       <div class="box-left-content-2">
         <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 1}"
           (click)="select_period(1)">
-          <ion-label>รายการอาหาร</ion-label>
+          <ion-label>Today</ion-label>
         </ion-button>
         <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 2}"
           (click)="select_period(2)">
-          <ion-label>รายการอาหาร</ion-label>
+          <ion-label>Week</ion-label>
         </ion-button>
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
             toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">ทั้งหมด</ion-select-option>
+            <ion-select-option value="1">Month</ion-select-option>
             <ion-select-option value="2">อาหาร</ion-select-option>
             <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
           </ion-select>
@@ -87,7 +81,7 @@
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
             toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">ทั้งหมด</ion-select-option>
+            <ion-select-option value="1">Year</ion-select-option>
             <ion-select-option value="2">อาหาร</ion-select-option>
             <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
           </ion-select>
@@ -105,7 +99,7 @@
         <div class="box-progress">
           <div class="box-progress-card" *ngFor="let item of [6,5,4,3,2,1];let i = index">
             <div class="box-progress-card-top">
-              <ion-label >Food Category 1</ion-label>
+              <ion-label>Food Category 1</ion-label>
               <div class="box-progress-card-top-right">
                 <ion-label>฿ 9,000</ion-label>
                 <ion-label>90%</ion-label>
@@ -121,7 +115,111 @@
       </div>
 
     </div>
-    <div class="box-right">2</div>
+    <div class="box-right">
+      <div class="box-right-content-1">
+        <ion-label class="text-sub-box-right">เรียงตาม <span>(Short by)</span></ion-label>
+        <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 1}"
+          (click)="select_period(1)">
+          <ion-label>ยอดขาย</ion-label>
+        </ion-button>
+        <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 2}"
+          (click)="select_period(2)">
+          <ion-label>ออเดอร์</ion-label>
+        </ion-button>
+        <div class="border-or"></div>
+        <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 1}"
+          (click)="select_period(1)">
+          <ion-label>มากไปน้อย</ion-label>
+        </ion-button>
+        <ion-button class="btn-date" size="small" [ngClass]="{'select-period-active': select_period_number == 2}"
+          (click)="select_period(2)">
+          <ion-label>น้อยไปมาก</ion-label>
+        </ion-button>
+
+      </div>
+      <div class="box-right-content-2">
+
+        <ion-grid class="box-table">
+          <ion-row class="header">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-1">
+                <ion-label>ลำดับ</ion-label>
+              </div>
+            </ion-col>
+            <ion-col  class="ion-text-center">
+              <div class="col-head-2">
+                <ion-label>รายการ</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="col-head-3">
+                <ion-label>หมวดหมู่</ion-label>
+              </div>
+             
+            </ion-col>
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-4">
+                <ion-label>ออเดอร์</ion-label>
+              </div>
+            </ion-col> 
+            <ion-col  size="auto" class="ion-text-center">
+              <div class="col-head-5">
+                    <ion-label>สัดส่วน</ion-label>
+              </div>
+          
+            </ion-col>
+            <ion-col size="2"  class="ion-text-center">
+              <div class="col-head-6">
+                <ion-label>ยอดขาย</ion-label>
+              </div>
+            
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5,6,7,8,9,1];let i = index">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-box-1">
+                <div class="box-color"></div>
+                <ion-label class="box-num">{{i+1}}</ion-label> 
+              </div>
+            </ion-col>
+            <ion-col  class="ion-text-center">
+              <div class="col-box-2">
+                <div class="box-img">
+                  <img src="assets/image/img-product.png" alt="">
+                </div>
+                <ion-label class="box-name">Food name</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="col-box-3">
+                <ion-label>Food Category</ion-label>
+              </div>
+             
+            </ion-col>
+            <ion-col  size="auto"  class="ion-text-center">
+              <div class="col-box-4">
+                <ion-label>90</ion-label>
+              </div>
+            </ion-col> 
+            <ion-col size="auto"    class="ion-text-center">
+              <div class="col-box-5">
+                    <ion-label>20%</ion-label>
+              </div>
+          
+            </ion-col>
+            <ion-col size="2"  class="ion-text-center">
+              <div class="col-box-6">
+                <ion-label>8,750.00</ion-label>
+              </div>
+            
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </div>
+    </div>
   </div>
 
 </ion-content>

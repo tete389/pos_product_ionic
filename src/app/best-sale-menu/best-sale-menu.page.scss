@@ -9,6 +9,8 @@ ion-content {
         .box-left,
         .box-right {
             // width: 50%;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .box-left {
@@ -167,29 +169,15 @@ ion-content {
 
                 .box-chart {
                     max-width: 380px;
-                    margin: 35px auto;
+                    margin: 10px auto;
                     padding: 0;
-                    border: 1px solid salmon;
-                    // display: flex;
-                    // justify-content: center;
-                    // padding: 0;
-                    // // max-width: 380px;
-                    // box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
-                    // // background-color: #2b2d3e;
-                    // background-color:red!important;
-                    // // padding: 0 10px 10px;
-                    // // text-shadow: 0 1px 1px 1px #666;
-                    // position: relative;
-                    // border-radius: 5px;
-                    // // margin: 0 auto;
-                    // background-color: var(--white-color);
 
                     apx-chart {
                         width: 100%;
-                    //     padding: 33px 0;
-                    //     color: var(--text-primary);
-                    //     border-bottom: 1px solid var(--light-gray-color);
-                    //     padding-bottom: 45px;
+                        //     padding: 33px 0;
+                        //     color: var(--text-primary);
+                        //     border-bottom: 1px solid var(--light-gray-color);
+                        //     padding-bottom: 45px;
                     }
                 }
             }
@@ -231,6 +219,10 @@ ion-content {
                                 --progress-background: var(--primary-color);
                             }
 
+                            ion-progress-bar::part(progress) {
+                                border-radius: 10px;
+                            }
+
                             ion-progress-bar.po-1 {
                                 --progress-background: var(--progress-color-1);
                             }
@@ -264,7 +256,143 @@ ion-content {
             // width: 100%;
             min-width: 50%;
             // max-width: calc(100% - 535px);
-            background: pink;
+
+            ion-label.text-sub-box-right {
+                font-size: 12px;
+                color: var(--text-dark2);
+                font-weight: var(--text-medium);
+                padding-right: 14px;
+
+                span {
+                    font-weight: var(--text-light);
+                }
+            }
+
+            .box-right-content-1 {
+                background: var(--white-color);
+                padding: 12px 15px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                ion-button.btn-date {
+                    --background: var(--light-gray-color3);
+                    --color: var(--text-dark);
+                    --border-radius: 18px;
+                    height: 35px;
+                    width: 100px;
+                    min-width: 95px;
+                    margin-right: 2px;
+                    --padding-start: 0;
+                    --padding-end: 0;
+                    --padding-top: 0;
+                    --padding-bottom: 0;
+
+                    ion-label {
+                        font-size: 12px;
+                    }
+                }
+
+                ion-button.select-period-active {
+                    --background: var(--primary-color);
+                    --color: var(--text-white);
+                }
+
+                .border-or {
+                    background: var(--text-dark2);
+                    width: 1px;
+                    height: 19px;
+                    margin: 0 7px;
+                }
+            }
+
+            .box-right-content-2 {
+
+                ion-grid.box-table {
+                    width: 100%;
+                    // max-width: 570px;
+                    font-size: 13px;
+                    padding: 0;
+            
+                    margin: 0 0 20px;
+                    .header {
+                        background: var(--light-sky-blue);
+                        font-size: 13px;
+                        font-weight: var(--text-light);
+
+                        ion-col {
+                            margin: 0;
+
+                            .col-head-1 {
+                                width: 60px;
+                            }
+                            .col-head-4,
+                            .col-head-5 {
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    .data-row {
+                        // padding-left: 30px;
+                        // padding-right: 15px;
+                        min-height: 65px;
+                        display: flex;
+                        align-items: center;
+                        border-radius: 5px;
+                        background: var(--white-color);
+                        ion-col {
+                            // padding: 0;
+                            // margin: 0;
+
+                            .col-box-1 {
+                                display: flex;
+                                align-items: center;
+                                width: 60px;
+                                padding-left: 7px;
+                                .box-color {
+                                    width: 15px;
+                                    height: 15px;
+                                    background: var(--primary-color);
+                                    border-radius: 50%;
+                                }
+
+                                .box-num {
+                                    width: calc(100% - 15px);
+                                } 
+                            }
+
+                            .col-box-2 {
+                                display: flex;
+                                align-items: center;
+
+                                .box-img {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 12px;
+                                    overflow: hidden;
+
+                                    img {
+                                        width: 100%;
+                                    }
+                                }
+
+                                ion-label.box-name {
+                                    width: calc(100% - 50px);
+                                }
+                            }
+                            .col-box-4,
+                            .col-box-5 {
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    .data-row:not(:last-child) {
+                       margin-bottom: 5px;
+                    }
+                }
+            }
         }
     }
 }

@@ -11,7 +11,11 @@ import {
   IonSelectOption,
   IonIcon,
   IonButton,
-  IonProgressBar
+  IonProgressBar,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonBadge
   
 } from '@ionic/angular/standalone';
 import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexLegend, ApexPlotOptions, ApexResponsive, ApexXAxis, NgApexchartsModule } from 'ng-apexcharts';
@@ -39,6 +43,10 @@ export type ChartOptions = {
     IonIcon,
     IonButton,
     IonProgressBar,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonBadge,
     CommonModule,
     FormsModule,
     NgApexchartsModule
@@ -119,5 +127,22 @@ export class BestSaleMenuPage implements OnInit {
     //   } break;
 
     // }
+  }
+
+  items = [
+    { image: 'assets/image/img-product.png', name: 'Food name', category: 'Food Category', order: 90, proportion: '20%', sales: 8750 },
+    { image: 'assets/image/img-product.png', name: 'Food name', category: 'Food Category', order: 90, proportion: '10%', sales: 8750 },
+    { image: 'assets/image/img-product.png', name: 'Food name', category: 'Food Category', order: 90, proportion: '8%', sales: 8750 },
+    { image: 'assets/image/img-product.png', name: 'Food name', category: 'Food Category', order: 90, proportion: '7%', sales: 8750 },
+  ];
+
+  getColor(rank: number): string {
+    switch (rank) {
+      case 1: return 'warning';
+      case 2: return 'tertiary';
+      case 3: return 'danger';
+      case 4: return 'success';
+      default: return 'medium';
+    }
   }
 }
