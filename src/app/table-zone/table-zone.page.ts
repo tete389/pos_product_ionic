@@ -15,19 +15,29 @@ import { NgFor } from '@angular/common';
     ,IonIcon,IonSelect,IonSelectOption,IonImg,IonProgressBar, IonInfiniteScroll,IonInfiniteScrollContent,IonList,IonItem]
 })
 export class TableZonePage implements OnInit {
-  items = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-  selectedCard: any;
+  zones: Array<{ id: number, name: string, count: number, tables: Array<{ id: number }> }> = [
+    { id: 1, name: 'Zone A', count: 20, tables: Array(20).fill(null).map((_, index) => ({ id: index + 1 })) },
+    { id: 2, name: 'Zone B', count: 0, tables: [] }
+  ];
+
+  selectedCard: number | null = null;
   isEditMode = false;
   isEditing = false;
   isShowCount = false;
-  zones = [
-    { id: 1, name: 'Zone A', count: 20 },
-    { id: 2, name: 'Zone B', count: 0 },
-  ];
+  totalTables = 20;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    if (this.zones.length > 0) {
+      this.selectedCard = this.zones[0].id;
+    }
+  }
+
+  get selectedZone() {
+    return this.zones.find(zone => zone.id === this.selectedCard);
+  }
 
   onCardClick(cardId: number) {
     this.selectedCard = cardId;
@@ -36,8 +46,7 @@ export class TableZonePage implements OnInit {
   addZone() {
     const newZoneNumber = this.zones.length + 1;
     const newId = this.zones.length ? Math.max(...this.zones.map(zone => zone.id)) + 1 : 1;
-    this.zones.push({ id: newId, name: `Zone ${String.fromCharCode(64 + newZoneNumber)}`, count: 0 });
-
+    this.zones.push({ id: newId, name: `Zone ${String.fromCharCode(64 + newZoneNumber)}`, count: 0, tables: [] });
 
     setTimeout(() => {
       const element = document.querySelector(`.detail-zone1:nth-last-child(1)`);
@@ -48,25 +57,31 @@ export class TableZonePage implements OnInit {
         }, 500); 
       }
     }, 0);
-
-    console.log(this.zones);
   }
 
   deleteZone(id: number, event: Event) {
-    event.stopPropagation(); // เพื่อไม่ให้ trigger ฟังก์ชัน onCardClick
+    event.stopPropagation(); 
     this.zones = this.zones.filter(zone => zone.id !== id);
-    
   }
-  tableCount: number = 20;
 
   increment() {
-    this.tableCount++;
+    const selectedZone = this.selectedZone;
+    if (selectedZone && this.getTotalTableCount() < this.totalTables) {
+      selectedZone.count++;
+      selectedZone.tables.push({ id: selectedZone.tables.length + 1 });
+    }
   }
 
   decrement() {
-    if (this.tableCount > 0) {
-      this.tableCount--;
+    const selectedZone = this.selectedZone;
+    if (selectedZone && selectedZone.count > 0) {
+      selectedZone.count--;
+      selectedZone.tables.pop();
     }
+  }
+
+  getTotalTableCount(): number {
+    return this.zones.reduce((acc, zone) => acc + zone.count, 0);
   }
 
   toggleEditMode() {
@@ -88,3 +103,7 @@ export class TableZonePage implements OnInit {
     this.isShowCount = false;
   }
 }
+
+
+
+
