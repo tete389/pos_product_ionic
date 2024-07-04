@@ -17,7 +17,7 @@ import { NgFor } from '@angular/common';
 export class TableZonePage implements OnInit {
   zones: Array<{ id: number, name: string, count: number, tables: Array<{ id: number }> }> = [
     { id: 1, name: 'Zone A', count: 20, tables: Array(20).fill(null).map((_, index) => ({ id: index + 1 })) },
-    { id: 2, name: 'Zone B', count: 0, tables: [] }
+    
   ];
 
   selectedCard: number | null = null;
