@@ -1,0 +1,156 @@
+.clicked-button {
+    --background: #11C542 !important;
+    color: #F1F4F9 !important;
+}
+
+.flex-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0px 40px 10px;
+}
+
+.left-title {
+    font-size: 24px;
+}
+
+.mid-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+.right-title ion-button {
+    width: 140px;
+    height: 45px;
+    --border-radius: 50px;
+    --background: #11C542;
+}
+
+.discount ion-button,
+.vat ion-button,
+.service-charge ion-button,
+.discount-foods ion-button,
+.extra-charge ion-button {
+    width: 140px;
+    height: 45px;
+    --border-radius: 50px;
+    --background: #F1F4F9;
+    color: black;
+    font-size: 16px;
+}
+
+.container-data {
+    background-color: #F1F4F9;
+    height: 1000px;
+    padding-top: 1px;
+}
+
+.flex-start-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 139px;
+    padding: 0px 30px;
+
+}
+
+.d-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.flex-dname {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #838C98;
+}
+
+.styled-input {
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 10px;
+    transition: border-color 0.3s;
+    text-align: center;
+}
+
+.styled-input:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.select-custom {
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+    text-align: center;
+    font-size: 14px;
+    min-width: 16vw;
+}
+
+.select-custom:focus {
+    border-color: #28a745;
+    ;
+}
+
+.select-custom {
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+    text-align: center;
+    --padding-start: 50px;
+}
+
+.select-custom ion-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.select-custom .select-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.edit-cus {
+    ion-button {
+        --background: #E7EBF1;
+        --padding-start: 35px;
+        --padding-end: 35px;
+        color: black;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+
+    .edit-button {
+        --background: #E7EBF1;
+        color: black;
+    }
+
+    .edit-button.active {
+        --background: #11C542 ;
+        color: white;
+    }
+}
+.delete-button {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 9px;
+    --background: red;
+    --color: white;
+    margin-left: 0px;
+    margin-top: 21px;
+    font-size: 5px;
+  }
+  
+  .trash-icon {
+    font-size: 20px;
+  }

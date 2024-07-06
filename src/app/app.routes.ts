@@ -18,13 +18,26 @@ export const routes: Routes = [
   {
     path: 'pos',
     loadComponent: () => import('./pos/pos.page').then( m => m.PosPage)
-  },  {
+  },
+  {
     path: 'menu-managment',
     loadComponent: () => import('./menu-managment/menu-managment.page').then( m => m.MenuManagmentPage)
   },
   {
     path: 'pos-take-away',
     loadComponent: () => import('./pos-take-away/pos-take-away.page').then( m => m.PosTakeAwayPage)
+  },
+  {
+    path: 'table-zone',
+    loadComponent: () => import('./table-zone/table-zone.page').then( m => m.TableZonePage)
+  },
+  {
+    path: 'best-sale-menu',
+    loadComponent: () => import('./best-sale-menu/best-sale-menu.page').then( m => m.BestSaleMenuPage)
+  },
+  {
+    path: 'discounts-taxe',
+    loadComponent: () => import('./discounts-taxe/discounts-taxe.page').then( m => m.DiscountsTaxePage)
   },
 
 ];

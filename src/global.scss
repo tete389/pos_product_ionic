@@ -572,8 +572,7 @@ ion-input.custom-ion-input-name {
 
 ion-input.custom-ion-input-name input[type="text"],
 ion-input.custom-ion-input-name input[type="tel"],
-ion-input.custom-ion-input-number input[type="number"],
-ion-input.custom-ion-input-name-2 input[type="text"]  {
+ion-input.custom-ion-input-number input[type="number"] {
   outline: none;
   border-radius: 6px;
   background: var(--light-gray-color3);
@@ -583,11 +582,24 @@ ion-input.custom-ion-input-name-2 input[type="text"]  {
   // border: 1px solid var(--dark-gray-color);
 }
 
-ion-input.custom-ion-input-name-2 input[type="text"]  {
+ion-input.custom-ion-input-name-2 input[type="text"],
+ion-input.custom-ion-input-number-2 input[type="number"] {
   border-radius: 12px;
-  // border: 1px solid var(--dark-gray-color);
+  outline: none;
+  padding: 7px 15px;
+  height: 35px;
+  border: none;
+  border: 1px solid var(--dark-gray-color);
+
+
 }
-ion-input.custom-ion-input-name-2 input[type="text"]:focus  {
+
+ion-input.custom-ion-input-number-2 input[type="number"] {
+  text-align: center;
+}
+
+ion-input.custom-ion-input-name-2 input[type="text"]:focus,
+ion-input.custom-ion-input-number-2 input[type="number"]:focus {
   outline: none;
   border: 1px solid var(--primary-color);
 }
@@ -602,25 +614,27 @@ ion-input.custom-ion-input-number.active-edit input[type="number"] {
 
 // ซ่อนลูกศร ขึ้น-ลง ใน input type number
 
-ion-input.custom-ion-input-number input[type="number"] {
+ion-input.custom-ion-input-number input[type="number"],
+ion-input.custom-ion-input-number-2 input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
-ion-input.custom-ion-input-number.cen input[type="number"] {
-  text-align: center;
-}
+
 
 
 ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-button,
-.custom-ion-input-number input[type="number"]::-webkit-outer-spin-button {
+.custom-ion-input-number input[type="number"]::-webkit-outer-spin-button,
+ion-input.custom-ion-input-number-2 input[type="number"]::-webkit-inner-spin-button,
+.custom-ion-input-number-2 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
 }
 
-ion-input.custom-ion-input-number input[type="number"]:focus {
+ion-input.custom-ion-input-number input[type="number"]:focus,
+ion-input.custom-ion-input-number-2 input[type="number"]:focus {
   // border: none;
   outline: none;
 }
@@ -639,11 +653,11 @@ ion-input.custom-ion-input-number input[type="number"]:focus {
 // }
 
 ion-accordion-group.my-custum-accordion {
-  background: red;
 
   ion-accordion {
     margin: 0 auto 5px;
-    background: pink;
+    // background: pink;
+    border-radius: 12px;
 
     .ion-accordion-toggle-icon {
       // transition: 300ms transform cubic-bezier(0.25, 0.8, 0.5, 1);
@@ -655,28 +669,16 @@ ion-accordion-group.my-custum-accordion {
     }
   }
 
-
-  // ใช้ตอน accordion กำลังขยายตัว (1)
-  ion-accordion.accordion-expanding {
-    background: gold;
-  }
-
-  // ใช้ตอน accordion เปิดจนสุด (2)
-  ion-accordion.accordion-expanded {
-    background: salmon;
-  }
-
-  // ใช้ตอน accordion กำลังปิด (3)
-  ion-accordion.accordion-collapsing {
-    background: green;
-  }
-
   ion-accordion ion-item[slot="header"] {
     border-radius: 12px;
+    border-style: none;
+
+    // --background: red;
+    --ripple-color: transparent;
+    --background-hover: transparent;
 
     .accord-head {
       height: 100px;
-      background: pink;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -686,7 +688,6 @@ ion-accordion-group.my-custum-accordion {
     }
 
     .accord-head-top {
-      background: lightblue;
       color: var(--text-dark2);
       display: flex;
       width: 100%;
@@ -696,7 +697,6 @@ ion-accordion-group.my-custum-accordion {
       ion-label:first-child {
         font-size: 18px;
         font-weight: var(--text-medium);
-        background: gold;
         width: 65%;
       }
 
@@ -707,7 +707,7 @@ ion-accordion-group.my-custum-accordion {
     }
 
     .accord-head-bottom {
-      background: greenyellow;
+
       display: flex;
       width: 100%;
 
@@ -717,5 +717,210 @@ ion-accordion-group.my-custum-accordion {
         color: var(--primary-light);
       }
     }
+
+    .accord-head-toggle {
+      background: pink;
+    }
   }
+
+  ion-accordion ion-item[slot="header"]::part(native) {
+    border-style: none;
+  }
+
+  ion-accordion div[slot="content"] {
+    background: var(--white-color);
+
+    .accordion-content {
+      padding-top: 10px;
+
+      .accordion-detail {
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--light-gray-color3);
+
+        ion-label {
+          color: var(--text-dark2);
+          font-weight: var(--text-light);
+        }
+
+        ion-label.text-accor-left {
+          font-size: 15px;
+          width: 100%;
+        }
+
+        ion-label.text-accor-right {
+          font-size: 16px;
+          min-width: 30px;
+          text-align: center;
+        }
+      }
+    }
+
+    .accordion-btn {
+      padding: 15px 35px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      ion-button {
+        height: 40px;
+        --border-radius: 20px;
+        --background: var(--light-gray-color3);
+        color: var(--text-dark2);
+        --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+
+      ion-button:first-child {
+        width: 80px;
+
+        ion-icon {
+          color: var(--dark-gray-color);
+        }
+      }
+
+      ion-button:last-child {
+        width: 125px;
+        font-size: 16px;
+        font-weight: var(--text-light);
+      }
+    }
+  }
+
+  // ใช้ตอน accordion กำลังขยายตัว (1)
+  ion-accordion.accordion-expanding {
+
+    // background: gold;
+    ion-item[slot="header"] {
+      border-radius: 12px 12px 0 0;
+    }
+
+    .ion-accordion-toggle-icon {
+      color: var(--text-white);
+      background: var(--dark-color);
+    }
+  }
+
+  // ใช้ตอน accordion เปิดจนสุด (2)
+  ion-accordion.accordion-expanded {
+
+    // background: salmon;
+    ion-item[slot="header"] {
+      border-radius: 12px 12px 0 0;
+    }
+
+    .ion-accordion-toggle-icon {
+      color: var(--text-white);
+      background: var(--dark-color);
+    }
+  }
+
+  // ใช้ตอน accordion กำลังปิด (3)
+  ion-accordion.accordion-collapsing {
+    // background: green;
+  }
+
+
+
+}
+
+//===============================================
+//============== CSS ion-alert ==================
+//===============================================
+
+// ปุ่มยืนยันสีแดง
+.app-alert-button-confirm-red {
+  --backdrop-opacity: 0.7;
+  // background: #707070;
+  --max-width: 500px;
+  --height: 300px;
+  --border-radius: 16px;
+
+  .alert-wrapper {
+    // background: red;
+    // height: 70%;
+    width: 100%;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 10px;
+    .alert-head {
+      display: none;
+    }
+
+    .alert-message {
+      margin: 0;
+      padding: 0 10px;
+      font-size: 32px;
+      font-weight: var(--text-medium);
+      text-align: center;
+      color: var(--text-dark2);
+      background: gold;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .alert-button-group {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      // padding-bottom: 25px;
+      padding: 20px 10px 30px;
+      background: pink;
+
+      .alert-button.success {
+        margin: 0 auto;
+        background: var(--red-color);
+        border-radius: 23px;
+        min-width: 150px;
+        height: 45px;
+
+        span {
+          display: flex;
+          justify-content: center;
+          color: var(--text-white);
+          font-size: 18px;
+          text-align: center;
+        }
+      }
+
+      .alert-button.danger {
+        margin: 0 auto;
+        background: var(--light-gray-color3);
+        min-width: 150px;
+        height: 45px;
+        border-radius: 23px;
+
+        span {
+          display: flex;
+          justify-content: center;
+          color: var(--text-dark);
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+
+//===============================================
+//============== CSS ion-modal ==================
+//===============================================
+
+ion-modal.css-modal-optioned {
+  --width: fit-content;
+  --width: 680px;
+  --height: 85%;
+  --border-radius: 12px;
+  margin-top: 0px;
+  padding: 16px 0 10px;
+
+  .modal-wrapper {}
 }

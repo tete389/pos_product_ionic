@@ -1,0 +1,274 @@
+ion-toolbar {
+    --background: var(--white-color);
+    --min-height: 80px;
+    display: flex;
+    padding: 0 25px;
+    align-items: center;
+
+    ion-title {
+        font-size: 30px;
+        font-weight: var(--text-medium);
+
+        span {
+            font-weight: var(--text-regular);
+        }
+    }
+
+    ion-buttons ion-icon {
+        // background: red;
+        color: var(--brown-color);
+        font-size: 32px;
+        cursor: pointer;
+    }
+}
+
+ion-content {
+    --padding-end: 0;
+    --offset-bottom: auto !important;
+    --overflow: hidden;
+    overflow: hidden;
+
+    .box-1 {
+        padding: 10px 0;
+        overflow-x: scroll;
+        display: flex;
+        width: calc(100% - 60px);
+        margin-left: 30px;
+
+        // justify-content: center;
+        &::-webkit-scrollbar {
+            // display: none;
+            /* ความกว้าง scrollbar */
+            height: 10px;
+            // margin-left: 110px;
+        }
+
+        &::-webkit-scrollbar-track {
+            /* สีพื้นหลังแนว scrollbar */
+            background: var(--light-gray-color3);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            /* สีพื้นหลังตัว scrollbar*/
+            background: var(--dark-gray-color3);
+            border-radius: 16px;
+        }
+
+        .tabin {
+            width: fit-content;
+            // min-width: 428px;
+            display: flex;
+            align-items: center;
+            padding: 0 80px 0 30px;
+
+            .btn-selected-tab {
+                color: var(--text-white);
+                --background: var(--primary-color);
+                --border-style: none;
+            }
+
+            ion-button {
+                margin: 0 5px;
+                height: 45px;
+                min-width: 150px;
+                --border-radius: 25px;
+                font-size: 18px;
+                font-weight: var(--text-regular);
+                --background: var(--gray-color);
+                --color: var(--text-dark2);
+                --border-style: none;
+                --box-shadow: none;
+                // --box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px 0px;
+            }
+        }
+
+    }
+
+    .box-2 {
+        padding: 10px 68px 0 78px;
+
+        .box-2-sub {
+            margin-bottom: 20px;
+
+            ion-label.text-sub {
+                color: var(--text-dark2);
+                font-size: 14px;
+
+            }
+        }
+
+        .box-2-list {
+            overflow-y: scroll;
+            height: 55vh;
+            padding: 10px 20px 50px 0;
+
+            &::-webkit-scrollbar {
+                // display: none;
+                /* ความกว้าง scrollbar */
+                width: 10px;
+                // margin-left: 110px;
+            }
+
+            &::-webkit-scrollbar-track {
+                /* สีพื้นหลังแนว scrollbar */
+                background: var(--light-gray-color3);
+            }
+
+            &::-webkit-scrollbar-thumb {
+                /* สีพื้นหลังตัว scrollbar*/
+                background: var(--dark-gray-color3);
+                border-radius: 16px;
+            }
+
+        }
+
+        ion-card {
+            margin: 0;
+            border-radius: 0;
+
+            box-shadow: none;
+            border-radius: 1px solid var(--brown-color);
+
+            ion-card-content {
+                height: 75px;
+                display: flex;
+                align-items: center;
+                padding: 0 15px 0 10px;
+
+                .box-left {
+                    width: calc(100% - 75px);
+                    display: flex;
+                    align-items: center;
+
+                    .box-img {
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 6px;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .box-name{
+                        margin-left: 20px;
+                        ion-label{
+                            font-size: 20px;
+                            color: var(--text-mono-dark);
+                        }
+                    }
+                }
+
+                .box-right {
+                    padding: 4px 0 8px;
+                    width: 75px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    justify-content: space-between;
+
+                    .box-toggle {
+                        display: flex;
+
+                        ion-label {
+                            // width: 100%;
+                            font-size: 11px;
+                            font-weight: var(--text-light);
+                            color: var(--text-white);
+                        }
+
+                        ion-label.close {
+                            position: absolute;
+                            // background: gold;
+                            z-index: 2;
+                            right: 20px;
+                            top: 4px;
+                        }
+
+                        ion-label.open {
+                            position: absolute;
+                            // background: pink;
+                            z-index: 2;
+                            left: 35px;
+                            top: 4px;
+                        }
+
+                        ion-toggle.box-toggle-swicth {
+                            height: 22px;
+                            padding: 0;
+                            margin: 0 0;
+                            --handle-width: 22px;
+                            --handle-height: 15px;
+                            --handle-max-height: auto;
+                            --handle-spacing: 5px;
+                            overflow: visible;
+                            contain: none;
+
+                        }
+
+
+                        ion-toggle.box-toggle-swicth::part(track) {
+                            background: #B6C0CF;
+                            width: 75px;
+                            height: 30px;
+                            border-radius: 21px;
+                            // margin-right: 20px;
+                        }
+
+                        ion-toggle.box-toggle-swicth.toggle-checked::part(track) {
+                            background: var(--primary-color);
+
+                        }
+
+                        ion-toggle.box-toggle-swicth::part(handle) {
+                            background: #ffffff;
+                            border-radius: 50px;
+                            box-shadow: none;
+                            width: 22px;
+                            height: 22px;
+                            z-index: 99;
+                        }
+
+                        ion-toggle.box-toggle-swicth.toggle-checked::part(handle) {
+                            background: var(--white-color);
+                        }
+
+                        ion-button.box-toggle-btn-edit {
+                            width: 75px;
+                            height: 30px;
+                            --background: var(--gray-color);
+                            --border-radius: 16px;
+                            color: var(--text-dark2);
+                            font-size: 11px;
+                            font-weight: var(--text-light);
+                            margin-left: 20px;
+                        }
+
+                        ion-button.box-toggle-btn-cancel {
+                            width: 75px;
+                            height: 30px;
+                            --background: var(--red-color);
+                            --border-radius: 16px;
+                            color: var(--text-white);
+                            font-size: 11px;
+                            font-weight: var(--text-light);
+                            margin-left: 20px;
+                        }
+
+                        ion-button.box-toggle-btn-save {
+                            width: 75px;
+                            height: 30px;
+                            --background: var(--primary-light);
+                            --border-radius: 16px;
+                            color: var(--text-white);
+                            font-size: 11px;
+                            font-weight: var(--text-light);
+                            margin-left: 20px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

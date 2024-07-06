@@ -1,0 +1,398 @@
+ion-content {
+    --background: var(--light-gray-color3);
+
+    .box-main {
+        display: flex;
+        flex-direction: row;
+        padding: 8px 10px;
+
+        .box-left,
+        .box-right {
+            // width: 50%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .box-left {
+            background: var(--white-color);
+            margin-right: 20px;
+            padding: 15px 40px 15px 25px;
+            width: 50%;
+            // max-width: 535px;
+
+            ion-label.text-sub-date {
+                font-size: 12px;
+                color: var(--text-dark2);
+                font-weight: var(--text-medium);
+
+                span {
+                    font-weight: var(--text-light);
+                }
+            }
+
+            .box-left-content-1 {
+                margin-bottom: 15px;
+
+                ion-label {
+                    font-size: 20px;
+                    font-weight: var(--text-medium);
+                    color: var(--text-dark2);
+
+                    span {
+                        font-size: 15px;
+                        font-weight: var(--text-light);
+                        color: var(--text-sub-light-gray);
+                    }
+                }
+            }
+
+            .box-left-content-2 {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+
+                ion-button.btn-date {
+                    --background: var(--light-gray-color3);
+                    --color: var(--text-dark);
+                    --border-radius: 18px;
+                    height: 35px;
+                    width: 100px;
+                    min-width: 95px;
+                    margin-right: 2px;
+                    --padding-start: 0;
+                    --padding-end: 0;
+                    --padding-top: 0;
+                    --padding-bottom: 0;
+
+                    ion-label {
+                        font-size: 12px;
+                    }
+                }
+
+                ion-button.select-period-active {
+                    --background: var(--primary-color);
+                    --color: var(--text-white);
+                }
+
+                .popop {
+                    width: 100%;
+                    max-width: 100px;
+                    height: 35px;
+                    margin: 0;
+                    margin-right: 2px;
+                    display: flex;
+                    align-items: center;
+
+                    ion-select.css-pop-3 {
+                        width: 100%;
+                        height: 35px;
+                        // background: var(--gray-color);
+                        color: var(--text-dark2);
+                        font-size: 13px;
+                        --placeholder-color: var(--text-dark2);
+                        -webkit-text-fill-color: var(--text-dark2);
+                        --placeholder-opacity: 1 !important;
+                        --highlight-color-focused: none !important;
+                        --highlight-color-invalid: transparent !important;
+                        --highlight-color-valid: transparent !important;
+                        border-radius: 18px;
+
+
+                    }
+
+                    ion-select.css-pop-3::part(container) {
+                        background: var(--light-gray-color3);
+                        width: 100%;
+                        height: 35px;
+                        // padding: 0 5px;
+                        // margin-left: 20px;
+                        border-radius: 18px;
+                        text-align: center;
+                        // margin-right: -9px;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+
+                    }
+
+                    ion-select.css-pop-3::part(placeholder) {
+                        // background: greenyellow;
+                        color: var(--dark-gray-color);
+                    }
+
+                    ion-select.css-pop-3::part(text) {
+                        // background: red;
+                        width: 100%;
+                        padding: 0 25px 0 15px;
+                        color: var(--text-dark2);
+                        text-align: center;
+                    }
+
+                    ion-select.css-pop-3::part(icon) {
+                        height: 25px;
+                        width: 20px;
+                        color: var(--dark-gray-color);
+                        position: absolute;
+                        right: 0;
+                        padding: 0 5px;
+                    }
+
+                    ion-select.css-pop-3.select-expanded::part(icon) {
+                        // transform: rotate(0deg);
+                        // transform: rotate(180deg);
+                        color: var(--dark-gray-color);
+                    }
+
+                }
+
+                ion-button.btn-calendar {
+                    --background: var(--gray-color);
+                    --border-radius: 50%;
+                    height: 35px;
+                    width: 35px;
+                    margin-left: 10px;
+                    --padding-start: 0;
+                    --padding-end: 0;
+                    --padding-top: 0;
+                    --padding-bottom: 0;
+
+                    ion-icon {
+                        font-size: 14px;
+                        color: var(--dark-gray-color);
+                    }
+                }
+            }
+
+            .box-left-content-3 {
+                // border: 1px solid red;
+                margin-bottom: 15px;
+
+                .box-chart {
+                    max-width: 380px;
+                    margin: 10px auto;
+                    padding: 0;
+
+                    apx-chart {
+                        width: 100%;
+                        //     padding: 33px 0;
+                        //     color: var(--text-primary);
+                        //     border-bottom: 1px solid var(--light-gray-color);
+                        //     padding-bottom: 45px;
+                    }
+                }
+            }
+
+            .box-left-content-4 {
+
+                .box-progress {
+                    padding: 10px 20px;
+
+                    .box-progress-card {
+                        height: 50px;
+
+                        .box-progress-card-top {
+                            height: 25px;
+                            font-size: 12px;
+                            color: var(--text-dark2);
+                            font-weight: var(--text-light);
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .box-progress-card-top-right {
+                                ion-label:last-child {
+                                    font-weight: var(--text-regular);
+                                    margin-left: 25px;
+                                }
+                            }
+                        }
+
+                        .box-progress-card-bottom {
+                            height: 25px;
+                            display: flex;
+                            align-items: center;
+
+                            ion-progress-bar {
+                                height: 8px;
+                                border-radius: 10px;
+                                --background: var(--light-sky-blue);
+                                --progress-background: var(--primary-color);
+                            }
+
+                            ion-progress-bar::part(progress) {
+                                border-radius: 10px;
+                            }
+
+                            ion-progress-bar.po-1 {
+                                --progress-background: var(--progress-color-1);
+                            }
+
+                            ion-progress-bar.po-2 {
+                                --progress-background: var(--progress-color-2);
+                            }
+
+                            ion-progress-bar.po-3 {
+                                --progress-background: var(--progress-color-3);
+                            }
+
+                            ion-progress-bar.po-4 {
+                                --progress-background: var(--progress-color-4);
+                            }
+
+                            ion-progress-bar.po-5 {
+                                --progress-background: var(--progress-color-5);
+                            }
+
+                            ion-progress-bar.po-6 {
+                                --progress-background: var(--progress-color-6);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .box-right {
+            // width: 100%;
+            min-width: 50%;
+            // max-width: calc(100% - 535px);
+
+            ion-label.text-sub-box-right {
+                font-size: 12px;
+                color: var(--text-dark2);
+                font-weight: var(--text-medium);
+                padding-right: 14px;
+
+                span {
+                    font-weight: var(--text-light);
+                }
+            }
+
+            .box-right-content-1 {
+                background: var(--white-color);
+                padding: 12px 15px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                ion-button.btn-date {
+                    --background: var(--light-gray-color3);
+                    --color: var(--text-dark);
+                    --border-radius: 18px;
+                    height: 35px;
+                    width: 100px;
+                    min-width: 95px;
+                    margin-right: 2px;
+                    --padding-start: 0;
+                    --padding-end: 0;
+                    --padding-top: 0;
+                    --padding-bottom: 0;
+
+                    ion-label {
+                        font-size: 12px;
+                    }
+                }
+
+                ion-button.select-period-active {
+                    --background: var(--primary-color);
+                    --color: var(--text-white);
+                }
+
+                .border-or {
+                    background: var(--text-dark2);
+                    width: 1px;
+                    height: 19px;
+                    margin: 0 7px;
+                }
+            }
+
+            .box-right-content-2 {
+
+                ion-grid.box-table {
+                    width: 100%;
+                    // max-width: 570px;
+                    font-size: 13px;
+                    padding: 0;
+            
+                    margin: 0 0 20px;
+                    .header {
+                        background: var(--light-sky-blue);
+                        font-size: 13px;
+                        font-weight: var(--text-light);
+
+                        ion-col {
+                            margin: 0;
+
+                            .col-head-1 {
+                                width: 60px;
+                            }
+                            .col-head-4,
+                            .col-head-5 {
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    .data-row {
+                        // padding-left: 30px;
+                        // padding-right: 15px;
+                        min-height: 65px;
+                        display: flex;
+                        align-items: center;
+                        border-radius: 5px;
+                        background: var(--white-color);
+                        ion-col {
+                            // padding: 0;
+                            // margin: 0;
+
+                            .col-box-1 {
+                                display: flex;
+                                align-items: center;
+                                width: 60px;
+                                padding-left: 7px;
+                                .box-color {
+                                    width: 15px;
+                                    height: 15px;
+                                    background: var(--primary-color);
+                                    border-radius: 50%;
+                                }
+
+                                .box-num {
+                                    width: calc(100% - 15px);
+                                } 
+                            }
+
+                            .col-box-2 {
+                                display: flex;
+                                align-items: center;
+
+                                .box-img {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 12px;
+                                    overflow: hidden;
+
+                                    img {
+                                        width: 100%;
+                                    }
+                                }
+
+                                ion-label.box-name {
+                                    width: calc(100% - 50px);
+                                }
+                            }
+                            .col-box-4,
+                            .col-box-5 {
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    .data-row:not(:last-child) {
+                       margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
