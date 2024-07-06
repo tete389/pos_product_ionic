@@ -25,22 +25,34 @@
       <div
         class="w-full border-b border-[--dark-gray-color3] flex flex-row h-[82px]"
       >
-        <div class="top-scroll basis-4/5 flex flex-row">
-          <ion-segment
+        <div
+          class="basis-4/5 flex flex-row ion-padding h-[81px] justify-between"
+        >
+          <div class="flex flex-row items-center">
+            <ion-label class="text-3xl"
+              >สั่งกลับบ้าน <span class="font-thin"> ( 6 order)</span>
+            </ion-label>
+          </div>
+          <ion-button class="button-basket-confirm w-[125px] p-0 m-0"
+            ><ion-icon slot="start" class="" name="add"></ion-icon>
+            เพิ่ม order
+          </ion-button>
+
+          <!-- <ion-segment
             scrollable="true"
-            class="scrollerBar mx-[2px] py-3 h-[81px] "
+            class="scrollerBar mx-[2px] py-1"
             [value]="select_zone"
             (ionChange)="select_zone_event($event)"
             mode="ios"
           >
             <ion-segment-button
               [value]="i"
-              class="mx-[2px] shadow-md h-[51px] border"
+              class="mx-[2px] shadow-lg"
               *ngFor="let zone of zone_pos; let i = index"
             >
               <ion-label>{{ zone }}</ion-label>
             </ion-segment-button>
-          </ion-segment>
+          </ion-segment> -->
         </div>
         <div class="basis-1/5">
           <div class="flex flex-row mx-[2px] h-full">
@@ -85,6 +97,28 @@
       </div>
       <!-- ////////////// body ////////////// -->
       <div class="px-2 w-full h-[93vh] overflow-scroll scrollerBar">
+        <div
+          class="grid grid-cols-2  xl:grid-cols-3 gap-1 pt-5 mx-auto max-w-[768px]"
+        >
+          <ng-container *ngFor="let take of take_away_pos; let j = index">
+            <ion-card class="ion-padding">
+              <!-- <ion-card-header>
+                <ion-card-title>Card Title</ion-card-title>
+                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              </ion-card-header> -->
+
+              <ion-card-content>
+                Here's a small text description for the card content. Nothing
+                more, nothing less.
+              </ion-card-content>
+              <div class="border"></div>
+              <ion-button fill="clear">Action 1</ion-button>
+            </ion-card>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- <div class="px-2 w-full h-[93vh] overflow-scroll scrollerBar">
         <swiper-container
           #swiper
           (swiperreachbeginning)="swiperReady()"
@@ -130,7 +164,7 @@
             </div>
           </swiper-slide>
         </swiper-container>
-      </div>
+      </div> -->
     </div>
     <!-- ////////////// right side ////////////// -->
     <div class="min-w-[27rem] border-l-2 h-[100vh]">
@@ -176,9 +210,7 @@
           </div>
         </div>
         <div class="flex flex-row">
-          <ion-button
-            class="button-basket-confirm w-[125px]"
-            (click)="openModal()"
+          <ion-button class="button-basket-confirm w-[125px]"
             ><ion-icon slot="start" class="" name="add"></ion-icon>
             เพิ่มอาหาร
           </ion-button>
@@ -187,10 +219,12 @@
           >
           <ion-button
             class="button-basket-confirm w-[120px]"
-            id="open-modal-member"
+            id="open-modal-member-take-away"
             ><ion-icon slot="start" name="people"></ion-icon> สมาชิก</ion-button
           >
-          <ion-button id="popover-button" class="button-basket-confirm"
+          <ion-button
+            id="popover-button-take-away"
+            class="button-basket-confirm"
             ><ion-icon name="reorder-three"></ion-icon
           ></ion-button>
         </div>
@@ -236,7 +270,7 @@
   </div>
 </ion-content>
 
-<ion-popover trigger="popover-button" [dismissOnSelect]="true">
+<ion-popover trigger="popover-button-take-away" [dismissOnSelect]="true">
   <ng-template>
     <ion-content [scrollY]="false" class="">
       <ion-list lines="none" class="">
@@ -278,12 +312,18 @@
   </ng-template>
 </ion-popover>
 
-<ion-modal trigger="open-modal-member" (willDismiss)="onWillDismiss($event)">
+<ion-modal
+  trigger="open-modal-member-take-away"
+  (willDismiss)="onWillDismiss($event)"
+>
   <ng-template>
     <ion-content class="ion-padding" [scrollY]="false">
       <div class="flex flex-col w-full h-full">
         <div class="ion-padding border-b border-[--dark-gray-color3]">
-          <ion-label class="text-3xl">{{'สมาชิก'}} <span class="font-extralight">(Member ship)</span></ion-label>
+          <ion-label class="text-3xl"
+            >{{'สมาชิก'}}
+            <span class="font-extralight">(Member ship)</span></ion-label
+          >
         </div>
         <div class="h-[78%]">
           <ion-searchbar
@@ -307,12 +347,16 @@
                   <span class="text-lg font-light">0987654321</span>
                 </div>
                 <div class="flex flex-col text-center">
-                  <ion-label class="text-2xl"> <span class="text-lg font-light">Platinum</span></ion-label>
+                  <ion-label class="text-2xl">
+                    <span class="text-lg font-light">Platinum</span></ion-label
+                  >
                   <span class="text-lg font-light">0987654321</span>
                 </div>
               </div>
               <ion-checkbox class="ion-checkbox-member pl-5">
-                <ion-label class="text-lg text-[--primary-color]">P 2000</ion-label>
+                <ion-label class="text-lg text-[--primary-color]"
+                  >P 2000</ion-label
+                >
               </ion-checkbox>
             </ion-item>
             <!-- <ion-item [button]="true">

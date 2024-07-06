@@ -22,5 +22,9 @@ export const routes: Routes = [
     path: 'menu-managment',
     loadComponent: () => import('./menu-managment/menu-managment.page').then( m => m.MenuManagmentPage)
   },
+  {
+    path: 'pos-take-away',
+    loadComponent: () => import('./pos-take-away/pos-take-away.page').then( m => m.PosTakeAwayPage)
+  },
 
 ];

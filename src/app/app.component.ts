@@ -71,7 +71,8 @@ register();
 export class AppComponent {
   public appPages = [
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
-    { title: 'Pos', url: '/pos', icon: 'paper-plane' },
+    { title: 'Pos', url: '/pos', icon: 'apps' },
+    { title: 'Pos-กลับบ้าน', url: '/pos-take-away', icon: 'bag-handle' },
     { title: 'จัดการเมนู', url: '/menu-managment', icon: 'fast-food' },
     // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/archived', icon: 'archive' },

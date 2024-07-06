@@ -56,10 +56,7 @@ ion-backdrop {
   --color: #ffffff;
   --color-checked: #fff;
   --border-radius: 50px;
-  // padding-left: 10px;
-  // padding-right: 10px;
-  // padding-top: 5px;
-  // padding-bottom: 5px;
+
 }
 
 .segment-button-basket-confirm {
@@ -67,9 +64,7 @@ ion-backdrop {
   --color: #000000;
   --color-checked: #fff;
   --border-radius: 50px;
-  // padding-left: 10px;
-  // padding-right: 10px;
-  // padding-top: 10px;
+ 
 }
 
 .c22 {
@@ -77,34 +72,26 @@ ion-backdrop {
 }
 
 .c11 {
-  // height: 40px;
   --border-radius: 16px 0px 0px 16px;
 }
 
 .search-button {
-  // margin-left: 20px;
   --border-radius: 30px;
 }
 
 .radius-button-x {
-  // margin-left: 20px;
   --border-radius: 50px;
 }
 
 .icon-button {
-  // margin-left: 20px;
   --background: #ffffff;
 }
 
 .top-scroll ion-segment {
-  // --background: #e7ebf1;
   --background: #ffffff;
   height: 40px;
 }
 
-// .top-scroll ion-segment-button {
-
-// }
 
 .badge-size {
   // --padding: 10px;
@@ -120,40 +107,29 @@ ion-backdrop {
 }
 
 .top-scroll ion-segment-button {
-  --indicator-color: #212121;
-  --background: #e7ebf1;
-  --color: #000000;
-  --color-checked: #fff;
+  --indicator-color: var(--primary-color);
+  --indicator-transition: var(--primary-color);
+  --background: var(--gray-color);
+  --color: var(--dark-color);
+  --color-checked: var(--white-color);
   --border-radius: 20px;
-  --indicator-transition: var(--color);
   // --indicator-transform:var(--color);
   padding-left: 20px;
   padding-right: 20px;
 }
 
-ion-col {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // text-align: center;
 
-  // background-color: #135d54;
-  // border: solid 1px #fff;
-  // color: #fff;
+ion-popover {
+  --width: 280px;
+  
 }
 
+.popverSelect {
+  --background: var(--primary-color);
+  --color: var(--white-color);
+}
 
 .item-search {
   --inner-padding-bottom: 0px;
   --inner-padding-top: 0px
 }
-
-// #custom-search input.searchbar-input.sc-ion-searchbar-ios {
-
-//   padding-top: 0!important;
-
-//   padding-bottom: 0!important;
-
-// }
-
-// padding-left: calc(50% + 0px);

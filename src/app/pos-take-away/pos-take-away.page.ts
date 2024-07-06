@@ -28,15 +28,15 @@ import {
   IonSelect,
   IonPopover,
   IonModal,
-  IonSearchbar
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 import Swiper from 'swiper';
-import { AddBasketComponent } from './add-basket/add-basket.component';
+// import { AddBasketComponent } from './add-basket/add-basket.component';
 
 @Component({
-  selector: 'app-pos',
-  templateUrl: './pos.page.html',
-  styleUrls: ['./pos.page.scss'],
+  selector: 'app-pos-take-away',
+  templateUrl: './pos-take-away.page.html',
+  styleUrls: ['./pos-take-away.page.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -60,10 +60,10 @@ import { AddBasketComponent } from './add-basket/add-basket.component';
     IonSelect,
     IonPopover,
     IonModal,
-    IonSearchbar
+    IonSearchbar,
   ],
 })
-export class PosPage implements OnInit {
+export class PosTakeAwayPage implements OnInit {
   swiperModules = [IonicSlides];
   @ViewChild('swiper') swiperRef?: ElementRef | undefined;
   swiper?: Swiper;
@@ -94,66 +94,17 @@ export class PosPage implements OnInit {
     'A15',
   ];
 
-  table_zone_pos: any[] = [
-    {
-      zone_id: 0,
-      zone_name: 'Zone1',
-      tables: [
-        'A1',
-        'A2',
-        'A3',
-        'A4',
-        'A5',
-        'A6',
-        'A7',
-        'A8',
-        'A9',
-        'A10',
-        'A11',
-        'A12',
-        'A13',
-        'A14',
-        'A15',
-        'A16',
-        'A17',
-        'A18',
-        'A19',
-        'A20',
-        'A9',
-        'A10',
-        'A11',
-        'A12',
-        'A13',
-        'A14',
-        'A15',
-        'A16',
-        'A17',
-        'A18',
-        'A19',
-        'A20',
-      ],
-    },
-    {
-      zone_id: 1,
-      zone_name: 'Zone2',
-      tables: [
-        'B1',
-        'B2',
-        'B3',
-        'B4',
-        'B5',
-        'B6',
-        'B7',
-        'B8',
-        'B9',
-        'B10',
-        'AB1',
-        'B12',
-        'B13',
-        'B14',
-        'B15',
-      ],
-    },
+  take_away_pos: any[] = [
+    '0125',
+    '0124',
+    '0123',
+    '0122',
+    '0121',
+    '0120',
+    '0119',
+    '0118',
+    '0117',
+    
   ];
 
   ngOnInit() {}
@@ -179,19 +130,19 @@ export class PosPage implements OnInit {
     this.is_charge_col = col;
   }
 
-  public async openModal() {
-    const modal = await this.modalCtrl.create({
-      component: AddBasketComponent,
-      cssClass: 'fullscreen',
-      mode: 'ios',
-      // showBackdrop: false
-    });
-    await modal.present();
-    const { data, role } = await modal.onWillDismiss();
-    if (role === 'confirm') {
-      // this.message = `Hello, ${data}!`;
-    }
-  }
+  // public async openModal() {
+  //   const modal = await this.modalCtrl.create({
+  //     component: AddBasketComponent,
+  //     cssClass: 'fullscreen',
+  //     mode: 'ios',
+  //     // showBackdrop: false
+  //   });
+  //   await modal.present();
+  //   const { data, role } = await modal.onWillDismiss();
+  //   if (role === 'confirm') {
+  //     // this.message = `Hello, ${data}!`;
+  //   }
+  // }
 
   public select_zone_event(event: any) {
     this.swiper?.enable();

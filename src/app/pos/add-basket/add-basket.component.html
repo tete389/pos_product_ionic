@@ -11,9 +11,11 @@
         [slidesPerView]="1"
       >
         <swiper-slide>
-          <div class="top-scroll w-full border-b border-[--dark-gray-color] pb-[16px]">
-            <div class="flex flex-row w-full  chevron-arrow">
-              <ion-button
+          <div
+            class="top-scroll w-full border-b border-[--dark-gray-color3] pb-[16px]"
+          >
+            <div class="flex flex-row w-full chevron-arrow popover">
+              <!-- <ion-button
                 class="c11"
                 (click)="select_group_left(select_group_page)"
                 fill="clear"
@@ -24,7 +26,12 @@
                   slot="icon-only"
                   name="chevron-back-outline"
                 ></ion-icon>
-              </ion-button>
+              </ion-button> -->
+              <ion-button id="popover-button2"  size="small"  class="button-basket-confirm "
+                ><ion-icon   name="reorder-three"></ion-icon
+              ></ion-button>
+             
+
               <ion-segment
                 scrollable="true"
                 class="scrollerBar mx-[2px]"
@@ -43,7 +50,7 @@
                   <ion-label>{{ group.pg_name }}</ion-label>
                 </ion-segment-button>
               </ion-segment>
-              <ion-button
+              <!-- <ion-button
                 class="c22"
                 (click)="select_group_right(select_group_page)"
                 fill="clear"
@@ -54,7 +61,7 @@
                   slot="icon-only"
                   name="chevron-forward-outline"
                 ></ion-icon>
-              </ion-button>
+              </ion-button> -->
 
               <div class="ml-3">
                 <ion-button
@@ -74,7 +81,9 @@
           </div>
         </swiper-slide>
         <swiper-slide>
-          <div class="flex flex-row w-full border-b border-[--dark-gray-color] pb-[16px]">
+          <div
+            class="flex flex-row w-full border-b border-[--dark-gray-color] pb-[16px]"
+          >
             <ng-container *ngIf="open_search">
               <ion-button
                 class="search-button h-10 pl-0 my-0"
@@ -102,7 +111,7 @@
                   name="search"
                 ></ion-icon> </ion-button
             ></ng-container> -->
-            <div class="w-full ">
+            <div class="w-full">
               <ion-searchbar
                 class="min-h-[40px] py-0"
                 animated="true"
@@ -121,7 +130,7 @@
         (swiperslidechange)="swiperSlideCharge()"
       >
         <swiper-slide
-          class="grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 gap-1 overflow-scroll h-[88vh] scrollerBar"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 gap-1 overflow-scroll h-[88vh] scrollerBar"
           *ngFor="let group of prods_group; let j = index"
         >
           <div *ngFor="let prod of group.prods; let i = index" class="relative">
@@ -135,7 +144,7 @@
               (click)="add_basket_group_select(prod)"
               class="m-1 mt-3 shadow"
             >
-              <ion-card class="m-1 ">
+              <ion-card class="m-1">
                 <img
                   alt="Silhouette of mountains"
                   src="assets/image/img-product.png"
@@ -244,3 +253,38 @@
     </div>
   </div>
 </ion-content>
+
+
+
+
+<ion-popover trigger="popover-button2" [dismissOnSelect]="true" class="">
+  <ng-template>
+    <ion-content [scrollY]="false" class="">
+      <ion-list lines="none" class="">
+        <div class="h-4"></div>
+        <ion-item
+          [button]="true"
+          class="text-center w-full"
+          [detail]="false"
+          (click)="select_group_popver(0)"
+          [ngClass]="select_group_page == 0 ? 'popverSelect' : '' "
+          ><ion-label class="p-2 text-center">
+            {{ "ทั้งหมด" }}
+          </ion-label></ion-item>
+        <ng-container *ngFor="let group of prods_group_temp; let i = index">
+          <ion-item
+          [button]="true"
+          class="text-center w-full"
+          [detail]="false"
+          (click)="select_group_popver(i+1)"
+          [ngClass]="select_group_page == i+1 ? 'popverSelect' : '' "
+          ><ion-label class="p-2 text-center">
+            {{ group.pg_name }}
+          </ion-label></ion-item
+        >
+        </ng-container>
+        <div class="h-4"></div>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

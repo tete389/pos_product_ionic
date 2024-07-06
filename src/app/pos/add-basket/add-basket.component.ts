@@ -36,6 +36,7 @@ import {
   IonGrid,
   IonCol,
   IonRow,
+  IonPopover
 } from '@ionic/angular/standalone';
 // import { OverlayEventDetail } from '@ionic/core/components';
 import { ModalProdDetailComponent } from '../modal-prod-detail/modal-prod-detail.component';
@@ -69,6 +70,7 @@ import Swiper from 'swiper';
     IonGrid,
     IonCol,
     IonRow,
+    IonPopover
   ],
 })
 export class AddBasketComponent implements OnInit, OnDestroy {
@@ -150,7 +152,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     const index = this.swiperRef?.nativeElement.swiper.activeIndex;
     if (this.select_group_page != index) {
       this.select_group_page = index;
-      this.select_group(Number(index));
+      // this.select_group(Number(index));
     }
   }
 
@@ -205,27 +207,34 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     }
   }
 
-  public select_group(pg_id: number) {
-    this.prods = this.prods_temp.filter((e: { pg_id: number }) => {
-      return e.pg_id == pg_id || pg_id == 0;
-    });
-  }
+  // public select_group(pg_id: number) {
+  //   this.prods = this.prods_temp.filter((e: { pg_id: number }) => {
+  //     return e.pg_id == pg_id || pg_id == 0;
+  //   });
+  // }
 
   public select_group_even(event: any) {
     this.select_group_page = event.detail.value;
-    this.select_group(Number(event.detail.value));
+    // this.select_group(Number(event.detail.value));
     this.swiper?.slideTo(event.detail.value);
   }
 
+  public select_group_popver(index: any) {
+    // this.select_group_page = event.detail.value;
+    // this.select_group(Number(event.detail.value));
+    this.swiper?.slideTo(index);
+  }
+
+
   public select_group_left(page: number) {
     page > 0 ? (this.select_group_page -= 1) : '';
-    this.select_group(this.select_group_page);
+    // this.select_group(this.select_group_page);
     this.swiper?.slidePrev();
   }
 
   public select_group_right(page: number) {
     page < this.prods_group.length ? (this.select_group_page += 1) : '';
-    this.select_group(this.select_group_page);
+    // this.select_group(this.select_group_page);
     this.swiper?.slideNext();
   }
 
