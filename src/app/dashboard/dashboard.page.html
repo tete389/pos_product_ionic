@@ -1,34 +1,282 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dashboard</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dashboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
- <div class="grid grid-cols-3 gap-4">
-<ion-card class="card-top-one">
-  <p>1</p>
-</ion-card>
-<ion-card class="card-top-two">
-  <p>2</p>
-</ion-card>
-<ion-card  class="card-top-tree">
-  <p>3</p>
-</ion-card>
-<ion-card class="card-buttom-one">
-  <p>4</p>
-</ion-card>
-<ion-card class="card-buttom-two">
-  <p>5</p>
-</ion-card>
-<ion-card class="card-buttom-tree">
-  <p>6</p>
-</ion-card>
- </div>
+
+    <div class="flex flex-row flex-wrap w-full">
+        <div class="report-top-left basis-full md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <ion-card class="card-top-left">
+                <div class="header-card-top-one">
+                    <p class="sale-amount-th">ยอดขายวันนี้</p>
+                    <p class="sale-amount-en">(Total Sales Amount)</p>
+                </div>
+                <div class="total-number">
+                    <p class="p-total-number">6,634.00</p>
+                    <p class="p-bath">บาท</p>
+                </div>
+                <div class="cash-money-length">
+
+                    <div class="length-text-top">
+                        <div>เงินโอน</div>
+                        <div>4,643.80</div>
+                        <ion-progress-bar value="0.7"></ion-progress-bar>
+                        <div>70.0%</div>
+                    </div>
+
+
+                    <div class="length-text-bottom">
+                        <div>เงินสด</div>
+                        <div>1,990.20</div>
+                        <ion-progress-bar value="0.3"></ion-progress-bar>
+                        <div>30.0%</div>
+
+                    </div>
+                </div>
+                <div class="report-all">
+                    <div class="sales">
+                        <p class="sales-text">ยอดขายก่อนส่วนลด และ ภาษี</p>
+                        <p class="sales-number">7,200.00</p>
+                    </div>
+                    <div class="discount">
+                        <p class="discount-text"> ส่วนลด รวม</p>
+                        <p class="discount-number">-1000.00</p>
+
+                    </div>
+                    <div class="after-deducting">
+                        <p class="after-deducting-text"> ยอดขายหลังหักส่วนลด</p>
+                        <p class="after-deducting-number">6,200.00</p>
+
+                    </div>
+                    <div class="vat">
+                        <p class="vat-text"> VAT 7%</p>
+                        <p class="vat-number">+434.00</p>
+
+                    </div>
+                    <div class="vat-all">
+                        <p class="vat-all-text"> ยอดขายหลังส่วนลด รวม Vat</p>
+                        <p class="vat-all-number">6,634.00</p>
+                    </div>
+                </div>
+            </ion-card>
+        </div>
+        <div class="report-top-mid basis-full  md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <div class="card-top-mid">
+                <ion-grid class="grid-custom">
+                    <ion-row class="row-custom">
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+                                <div class="card-cus-in01">
+                                    <p class="top">ยังไม่เช็กบิล</p>
+                                    <p class="mid">10<span>/20</span> </p>
+                                    <p class="button"> <span>THB</span>฿ 5,600.00</p>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+                                <div class="card-cus-in02">
+                                    <p class="top02">เช็กบิลแล้ว</p>
+                                    <p class="mid02">32</p>
+                                    <p class="button02">฿ 6,634.00</p>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus pb-5">
+                                <div class="card-cus-in03">
+                                    <p class="top03">เฉลี่ยบิล</p>
+                                    <p class="mid03">฿ 207</p>
+
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+
+                                <div class="card-cus-in04">
+                                    <p class="top04">ทานที่ร้าน</p>
+                                    <p class="mid04">20</p>
+                                    <p class="mid041">฿ 4,634</p>
+                                    <p class="button04">฿ 231 /ใบเสร็จ</p>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+                                <div class="card-cus-in04">
+                                    <p class="top04">สั่งกลับบ้าน</p>
+                                    <p class="mid04">12</p>
+                                    <p class="mid041">฿ 2,000</p>
+                                    <p class="button04">฿ 166 /ใบเสร็จ</p>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+                                <div class="card-cus-in05">
+                                    <div class="flex-05-top">
+                                        <p class="left-top">35</p>
+                                        <p class="right-top">การสั่ง</p>
+                                    </div>
+                                    <div class="flex-05-bt">
+                                        <p class="left-bt">144</p>
+                                        <p class="right-bt">รายการ</p>
+                                    </div>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+                                <div class="card-cus-in06">
+                                    <p class="top06">ยกเลิกบิล</p>
+                                    <p class="mid06">2</p>
+                                    <p class="button06">฿ 1,200</p>
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+
+                                <div class="card-cus-in07">
+                                    <p class="top07">Time spent</p>
+                                    <p class="mid07">01.43 h</p>
+
+                                </div>
+                            </ion-card></ion-col>
+                        <ion-col class="col-custom" size="4"><ion-card class="card-cus">
+
+                                <div class="card-cus-in08">
+                                    <p class="top08">yesterday</p>
+                                    <p class="mid08">01.35 h</p>
+
+                                </div>
+                            </ion-card></ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+
+        <div class="report-top-right basis-full  md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <ion-card class="card-top-right">
+                <div class="flex-header">
+                    <div class="header-top-selling">
+                        <p class="en-top">Top Selling</p>
+                        <p class="th-top">เมนูขายดี</p>
+                    </div>
+                    <div class="drop-down">
+                        <ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="Today">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select>
+                    </div>
+                </div>
+                <div class="title">
+                    <p class="title-left">การแสดงผล:</p>
+                    <p class="title-end">จำนวน</p>
+                </div>
+                <div class="container w-full">
+                    <table class=" w-full">
+                        <thead style="background: #EAF2F6;">
+                            <tr>
+                                <th>Item</th>
+                                <th>category</th>
+                                <th>QTY</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-cus01" *ngFor="let item of items; let i = index">
+                            <tr class="py-2">
+                                <td>{{ i + 1 }}. Food name</td>
+                                <td>เมนูทอด</td>
+                                <td>34</td>
+                                <td>฿1,400</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </ion-card>
+        </div>
+
+        <div class="report-button-left basis-full  md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <!-- <ion-button (click)="update()">Update Chart</ion-button > -->
+            <ion-card class="card-button-left">
+                <div class="flex-title">
+                    <div class="flex-in">
+                        <div class="title">ยอดขายแยกตามวัน</div>
+                        <div class="title02">10 Jan, 2024 -17 Jan, 2024</div>
+                    </div>
+                    <div class="title-dropdown"><ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="This week">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select></div>
+                </div>
+                <div class="apexchart-button-left">
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                        [title]="chartOptions.title" [colors]="chartOptions.colors"
+                        [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                        [yaxis]="chartOptions.yaxis"></apx-chart>
+                </div>
+
+
+            </ion-card>
+        </div>
+        <div class="report-button-mid basis-full  md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <ion-card class="card-button-mid">
+                <div class="flex-title02">
+                    <div class="flex-in02">
+                        <div class="title">ยอดขายตามช่วงเวลา</div>
+                        <div class="title02">17 Jan, 2024</div>
+                    </div>
+                    <div class="title-dropdown02"><ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                        placeholder="Today">
+                        <ion-select-option value="item1">Today</ion-select-option>
+                        <ion-select-option value="item2">Yesterday</ion-select-option>
+                        <ion-select-option value="item3">This week</ion-select-option>
+                        <ion-select-option value="item4">This month</ion-select-option>
+                        <ion-select-option value="item5">Last monthh</ion-select-option>
+                        <ion-select-option value="item6">This Year</ion-select-option>
+                    </ion-select></div>
+                </div>
+                <div class="apexchart-button-left02">
+                    <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart"
+                        [xaxis]="chartOptions2.xaxis" [title]="chartOptions2.title" [colors]="chartOptions2.colors"
+                        [dataLabels]="chartOptions2.dataLabels" [plotOptions]="chartOptions2.plotOptions"
+                        [yaxis]="chartOptions2.yaxis"></apx-chart>
+                </div>
+            </ion-card>
+        </div>
+
+        <div class="report-button-right basis-full  md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/4">
+            <ion-card class="header-top-right">
+                <div class="flex-header-tr">
+                    <p class="inventory">INVENTORY</p>
+                    <div class="item"> <ion-select class="always-flip" interface="popover" toggleIcon="caret-down-sharp"
+                            placeholder="ALL ITEM">
+                            <ion-select-option value="item1">Today</ion-select-option>
+                            <ion-select-option value="item2">Yesterday</ion-select-option>
+                            <ion-select-option value="item3">This week</ion-select-option>
+                            <ion-select-option value="item4">This month</ion-select-option>
+                            <ion-select-option value="item5">Last monthh</ion-select-option>
+                            <ion-select-option value="item6">This Year</ion-select-option>
+                        </ion-select></div>
+                </div>
+            </ion-card>
+            <div class="card-button-right">
+                <ion-card class="card-inventory" *ngFor="let item of items02; let i = index">
+                    <div class="flex-in-inventory">
+                        <div class="left">
+                            <div class="img-left"><ion-img
+                                    src="https://www.bakerpedia.com/wp-content/uploads/2020/03/Egg_baking-ingredients-e1584136402126.jpg"
+                                    alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img></div>
+                            <div class="title">
+                                <p class="title-en">ไข่ไก่ {{ i + 1 }}</p>
+                                <p class="title-th">egg</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <p class="number">40 / 200</p>
+                            <div class="score">
+                                <ion-progress-bar value="0.2"></ion-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+                
+            </div>
+        </div>
+    </div>
 </ion-content>
- 

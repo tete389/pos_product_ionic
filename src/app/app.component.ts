@@ -1,29 +1,119 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { register } from 'swiper/element/bundle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
-
+import {
+  IonApp,
+  IonSplitPane,
+  IonMenu,
+  IonContent,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonMenuToggle,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle, IonButton } from '@ionic/angular/standalone';
+// import { addIcons } from 'ionicons';
+// import {
+//   mailOutline,
+//   mailSharp,
+//   paperPlaneOutline,
+//   paperPlaneSharp,
+//   heartOutline,
+//   heartSharp,
+//   archiveOutline,
+//   archiveSharp,
+//   trashOutline,
+//   trashSharp,
+//   warningOutline,
+//   warningSharp,
+//   bookmarkOutline,
+//   bookmarkSharp,
+//   addOutline,
+//   removeOutline,
+// } from 'ionicons/icons';
+register();
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonToolbar, IonHeader, RouterLink, RouterLinkActive, CommonModule, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet],
+  imports: [IonButton, 
+    IonButtons,
+    IonMenuButton,
+    IonTitle,
+    IonToolbar,
+    IonHeader,
+    RouterLink,
+    RouterLinkActive,
+    CommonModule,
+    IonApp,
+    IonSplitPane,
+    IonMenu,
+    IonContent,
+    IonList,
+    IonListHeader,
+    IonNote,
+    IonMenuToggle,
+    IonItem,
+    IonIcon,
+    IonLabel,
+    IonRouterOutlet,
+  ],
 })
 export class AppComponent {
   public appPages = [
-    { title: '', url: '/dashboard', icon: 'aperture' },
-    { title: '', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: '', url: '/folder/favorites', icon: 'heart' },
-    { title: '', url: '/folder/archived', icon: 'archive' },
-    { title: '', url: '/folder/trash', icon: 'trash' },
-    { title: '', url: '/folder/spam', icon: 'warning' },
-
+    { title: 'Dashboard', url: '/dashboard', icon: 'home' },
+    { title: 'Pos', url: '/pos', icon: 'apps' },
+    { title: 'Pos-กลับบ้าน', url: '/pos-take-away', icon: 'bag-handle' },
+    { title: 'จัดการเมนู', url: '/menu-managment', icon: 'fast-food' },
+    { title: 'โต๊ะและโซน', url: '/table-zone', icon: 'paper-plane' },
+    { title: 'เมนูขายดี', url: '/best-sale-menu', icon: 'bar-chart' },
+    { title: 'ส่วนลดและภาษี', url: '/discounts-taxe', icon: 'bar-chart' },
+    // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
+    // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
+  screen_width: number = 0;
+
   constructor() {
-    addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+    this.screen_width = window.screen.width;
+    // addIcons({
+    //   mailOutline,
+    //   mailSharp,
+    //   paperPlaneOutline,
+    //   paperPlaneSharp,
+    //   heartOutline,
+    //   heartSharp,
+    //   archiveOutline,
+    //   archiveSharp,
+    //   trashOutline,
+    //   trashSharp,
+    //   warningOutline,
+    //   warningSharp,
+    //   bookmarkOutline,
+    //   bookmarkSharp,
+    //   addOutline,
+    //   removeOutline,
+    // });
+  }
+
+  menuTogle: boolean = false
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screen_width = event.target.innerWidth;
+  }
+
+  togle(){
+    this.menuTogle = !this.menuTogle
   }
 }

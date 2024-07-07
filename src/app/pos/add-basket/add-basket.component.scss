@@ -1,0 +1,135 @@
+.scrollerBar {
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+ion-content {
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+ion-backdrop {
+  background: var(--ion-color-dark);
+  opacity: 0.3;
+}
+
+.chevron-arrow ion-button {
+  // --width: 20px;
+  // --padding: 0px;
+  // --margin: 0px;
+  // width: 25px;
+  padding: 0px;
+  margin: 0px;
+  --background: #e7ebf1;
+  // --border-radius: 20px;
+}
+
+.chevron-arrow ion-icon {
+  color: #000;
+}
+
+.button-basket-cancel {
+  --border-radius: 35px;
+  --background: var(--danger-color);
+  // width: 120px;
+  // margin-top: 0px;
+  // padding: 0px;
+  // --padding-start: 35px;
+  // --padding-end: 35px;
+}
+
+.button-basket-confirm {
+  --border-radius: 35px;
+  // width: 180px;
+  // margin-top: 0px;
+  // padding: 0px;
+  // --padding-start: 65px;
+  // --padding-end: 65px;
+}
+
+.segment-button-basket-cancel {
+  --background: #ee3f3f;
+  --color: #ffffff;
+  --color-checked: #fff;
+  --border-radius: 50px;
+
+}
+
+.segment-button-basket-confirm {
+  --background: #e7ebf1;
+  --color: #000000;
+  --color-checked: #fff;
+  --border-radius: 50px;
+ 
+}
+
+.c22 {
+  --border-radius: 0px 16px 16px 0px;
+}
+
+.c11 {
+  --border-radius: 16px 0px 0px 16px;
+}
+
+.search-button {
+  --border-radius: 30px;
+}
+
+.radius-button-x {
+  --border-radius: 50px;
+}
+
+.icon-button {
+  --background: #ffffff;
+}
+
+.top-scroll ion-segment {
+  --background: #ffffff;
+  height: 40px;
+}
+
+
+.badge-size {
+  // --padding: 10px;
+  --padding-end: 15px;
+  --padding-start: 15px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border-radius: 30px;
+}
+
+.box-shad {
+  box-shadow: 1px 1px 20px rgb(0 0 0 / 0.05);
+}
+
+.top-scroll ion-segment-button {
+  --indicator-color: var(--primary-color);
+  --indicator-transition: var(--primary-color);
+  --background: var(--gray-color);
+  --color: var(--dark-color);
+  --color-checked: var(--white-color);
+  --border-radius: 20px;
+  // --indicator-transform:var(--color);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+ion-popover {
+  --width: 280px;
+  
+}
+
+.popverSelect {
+  --background: var(--primary-color);
+  --color: var(--white-color);
+}
+
+.item-search {
+  --inner-padding-bottom: 0px;
+  --inner-padding-top: 0px
+}

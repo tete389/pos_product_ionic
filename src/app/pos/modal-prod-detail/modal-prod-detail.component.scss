@@ -1,0 +1,77 @@
+// ion-backdrop {
+//     background: var(--ion-color-dark);
+//     opacity: 0.3;
+//   }
+
+ion-content {
+    // --offset-bottom: auto !important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .scrollerBar {
+    &::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+    }
+  }
+
+ion-grid {
+    // height: 100%;
+    --ion-grid-padding: 0px;
+  
+    --ion-grid-padding-xs: 0px;
+    --ion-grid-padding-sm: 0px;
+    --ion-grid-padding-md: 0px;
+    --ion-grid-padding-lg: 0px;
+    --ion-grid-padding-xl: 0px;
+  
+    --ion-grid-column-padding: 0px;
+  
+    --ion-grid-column-padding-xs: 0px;
+    --ion-grid-column-padding-sm: 0px;
+    --ion-grid-column-padding-md: 0px;
+    --ion-grid-column-padding-lg: 0px;
+    --ion-grid-column-padding-xl: 0px;
+  }
+  
+  ion-col {
+    // background-color: #135d54;
+    // border: solid 1px #fff;
+    // color: #fff;
+    // text-align: center;
+  }
+
+
+  .radius30-button {
+    // margin-left: 20px;
+    --border-radius: 50px;
+  }
+
+  .button-cancel {
+    --background: var(--danger-color);
+  }
+
+  .button-confrim {
+    --background: var(--dark-color);
+  }
+
+  .button-add-minus {
+    --background: var( --dark-gray-color);
+  }
+
+
+  .check-box-opt ion-checkbox {
+    // --size: 32px;
+    --checkbox-background-checked: var(--primary-color);
+  }
+  
+  .check-box-opt ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid var(--primary-color);
+  }
+
+  
