@@ -16,6 +16,19 @@ import { NgFor } from '@angular/common';
 
 })
 export class DiscountsTaxePage implements OnInit {
+  customPopoverOptionsStyle1 = {
+    cssClass: 'my-custom-customPopover-select-style-1',
+  };
+  customPopoverOptionsStyle2 = {
+    cssClass: 'my-custom-customPopover-select-style-2',
+  };
+
+  customPopoverMultiSelect = {
+    cssClass: 'my-custom-customPopover-multiSelect',
+  };
+  customPopoverMultiSelect2 = {
+    cssClass: 'my-custom-customPopover-multiSelect-2',
+  };
   isEditing = false;
   editingId: number | null = null;
   select_tab: any  = 1

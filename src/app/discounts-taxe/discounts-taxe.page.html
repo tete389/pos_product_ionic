@@ -33,11 +33,11 @@
    
     <div class="right-title">
       <div class="add-data" >
-        <ng-container *ngIf="showAddButton()">
-        <ion-button (click)="addDiscount()">
+       
+        <ion-button [ngStyle]="{'visibility': showAddButton() ? 'visible' : 'hidden'}" (click)="addDiscount()">
           +เพิ่ม
         </ion-button>
-      </ng-container>
+
       </div>
     </div>
 
@@ -61,43 +61,70 @@
             <p>รูปแบบส่วนลด</p>
           </div>
       
-          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
+          <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
             <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
             <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
-            <!-- Add more options as needed -->
-          </ion-select>
+         
+          </ion-select> -->
+          <div class="box-style-3-bottom">
+            <ion-select [disabled]="editingId !== discount.id"  [(ngModel)]="discount.type" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+              interface="popover" mode="md">
+              <ion-select-option>เปอร์เซ็นต์ (%)</ion-select-option>
+              <ion-select-option>จำนวนเงิน (THB)<</ion-select-option>
+            </ion-select>
+          </div>
         </div>
       
         <div class="d-format">
           <div class="flex-dformat">
             <p>จำนวนที่ลด</p>
           </div>
-          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
+          <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
             <ion-select-option value="10%">10%</ion-select-option>
             <ion-select-option value="15%">15%</ion-select-option>
             <ion-select-option value="20%">20%</ion-select-option>
-            <!-- Add more options as needed -->
-          </ion-select>
+     
+          </ion-select> -->
+
+          <div class="box-style-3-bottom">
+            <ion-select  [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+              interface="popover"  mode="md">
+              <ion-select-option value="10%">10%</ion-select-option>
+              <ion-select-option value="15%">15%</ion-select-option>
+              <ion-select-option value="20%">20%</ion-select-option>
+            </ion-select>
+          </div>
         </div>
       
         <div class="d-format">
           <div class="flex-dformat">
             <p>การใช้งาน</p>
           </div>
-          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
+          <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
             <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
             <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
-            <!-- Add more options as needed -->
-          </ion-select>
+     
+          </ion-select> -->
+
+          <div class="box-style-3-bottom">
+            <ion-select  [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+              interface="popover" mode="md">
+              <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
+              <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
+            </ion-select>
+          </div>
         </div>
         <div class="edit-cus"> 
           <ion-button [ngClass]="{'active': editingId === discount.id}" (click)="toggleEdit(discount.id)" class="edit-button">
             {{ editingId === discount.id ? 'บันทึก' : 'แก้ไข' }}
           </ion-button>
         </div>
-        <ion-button class="delete-button" (click)="deleteDiscount(i)">
+        <!-- <ion-button class="delete-button" (click)="deleteDiscount(i)">
           <ion-icon name="trash" class="trash-icon"></ion-icon>
-        </ion-button>
+        </ion-button> -->
       </ion-card>
       
     </div> 
@@ -137,11 +164,19 @@
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage" aria-label="Usage" interface="popover" class="select-custom">
           <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
           <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+   
+        </ion-select> -->
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
+            <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
+          </ion-select>
+        </div>
       </div>
       <div class="edit-cus"> 
         <ion-button [ngClass]="{'active': editingId === v.id}" (click)="toggleEdit(v.id)" class="edit-button">
@@ -179,23 +214,36 @@
         <div class="flex-dformat">
           <p>จำนวนที่เก็บเพิ่ม</p>
         </div>
-        <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
-          <ion-select-option value="10%">10%</ion-select-option>
-          <ion-select-option value="15%">15%</ion-select-option>
-          <ion-select-option value="20%">20%</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.amount"  [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="10%">10%</ion-select-option>
+            <ion-select-option value="15%">15%</ion-select-option>
+            <ion-select-option value="20%">20%</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     
       <div class="d-format">
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage" aria-label="Usage" interface="popover" class="select-custom">
           <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
           <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+      
+        </ion-select> -->
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== v.id" [(ngModel)]="v.usage"  [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
+            <ion-select-option value="อัตโนมัติ">ใช้งานอัตโนมัติ</ion-select-option>
+          </ion-select>
+        </div>
       </div>
       <div class="edit-cus"> 
         <ion-button [ngClass]="{'active': editingId === v.id}" (click)="toggleEdit(v.id)" class="edit-button">
@@ -225,37 +273,67 @@
           <p>รูปแบบส่วนลด</p>
         </div>
     
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
           <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
           <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+        </ion-select> -->
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
+            <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     
       <div class="d-format">
         <div class="flex-dformat">
           <p>จำนวนที่ลด</p>
         </div>
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
           <ion-select-option value="10%">10%</ion-select-option>
           <ion-select-option value="15%">15%</ion-select-option>
           <ion-select-option value="20%">20%</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+      
+        </ion-select> -->
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="10%">10%</ion-select-option>
+          <ion-select-option value="15%">15%</ion-select-option>
+          <ion-select-option value="20%">20%</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     
       <div class="d-format">
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(1)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(2)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(3)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(4)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(5)</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+   
+        </ion-select> -->
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(1)</ion-select-option>
+            <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(2)</ion-select-option>
+            <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(3)</ion-select-option>
+            <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(4)</ion-select-option>
+            <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(5)</ion-select-option>
+          </ion-select>
+        </div>
       </div>
       <div class="edit-cus"> 
         <ion-button [ngClass]="{'active': editingId === discount.id}" (click)="toggleEdit(discount.id)" class="edit-button">
@@ -285,34 +363,60 @@
           <p>รูปแบบส่วนลด</p>
         </div>
     
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
           <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
           <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+     
+        </ion-select> -->
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
+            <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     
       <div class="d-format">
         <div class="flex-dformat">
           <p>จำนวนที่ลด</p>
         </div>
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
           <ion-select-option value="10%">10%</ion-select-option>
           <ion-select-option value="15%">15%</ion-select-option>
           <ion-select-option value="20%">20%</ion-select-option>
-          <!-- Add more options as needed -->
-        </ion-select>
+        
+        </ion-select> -->
+
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
+            interface="popover" mode="md">
+            <ion-select-option value="10%">10%</ion-select-option>
+            <ion-select-option value="15%">15%</ion-select-option>
+            <ion-select-option value="20%">20%</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     
       <div class="d-format">
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
           <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
         
-          <!-- Add more options as needed -->
-        </ion-select>
+
+        </ion-select> -->
+        <div class="box-style-3-bottom">
+          <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือกใช้เอง"
+            interface="popover" mode="md">
+            <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
+        
+          </ion-select>
+        </div>
       </div>
       <div class="edit-cus"> 
         <ion-button [ngClass]="{'active': editingId === discount.id}" (click)="toggleEdit(discount.id)" class="edit-button">
