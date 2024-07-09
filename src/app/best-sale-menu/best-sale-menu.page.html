@@ -22,24 +22,42 @@
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
-            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Month"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">Month</ion-select-option>
-            <ion-select-option value="2">อาหาร</ion-select-option>
-            <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
+            <ion-select-option value="0">This Month</ion-select-option>
+            <ion-select-option value="1">Jan 2024</ion-select-option>
+            <ion-select-option value="2">Feb 2024</ion-select-option>
+            <ion-select-option value="3">Mar 2024</ion-select-option>
+            <ion-select-option value="4">Apr 2024</ion-select-option>
+            <ion-select-option value="5">May 2024</ion-select-option>
+            <ion-select-option value="6">June 2024</ion-select-option>
+            <ion-select-option value="7">July 2024</ion-select-option>
+            <ion-select-option value="8">Aug 2024</ion-select-option>
+            <ion-select-option value="9">Seb 2024</ion-select-option>
+            <ion-select-option value="10">Oct 2024</ion-select-option>
+            <ion-select-option value="11">Nov 2024</ion-select-option>
+            <ion-select-option value="12">Dec 2024</ion-select-option>
           </ion-select>
         </div>
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
-            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">Year</ion-select-option>
-            <ion-select-option value="2">อาหาร</ion-select-option>
-            <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
+            <ion-select-option value="1">2024</ion-select-option>
+            <ion-select-option value="2">2023</ion-select-option>
+            <ion-select-option value="3">2022</ion-select-option>
+            <ion-select-option value="4">2021</ion-select-option>
+            <ion-select-option value="5">2020</ion-select-option>
+            <ion-select-option value="6">2019</ion-select-option>
+            <ion-select-option value="7">2018</ion-select-option>
+            <ion-select-option value="8">2017</ion-select-option>
+            <ion-select-option value="9">2016</ion-select-option>
+            <ion-select-option value="10">2015</ion-select-option>
           </ion-select>
         </div>
-        <ion-button class="btn-calendar" size="small">
+        <ion-button class="btn-calendar" size="small" 
+        (click)="openModalSelectDate()">
           <ion-icon name="calendar"></ion-icon>
         </ion-button>
 
@@ -69,24 +87,43 @@
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
-            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Month"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">Month</ion-select-option>
-            <ion-select-option value="2">อาหาร</ion-select-option>
-            <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
+            <ion-select-option value="0">This Month</ion-select-option>
+            <ion-select-option value="1">Jan 2024</ion-select-option>
+            <ion-select-option value="2">Feb 2024</ion-select-option>
+            <ion-select-option value="3">Mar 2024</ion-select-option>
+            <ion-select-option value="4">Apr 2024</ion-select-option>
+            <ion-select-option value="5">May 2024</ion-select-option>
+            <ion-select-option value="6">June 2024</ion-select-option>
+            <ion-select-option value="7">July 2024</ion-select-option>
+            <ion-select-option value="8">Aug 2024</ion-select-option>
+            <ion-select-option value="9">Seb 2024</ion-select-option>
+            <ion-select-option value="10">Oct 2024</ion-select-option>
+            <ion-select-option value="11">Nov 2024</ion-select-option>
+            <ion-select-option value="12">Dec 2024</ion-select-option>
           </ion-select>
         </div>
 
         <div class="popop">
           <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
-            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
             interface="popover" [(ngModel)]="sort_month">
-            <ion-select-option value="1">Year</ion-select-option>
-            <ion-select-option value="2">อาหาร</ion-select-option>
-            <ion-select-option value="3">เครื่องดืมเครื่องดืมเครื่องดืมเครื่องดืม</ion-select-option>
+            <ion-select-option value="1">2024</ion-select-option>
+            <ion-select-option value="2">2023</ion-select-option>
+            <ion-select-option value="3">2022</ion-select-option>
+            <ion-select-option value="4">2021</ion-select-option>
+            <ion-select-option value="5">2020</ion-select-option>
+            <ion-select-option value="6">2019</ion-select-option>
+            <ion-select-option value="7">2018</ion-select-option>
+            <ion-select-option value="8">2017</ion-select-option>
+            <ion-select-option value="9">2016</ion-select-option>
+            <ion-select-option value="10">2015</ion-select-option>
           </ion-select>
         </div>
-        <ion-button class="btn-calendar" size="small">
+
+        <ion-button class="btn-calendar" size="small" 
+        (click)="openModalSelectDate()">
           <ion-icon name="calendar"></ion-icon>
         </ion-button>
 
@@ -146,7 +183,7 @@
                 <ion-label>ลำดับ</ion-label>
               </div>
             </ion-col>
-            <ion-col  class="ion-text-center">
+            <ion-col class="ion-text-center">
               <div class="col-head-2">
                 <ion-label>รายการ</ion-label>
               </div>
@@ -155,66 +192,72 @@
               <div class="col-head-3">
                 <ion-label>หมวดหมู่</ion-label>
               </div>
-             
+
             </ion-col>
             <ion-col size="auto" class="ion-text-center">
               <div class="col-head-4">
                 <ion-label>ออเดอร์</ion-label>
               </div>
-            </ion-col> 
-            <ion-col  size="auto" class="ion-text-center">
-              <div class="col-head-5">
-                    <ion-label>สัดส่วน</ion-label>
-              </div>
-          
             </ion-col>
-            <ion-col size="2"  class="ion-text-center">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-5">
+                <ion-label>สัดส่วน</ion-label>
+              </div>
+
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
               <div class="col-head-6">
                 <ion-label>ยอดขาย</ion-label>
               </div>
-            
+
             </ion-col>
           </ion-row>
 
-          <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5,6,7,8,9,1];let i = index">
-            <ion-col size="auto" class="ion-text-center">
-              <div class="col-box-1">
-                <div class="box-color"></div>
-                <ion-label class="box-num">{{i+1}}</ion-label> 
-              </div>
-            </ion-col>
-            <ion-col  class="ion-text-center">
-              <div class="col-box-2">
-                <div class="box-img">
-                  <img src="assets/image/img-product.png" alt="">
+
+          <div class="data-body">
+            <ion-row class="data-row"
+              *ngFor="let item of [1,2,3,4,5,6,7,8,9,1,1,2,3,4,5,6,6,7,8,9,0,4,4,5,6,7];let i = index;">
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-box-1">
+                  <div class="box-color" [class]="'box-color-' + (i + 1)"></div>
+                  <ion-label class="box-num">{{i+1}}</ion-label>
                 </div>
-                <ion-label class="box-name">Food name</ion-label>
-              </div>
-            </ion-col>
-            <ion-col size="2" class="ion-text-center">
-              <div class="col-box-3">
-                <ion-label>Food Category</ion-label>
-              </div>
-             
-            </ion-col>
-            <ion-col  size="auto"  class="ion-text-center">
-              <div class="col-box-4">
-                <ion-label>90</ion-label>
-              </div>
-            </ion-col> 
-            <ion-col size="auto"    class="ion-text-center">
-              <div class="col-box-5">
-                    <ion-label>20%</ion-label>
-              </div>
-          
-            </ion-col>
-            <ion-col size="2"  class="ion-text-center">
-              <div class="col-box-6">
-                <ion-label>8,750.00</ion-label>
-              </div>
-            
-            </ion-col>
-          </ion-row>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-box-2">
+                  <div class="box-img">
+                    <img src="assets/image/img-product.png" alt="">
+                  </div>
+                  <ion-label class="box-name">Food name</ion-label>
+                </div>
+              </ion-col>
+              <ion-col size="2" class="ion-text-center">
+                <div class="col-box-3">
+                  <ion-label>Food Category</ion-label>
+                </div>
+
+              </ion-col>
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-box-4">
+                  <ion-label>90</ion-label>
+                </div>
+              </ion-col>
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-box-5">
+                  <ion-label>20%</ion-label>
+                </div>
+
+              </ion-col>
+              <ion-col size="2" class="ion-text-center">
+                <div class="col-box-6">
+                  <ion-label>8,750.00</ion-label>
+                </div>
+
+              </ion-col>
+            </ion-row>
+          </div>
+
+
         </ion-grid>
 
 
@@ -222,4 +265,8 @@
     </div>
   </div>
 
+ 
+
 </ion-content>
+
+<ion-button class="btn-export">Export PDF</ion-button>

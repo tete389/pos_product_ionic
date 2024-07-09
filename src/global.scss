@@ -102,6 +102,10 @@
   --border-radius: none;
 }
 
+// ion-split-pane{
+//   background: var(--light-gray-color3);
+// }
+
 ion-button.ios {
   --background-hover: transparent;
   --background-focused: transparent;
@@ -209,7 +213,7 @@ ion-popover.my-custom-customPopover-select-style-1 {
 
       ion-item.item-radio-checked::part(native) {
         background: var(--light-sky-blue);
-        font-weight: var(--text-regular);
+        font-weight: var(--text-medium);
         --background-hover: transparent;
         --background-activated: transparent;
         --background-focused: transparent;
@@ -849,6 +853,7 @@ ion-accordion-group.my-custum-accordion {
     align-content: center;
     justify-content: space-between;
     padding: 10px;
+
     .alert-head {
       display: none;
     }
@@ -860,7 +865,6 @@ ion-accordion-group.my-custum-accordion {
       font-weight: var(--text-medium);
       text-align: center;
       color: var(--text-dark2);
-      background: gold;
       height: 170px;
       display: flex;
       align-items: center;
@@ -873,7 +877,6 @@ ion-accordion-group.my-custum-accordion {
       width: 100%;
       // padding-bottom: 25px;
       padding: 20px 10px 30px;
-      background: pink;
 
       .alert-button.success {
         margin: 0 auto;
@@ -923,4 +926,60 @@ ion-modal.css-modal-optioned {
   padding: 16px 0 10px;
 
   .modal-wrapper {}
+}
+
+ion-modal.my-custom-modal-datetime {
+  --width: fit-content;
+  --width: 350px;
+  --height: 410px;
+  --border-radius: 12px;
+  // margin-top: 0px;
+  // padding: 16px 0 10px;
+
+  .modal-wrapper {}
+
+}
+
+.box-datetime {
+
+  ion-datetime.date-timer {
+
+    // --background: white;
+    // --color: black;
+    // --button-background: green;
+    // --button-color: white;
+    // --button-border-radius: 50%;
+
+  }
+
+  ion-datetime.date-timer::part(month-year-button) {
+
+  }
+  // ทุกวัน
+  ion-datetime.date-timer::part(calendar-day) {
+    color: var(--text-dark2);
+    font-size: 20px;
+  }
+
+  // วันปัจจุบัน
+  ion-datetime.date-timer::part(calendar-day today) {
+    color: var(--primary-light);
+    border: none;
+  }
+
+  // วันที่กด focus
+  ion-datetime.date-timer::part(calendar-day):focus {
+    background: transparent;
+    // background-color: rgb(154 209 98 / 0.2);
+    box-shadow: none;
+  }
+
+  // วันที่เลือก
+  ion-datetime.date-timer.md::part(calendar-day active),
+  ion-datetime.date-timer.md::part(calendar-day active):focus {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border: none;
+  }
+
 }

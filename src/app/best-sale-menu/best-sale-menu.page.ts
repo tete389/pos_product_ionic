@@ -15,10 +15,12 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonBadge
+  IonBadge,
+  ModalController
   
 } from '@ionic/angular/standalone';
 import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexLegend, ApexPlotOptions, ApexResponsive, ApexXAxis, NgApexchartsModule } from 'ng-apexcharts';
+import { ModalSelectDateComponent } from './modal-select-date/modal-select-date.component';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -66,7 +68,9 @@ export class BestSaleMenuPage implements OnInit {
 
   public PieOptions: Partial<ChartOptions> | any;
   
-  constructor() {} 
+  constructor(
+    public modalController: ModalController
+  ) {} 
 
   ngOnInit() {
     this.PieOptions  = {
@@ -145,4 +149,39 @@ export class BestSaleMenuPage implements OnInit {
       default: return 'medium';
     }
   }
+
+    //เปิด modal Calendar-day
+    async openModalSelectDate() {
+      const modal = await this.modalController.create({
+        cssClass: 'my-custom-modal-datetime',
+        component: ModalSelectDateComponent,
+        // componentProps: {
+        //   options:options
+        //   bank: bank,
+        //   data: data,
+        //   order_id: this.order_id,
+        //   price: Math.round(this.price),
+        //   print_food_bill: this.print_food_bill
+        // },
+      });
+      await modal.present();
+      const event: any = await modal.onDidDismiss();
+      const date = event.data;
+      // const from: CalendarResult = date.from;
+      // const to: CalendarResult = date.to;
+  
+      console.log(event);
+      
+      console.log(date);
+      
+      if (event.role == 'save') {
+        console.log(event);
+        
+        // this.dateFrom = date.from
+        // this.dateTo = date.to
+        // this.textDate2 = this.api.dateTothai(this.dateFrom, this.dateTo, 'range')
+        // this.loadPerson();
+      }
+      // console.log(date, from, to);
+    }
 }

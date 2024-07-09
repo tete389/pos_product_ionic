@@ -1,0 +1,15 @@
+
+ion-footer {
+    text-align: right;
+    padding: 0 20px 12px;
+
+    ion-button {
+
+        width: 120px;
+        height: 45px;
+        --background: var(--primary-color);
+        --color: var(--text-white);
+        --border-radius: 25px;
+        --box-shadow: none;
+    }
+}
