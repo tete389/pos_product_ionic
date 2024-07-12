@@ -38,7 +38,7 @@
       @apply w-full;
   
       thead {
-        @apply bg-gray-100;
+     background-color: var(--light-sky-blue);
   
         th {
           @apply px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
@@ -52,7 +52,27 @@
           }
   
           td {
+            font-weight: 300;
             @apply px-4 py-2 text-sm text-gray-700;
+          }
+          .cash{
+            color: var(--text-primary);
+          }
+          .transfer{
+            color: var(--text-primary-orage);
+          }
+          .discount{
+            color: var(--text-primary-red);
+          }
+          
+          .vat{
+            color: var( --text-primary-blue);
+          }
+          .memberCount{
+            color: var(--text-primary-blue);
+          }
+          .newMembers{
+            color: var(--text-primary);
           }
         }
       }
