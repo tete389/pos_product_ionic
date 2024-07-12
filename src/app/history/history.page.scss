@@ -35,7 +35,7 @@
     @apply w-full overflow-auto;
   
     table {
-      @apply w-full min-w-max;
+      @apply w-full;
   
       thead {
         @apply bg-gray-100;
