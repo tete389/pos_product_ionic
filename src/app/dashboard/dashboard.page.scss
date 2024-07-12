@@ -99,7 +99,7 @@ ion-content {
             gap: 8px;
 
             ion-progress-bar {
-                --ion-color-primary: orange;
+                --ion-color-primary: var(--progress-color-5);
                 padding: 6px;
                 width: 150px;
             }
@@ -115,7 +115,7 @@ ion-content {
             gap: 8px;
 
             ion-progress-bar {
-                --ion-color-primary: #65CF21;
+                --ion-color-primary: var(--progress-color-2);
                 padding: 6px;
                 width: 150px;
             }
@@ -177,7 +177,7 @@ ion-content {
             }
 
             .vat-number {
-                color: green;
+                color: var(--progress-color-1);
             }
         }
 
@@ -208,7 +208,7 @@ ion-content {
 
         .mid {
             font-size: 30px;
-            color: #FF9F37;
+            color: var(--progress-color-4);
 
         }
 
@@ -233,7 +233,7 @@ ion-content {
 
         .mid02 {
             font-size: 30px;
-            color: #66ff37;
+            color: var(--progress-color-2);
 
         }
 
@@ -254,7 +254,7 @@ ion-content {
 
         .mid03 {
             font-size: 30px;
-            color: #379eff;
+            color: var(--primary-light2);
 
         }
 
@@ -449,7 +449,7 @@ ion-content {
 
         .title-end {
             font-size: 14px;
-            color: #1492E6;
+            color: var(--primary-second);
         }
 
     }
@@ -478,7 +478,7 @@ ion-content {
         margin-top: 15px;
 
         .title02 {
-            color: #5cc9ff;
+            color: var(--primary-light2);
             font-size: 14px;
         }
 
@@ -514,7 +514,7 @@ ion-content {
         margin-top: 15px;
 
         .title02 {
-            color: #5cc9ff;
+            color: var(--primary-light2);
             font-size: 14px;
         }
 
@@ -618,7 +618,7 @@ ion-content {
                 width: 85px;
 
                 ion-progress-bar {
-                    --ion-color-primary: orange;
+                    --ion-color-primary: var(--progress-color-4);
                     padding: 4px;
                 }
             }

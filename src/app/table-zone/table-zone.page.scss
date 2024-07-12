@@ -69,7 +69,7 @@ ion-header {
 
             .total-real {
                 font-weight: normal;
-                color: #11C542;
+                color: var(--primary-color);
                 padding-left: 20px;
                 font-size: 32px;
             }
@@ -112,12 +112,12 @@ ion-header {
                 }
 
                 &:hover {
-                    background-color: #11C542;
+                    background-color: var(--primary-color);
             
                 }
 
                 &.selected {
-                    background-color: #11C542;
+                    background-color: var(--primary-color);
                  
 
                     p {
@@ -235,7 +235,7 @@ ion-header {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: #0091f2;
+                background-color: var(--primary-light);
                 color: white;
                 
             }
@@ -246,14 +246,14 @@ ion-header {
             margin-top: -15px;
             padding-right: 20px;
             .edit  {
-                --background:#F1F4F9;
+                --background:var(--light-gray-color3);
                  p {
                     padding: 0px 25px;
                     color: black;
                 }
             }
             .edit-save  {
-                --background:#11C542;
+                --background:var(--primary-color);
                  p {
                     padding: 0px 25px;
                     color: rgb(255, 255, 255);

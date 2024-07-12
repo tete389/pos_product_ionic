@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+   
+      <div class="start-section">
+        <p>ประวัติการขาย</p>
+      </div>
+      <div class="mid-section">
+       <ion-button>รายใบเสร็จ</ion-button>
+       <ion-button>รายวัน</ion-button>
+       <ion-button>รายเดือน</ion-button>
+       <ion-button>Courses</ion-button>
+       <ion-button>Member</ion-button>
+      </div>
+      <div class="end-section" >
+        <div class="calendar">
+          <p>DATA OF :</p> <span>JULY,2024</span>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="table-tailwind-custom">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>ยอดขายรวม</th>
+          <th>เงินสด</th>
+          <th>เงินโอน</th>
+          <th>ส่วนลด</th>
+          <th>Service charge</th>
+          <th>Vat 7%</th>
+          <th>บิล</th>
+          <th>เฉลี่ย/บิล</th>
+          <th>ขายดี</th>
+          <th>ขายดี หมวดหมู่</th>
+          <th>จำนวนลูกค้า</th>
+          <th>สมาชิก</th>
+          <th>สมาชิกใหม่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td>{{ row.date }}</td>
+          <td>{{ row.totalSales }}</td>
+          <td>{{ row.cash }}</td>
+          <td>{{ row.transfer }}</td>
+          <td>{{ row.discount }}</td>
+          <td>{{ row.serviceCharge }}</td>
+          <td>{{ row.vat }}</td>
+          <td>{{ row.bill }}</td>
+          <td>{{ row.averageBill }}</td>
+          <td>{{ row.bestSeller }}</td>
+          <td>{{ row.bestSellerCategory }}</td>
+          <td>{{ row.customerCount }}</td>
+          <td>{{ row.memberCount }}</td>
+          <td>{{ row.newMembers }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>
