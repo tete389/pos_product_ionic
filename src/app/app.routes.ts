@@ -38,9 +38,14 @@ export const routes: Routes = [
   {
     path: 'discounts-taxe',
     loadComponent: () => import('./discounts-taxe/discounts-taxe.page').then( m => m.DiscountsTaxePage)
-  },  {
+  },
+  {
     path: 'history',
     loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
+  },
+  {
+    path: 'all-member',
+    loadComponent: () => import('./all-member/all-member.page').then( m => m.AllMemberPage)
   },
 
 

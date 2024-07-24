@@ -74,6 +74,7 @@ export class AppComponent {
     { title: 'Pos', url: '/pos', icon: 'apps' },
     { title: 'Pos-กลับบ้าน', url: '/pos-take-away', icon: 'bag-handle' },
     { title: 'จัดการเมนู', url: '/menu-managment', icon: 'fast-food' },
+    { title: 'สมาชิก', url: '/all-member', icon: 'people' },
     { title: 'โต๊ะและโซน', url: '/table-zone', icon: 'paper-plane' },
     { title: 'เมนูขายดี', url: '/best-sale-menu', icon: 'bar-chart' },
     { title: 'ส่วนลดและภาษี', url: '/discounts-taxe', icon: 'bar-chart' },

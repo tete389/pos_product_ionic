@@ -57,7 +57,7 @@ ion-content {
                     --color: var(--text-dark);
                     --border-radius: 18px;
                     height: 35px;
-                    width: 100px;
+                    width: 95px;
                     min-width: 95px;
                     margin-right: 2px;
                     --padding-start: 0;
@@ -77,7 +77,7 @@ ion-content {
 
                 .popop {
                     width: 100%;
-                    max-width: 100px;
+                    max-width: 95px;
                     height: 35px;
                     margin: 0;
                     margin-right: 2px;
@@ -190,6 +190,11 @@ ion-content {
                     margin-top: 5px; 
                     height: calc(100vh - 500px);
                     overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                        display: none;
+                        /* ความกว้าง scrollbar */
+                        // width: 0.625rem;
+                    }
 
                     .box-progress-card {
                         height: 50px;
@@ -286,7 +291,7 @@ ion-content {
                     --color: var(--text-dark);
                     --border-radius: 18px;
                     height: 35px;
-                    width: 100px;
+                    width: 95px;
                     min-width: 95px;
                     margin-right: 2px;
                     --padding-start: 0;

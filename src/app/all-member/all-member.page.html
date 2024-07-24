@@ -1,0 +1,314 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollY="false">
+
+  <div class="box-main">
+    <!-- &nbsp; -->
+    <div class="box-left">
+      <div class="box-left-content-1">
+        <ion-label class="text-sub-left-1">
+          สมาชิกทั้งหมด
+          <b>{{1256|number}}</b>
+        </ion-label>
+        <ion-label class="text-sub-left-2">
+          Total Number of Member
+          <span>Member History</span>
+        </ion-label>
+        <ion-grid class="box-table">
+          <ion-row class="header">
+            <ion-col size="4">
+              <div class="col-head">
+                <ion-label>ประเภทสมาชิก</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <div class="col-head">
+                <ion-label>Percent</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <div class="col-head">
+                <ion-label>จำนวน&nbsp;(คน)</ion-label>
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+          <div class="data-body">
+            <ion-row class="data-row" *ngFor="let member of member_all;let i = index;">
+              <ion-col size="4">
+                <div class="col-body">
+                  <div class="box-color" [class]="'box-color-' + (i + 1)"></div>
+                  <ion-label class="box-member-type">{{member.member_type}}</ion-label>
+                </div>
+              </ion-col>
+              <ion-col size="4" class="">
+                <div class="ion-text-center">
+                  <ion-label>{{member.percent}}%</ion-label>
+                </div>
+              </ion-col>
+              <ion-col size="4">
+                <div class="col-body-3">
+                  <ion-label>{{member.count_people}}</ion-label>
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </div>
+
+
+
+        </ion-grid>
+
+      </div>
+      <div class="box-left-content-2">
+        <ion-label class="text-sub-chart">
+          เพศ<span>Genger</span>
+        </ion-label>
+        <div class="box-chart">
+          <apx-chart [series]="PieOptions.series" [chart]="PieOptions.chart" [labels]="PieOptions.labels"
+            [colors]="PieOptions.colors" [legend]="PieOptions.legend" [responsive]="PieOptions.responsive"></apx-chart>
+
+        </div>
+      </div>
+      <div class="box-left-content-3">
+        <ion-label class="text-sub-progress">
+          ช่วงอายุ<span>Age Groups</span>
+        </ion-label>
+        <div class="box-progress">
+          <div class="box-progress-card" *ngFor="let divided of divided_by_age;let i = index">
+            <div class="box-progress-card-1">
+              <ion-label>
+                {{divided.age}}&nbsp;ปี
+              </ion-label>
+            </div>
+            <div class="box-progress-card-2">
+              <ion-progress-bar class="po-{{i+1}}" value="0.{{divided.percent}}"></ion-progress-bar>
+            </div>
+            <div class="box-progress-card-3">
+              <ion-label>
+                {{divided.count}}
+              </ion-label>
+            </div>
+            <div class="box-progress-card-3">
+              <ion-label>
+                {{divided.percent}}%
+              </ion-label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="box-right">
+
+      <div class="box-right-content-1">
+        <div class="segment-box">
+          <ion-segment scrollable="true" class="" [(ngModel)]="select_member_page"
+            (ionChange)="select_zone_event($event)" mode="ios">
+            <ion-segment-button [value]="i" class="" *ngFor="let member of member_page_arr; let i = index">
+              <ion-label>{{ member }}</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        <div class="button-box-right">
+
+          <div class="popop">
+            <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
+              interface="popover" [(ngModel)]="sort_by">
+              <ion-select-option value="1">All Classes</ion-select-option>
+              <ion-select-option value="2">General</ion-select-option>
+              <ion-select-option value="3">Silver</ion-select-option>
+              <ion-select-option value="4">Gold</ion-select-option>
+              <ion-select-option value="5">Daimond</ion-select-option>
+              <ion-select-option value="6">Platinum</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="border-or"></div>
+          <ion-button class="btn-selecter" size="small" [ngClass]="{'select-period-active': select_period_number == 1}"
+            (click)="select_period(1)">
+            <ion-label>Visits</ion-label>
+          </ion-button>
+          <ion-button class="btn-selecter" size="small" [ngClass]="{'select-period-active': select_period_number == 2}"
+            (click)="select_period(2)">
+            <ion-label>Most spent</ion-label>
+          </ion-button>
+          <ion-button class="btn-selecter" size="small" [ngClass]="{'select-period-active': select_period_number == 3}"
+            (click)="select_period(3)">
+            <ion-label>Poits</ion-label>
+          </ion-button>
+
+          <div class="popop-dot">
+            <ion-select [interfaceOptions]="customPopoverOptionsStyle2" class="css-pop-dot" toggleIcon="menu-sharp"
+              mode="md" interface="popover">
+              <ion-select-option value="1">ลบเมนู</ion-select-option>
+              <ion-select-option value="2">ปิดออก</ion-select-option>
+            </ion-select>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="box-right-content-2">
+
+        <swiper-container #swiper (swiperreachbeginning)="swiperReady()" (swiperslidechange)="swiperSlideCharge()">
+
+          <swiper-slide>
+
+            <div class="table-scroll">
+              <ion-grid class="box-table">
+                <ion-row class="header">
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-1">
+                      <ion-label>Image</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-2">
+                      <ion-label>Name</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-3">
+                      <ion-label>หมวดหมู่</ion-label>
+                    </div>
+
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-4">
+                      <ion-label>ออเดอร์</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-5">
+                      <ion-label>สัดส่วน</ion-label>
+                    </div>
+
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-6">
+                      <ion-label>ยอดขาย</ion-label>
+                    </div>
+
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-7">
+                      <ion-label>ออเดอร์</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-8">
+                      <ion-label>ออเดอร์</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-9">
+                      <ion-label>ออเดอร์</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-center">
+                    <div class="col-head-10">
+                      <ion-label>ออเดอร์</ion-label>
+                    </div>
+                  </ion-col>
+                </ion-row>
+
+
+                <div class="data-body">
+                  <ion-row class="data-row"
+                    *ngFor="let item of ['Daimond','Daimond','Silver','Platinum','General','Platinum','Daimond','Gold','Gold','General','Daimond'];let i = index;">
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-1">
+                        <div class="box-img">
+                          <img src="assets/image/img-product.png" alt="">
+                        </div>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-2">
+                        <ion-label>Nick name</ion-label>
+                        <ion-label>ID: 000123</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-3">
+                        <ion-label class="label-rank" [class]="'box-color-' + (i + 1)">{{item}}</ion-label>
+                      </div>
+
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-4">
+                        <ion-label>12/03/2024</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-5">
+                        <ion-label>098-129-9734</ion-label>
+                      </div>
+
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-6">
+                        <ion-label>12 Feb 2024</ion-label>
+                      </div>
+
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-7">
+                        <ion-label>1,256</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-8">
+                        <ion-label>25</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-9">
+                        <ion-label>12/03/2024</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="auto" class="ion-text-center">
+                      <div class="col-head-10">
+                        <ion-label>฿ 56,942</ion-label>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </div>
+
+
+              </ion-grid>
+            </div>
+          </swiper-slide>
+
+          <swiper-slide>
+            <div class="">2
+              <!-- <div *ngFor="let table of table_zone.tables; let i = index" class="">
+                <ion-card>
+                  <ion-card-header class="text-center">
+                    <div class="">
+                      <span>h</span>
+                    </div>
+                    <ion-card-title>ssssss</ion-card-title>
+
+                    <div class="">
+                      <span class="">mm</span>
+                    </div>
+                  </ion-card-header>
+                </ion-card>
+              </div> -->
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
