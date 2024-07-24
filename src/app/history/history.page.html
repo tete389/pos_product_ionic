@@ -2,23 +2,40 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="header">
-   
-      <div class="start-section">
-        <p>ประวัติการขาย</p>
-      </div>
+  <div class="flex-header">
+    <div class="start-section">
+      <p>ประวัติการขาย</p>
+    </div>
+    <div class="header-inflex">
+
+
       <div class="mid-section">
-       <ion-button>รายใบเสร็จ</ion-button>
-       <ion-button>รายวัน</ion-button>
-       <ion-button>รายเดือน</ion-button>
-       <ion-button>Courses</ion-button>
-       <ion-button>Member</ion-button>
+        <ion-button 
+          [class.selected]="selectedSection === 1" 
+          (click)="selectSection(1)">
+          รายใบเสร็จ
+        </ion-button>
+        <ion-button 
+          [class.selected]="selectedSection === 2" 
+          (click)="selectSection(2)">
+          รายวัน
+        </ion-button>
+        <ion-button 
+          [class.selected]="selectedSection === 3" 
+          (click)="selectSection(3)">
+          รายเดือน
+        </ion-button>
       </div>
-      <div class="end-section" >
+      
+      <div class="end-section">
+        <ion-button class="btn-calendar" size="small" (click)="selectSection_date()">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-button>
         <div class="calendar">
-          <p>DATA OF :</p> <span>JULY,2024</span>
+          <p>Date of :</p> <span [class.hidden]="!date_pick">{{ date_pick }}</span>
         </div>
       </div>
+    </div>
 
   </div>
 
@@ -43,7 +60,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of data">
+        <tr *ngFor="let row of data_history">
           <td class="date">{{ row.date }}</td>
           <td class="totalSales">{{ row.totalSales }}</td>
           <td class="cash">{{ row.cash }}</td>

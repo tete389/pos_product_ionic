@@ -2,38 +2,115 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
-import { IonCard,IonCol,IonRow,IonContent, IonHeader, IonTitle, IonToolbar , IonGrid,IonButton,IonIcon,IonSelect,IonSelectOption,IonImg ,IonProgressBar,IonInfiniteScroll
-  ,IonInfiniteScrollContent,IonList,IonItem
+import {
+  IonCard, IonCol, IonRow, IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonButton, IonIcon, IonSelect, IonSelectOption, IonImg, IonProgressBar, IonInfiniteScroll
+  , IonInfiniteScrollContent, IonList, IonItem, ModalController
 } from '@ionic/angular/standalone';
+import { DatePickComponent } from './date-pick/date-pick.component';
+import * as moment from 'moment';
 @Component({
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [NgFor,IonCard,IonCol,IonRow,IonContent,IonGrid, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonButton
-    ,IonIcon,IonSelect,IonSelectOption,IonImg,IonProgressBar, IonInfiniteScroll,IonInfiniteScrollContent,IonList,IonItem]
+  imports: [NgFor, IonCard, IonCol, IonRow, IonContent, IonGrid, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton
+    , IonIcon, IonSelect, IonSelectOption, IonImg, IonProgressBar, IonInfiniteScroll, IonInfiniteScrollContent, IonList, IonItem]
 })
 export class HistoryPage implements OnInit {
-  data = Array(50).fill({
-    date: '31/01/2024',
-    totalSales: '100,000.00',
-    cash: '20,000.00',
-    transfer: '80,000.00',
-    discount: '7,000',
-    serviceCharge: '10,000',
-    vat: '7,000',
-    bill: '100',
-    averageBill: '1000.00',
-    bestSeller: 'Foodname',
-    bestSellerCategory: 'Category name',
-    customerCount: '120',
-    memberCount: '40',
-    newMembers: '20'
-  });
+  date_pick: any
+  data_history: any
+  selectedSection: number = 1;
+    generateRandomData = (baseDate: string) => {
+    const randomValue = (base: number, variation: number) => {
+      return (base + (Math.random() - 0.5) * variation).toFixed(2);
+    };
+  
+    const randomInt = (base: number, variation: number) => {
+      return Math.floor(base + (Math.random() - 0.5) * variation);
+    };
+  
+    return Array.from({ length: 50 }, (_, i) => ({
+      date: moment(baseDate).add(i, 'days').format('DD/MM/YYYY'),
+      totalSales: randomValue(100000, 10000),
+      cash: randomValue(20000, 5000),
+      transfer: randomValue(80000, 10000),
+      discount: randomValue(7000, 1000),
+      serviceCharge: randomValue(10000, 2000),
+      vat: randomValue(7000, 1000),
+      bill: randomInt(100, 20),
+      averageBill: randomValue(1000, 200),
+      bestSeller: `Foodname ${i + 1}`,
+      bestSellerCategory: `Category name ${i + 1}`,
+      customerCount: randomInt(120, 30),
+      memberCount: randomInt(40, 10),
+      newMembers: randomInt(20, 5),
+    }));
+  };
+  
+  data_day = this.generateRandomData('01/01/2024');
+  data_month = this.generateRandomData('01/02/2024');
+  data_year = this.generateRandomData('01/03/2024');
 
-  constructor() { }
+
+  constructor(
+    public modalController: ModalController
+  ) {
+
+  }
+
+ 
 
   ngOnInit() {
+    this.selectSection(1);
+  }
+
+  selectSection(section: number) {
+    this.selectedSection = section;
+    switch (this.selectedSection) {
+      case 1:
+        this.data_history = this.data_day
+        break;
+      case 2:
+        this.data_history = this.data_month
+        break;
+      case 3:
+        this.data_history = this.data_year
+        break;
+      default:
+        break;
+    }
+  }
+  selectSection_date() {
+   
+    switch (this.selectedSection) {
+      case 1:
+        this.openModalSelectDate()
+        break;
+      case 2:
+        this.openModalSelectDate()
+        break;
+      default:
+        break;
+    }
+  }
+
+ 
+
+  async openModalSelectDate() {
+    const modal = await this.modalController.create({
+      cssClass: 'my-custom-modal-datetime',
+      component: DatePickComponent,
+    });
+    await modal.present();
+    const event: any = await modal.onDidDismiss();
+    const date = event.data;
+    console.log(event);
+    console.log(date);
+
+    if (event.role == 'save') {
+      this.date_pick = date;
+      console.log('Selected Date:', this.date_pick);
+    }
   }
 
 }
