@@ -46,7 +46,32 @@ export class HistoryPage implements OnInit {
       newMembers: randomInt(20, 5),
     }));
   };
+  data_bill = (baseDate: string) => {
+    const randomValue = (base: number, variation: number) => {
+      return (base + (Math.random() - 0.5) * variation).toFixed(2);
+    };
   
+    const randomInt = (base: number, variation: number) => {
+      return Math.floor(base + (Math.random() - 0.5) * variation);
+    };
+  
+    return Array.from({ length: 50 }, (_, i) => ({
+      Order_id: '0001226',
+      bill_tax: 'SALE-000001',
+      date: moment(baseDate).add(i, 'days').format('DD/MM/YYYY'),
+      table:'A6',
+      table_type: 'ทานที่ร้าน',
+      number_people: '4',
+      course_type: 'Gold Course',
+      member_name: 'zack',
+      payment_type: 'สด',
+      income: '1,300.00',
+      change: '26.00',
+      total:'1,275',
+     
+    }));
+  };
+  data_day_bill = this.data_bill('01/01/2024');
   data_day = this.generateRandomData('01/01/2024');
   data_month = this.generateRandomData('01/02/2024');
   data_year = this.generateRandomData('01/03/2024');
@@ -68,7 +93,7 @@ export class HistoryPage implements OnInit {
     this.selectedSection = section;
     switch (this.selectedSection) {
       case 1:
-        this.data_history = this.data_day
+        this.data_history = this.data_day_bill
         break;
       case 2:
         this.data_history = this.data_month

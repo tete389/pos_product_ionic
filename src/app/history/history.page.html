@@ -7,8 +7,6 @@
       <p>ประวัติการขาย</p>
     </div>
     <div class="header-inflex">
-
-
       <div class="mid-section">
         <ion-button 
           [class.selected]="selectedSection === 1" 
@@ -39,7 +37,45 @@
 
   </div>
 
-  <div class="table-tailwind-custom">
+
+  <div class="table-tailwind-custom" *ngIf="selectedSection == 1">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>เลขที่ใบเสร็จ</th>
+          <th>วันที่</th>
+          <th>โต๊ะ</th>
+          <th>ประเภท</th>
+          <th>จำนวนคน</th>
+          <th>ประเภทลูกค้า</th>
+          <th>เช็คบิลโดย</th>
+          <th>การชำระเงิน</th>
+          <th>รับมา</th>
+          <th>ทอน</th>
+          <th>ยอดรวม</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data_history">
+          <td class="order">{{ row.Order_id }}</td>
+          <td class="bill_tax">{{ row.bill_tax }}</td>
+          <td class="date">{{ row.date }}</td>
+          <td class="table">{{ row.table }}</td>
+          <td class="table_type">{{ row.table_type }}</td>
+          <td class="number_people">{{ row.number_people }}</td>
+          <td class="course_type">{{ row.course_type }}</td>
+          <td class="member_name">{{ row.member_name }}</td>
+          <td class="payment_type">{{ row.payment_type }}</td>
+          <td class="income">{{ row.income }}</td>
+          <td class="change">{{ row.change }}</td>
+          <td class="total">{{ row.total }}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-tailwind-custom" *ngIf="selectedSection != 1">
     <table class="table-auto">
       <thead>
         <tr>
