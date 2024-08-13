@@ -142,10 +142,11 @@
           </ion-button>
 
           <div class="popop-dot">
-            <ion-select [interfaceOptions]="customPopoverOptionsStyle2" class="css-pop-dot" toggleIcon="menu-sharp"
-              mode="md" interface="popover">
-              <ion-select-option value="1">ลบเมนู</ion-select-option>
-              <ion-select-option value="2">ปิดออก</ion-select-option>
+            <ion-select [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-dot" toggleIcon="menu-sharp"
+              mode="md" interface="popover" [(ngModel)]="select_by">
+              <ion-select-option value="1">Up coming birthday</ion-select-option>
+              <ion-select-option value="2">Join Date (Newest)</ion-select-option>
+              <ion-select-option value="3">Join Date (earliest)</ion-select-option>
             </ion-select>
 
           </div>
@@ -157,62 +158,62 @@
 
         <swiper-container #swiper (swiperreachbeginning)="swiperReady()" (swiperslidechange)="swiperSlideCharge()">
 
+          <!-- Member -->
           <swiper-slide>
-
             <div class="table-scroll">
-              <ion-grid class="box-table">
+              <ion-grid class="box-member">
                 <ion-row class="header">
                   <ion-col size="auto" class="ion-text-center">
                     <div class="col-head-1">
                       <ion-label>Image</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col>
                     <div class="col-head-2">
                       <ion-label>Name</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-3">
-                      <ion-label>หมวดหมู่</ion-label>
+                      <ion-label>Type</ion-label>
                     </div>
 
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-4">
-                      <ion-label>ออเดอร์</ion-label>
+                      <ion-label>Join Date</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-5">
-                      <ion-label>สัดส่วน</ion-label>
+                      <ion-label>Phone NO.</ion-label>
                     </div>
 
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-6">
-                      <ion-label>ยอดขาย</ion-label>
+                      <ion-label>Birth</ion-label>
                     </div>
 
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-7">
-                      <ion-label>ออเดอร์</ion-label>
+                      <ion-label>Point</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-8">
-                      <ion-label>ออเดอร์</ion-label>
+                      <ion-label>Visited</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-9">
-                      <ion-label>ออเดอร์</ion-label>
+                      <ion-label>last visited</ion-label>
                     </div>
                   </ion-col>
-                  <ion-col size="auto" class="ion-text-center">
+                  <ion-col class="ion-text-center">
                     <div class="col-head-10">
-                      <ion-label>ออเดอร์</ion-label>
+                      <ion-label>Spend</ion-label>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -222,60 +223,137 @@
                   <ion-row class="data-row"
                     *ngFor="let item of ['Daimond','Daimond','Silver','Platinum','General','Platinum','Daimond','Gold','Gold','General','Daimond'];let i = index;">
                     <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-1">
+                      <div class="col-body-1">
                         <div class="box-img">
                           <img src="assets/image/img-product.png" alt="">
                         </div>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-2">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-2">
                         <ion-label>Nick name</ion-label>
                         <ion-label>ID: 000123</ion-label>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-3">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-3">
                         <ion-label class="label-rank" [class]="'box-color-' + (i + 1)">{{item}}</ion-label>
                       </div>
 
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-4">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-4">
                         <ion-label>12/03/2024</ion-label>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-5">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-5">
                         <ion-label>098-129-9734</ion-label>
                       </div>
 
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-6">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-6">
                         <ion-label>12 Feb 2024</ion-label>
                       </div>
 
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-7">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-7">
                         <ion-label>1,256</ion-label>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-8">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-8">
                         <ion-label>25</ion-label>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-9">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-9">
                         <ion-label>12/03/2024</ion-label>
                       </div>
                     </ion-col>
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-head-10">
+                    <ion-col class="ion-text-center">
+                      <div class="col-body-10">
                         <ion-label>฿ 56,942</ion-label>
                         <ion-icon name="chevron-forward-outline"></ion-icon>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ion-grid>
+            </div>
+          </swiper-slide>
+
+          <!-- Member Class -->
+          <swiper-slide>
+            <div class="table-scroll">
+              <ion-grid class="box-member-class">
+                <ion-row class="header">
+                  <ion-col>
+                    <div class="col-head-1">
+                      <ion-label>Name</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div class="col-head-2">
+                      <ion-label>Min Points Required</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div class="col-head-3">
+                      <ion-label>Max Points Required</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div class="col-head-4">
+                      <ion-label>Visit Required</ion-label>
+                    </div>
+                  </ion-col>
+                </ion-row>
+
+                <div class="data-body">
+                  <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5];let i = index;">
+                    <ion-col>
+                      <div class="col-body-1">
+                        <div *ngIf="i == 1" class="box-edit-color"></div>
+                        <ion-label>Silver</ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div class="col-body-2">
+                        <div class="box-style-1-input">
+                          <ion-label class="text-sub-name">Min Points</ion-label>
+                          <div class="box-style-1-bottom">
+                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div class="col-body-3">
+                        <div class="box-style-1-input">
+                          <ion-label class="text-sub-name">Max Points</ion-label>
+                          <div class="box-style-1-bottom">
+                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div class="col-body-4">
+                        <div class="box-style-1-input">
+                          <ion-label class="text-sub-name">Visit</ion-label>
+                          <div class="box-style-1-bottom">
+                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                          </div>
+                        </div>
+                        <div class="col-body-right">
+                          <ion-button size="small" class="btn-edit">
+                            <ion-icon name="pencil-outline"></ion-icon>
+                            <ion-label>แก้ไข</ion-label>
+                          </ion-button>
+                        </div>
                       </div>
                     </ion-col>
                   </ion-row>
@@ -283,25 +361,6 @@
 
 
               </ion-grid>
-            </div>
-          </swiper-slide>
-
-          <swiper-slide>
-            <div class="">2
-              <!-- <div *ngFor="let table of table_zone.tables; let i = index" class="">
-                <ion-card>
-                  <ion-card-header class="text-center">
-                    <div class="">
-                      <span>h</span>
-                    </div>
-                    <ion-card-title>ssssss</ion-card-title>
-
-                    <div class="">
-                      <span class="">mm</span>
-                    </div>
-                  </ion-card-header>
-                </ion-card>
-              </div> -->
             </div>
           </swiper-slide>
         </swiper-container>

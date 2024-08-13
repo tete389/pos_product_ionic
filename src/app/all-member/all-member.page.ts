@@ -68,12 +68,12 @@ export class AllMemberPage implements OnInit {
   //สมาชิกทั้งหมด
   member_all: any = [
     {
-      member_type: 'General',
+      member_type: 'Platinum',
       percent: 45,
       count_people: 510,
     },
     {
-      member_type: 'Silver',
+      member_type: 'Daimond',
       percent: 15,
       count_people: 300,
     },
@@ -83,12 +83,12 @@ export class AllMemberPage implements OnInit {
       count_people: 200,
     },
     {
-      member_type: 'Daimond',
+      member_type: 'Silver',
       percent: 7,
       count_people: 100,
     },
     {
-      member_type: 'VIP',
+      member_type: 'General',
       percent: 5,
       count_people: 50,
     },
@@ -163,7 +163,7 @@ export class AllMemberPage implements OnInit {
   };
 
   sort_by: any = '1';
-
+  select_by: any = '1';
   constructor() {}
 
   ngOnInit() {
