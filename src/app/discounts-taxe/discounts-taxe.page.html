@@ -59,10 +59,16 @@
           <div class="d-name">
             <div class="flex-dname">
               <p>ชื่อส่วนลด</p>
-              <p>13/40</p>
+              <p>{{discount.name.length}}/{{maxNameLength}}</p> <!-- แสดงจำนวนตัวอักษรที่พิมพ์แล้ว -->
             </div>
-            <ion-input class="styled-input" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
+            <ion-input
+              class="styled-input"
+              [disabled]="editingId !== discount.id"
+              [(ngModel)]="discount.name"
+              [attr.maxlength]="maxNameLength"
+            ></ion-input>
           </div>
+          
     
           <!-- รูปแบบส่วนลด -->
           <div class="d-format">
@@ -93,21 +99,23 @@
               <p>จำนวนที่ลด</p>
             </div>
             <div class="box-style-3-bottom">
-              <ion-select 
-                [ngClass]="{'edit-mode': editingId === discount.id}" 
-                [disabled]="editingId !== discount.id" 
-                [(ngModel)]="discount.amount" 
-                [interfaceOptions]="customPopoverMultiSelect" 
-                class="css-pop-3"
-                toggleIcon="chevron-down-outline" 
-                expandedIcon="chevron-forward-outline" 
-                placeholder="{{ discount.amount }}"
-                interface="popover"  
-                mode="md">
-                <ion-select-option value="10%">10%</ion-select-option>
-                <ion-select-option value="15%">15%</ion-select-option>
-                <ion-select-option value="20%">20%</ion-select-option>
-              </ion-select>
+              <ion-select
+              [ngClass]="{'edit-mode': editingId === discount.id}"
+              [disabled]="editingId !== discount.id"
+              [(ngModel)]="discount.amount"
+              [interfaceOptions]="customPopoverMultiSelect"
+              class="css-pop-3"
+              toggleIcon="chevron-down-outline"
+              expandedIcon="chevron-forward-outline"
+              placeholder="{{ discount.amount }}"
+              interface="popover"
+              mode="md"
+            >
+              <ion-select-option value="10%">10%</ion-select-option>
+              <ion-select-option value="15%">15%</ion-select-option>
+              <ion-select-option value="20%">20%</ion-select-option>
+            </ion-select>
+            
             </div>
           </div>
     
@@ -155,7 +163,7 @@
       <div class="d-name">
         <div class="flex-dname">
           <p>ชื่อส่วนลด</p>
-          <p>13/40</p>
+          <p>{{ v.name.length}}/{{maxNameLength}}</p>
         </div>
         <ion-input class="styled-input" [disabled]="true" [(ngModel)]="v.name"></ion-input>
       </div>
@@ -165,7 +173,7 @@
           <p>รูปแบบส่วนลด</p>
         </div>
     
-        <ion-input [disabled]="true" [(ngModel)]="v.type"  class="select-custom">
+        <ion-input [attr.maxlength]="maxNameLength" [disabled]="true" [(ngModel)]="v.type"  class="select-custom">
       
         </ion-input>
       </div>
@@ -213,7 +221,7 @@
       <div class="d-name">
         <div class="flex-dname">
           <p>ชื่อส่วนลด</p>
-          <p>13/40</p>
+          <p>{{v.name.length}}/{{maxNameLength}}</p>
         </div>
         <ion-input class="styled-input" [disabled]="true" [(ngModel)]="v.name"></ion-input>
       </div>
@@ -223,7 +231,7 @@
           <p>รูปแบบ</p>
         </div>
     
-        <ion-input [disabled]="true" [(ngModel)]="v.type"  class="select-custom">
+        <ion-input [disabled]="true" [attr.maxlength]="maxNameLength" [(ngModel)]="v.type"  class="select-custom">
       
         </ion-input>
       </div>
@@ -280,9 +288,9 @@
       <div class="d-name">
         <div class="flex-dname">
           <p>ชื่อส่วนลด</p>
-          <p>13/40</p>
+          <p>{{discount.name.length}}/{{maxNameLength}}</p> 
         </div>
-        <ion-input class="styled-input" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
+        <ion-input class="styled-input"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
       </div>
     
       <div class="d-format">
@@ -362,9 +370,9 @@
       <div class="d-name">
         <div class="flex-dname">
           <p>ชื่อส่วนลด</p>
-          <p>13/40</p>
+          <p>{{discount.name.length}}/{{maxNameLength}}</p>
         </div>
-        <ion-input class="styled-input" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
+        <ion-input class="styled-input"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
       </div>
     
       <div class="d-format">

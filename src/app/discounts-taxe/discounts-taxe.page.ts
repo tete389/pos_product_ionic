@@ -16,6 +16,7 @@ import { NgFor } from '@angular/common';
 
 })
 export class DiscountsTaxePage implements OnInit {
+  maxNameLength = 40;
   customPopoverOptionsStyle1 = {
     cssClass: 'my-custom-customPopover-select-style-1',
   };
@@ -47,7 +48,7 @@ export class DiscountsTaxePage implements OnInit {
       name: 'ส่วนลดวันเกิด',
       remaining: 13,
       total: 40,
-      amount: '40%',
+      amount: '20%',
       usage: 'เลือกใช้เอง',
       type: 'เปอร์เซนต์ (%)',  
     },
