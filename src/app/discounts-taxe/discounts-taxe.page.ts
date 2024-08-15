@@ -54,7 +54,7 @@ export class DiscountsTaxePage implements OnInit {
   ];
   vat = [
     {
-      id: 1,
+      id: 11,
       name: 'ภาษีมูลค่าเพิ่ม 7%',
       remaining: 13,
       total: 40,
@@ -66,7 +66,7 @@ export class DiscountsTaxePage implements OnInit {
   ];
   service = [
     {
-      id: 1,
+      id: 111,
       name: 'Service Charge',
       remaining: 13,
       total: 40,
@@ -78,7 +78,7 @@ export class DiscountsTaxePage implements OnInit {
   ];
   discounts_foods = [
     {
-      id: 1,
+      id: 1111,
       name: 'ส่วนลดอาหารรายเมนู 5%',
       remaining: 13,
       total: 40,
@@ -87,7 +87,7 @@ export class DiscountsTaxePage implements OnInit {
       type: 'เปอร์เซนต์ (%)', 
     },
     {
-      id: 2,
+      id: 2222,
       name: 'ส่วนลดอาหารรายเมนู 20 บาท',
       remaining: 13,
       total: 40,
@@ -98,7 +98,7 @@ export class DiscountsTaxePage implements OnInit {
   ];
   ex = [
     {
-      id: 1,
+      id: 11111,
       name: 'ค่าปรับอาหารเหลือ',
       remaining: 13,
       total: 50,
@@ -107,7 +107,7 @@ export class DiscountsTaxePage implements OnInit {
       type: 'จำนวนเงิน (ฺTHB)', 
     },
     {
-      id: 2,
+      id: 22222,
       name: 'แก้วแตก',
       remaining: 13,
       total: 20,
@@ -192,4 +192,12 @@ export class DiscountsTaxePage implements OnInit {
   showAddButton() {
     return this.select_tab !== 2 && this.select_tab !== 3;
   }
+  getPlaceholder(usage: string): string {
+    if (usage === 'อัตโนมัติ') {
+        return 'ใช้งานอัตโนมัติ'; // ข้อความ placeholder
+    } else {
+        return 'เลือกตัวเลือก'; // ข้อความ placeholder เริ่มต้น
+    }
+}
+
 }
