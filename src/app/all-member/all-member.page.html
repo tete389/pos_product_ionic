@@ -106,7 +106,7 @@
       <div class="box-right-content-1">
         <div class="segment-box">
           <ion-segment scrollable="true" class="" [(ngModel)]="select_member_page"
-            (ionChange)="select_zone_event($event)" mode="ios">
+            (ionChange)="select_tab_event($event)" mode="ios">
             <ion-segment-button [value]="i" class="" *ngFor="let member of member_page_arr; let i = index">
               <ion-label>{{ member }}</ion-label>
             </ion-segment-button>
@@ -156,10 +156,11 @@
 
       <div class="box-right-content-2">
 
-        <swiper-container #swiper (swiperreachbeginning)="swiperReady()" (swiperslidechange)="swiperSlideCharge()">
+        <swiper-container #swiper (swiperreachbeginning)="swiperReady()"
+          (swiperslidechange)="swiperSlideCharge($event)">
 
           <!-- Member -->
-          <swiper-slide>
+          <swiper-slide >
             <div class="table-scroll">
               <ion-grid class="box-member">
                 <ion-row class="header">
@@ -313,11 +314,11 @@
                 </ion-row>
 
                 <div class="data-body">
-                  <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5];let i = index;">
+                  <ion-row class="data-row" *ngFor="let item of member_all_class;let i = index;">
                     <ion-col>
                       <div class="col-body-1">
                         <div *ngIf="i == 1" class="box-edit-color"></div>
-                        <ion-label>Silver</ion-label>
+                        <ion-label>{{item.name_class}}</ion-label>
                       </div>
                     </ion-col>
                     <ion-col>
@@ -325,7 +326,8 @@
                         <div class="box-style-1-input">
                           <ion-label class="text-sub-name">Min Points</ion-label>
                           <div class="box-style-1-bottom">
-                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                            <ion-input class="custom-ion-input-number-3" type="number"
+                              [value]="item.min_point"></ion-input>
                           </div>
                         </div>
                       </div>
@@ -335,7 +337,8 @@
                         <div class="box-style-1-input">
                           <ion-label class="text-sub-name">Max Points</ion-label>
                           <div class="box-style-1-bottom">
-                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                            <ion-input class="custom-ion-input-number-3" type="number"
+                              [value]="item.max_point"></ion-input>
                           </div>
                         </div>
                       </div>
@@ -345,7 +348,7 @@
                         <div class="box-style-1-input">
                           <ion-label class="text-sub-name">Visit</ion-label>
                           <div class="box-style-1-bottom">
-                            <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                            <ion-input class="custom-ion-input-number-3" type="number" [value]="item.visit"></ion-input>
                           </div>
                         </div>
                         <div class="col-body-right">
@@ -356,6 +359,35 @@
                         </div>
                       </div>
                     </ion-col>
+                  </ion-row>
+                  <!-- เพิ่มเติม -->
+                  <ion-row class="data-row-footer">
+                    <ion-label class="text-sub-footer">เพิ่มเติม</ion-label>
+                    <div class="box-footer">
+
+                      <div class="box-footer-left">
+                        <ion-label class="box-footer-left-sub">จำนวนแต้มที่สามชิกจะได้รับต่อ 1 Visit =</ion-label>
+                        <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
+                        <ion-label class="box-footer-left-sub">Points</ion-label>
+                      </div>
+
+                      <div class="box-footer-right">
+                        <ion-button size="small" class="btn-edit">
+                          <ion-icon name="pencil-outline"></ion-icon>
+                          <ion-label>แก้ไข</ion-label>
+                        </ion-button>
+                      </div>
+
+                    </div>
+
+
+
+                  </ion-row>
+
+                  <ion-row class="data-row-lean-more">
+                    <ion-button size="small" class="btn-lean-more" (click)="setOpen(true)">
+                      <ion-label>เรียนรู้เพิ่มเติมเกี่ยวกับระดับสมาชิก</ion-label>
+                    </ion-button>
                   </ion-row>
                 </div>
 
@@ -371,3 +403,50 @@
   </div>
 
 </ion-content>
+
+<ion-button class="btn-add-new-member " *ngIf="select_member_page == 0">Creat new</ion-button>
+
+<!-- modal เรียนรู้เพิ่มเติมเกี่ยวกับระดับสมาชิก -->
+<ion-modal class="show-lean-more" [isOpen]="isModalOpen" (didDismiss)="setOpen(false)">
+  <ng-template>
+    <div class="content">
+
+      <div class="content-box">
+        <ion-label class="text-head">ระดับสมาชิก</ion-label>
+        <ion-label class="text-detail-style-1">ระดับของสมาชิกจะขึ้นอยู่กับจำนวนแต้มสะสมของสมาชิก
+          โดยระดับสมาชิก มี 4 ระดับ เรียงจากระดับสูงสุดไประดับเริ่มต้น ดังนี้ <br>
+          <p>1.Platinum (สูงสุด)</p>
+          <p>2.Diamond</p>
+          <p>3.Gold</p>
+          <p>4.Silver (เริ่มต้น)</p>
+        </ion-label>
+      </div>
+
+      <div class="content-box">
+        <ion-label class="text-head">การได้มาของแต้ม&nbsp;<span>(Point)</span></ion-label>
+        <ion-label class="text-detail-style-1">โดยการได้มาของแต้มจะได้มาจาก 2 วิธี ได้แก่<br>
+          <p>1.ยอดใช้จ่าย ในใบเสร็จ ( 1 บาท = 1 แต้ม )</p>
+          <p>2.Frequency of Visits: 1 Visit = 50 แต้ม</p>
+        </ion-label>
+      </div>
+
+      <div class="content-box">
+        <ion-label class="text-head">การ Reranking ของระดับสมาชิก</ion-label>
+        <ion-label class="text-detail-style-1">รอบของการ Reranking ของระดับสมาชิก จะ Rerank ทุก 6 เดือน
+          (ทุกวันที่ 1 ก.ค. และ 31 ธ.ค. ของทุกปี)<br>
+          <span>
+            <b>รอบที่ 1</b><br>
+            <p>ระยะเวลาการเก็บสะสมแต้ม: 7 ม.ค. - 30 มิ.ย. ของทุกปี
+              วันที่ประกาศระดับสมาชิกใหม่: 1 ก.ค. ของทุกปี</p>
+          </span>
+          <span>
+            <b>รอบที่ 2</b><br>
+            <p>ระยะเวลาการเก็บสะสมแต้ม: 1 ก.ค. - 31 ธ.ค. ของทุกปี
+              วันที่ประกาศระดับสมาชิกใหม่: 7 ก.ค. ของทุกปี</p>
+          </span>
+        </ion-label>
+      </div>
+
+    </div>
+  </ng-template>
+</ion-modal>

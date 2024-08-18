@@ -15,7 +15,8 @@ import {
   IonIcon,
   IonSegmentButton,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
+  IonModal
 } from '@ionic/angular/standalone';
 import {
   ApexAxisChartSeries,
@@ -58,6 +59,7 @@ export type ChartOptions = {
     IonIcon,
     IonSegmentButton,
     IonSelect,
+    IonModal,
     IonSelectOption,
     CommonModule,
     FormsModule,
@@ -92,6 +94,34 @@ export class AllMemberPage implements OnInit {
       percent: 5,
       count_people: 50,
     },
+  ];
+  // จัดการประเภทสมาชิก
+  member_all_class: any = [
+    {
+      name_class: 'Platinum',
+      min_point: 0,
+      max_point: 1000,
+      visit:1
+    },
+    {
+      name_class: 'Gold',
+      min_point: 1001,
+      max_point: 2000,
+      visit:4
+    },
+    {
+      name_class: 'Diamon',
+      min_point: 2001,
+      max_point: 3000,
+      visit:7
+    },
+    {
+      name_class: 'Platinum',
+      min_point: 3001,
+      max_point: 0,
+      visit:11
+    },
+
   ];
   // แยกตามเพศ
   gender_all: any = [
@@ -164,6 +194,7 @@ export class AllMemberPage implements OnInit {
 
   sort_by: any = '1';
   select_by: any = '1';
+  isModalOpen:boolean = false;
   constructor() {}
 
   ngOnInit() {
@@ -234,7 +265,7 @@ export class AllMemberPage implements OnInit {
   }
 
 
-  public select_zone_event(event: any) {
+  public select_tab_event(event: any) {
     console.log(event.detail.value);
     
     this.swiper?.enable();
@@ -310,12 +341,23 @@ export class AllMemberPage implements OnInit {
     },
   ];
 
-  swiperSlideCharge() {
+  swiperSlideCharge(event:any) {
+    console.log(event);
+    
     // const index = this.swiperRef?.nativeElement.swiper.activeIndex;
     // // if (this.select_group_page != index) {
     // //   this.select_group_page = index;
     // //   this.select_group(Number(index));
     // // }
   }
+
+    // เปิด modal เรียนรู้เพิ่มเติมเกี่ยวกับระดับสมาชิก
+    setOpen(isOpen: boolean) {
+      this.isModalOpen = isOpen;
+      // if (isOpen) {
+      // } else {
+      //   this.isModalOpen = isOpen;
+      // }
+    }
   
 }
