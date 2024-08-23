@@ -596,21 +596,53 @@ ion-input.custom-ion-input-number-3 input[type="number"] {
   border: none;
   border: 1px solid var(--dark-gray-color);
 }
+ion-input.custom-ion-input-text-3 input[type="text"] {
+  border-radius: 12px;
+  outline: none;
+  padding: 7px 15px;
+  height: 40px;
+  border: 1px solid var(--dark-gray-color);
+}
+ion-input.custom-ion-input-text-3[disabled]{
+  opacity: 1 !important; /* ทำให้สีไม่จาง */
+  color: black; /* กำหนดสีข้อความ */
+  background-color: #F4F6F8 !important; /* กำหนดสีพื้นหลัง */
+  border-radius: 5px !important; 
+  padding: 0px 15px  !important;
+  min-height: 40px  !important;
+}
+ion-input.custom-ion-input-text-3 input[type="text"]:disabled {
+  border: none;
+}
+
+ion-input.custom-ion-input-text-3 input[type="text"]:not(:disabled) {
+  border: 1px solid black;
+}
+
 ion-input.custom-ion-input-number-3 input[type="number"] {
   border-radius: 8px;
 }
-
+ion-input.custom-ion-input-text-3 input[type="text"] {
+  border-radius: 8px;
+}
 ion-input.custom-ion-input-number-2 input[type="number"],
 ion-input.custom-ion-input-number-3 input[type="number"] {
   text-align: center;
 }
-
+ion-input.custom-ion-input-text-3 input[type="text"] {
+  text-align: center;
+}
 ion-input.custom-ion-input-name-2 input[type="text"]:focus,
 ion-input.custom-ion-input-number-2 input[type="number"]:focus,
 ion-input.custom-ion-input-number-3 input[type="number"]:focus {
   outline: none;
   border: 1px solid var(--primary-color);
 }
+ion-input.custom-ion-input-text-3 input[type="text"]:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
 
 ion-input.custom-ion-input-name.active-edit input[type="text"],
 ion-input.custom-ion-input-name.active-edit input[type="tel"],
@@ -630,7 +662,11 @@ ion-input.custom-ion-input-number-3 input[type="number"] {
   appearance: textfield;
 }
 
-
+ion-input.custom-ion-input-text-3 input[type="text"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 
 ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-button,
 .custom-ion-input-number input[type="number"]::-webkit-outer-spin-button,
@@ -644,6 +680,15 @@ ion-input.custom-ion-input-number-3 input[type="number"]::-webkit-inner-spin-but
   margin: 0;
 }
 
+ion-input.custom-ion-input-text-3 input[type="text"]::-webkit-inner-spin-button,
+.custom-ion-input-text-3 input[type="text"]::-webkit-outer-spin-button  {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+
 ion-input.custom-ion-input-number input[type="number"]:focus,
 ion-input.custom-ion-input-number-2 input[type="number"]:focus,
 ion-input.custom-ion-input-number-3 input[type="number"]:focus {
@@ -651,7 +696,10 @@ ion-input.custom-ion-input-number-3 input[type="number"]:focus {
   outline: none;
 }
 
-
+ion-input.custom-ion-input-text-3 input[type="text"]:focus {
+  // border: none;
+  // outline: none;
+}
 
 
 //===============================================

@@ -61,12 +61,16 @@
               <p>ชื่อส่วนลด</p>
               <p>{{discount.name.length}}/{{maxNameLength}}</p> <!-- แสดงจำนวนตัวอักษรที่พิมพ์แล้ว -->
             </div>
-            <ion-input
-              class="styled-input"
-              [disabled]="editingId !== discount.id"
-              [(ngModel)]="discount.name"
-              [attr.maxlength]="maxNameLength"
-            ></ion-input>
+         
+              <ion-input class="custom-ion-input-text-3"
+                 type="text"
+                 [disabled]="editingId !== discount.id"
+                 [(ngModel)]="discount.name"
+                 [attr.maxlength]="maxNameLength"
+                [value]="discount.name"
+                ></ion-input>
+                
+         
           </div>
           
     
@@ -81,7 +85,7 @@
                 [disabled]="editingId !== discount.id" 
                 [(ngModel)]="discount.type" 
                 [interfaceOptions]="customPopoverMultiSelect" 
-                class="css-pop-3"
+                class="css-pop-3 select-custom-focus"
                 toggleIcon="chevron-down-outline" 
                 expandedIcon="chevron-forward-outline" 
                 placeholder="{{ discount.type}}"
@@ -104,7 +108,7 @@
               [disabled]="editingId !== discount.id"
               [(ngModel)]="discount.amount"
               [interfaceOptions]="customPopoverMultiSelect"
-              class="css-pop-3"
+              class="css-pop-3 select-custom-focus"
               toggleIcon="chevron-down-outline"
               expandedIcon="chevron-forward-outline"
               placeholder="{{ discount.amount }}"
@@ -130,7 +134,7 @@
                 [disabled]="editingId !== discount.id" 
                 [(ngModel)]="discount.usage" 
                 [interfaceOptions]="customPopoverMultiSelect" 
-                class="css-pop-3"
+                class="css-pop-3 select-custom-focus"
                 toggleIcon="chevron-down-outline" 
                 expandedIcon="chevron-forward-outline" 
                 placeholder=""
@@ -165,7 +169,7 @@
           <p>ชื่อส่วนลด</p>
           <p>{{ v.name.length}}/{{maxNameLength}}</p>
         </div>
-        <ion-input class="styled-input" [disabled]="true" [(ngModel)]="v.name"></ion-input>
+        <ion-input class="custom-ion-input-text-3" type="text" [disabled]="true" [(ngModel)]="v.name"></ion-input>
       </div>
     
       <div class="d-format">
@@ -173,7 +177,7 @@
           <p>รูปแบบส่วนลด</p>
         </div>
     
-        <ion-input [attr.maxlength]="maxNameLength" [disabled]="true" [(ngModel)]="v.type"  class="select-custom">
+        <ion-input [attr.maxlength]="maxNameLength" [disabled]="true" [(ngModel)]="v.type"  class="custom-ion-input-text-3">
       
         </ion-input>
       </div>
@@ -182,7 +186,7 @@
         <div class="flex-dformat">
           <p>จำนวนที่ลด</p>
         </div>
-        <ion-input [disabled]="true" [(ngModel)]="v.amount" class="select-custom">
+        <ion-input [disabled]="true" [(ngModel)]="v.amount" class="custom-ion-input-text-3">
         </ion-input>
       </div>
     
@@ -192,7 +196,7 @@
         </div>
        
         <div class="box-style-3-bottom">
-          <ion-select [disabled]="editingId !== v.id"   [ngClass]="{'select-disabled': editingId !== v.id, 'edit-mode': editingId === v.id}"  [(ngModel)]="v.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3"
+          <ion-select [disabled]="editingId !== v.id"   [ngClass]="{'select-disabled': editingId !== v.id, 'edit-mode': editingId === v.id}"  [(ngModel)]="v.usage" [interfaceOptions]="customPopoverMultiSelect" class="css-pop-3 "
             toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder=""
             interface="popover" mode="md">
             <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
@@ -223,7 +227,7 @@
           <p>ชื่อส่วนลด</p>
           <p>{{v.name.length}}/{{maxNameLength}}</p>
         </div>
-        <ion-input class="styled-input" [disabled]="true" [(ngModel)]="v.name"></ion-input>
+        <ion-input class="custom-ion-input-text-3" type="text" [disabled]="true" [(ngModel)]="v.name"></ion-input>
       </div>
     
       <div class="d-format">
@@ -231,7 +235,7 @@
           <p>รูปแบบ</p>
         </div>
     
-        <ion-input [disabled]="true" [attr.maxlength]="maxNameLength" [(ngModel)]="v.type"  class="select-custom">
+        <ion-input [disabled]="true" [attr.maxlength]="maxNameLength" [(ngModel)]="v.type"  class="custom-ion-input-text-3">
       
         </ion-input>
       </div>
@@ -290,7 +294,7 @@
           <p>ชื่อส่วนลด</p>
           <p>{{discount.name.length}}/{{maxNameLength}}</p> 
         </div>
-        <ion-input class="styled-input"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
+        <ion-input class="custom-ion-input-text-3" type="text"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name" [value]="discount.name"></ion-input>
       </div>
     
       <div class="d-format">
@@ -328,7 +332,7 @@
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="custom-ion-input-text-3">
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(1)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(2)</ion-select-option>
           <ion-select-option value="เลือกใช้เอง">เลือกแล้ว(3)</ion-select-option>
@@ -372,7 +376,7 @@
           <p>ชื่อส่วนลด</p>
           <p>{{discount.name.length}}/{{maxNameLength}}</p>
         </div>
-        <ion-input class="styled-input"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
+        <ion-input class="custom-ion-input-text-3" type="text" [value]="discount.name"  [attr.maxlength]="maxNameLength" [disabled]="editingId !== discount.id" [(ngModel)]="discount.name"></ion-input>
       </div>
     
       <div class="d-format">
@@ -380,7 +384,7 @@
           <p>รูปแบบส่วนลด</p>
         </div>
     
-        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.type" aria-label="Type" interface="popover" class="custom-ion-input-text-3">
           <ion-select-option value="percentage">เปอร์เซ็นต์ (%)</ion-select-option>
           <ion-select-option value="fixed">จำนวนเงิน (THB)</ion-select-option>
      
@@ -399,7 +403,7 @@
         <div class="flex-dformat">
           <p>จำนวนที่ลด</p>
         </div>
-        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.amount" aria-label="Discount Amount" interface="popover" class="custom-ion-input-text-3">
           <ion-select-option value="10%">10%</ion-select-option>
           <ion-select-option value="15%">15%</ion-select-option>
           <ion-select-option value="20%">20%</ion-select-option>
@@ -421,7 +425,7 @@
         <div class="flex-dformat">
           <p>การใช้งาน</p>
         </div>
-        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="select-custom">
+        <!-- <ion-select [disabled]="editingId !== discount.id" [(ngModel)]="discount.usage" aria-label="Usage" interface="popover" class="custom-ion-input-text-3">
           <ion-select-option value="เลือกใช้เอง">เลือกใช้เอง</ion-select-option>
         
 
