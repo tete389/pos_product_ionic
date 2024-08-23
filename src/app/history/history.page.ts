@@ -56,7 +56,7 @@ export class HistoryPage implements OnInit {
     };
   
     return Array.from({ length: 50 }, (_, i) => ({
-      Order_id: '0001226',
+      Order_id: 'ID:0001226',
       bill_tax: 'SALE-000001',
       date: moment(baseDate).add(i, 'days').format('DD/MM/YYYY'),
       table:'A6',

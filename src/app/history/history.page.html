@@ -58,6 +58,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let row of data_history">
+
           <td class="order">{{ row.Order_id }}</td>
           <td class="bill_tax">{{ row.bill_tax }}</td>
           <td class="date">{{ row.date }}</td>
@@ -69,7 +70,7 @@
           <td class="payment_type">{{ row.payment_type }}</td>
           <td class="income">{{ row.income }}</td>
           <td class="change">{{ row.change }}</td>
-          <td class="total">{{ row.total }}</td>
+          <td class="total">{{ row.total }} ฿</td>
          
         </tr>
       </tbody>
@@ -114,5 +115,12 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="export-pdf">
+    <ion-button> export pdf</ion-button>
+   
+   
+   
+ 
   </div>
 </ion-content>
