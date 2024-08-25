@@ -1,0 +1,168 @@
+<ion-content>
+
+  <div class="box-main">
+
+    <div class="box-1">
+      <div class="box-1-left">
+        <div class="box-image">
+          <img src="assets/image/icon-member.png" alt="">
+        </div>
+      </div>
+      <div class="box-1-right">
+        <ion-label class="text-head">เพิ่มสมาชิก</ion-label>
+        <ion-label class="text-sub">(Add new member)</ion-label>
+      </div>
+    </div>
+
+    <!-- Member ID -->
+    <div class="box-2">
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">Member ID</ion-label>
+          <ion-label class="text-sub-count">(Auto Generate)</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input disabled="true" class="custom-ion-input-name active-edit" placeholder="รหัสสมาชิก"
+            value="MB-00005"></ion-input>
+        </div>
+      </div>
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">Membership Type</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input disabled="true" class="custom-ion-input-name active-edit" placeholder="รหัสสมาชิก"
+            value="General"></ion-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ชื่อ - นามสกุล -->
+    <div class="box-2">
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">ชื่อ</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input class="custom-ion-input-name active-edit" placeholder="" value=""></ion-input>
+        </div>
+      </div>
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">นามสกุล</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input class="custom-ion-input-name active-edit" placeholder="" value=""></ion-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ชื่อเล่น - วันเดือนปีเกิด -->
+    <div class="box-2">
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">ชื่อเล่น</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input class="custom-ion-input-name active-edit" placeholder=""
+            value=""></ion-input>
+        </div>
+      </div>
+      <div class="box-style-2">
+        <div class="box-style-2-top">
+          <ion-label class="text-sub-name-2">วันเดือนปีเกิด</ion-label>
+          <ion-label class="text-sub-name-2">อายุ</ion-label>
+        </div>
+        <div class="box-style-2-bottom">
+
+          <div id="open-date-input" class="box-birthday">
+            <ion-label>{{birthday}}</ion-label>
+          </div>
+
+          <ion-popover class="pop-datetimer" trigger="open-date-input" show-backdrop="true"
+            [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime [(ngModel)]="birthday" #popoverDate class="custom-css-dateitme" [preferWheel]="true"
+                presentation="date" locale="en-US" doneText="ตกลง" cancelText="ปิดออก" showDefaultButtons=true
+                (ionChange)="selectBirthday($event)"></ion-datetime>
+            </ng-template>
+          </ion-popover>
+          <ion-input  class="custom-ion-input-name active-edit" placeholder="" [value]="birstday_calc"></ion-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- เบอร์โทร - Email -->
+    <div class="box-2">
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">เบอร์โทร</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input  class="custom-ion-input-name active-edit" placeholder=""
+            value=""></ion-input>
+        </div>
+      </div>
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">Email</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input  class="custom-ion-input-name active-edit" placeholder=""
+            value=""></ion-input>
+        </div>
+      </div>
+
+    </div>
+    <div class="box-2">
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">เพศ</ion-label>
+        </div>
+        <div class="popop">
+          <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+            interface="popover" [(ngModel)]="gender">
+            <ion-select-option value="0">เลือก</ion-select-option>
+            <ion-select-option value="1">ชาย</ion-select-option>
+            <ion-select-option value="2">หญิง</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="box-style-1">
+        <div class="box-style-1-top">
+          <ion-label class="text-sub-name">Line</ion-label>
+        </div>
+        <div class="box-style-1-bottom">
+          <ion-input  class="custom-ion-input-name active-edit" placeholder=""
+            value=""></ion-input>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-buttons>
+
+    <ion-button (click)="close()" size="small" class="btn-close">ยกเลิก</ion-button>
+    <ion-button (click)="save()" size="small" class="btn-save">บันทึก</ion-button>
+
+  </ion-buttons>
+</ion-footer>

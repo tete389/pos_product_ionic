@@ -551,6 +551,28 @@ ion-popover.my-custom-customPopover-multiSelect-2::part(backdrop) {
   --backdrop-opacity: 0.2;
 }
 
+ion-popover.pop-datetimer {
+  --width: fit-content;
+  margin-top: 10px;
+  ion-datetime.custom-css-dateitme {
+      // --background: rgb(245, 235, 247);
+      // --background-rgb: rgba(77,181,79,1);
+      --wheel-highlight-background: rgba(77, 181, 79, 0.1);
+      // --wheel-fade-background-rgb: 245, 235, 247;
+      /* border-radius: 50px; */
+  }
+
+  ion-datetime.custom-css-dateitme::part(wheel-item) {
+      // color: rgb(255, 66, 97);
+      font-weight: var(--text-light);
+  }
+
+  ion-datetime.custom-css-dateitme::part(wheel-item active) {
+      color: var(--green-color2);
+      font-weight: var(--text-regular);
+  }
+}
+
 
 //===============================================
 //=================  CSS ion-input ==============
@@ -994,6 +1016,17 @@ ion-modal.my-custom-modal-datetime {
 
   .modal-wrapper {}
 
+}
+
+ion-modal.css-modal-add-new-member {
+  --width: fit-content;
+  --width: 590px;
+  --height: 75%;
+  --border-radius: 12px;
+  margin-top: 0px;
+  padding: 16px 0 10px;
+
+  .modal-wrapper {}
 }
 
 .box-datetime {
