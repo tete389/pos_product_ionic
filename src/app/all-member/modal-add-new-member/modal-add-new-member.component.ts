@@ -16,7 +16,9 @@ import {
   IonFooter,
   ModalController,
   IonPopover,
-  IonDatetime
+  IonDatetime,
+  IonSelect,
+  IonSelectOption
 } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-modal-add-new-member',
@@ -31,7 +33,10 @@ import {
     IonButton,
     IonPopover,
     FormsModule,
-    IonDatetime
+    IonDatetime,
+    IonIcon,
+    IonSelect,
+    IonSelectOption
   ]
 })
 
