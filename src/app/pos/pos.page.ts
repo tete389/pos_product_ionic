@@ -32,7 +32,7 @@ import {
 } from '@ionic/angular/standalone';
 import Swiper from 'swiper';
 import { AddBasketComponent } from './add-basket/add-basket.component';
-
+import { ModalTypeComponent } from './modal-type/modal-type.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -192,6 +192,57 @@ export class PosPage implements OnInit {
       // this.message = `Hello, ${data}!`;
     }
   }
+
+  public async openModalType(zoneIndex: number, tableIndex: number) {
+    const combinedIndex = zoneIndex * 1000 + tableIndex; // Create a unique index
+  
+    const modal = await this.modalCtrl.create({
+      component: ModalTypeComponent,
+      cssClass: 'modal-pos-type',
+      mode: 'ios',
+      componentProps: { combinedIndex }, // Pass combined index
+    });
+  
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+  
+    if (role === 'confirm') {
+      this.updateTableColor(combinedIndex); // Pass combined index
+    }
+  }
+  
+  updateTableColor(combinedIndex: number) {
+    const zoneIndex = Math.floor(combinedIndex / 1000);
+    const tableIndex = combinedIndex % 1000;
+  
+    // สร้าง array ของสีที่กำหนดไว้
+    const colors = ['#1BC64A', '#FFCB37', '#FF5555', '#B6C0CF'];
+    
+    // เลือกสีแบบสุ่มจาก array
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  
+    // ตรวจสอบว่า tableIndex มีการตั้งค่าเป็น Object หรือไม่
+    if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
+      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+        ...this.table_zone_pos[zoneIndex].tables[tableIndex],
+        color: randomColor
+      };
+    } else {
+      // ถ้าไม่เป็น Object เปลี่ยนข้อมูลเป็น Object ใหม่
+      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+        name: this.table_zone_pos[zoneIndex].tables[tableIndex],
+        color: randomColor
+      };
+    }
+  
+    // Force Angular to detect changes
+    this.table_zone_pos = [...this.table_zone_pos];
+  }
+  
+  
+  
+  
+
 
   public select_zone_event(event: any) {
     this.swiper?.enable();

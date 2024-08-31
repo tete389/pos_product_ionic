@@ -102,6 +102,12 @@
   --border-radius: none;
 }
 
+.modal-pos-type {
+  --width: 50% !important;
+  --height: 80% !important;
+  --border-radius: 20px;
+}
+
 // ion-split-pane{
 //   background: var(--light-gray-color3);
 // }

@@ -1,0 +1,188 @@
+.container {
+    width: calc(100% - 100px);
+    margin: 0 auto;
+    margin-top: 35px;
+    font-family: 'kanit';
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'kanit';
+    border-bottom: 1.5px solid var(--dark-gray-color);
+
+}
+
+.flex-head-left {
+    .text-01 {
+        font-size: 36px;
+    }
+
+    .text-02 {
+        font-size: 16px;
+        color: var(--dark-gray-color);
+    }
+}
+
+.flex-head-right {
+    font-size: 40px;
+}
+
+
+.flex-card {
+    display: flex;
+    flex-direction: column;
+    font-family: "kanit";
+    margin: 0px -20px;
+
+    .card {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px 20px;
+        margin-bottom: -16px;
+
+        .left {
+            font-size: 24px;
+            color: var(--dark-color);
+        }
+
+        .right {
+            font-size: 24px;
+            color: var(--dark-gray-color);
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--primary-color-hover);
+            /* สีเขียว */
+            color: white;
+
+            .left,
+            .right {
+                color: white;
+            }
+        }
+    }
+
+
+
+    .card-two {
+        background-color: #edf4fa;
+        margin-top: -15px;
+
+        .flex-in {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+            align-content: center;
+            align-items: center;
+
+            .left-text {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+
+                p.adult-text {
+                    font-size: 26px;
+                    color: black;
+                }
+
+                span.eng-adult {
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+
+                .price-adult {
+                    font-size: 20px;
+                }
+            }
+
+            .position-button-updown {
+                display: flex;
+                justify-content: center;
+
+
+                .ButtonUpDown {
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: space-between;
+                    background-color: white;
+                    border-radius: 40px;
+                    width: 201px;
+                    height: 50px;
+                    --box-shadow: none;
+                    z-index: 998;
+
+
+
+                    ion-button {
+                        --border-radius: 50%;
+                        --background: var(--primary-color);
+                        --box-shadow: none;
+                        width: 50px;
+                        height: 50px;
+                        z-index: 99;
+
+
+
+                        ion-icon {
+                            --ionicon-stroke-width: 100px;
+                        }
+                    }
+
+                    p {
+                        font-size: 37px;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+        }
+
+    }
+    .tick-qrcode{
+        display: flex;
+        flex-direction: row;
+        margin-left: 25px;
+    
+    }
+    .btn-selected-type {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 25px;
+        padding: 0px 20px;
+
+        .closed,
+        .apply {
+            width: 140px;
+            height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+        }
+
+    }
+
+}
+
+.type-selected {
+
+    display: flex;
+    flex-direction: row;
+    font-size: 26px;
+    gap: 7px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    .th-text {
+        color: black;
+    }
+
+    .price-select {
+        color: var(--primary-second);
+    }
+}

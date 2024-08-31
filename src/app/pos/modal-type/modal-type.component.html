@@ -1,0 +1,130 @@
+<div class="container">
+
+  <ng-container *ngIf="selectedCardIndex === null">
+
+
+    <div class="header">
+      <div class="flex-head-left">
+        <div class="text-01">
+          เลือกประเภทลูกค้า
+        </div>
+        <div class="text-02">
+          Select Customer Type
+        </div>
+      </div>
+
+      <div class="flex-head-right">
+        A6
+      </div>
+
+    </div>
+
+    <!-- ส่วนของการเลือกประเภทลูกค้า -->
+    <div class="flex-card">
+      <ion-card class="card" (click)="onCardClick(0)">
+        <div class="left">Alacart</div>
+        <div class="right">฿ 0</div>
+      </ion-card>
+      <ion-card class="card" (click)="onCardClick(1)">
+        <div class="left">Buffet 299</div>
+        <div class="right">฿ 299</div>
+      </ion-card>
+      <ion-card class="card" (click)="onCardClick(2)">
+        <div class="left">Buffet 499</div>
+        <div class="right">฿ 499</div>
+      </ion-card>
+      <ion-card class="card" (click)="onCardClick(3)">
+        <div class="left">Buffet 699</div>
+        <div class="right">฿ 699</div>
+      </ion-card>
+    </div>
+  </ng-container>
+
+  <!-- เนื้อหาที่จะแสดงหลังจากคลิกเลือกการ์ด -->
+  <ng-container *ngIf="selectedCardIndex !== null">
+
+    <div class="header">
+      <div (click)="goBack()" class="flex-head-left">
+        <div class="text-01">
+          จำนวนลูกค้า
+        </div>
+        <div class="text-02">
+          Select Party Size
+        </div>
+      </div>
+
+      <div class="flex-head-right">
+        A6
+      </div>
+
+    </div>
+    <div class="type-selected">
+      <p class="th-text">เลือกเป็น:</p>
+      <p class="price-select">{{ selectedCardValue }}</p>
+    </div>
+
+    <div class="flex-card">
+
+      <ion-card class="card-two">
+        <div class="flex-in">
+          <div class="left-text">
+            <p class="adult-text">ผู้ใหญ่ <span class="eng-adult"> (Adult)</span></p>
+            <p class="price-adult">฿ 299 / Person </p>
+          </div>
+      
+          <div class="position-button-updown">
+            <div class="ButtonUpDown">
+              <ion-button (click)="decrease('adult')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+              <p>{{ counts['adult'] }}</p>
+              <ion-button (click)="increase('adult')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+      
+      <ion-card class="card-two">
+        <div class="flex-in">
+          <div class="left-text">
+            <p class="adult-text">เด็ก <span class="eng-adult"> (Kid)</span></p>
+            <p class="price-adult">฿ 219 / Person </p>
+          </div>
+      
+          <div class="position-button-updown">
+            <div class="ButtonUpDown">
+              <ion-button (click)="decrease('kid')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+              <p>{{ counts['kid'] }}</p>
+              <ion-button (click)="increase('kid')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+      
+      
+
+      <div class="tick-qrcode">
+        <p>พิมพ์ QR Code อัตโนมัติ</p>
+      </div>
+
+      <div class="btn-selected-type">
+        <ion-button (click)="closeModal()" class="closed">
+          ปิดออก
+        </ion-button>
+        <ion-button (click)="confirmSelection()" class="apply">
+          ยืนยัน
+        </ion-button>
+      </div>
+
+    </div>
+
+
+
+  </ng-container>
+</div>
