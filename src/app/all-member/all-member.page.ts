@@ -16,7 +16,8 @@ import {
   IonSegmentButton,
   IonSelect,
   IonSelectOption,
-  IonModal
+  IonModal,
+  ModalController
 } from '@ionic/angular/standalone';
 import {
   ApexAxisChartSeries,
@@ -29,6 +30,8 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import Swiper from 'swiper';
+
+import { ModalAddNewMemberComponent } from './modal-add-new-member/modal-add-new-member.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -101,25 +104,29 @@ export class AllMemberPage implements OnInit {
       name_class: 'Platinum',
       min_point: 0,
       max_point: 1000,
-      visit:1
+      visit:1,
+      is_edit:false,
     },
     {
       name_class: 'Gold',
       min_point: 1001,
       max_point: 2000,
-      visit:4
+      visit:4,
+      is_edit:false,
     },
     {
       name_class: 'Diamon',
       min_point: 2001,
       max_point: 3000,
-      visit:7
+      visit:7,
+      is_edit:false,
     },
     {
       name_class: 'Platinum',
       min_point: 3001,
       max_point: 0,
-      visit:11
+      visit:11,
+      is_edit:false,
     },
 
   ];
@@ -171,6 +178,8 @@ export class AllMemberPage implements OnInit {
     },
   ];
 
+  is_edit_more:boolean=false;
+
   select_period_number: number = 2;
 
   public PieOptions: Partial<ChartOptions> | any;
@@ -195,9 +204,14 @@ export class AllMemberPage implements OnInit {
   sort_by: any = '1';
   select_by: any = '1';
   isModalOpen:boolean = false;
-  constructor() {}
+  constructor(
+    public modalController: ModalController
+  ) {}
 
   ngOnInit() {
+    // setTimeout(() => {
+    //   this.openModalAddNewMember();
+    // }, 1000);
     this.PieOptions = {
       series: [35, 30, 15, 10],
       chart: {
@@ -358,6 +372,42 @@ export class AllMemberPage implements OnInit {
       // } else {
       //   this.isModalOpen = isOpen;
       // }
+    }
+
+    //เปิด modal เพิ่มสมาชิกใหม่
+    async openModalAddNewMember() {
+      const modal = await this.modalController.create({
+        cssClass: 'css-modal-add-new-member',
+        component: ModalAddNewMemberComponent,
+        backdropDismiss:false
+        // componentProps: {
+        //   options:options
+        //   bank: bank,
+        //   data: data,
+        //   order_id: this.order_id,
+        //   price: Math.round(this.price),
+        //   print_food_bill: this.print_food_bill
+        // },
+      });
+      await modal.present();
+      const event: any = await modal.onDidDismiss();
+      const date = event.data;
+      // const from: CalendarResult = date.from;
+      // const to: CalendarResult = date.to;
+  
+      console.log(event);
+      
+      console.log(date);
+      
+      if (event.role == 'save') {
+        console.log(event);
+        
+        // this.dateFrom = date.from
+        // this.dateTo = date.to
+        // this.textDate2 = this.api.dateTothai(this.dateFrom, this.dateTo, 'range')
+        // this.loadPerson();
+      }
+      // console.log(date, from, to);
     }
   
 }

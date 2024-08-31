@@ -351,11 +351,19 @@
                             <ion-input class="custom-ion-input-number-3" type="number" [value]="item.visit"></ion-input>
                           </div>
                         </div>
-                        <div class="col-body-right">
-                          <ion-button size="small" class="btn-edit">
+                        <div class="col-body-right" [ngClass]="{'is_editer': item.is_edit == true}">
+                          <ion-button *ngIf="item.is_edit == false" (click)="item.is_edit = true" size="small" class="btn-edit">
                             <ion-icon name="pencil-outline"></ion-icon>
                             <ion-label>แก้ไข</ion-label>
                           </ion-button>
+               
+                            <ion-button *ngIf="item.is_edit == true" (click)="item.is_edit = false" size="small" class="btn-save">
+                              <ion-label>บันทึก</ion-label>
+                            </ion-button>
+                            <ion-button *ngIf="item.is_edit == true" (click)="item.is_edit = false" size="small" class="btn-close">
+                              <ion-label>ยกเลิก</ion-label>
+                            </ion-button>
+              
                         </div>
                       </div>
                     </ion-col>
@@ -370,12 +378,19 @@
                         <ion-input class="custom-ion-input-number-3" type="number" value="0"></ion-input>
                         <ion-label class="box-footer-left-sub">Points</ion-label>
                       </div>
-
-                      <div class="box-footer-right">
-                        <ion-button size="small" class="btn-edit">
+                      
+                      <div class="box-footer-right" [ngClass]="{'is_editer': is_edit_more == true}">
+                        <ion-button *ngIf="is_edit_more == false" (click)="is_edit_more = true" size="small" class="btn-edit">
                           <ion-icon name="pencil-outline"></ion-icon>
                           <ion-label>แก้ไข</ion-label>
                         </ion-button>
+             
+                          <ion-button *ngIf="is_edit_more == true" (click)="is_edit_more = false" size="small" class="btn-save">
+                            <ion-label>บันทึก</ion-label>
+                          </ion-button>
+                          <ion-button *ngIf="is_edit_more == true" (click)="is_edit_more = false" size="small" class="btn-close">
+                            <ion-label>ยกเลิก</ion-label>
+                          </ion-button>
                       </div>
 
                     </div>
@@ -404,7 +419,7 @@
 
 </ion-content>
 
-<ion-button class="btn-add-new-member " *ngIf="select_member_page == 0">Creat new</ion-button>
+<ion-button (click)="openModalAddNewMember()" class="btn-add-new-member " *ngIf="select_member_page == 0">Creat new</ion-button>
 
 <!-- modal เรียนรู้เพิ่มเติมเกี่ยวกับระดับสมาชิก -->
 <ion-modal class="show-lean-more" [isOpen]="isModalOpen" (didDismiss)="setOpen(false)">
