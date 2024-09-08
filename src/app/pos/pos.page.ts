@@ -33,6 +33,7 @@ import {
 import Swiper from 'swiper';
 import { AddBasketComponent } from './add-basket/add-basket.component';
 import { ModalTypeComponent } from './modal-type/modal-type.component';
+import { ModalTaxeComponent } from '../discounts-taxe/modal-taxe/modal-taxe.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -156,7 +157,9 @@ export class PosPage implements OnInit {
     },
   ];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openModalTaxe();
+  }
 
   customPopoverOptionsStyle2 = {
     // cssClass: 'my-custom-customPopover-select-style-2',
@@ -210,13 +213,29 @@ export class PosPage implements OnInit {
       this.updateTableColor(combinedIndex); // Pass combined index
     }
   }
+  public async openModalTaxe() {
+
+
+    const modal = await this.modalCtrl.create({
+      component: ModalTaxeComponent,
+      cssClass: 'modal-pos-type',
+      mode: 'ios',
+      componentProps: { }, // Pass combined index
+    });
   
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+  
+    if (role === 'confirm') {
+      console.log('confirm 1140');
+    }
+  }
   updateTableColor(combinedIndex: number) {
     const zoneIndex = Math.floor(combinedIndex / 1000);
     const tableIndex = combinedIndex % 1000;
   
     // สร้าง array ของสีที่กำหนดไว้
-    const colors = ['#1BC64A', '#FFCB37', '#FF5555', '#B6C0CF'];
+    const colors = ['#1BC64A'];
     
     // เลือกสีแบบสุ่มจาก array
     const randomColor = colors[Math.floor(Math.random() * colors.length)];

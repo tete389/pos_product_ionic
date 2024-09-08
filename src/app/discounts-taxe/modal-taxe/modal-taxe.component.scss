@@ -1,0 +1,119 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    font-family: 'kanit';
+    padding-top: 20px;
+
+    .head-th {
+        font-size: 30px;
+    }
+
+    .head-en {
+        font-size: 16px;
+    }
+}
+
+.container {
+    padding: 10px 10px 25px 10px;
+    .section-1 {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 5px;
+        padding-left: 10px;
+        .discount-vat ion-button,
+        .service-charge ion-button,
+        .extra-charge ion-button {
+            width: 140px;
+            height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+        }
+    }
+
+    .section-2 {
+        ion-card{
+            padding: 15px 20px;
+            margin-bottom: -16px;
+            box-shadow: none; /* เอา box-shadow ออก */
+            background: #F6F9FF;
+       .card {
+            display: flex;
+            justify-content: space-between;
+            
+    
+            .left {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                font-size: 20px;
+                color: var(--dark-color);
+                font-weight: 300;
+                ion-checkbox {
+                    --size: 32px;
+                    --checkbox-background-checked: var(--text-primary);
+                }
+    
+                ion-checkbox.checkbox-checked {
+                    --checkbox-background-checked: var(--text-primary) /* เปลี่ยนเป็นสีแดงเมื่อคลิก */
+                }
+    
+                ion-checkbox::part(container) {
+                    border-radius: 6px;
+                    border: 2px solid var(--dark-gray-color3);
+                }
+    
+                .text-checked {
+                    font-weight: 500; /* สีตัวหนังสือเปลี่ยนเมื่อ checkbox ถูกเลือก */
+                }
+            }
+    
+            .right {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                gap: 5px;
+                
+                font-size: 20px;
+                color: var(--dark-color);
+                ion-icon{
+                    color: var(--text-primary-second);
+                }
+            }
+        } 
+        }
+        
+    }
+    
+    
+
+    .section-3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top:40px;
+        padding: 0px 20px;
+
+        .closed{
+            width: 140px;
+            height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+        }
+        .apply {
+            width: 140px;
+            height: 45px;
+            --border-radius: 50px;
+            --background: var(--primary-light);
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+        }
+
+    }
+}

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonCard,IonCol,IonRow,IonContent, IonHeader, IonTitle, IonToolbar , IonGrid,IonButton,IonIcon,IonSelect,IonSelectOption,IonImg ,IonProgressBar,IonInfiniteScroll
-  ,IonInfiniteScrollContent,IonList,IonItem,IonButtons,IonMenuButton,IonInput
+  ,IonInfiniteScrollContent,IonList,IonItem,IonButtons,IonMenuButton,IonInput,ModalController,
 } from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
+import { ModalTaxeComponent } from './modal-taxe/modal-taxe.component';
 
 @Component({
   selector: 'app-discounts-taxe',
@@ -117,7 +118,7 @@ export class DiscountsTaxePage implements OnInit {
       type: 'จำนวนเงิน (THB)',  
     },
   ];
-  constructor() { 
+  constructor(private modalCtrl: ModalController) { 
 
   }
 
@@ -200,5 +201,22 @@ export class DiscountsTaxePage implements OnInit {
         return 'เลือกตัวเลือก'; // ข้อความ placeholder เริ่มต้น
     }
 }
+public async openModalType() {
 
+
+  const modal = await this.modalCtrl.create({
+    component: ModalTaxeComponent,
+    cssClass: 'modal-pos-type',
+    mode: 'ios',
+    componentProps: { }, // Pass combined index
+  });
+
+  await modal.present();
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+   
+    
+  }
+}
 }
