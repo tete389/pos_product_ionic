@@ -158,7 +158,7 @@ export class PosPage implements OnInit {
   ];
 
   ngOnInit() {
-    this.openModalTaxe();
+    // this.openModalTaxe();
   }
 
   customPopoverOptionsStyle2 = {

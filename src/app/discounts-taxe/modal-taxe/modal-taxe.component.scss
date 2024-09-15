@@ -53,6 +53,7 @@
                 font-size: 20px;
                 color: var(--dark-color);
                 font-weight: 300;
+                align-items: center;
                 ion-checkbox {
                     --size: 32px;
                     --checkbox-background-checked: var(--text-primary);
@@ -70,6 +71,9 @@
                 .text-checked {
                     font-weight: 500; /* สีตัวหนังสือเปลี่ยนเมื่อ checkbox ถูกเลือก */
                 }
+                ion-icon{
+                    color: var(--text-primary-second);
+                }
             }
     
             .right {
@@ -80,9 +84,7 @@
                 
                 font-size: 20px;
                 color: var(--dark-color);
-                ion-icon{
-                    color: var(--text-primary-second);
-                }
+                
             }
         } 
         }

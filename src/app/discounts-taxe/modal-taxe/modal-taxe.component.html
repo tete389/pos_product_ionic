@@ -29,11 +29,12 @@
         <div class="left">
           <ion-checkbox (ionChange)="toggleCheckbox($event, i)"></ion-checkbox>
           <p [ngClass]="{'text-checked': item.checked}">{{ item.label }}</p>
+          <ion-icon class="icon" name="checkmark-circle-outline" *ngIf='item.checked' ></ion-icon>
         </div>
         <div class="right">
           {{ item.value }}
 
-          <ion-icon class="icon" name="checkmark-circle-outline" *ngIf='item.checked' ></ion-icon>
+         
         </div>
       </div>
         
