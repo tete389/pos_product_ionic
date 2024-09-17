@@ -102,6 +102,13 @@
   --border-radius: none;
 }
 
+.my-custom-modal-fullscreen {
+  --ion-background-color: var(--white-color);
+  --height: 100%;
+  --width: 100%;
+  --border-radius: 0px;
+}
+
 .modal-pos-type {
   --width: 50% !important;
   --height: 80% !important;

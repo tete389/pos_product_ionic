@@ -1,0 +1,106 @@
+<ion-content scrollY="false">
+
+  <div class="box-main">
+    <div class="box-left">  
+
+      <div class="box-left-head">1</div>
+
+      <div class="row-content" >
+        <div class="col-content" *ngFor="let t of [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8] ;
+        let i = index"
+         (click)="{}">
+         
+         <div class="box-count">
+          <p *ngIf="i==1"
+            class="text-count">1</p>
+        </div>
+
+          <img class="img-group" src="assets/image/img-product.png">
+          <div class="name-order">
+            <p class="names">food names</p>
+          </div>
+          <div class="price-order">
+            <ion-label>50</ion-label>
+            <ion-label class="line-through" *ngIf="i == 2">60</ion-label>
+          </div>
+    
+          <div *ngIf="i== 0"  class="out-order">
+            <ion-label>หมด</ion-label>
+          </div>
+        </div>
+      </div>
+   
+    </div>
+    
+    <div class="box-right">
+      <div class="box-right-head">
+        <div class="box-text-sub">
+          <ion-label>เพิ่มอาหาร</ion-label>
+          <ion-label>โดย: Piyatida</ion-label>
+        </div>
+        <div class="box-name-table">
+          <!-- <ion-label>Table</ion-label> -->
+          <ion-label>A01</ion-label>
+        </div>
+      </div>
+      <div class="box-right-detail">
+        <ion-card *ngFor="let item of [1,2,3,4,5,6];let i = index">
+         <div class="box-food-name">
+          <div class="box-img">
+            <img src="assets/image/img-product.png" alt="">
+          </div>
+          <div class="box-food-body">
+            <ion-label>Food name</ion-label>
+            <ion-label><span>฿</span>60</ion-label>
+          </div>
+          <div class="box-food-count">
+         
+            <div class="box-1-top">
+              <div class="d-icon-1">
+                <ion-icon name="remove-circle"></ion-icon>
+              </div>
+              <div class="d-label">
+                <ion-label>1</ion-label>
+              </div>
+              <div class="d-icon-2">
+                <ion-icon name="add-circle"></ion-icon>
+              </div>
+
+            </div>
+          </div>
+         </div>
+          <div *ngIf="i+1 == 4" class="box-food-detail">
+            <div class="food-detail">
+              <span class="text-sub">ระดับความหวาน :</span>
+              <span class="text-detail">&nbsp;(หวาน 100%)</span>
+            </div>
+            <div class="food-detail">
+              <span class="text-sub">Topping :</span>
+              <span class="text-detail">&nbsp;฿10 ไข่มุก      ฿10 เจลลี่     ฿10 ซอสChocolate</span>
+            </div>
+            <div class="food-detail">
+              <span class="text-sub">Note :</span>
+              <span class="text-detail">&nbsp;ไม่ใส่คาราเมล</span>
+            </div>
+          </div>
+        </ion-card>
+      </div>
+      <div class="box-right-bottom">
+
+        <div class="box-right-bottom-1">
+          <ion-label>รวมทั้งสิ้น</ion-label>
+          <ion-label><span>฿</span>&nbsp;185.00</ion-label>
+        </div>
+        <div class="box-right-bottom-2">
+          <ion-button (click)="close()" size="small" class="btn-close">
+            <ion-label>ยกเลิก</ion-label>
+          </ion-button>
+          <ion-button (click)="addItem()" size="small" class="btn-save">
+            <ion-label>สั่งอาหาร</ion-label>
+          </ion-button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>
