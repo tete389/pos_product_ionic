@@ -37,6 +37,12 @@
         <div class="left">Buffet 699</div>
         <div class="right">฿ 699</div>
       </ion-card>
+      <div class="btn-close">
+        <ion-button >
+          ปิดออก
+        </ion-button>
+      </div>
+
     </div>
   </ng-container>
 
@@ -71,7 +77,7 @@
             <p class="adult-text">ผู้ใหญ่ <span class="eng-adult"> (Adult)</span></p>
             <p class="price-adult">฿ 299 / Person </p>
           </div>
-      
+
           <div class="position-button-updown">
             <div class="ButtonUpDown">
               <ion-button (click)="decrease('adult')">
@@ -85,14 +91,14 @@
           </div>
         </div>
       </ion-card>
-      
+
       <ion-card class="card-two">
         <div class="flex-in">
           <div class="left-text">
             <p class="adult-text">เด็ก <span class="eng-adult"> (Kid)</span></p>
             <p class="price-adult">฿ 219 / Person </p>
           </div>
-      
+
           <div class="position-button-updown">
             <div class="ButtonUpDown">
               <ion-button (click)="decrease('kid')">
@@ -106,11 +112,11 @@
           </div>
         </div>
       </ion-card>
-      
-      
+
+
 
       <div class="tick-qrcode">
-        <p>พิมพ์ QR Code อัตโนมัติ</p>
+        <ion-checkbox ></ion-checkbox> <p>พิมพ์ QR Code อัตโนมัติ</p>
       </div>
 
       <div class="btn-selected-type">

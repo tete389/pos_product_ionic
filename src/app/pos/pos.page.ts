@@ -182,6 +182,17 @@ export class PosPage implements OnInit {
     this.is_charge_col = col;
   }
 
+  buttonLabel: string = '5'; // แสดงป้ายกำกับที่ 5
+  toggleCharge() {
+    // เปลี่ยนค่าของ is_charge_col และป้ายกำกับ
+    if (this.is_charge_col === 5) {
+      this.is_charge_col = 4;
+      this.buttonLabel = '4';
+    } else {
+      this.is_charge_col = 5;
+      this.buttonLabel = '5';
+    }
+  }
   public async openModal() {
     const modal = await this.modalCtrl.create({
       component: AddBasketComponent,
