@@ -99,7 +99,7 @@
                  [ngClass]="is_charge_col == 5 ? 'lg:grid-cols-5 ipad_air:grid-cols-5 2xl:grid-cols-5 xl:grid-cols-5' : 'lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-4'">
               <div *ngFor="let table of table_zone.tables; let i = index">
                 <ion-card
-                  (click)="openModalType(j, i)"
+                (click)="onTableClick(j, i)"
                   class="m-0 shadow-none rounded-3xl"
                   style="min-height: 150px;"
                   [ngStyle]="{ 'background-color': table.color || '#F1F4F9' }">
@@ -174,11 +174,11 @@
         </div>
         <div class="flex flex-row">
           <ion-button
-            class="button-basket-confirm w-[125px]"
-            (click)="openModal()"
-            ><ion-icon slot="start" class="" name="add"></ion-icon>
-            เพิ่มอาหาร
-          </ion-button>
+          class="button-basket-confirm w-[125px]"
+          (click)="(selectedZoneIndex !== null && selectedTableIndex !== null) ? openModal(selectedZoneIndex, selectedTableIndex) : null">
+          <ion-icon slot="start" name="add"></ion-icon>
+          เพิ่มอาหาร
+      </ion-button>
           <ion-button class="button-basket-confirm w-[120px]" (click)="openModalTaxe()"
             >ส่วนลด</ion-button
           >
@@ -192,19 +192,22 @@
           ></ion-button>
         </div>
       </div>
-      <!-- /////////// center ///////////-->
-      <div class="overflow-scroll scrollerBar h-[55vh]">
-        <div class="list-my-food" *ngFor="let item of basket">
-          <div class="img-product-myfood">
-               <img src="assets/image/img-product.png" alt="">
-          </div>
-       
-          <p class="p-item-name">{{ item.p_name }}</p> <!-- แสดงชื่ออาหารและราคา -->
-          <p  class="p-item-price">{{item.price}}</p>
-          <p  class="p-item-count">{{item.count}}</p>
-          <p  class="p-item-total">{{item.price * item.count}}</p>
-        </div>
-      </div>
+  <!-- /////////// center ///////////-->
+<div class="overflow-scroll scrollerBar h-[55vh]">
+  <div class="list-my-food" *ngFor="let item of selectedTableBasket">
+    <div class="img-product-myfood">
+      <img src="assets/image/img-product.png" alt="">
+    </div>
+
+    <p class="p-item-name">{{ item.p_name }}</p> <!-- แสดงชื่ออาหาร -->
+    <p class="p-item-price">{{ item.price }}</p> <!-- แสดงราคา -->
+    <p class="p-item-count">{{ item.count }}</p> <!-- แสดงจำนวน -->
+    <p class="p-item-total">{{ item.price * item.count }}</p> <!-- แสดงราคาทั้งหมด -->
+  </div>
+</div>
+
+      
+
       <!-- /////////// botton ///////////-->
       <div class="h-[29vh]">
         <ion-card class="shadow-none bg-slate-200 py-0 my-0">

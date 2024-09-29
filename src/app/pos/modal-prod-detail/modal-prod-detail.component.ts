@@ -141,42 +141,57 @@ export class ModalProdDetailComponent implements OnInit {
   check_can_save: boolean = false;
   index_options_unselected: number[] = [];
   public check_seleced_detail() {
+    // ตรวจสอบว่ามีข้อมูลใน this.prod และ this.prod.options หรือไม่
+    if (!this.prod || !this.prod.options || !Array.isArray(this.prod.options)) {
+        console.error('Product data or options are not available');
+        return; // หยุดการทำงานหากข้อมูลไม่ถูกต้อง
+    }
+
     let count_check = 0;
     let index_option = 0;
+    this.index_options_unselected = []; // รีเซ็ตค่าเพื่อใช้งานใหม่
+
     for (let option of this.prod.options) {
-      option.selected_array = [];
-      if (option.choice_min > 0) {
-        let check_choice = 0;
-        let index_choice = 0;
-        for (let choice of option.choice) {
-          if (choice.default) {
-            choice.selected = true
-            check_choice += 1;
-            option.selected_array.push(index_choice);
-          }else{
-            choice.selected = false
-          }
-          index_choice++;
-        }
-        if (option.choice_min == check_choice) {
-          count_check += 1;
+        option.selected_array = []; // กำหนดค่า array เพื่อเก็บตัวเลือกที่ถูกเลือก
+        if (option.choice_min > 0) {
+            let check_choice = 0;
+            let index_choice = 0;
+            for (let choice of option.choice) {
+                if (choice.default) {
+                    choice.selected = true; // ทำเครื่องหมายตัวเลือกที่ถูกเลือก
+                    check_choice += 1;
+                    option.selected_array.push(index_choice); // เพิ่ม index ไปยัง selected_array
+                } else {
+                    choice.selected = false; // หากไม่ใช่ให้ปิดการเลือก
+                }
+                index_choice++;
+            }
+
+            // ตรวจสอบว่ามีการเลือกตัวเลือกครบตามจำนวนที่กำหนดหรือไม่
+            if (option.choice_min === check_choice) {
+                count_check += 1;
+            } else {
+                this.index_options_unselected.push(index_option); // เก็บ index ของ option ที่ยังไม่ถูกเลือก
+            }
         } else {
-          this.index_options_unselected.push(index_option);
+            count_check += 1; // หากไม่มีการเลือกขั้นต่ำ ก็ถือว่าถูกต้อง
+            let index_sub = 0;
+            for (let choice of option.choice) {
+                if (choice.default) {
+                    option.selected_array.push(index_sub); // เพิ่ม index ไปยัง selected_array
+                }
+                index_sub++;
+            }
         }
-      } else {
-        count_check += 1;
-        let index_sub = 0;
-        for (let choice of option.choice) {
-          if (choice.default) {
-            option.selected_array.push(index_sub);
-          }
-          index_sub++;
-        }
-      }
-      index_option++;
+        index_option++;
     }
-    if (count_check == this.prod.options.length) {
-      this.check_can_save = true;
+
+    // เช็คว่าทุก option ถูกเลือกครบถ้วนหรือไม่
+    if (count_check === this.prod.options.length) {
+        this.check_can_save = true; // สามารถบันทึกได้
+    } else {
+        this.check_can_save = false; // ไม่สามารถบันทึกได้
     }
-  }
+}
+
 }

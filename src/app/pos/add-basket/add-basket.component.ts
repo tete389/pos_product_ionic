@@ -78,7 +78,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   @ViewChild('swiper')
   swiperRef?: ElementRef | undefined;
   swiper?: Swiper;
-
+  tableName: string | null = null; 
   @ViewChild('swiper2')
   swiperRef2: ElementRef | undefined;
   swiper2?: Swiper;
@@ -118,6 +118,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log("Selected Table: ", this.tableName);
     console.log('pos-select');
     fetch(this.url)
       .then((res) => res.json())
@@ -239,9 +240,6 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   }
 
   public async add_basket(p: any) {
-    if (p?.detail?.length > 0) {
-      await this.openModalDetail(p);
-    }
     const findBasket = this.basket.find(
       (e: { price: number; p_id: number; count: number }) => {
         if (e.p_id == p.p_id) {
@@ -251,7 +249,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
         return e.p_id == p.p_id;
       }
     );
-
+  
     if (!findBasket || findBasket.length == 0) {
       p.count = 1;
       this.price_all = this.price_all + p.price;
@@ -297,7 +295,8 @@ export class AddBasketComponent implements OnInit, OnDestroy {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  public confirm() {
+  public async confirm() {
+    // ส่งข้อมูล basket กลับไปยัง PosPage พร้อมกับชื่อโต๊ะ
     return this.modalCtrl.dismiss(this.basket, 'confirm');
   }
 

@@ -72,94 +72,64 @@ export class PosPage implements OnInit {
   @ViewChild(IonModal) modalMember: IonModal | undefined;
 
   constructor(private modalCtrl: ModalController) {}
-
+  selectedZoneIndex: number | null = null; // ใช้ null เป็นค่าเริ่มต้น
+  selectedTableIndex: number | null = null; // ใช้ null เป็นค่าเริ่มต้น
+  selectedTableBasket: any[] = [];
   zone_pos: string[] = ['zone 1', 'zone 2'];
   select_zone: number = 0;
   basket : any
   is_charge_col = 4;
-  table_pos: any[] = [
-    'A1',
-    'A2',
-    'A3',
-    'A4',
-    'A5',
-    'A6',
-    'A7',
-    'A8',
-    'A9',
-    'A10',
-    'A11',
-    'A12',
-    'A13',
-    'A14',
-    'A15',
-  ];
-
+  public selectedTable: string | null = null;
   table_zone_pos: any[] = [
     {
       zone_id: 0,
       zone_name: 'Zone1',
       tables: [
-        'A1',
-        'A2',
-        'A3',
-        'A4',
-        'A5',
-        'A6',
-        'A7',
-        'A8',
-        'A9',
-        'A10',
-        'A11',
-        'A12',
-        'A13',
-        'A14',
-        'A15',
-        'A16',
-        'A17',
-        'A18',
-        'A19',
-        'A20',
-        'A9',
-        'A10',
-        'A11',
-        'A12',
-        'A13',
-        'A14',
-        'A15',
-        'A16',
-        'A17',
-        'A18',
-        'A19',
-        'A20',
+        { name: 'A1', menu: [] },
+        { name: 'A2', menu: [] },
+        { name: 'A3', menu: [] },
+        { name: 'A4', menu: [] },
+        { name: 'A5', menu: [] },
+        { name: 'A6', menu: [] },
+        { name: 'A7', menu: [] },
+        { name: 'A8', menu: [] },
+        { name: 'A9', menu: [] },
+        { name: 'A10', menu: [] },
+        { name: 'A11', menu: [] },
+        { name: 'A12', menu: [] },
+        { name: 'A13', menu: [] },
+        { name: 'A14', menu: [] },
+        { name: 'A15', menu: [] },
       ],
-      countdown:null,
+      countdown: null,
       orders: [],
     },
+    // Zone 2
     {
       zone_id: 1,
       zone_name: 'Zone2',
       tables: [
-        'B1',
-        'B2',
-        'B3',
-        'B4',
-        'B5',
-        'B6',
-        'B7',
-        'B8',
-        'B9',
-        'B10',
-        'AB1',
-        'B12',
-        'B13',
-        'B14',
-        'B15',
+        { name: 'B1', menu: [] },
+        { name: 'B2', menu: [] },
+        { name: 'B3', menu: [] },
+        { name: 'B4', menu: [] },
+        { name: 'B5', menu: [] },
+        { name: 'B6', menu: [] },
+        { name: 'B7', menu: [] },
+        { name: 'B8', menu: [] },
+        { name: 'B9', menu: [] },
+        { name: 'B10', menu: [] },
+        { name: 'AB1', menu: [] },
+        { name: 'B12', menu: [] },
+        { name: 'B13', menu: [] },
+        { name: 'B14', menu: [] },
+        { name: 'B15', menu: [] },
       ],
-      countdown:null,
+      countdown: null,
       orders: [],
     },
   ];
+  
 
   ngOnInit() {
     // this.openModalTaxe();
@@ -197,38 +167,94 @@ export class PosPage implements OnInit {
       this.buttonLabel = '5';
     }
   }
-  public async openModal() {
-    const modal = await this.modalCtrl.create({
-      component: AddBasketComponent,
-      cssClass: 'fullscreen',
-      mode: 'ios',
-    });
-    await modal.present();
-    const { data, role } = await modal.onWillDismiss();
+
+  public async openModal(zoneIndex: number, tableIndex: number) {
+    if (zoneIndex !== null && tableIndex !== null) {
+        this.selectedTable = this.table_zone_pos[zoneIndex].tables[tableIndex].name; // ใช้ชื่อโต๊ะ
+        this.selectedTableBasket = this.table_zone_pos[zoneIndex].tables[tableIndex].menu; // ดึงรายการอาหารโต๊ะนั้น
   
-    if (role === 'confirm') {
-      // รับข้อมูลที่ส่งกลับจาก modal
-      this.basket = data; // เก็บข้อมูลที่ส่งกลับมา
-      console.log(this.basket); // แสดงข้อมูลใน console เพื่อดูว่าได้ข้อมูลมาไหม
+        const modal = await this.modalCtrl.create({
+            component: AddBasketComponent,
+            cssClass: 'fullscreen',
+            mode: 'ios',
+            componentProps: {
+                tableName: this.selectedTable
+            }
+        });
+  
+        await modal.present();
+        const { data, role } = await modal.onWillDismiss();
+  
+        if (role === 'confirm') {
+            // เพิ่มรายการอาหารไปยังโต๊ะที่ถูกเลือก
+            this.table_zone_pos[zoneIndex].tables[tableIndex].menu.push(...data);
+            console.log(`เพิ่มรายการอาหารที่โต๊ะ ${this.selectedTable}:`, data);
+            
+            // อัปเดต selectedTableBasket
+            this.selectedTableBasket = this.table_zone_pos[zoneIndex].tables[tableIndex].menu;
+        }
+    } else {
+        console.error("Zone index or table index is null.");
     }
   }
   
+
+
+
+  onTableClick(zoneIndex: number, tableIndex: number) { 
+    const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
+  
+    // เช็คว่าตารางนั้นมีเมนูอยู่หรือไม่
+    if (table.menu.length > 0) {
+        console.log(`Table ${table.name} already has existing menu items:`, table.menu);
+        // กำหนด selectedTableBasket ให้เป็นเมนูของโต๊ะนั้น
+        this.selectedTableBasket = table.menu; // เพิ่มการอัปเดตนี้
+        return; // ออกจากฟังก์ชันโดยไม่ทำอะไร
+    }
+  
+    // ถ้าไม่มีเมนู ตรวจสอบว่ามีการนับเวลาถอยหลังหรือไม่
+    if (table.countdown) {
+        console.log(`Table ${table.name} already has a countdown.`);
+        // เรียกใช้ฟังก์ชัน openModal()
+        this.openModal(zoneIndex, tableIndex);
+    } else {
+        // ถ้าไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
+        console.log(`Table ${table.name} has no existing orders. Opening confirmation modal.`);
+        this.openModalType(zoneIndex, tableIndex);
+    }
+  
+    // บันทึกค่าของ zoneIndex และ tableIndex
+    this.selectedZoneIndex = zoneIndex;
+    this.selectedTableIndex = tableIndex;
+  }
+  
+  
+
   public async openModalType(zoneIndex: number, tableIndex: number) {
     const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
-    const modal = await this.modalCtrl.create({
-      component: ModalTypeComponent,
-      cssClass: 'modal-pos-type',
-      mode: 'ios',
-    });
-
-    await modal.present();
-    const { data, role } = await modal.onWillDismiss();
-
-    if (role === 'confirm' && data && data.countdown) {
-      this.updateTableColor(combinedIndex); // เปลี่ยนสีเป็นสีเขียว
-      this.startCountdown(combinedIndex, data.countdown); // เริ่มนับเวลาถอยหลัง
+    const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
+  
+    if (table.countdown) {
+      // ถ้ามีการนับเวลาถอยหลัง ให้แสดงชื่อโต๊ะใน console
+      console.log(`Table ${table.name} is already opened. Countdown: ${table.countdown}`);
+    } else {
+      // ถ้ายังไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
+      const modal = await this.modalCtrl.create({
+        component: ModalTypeComponent,
+        cssClass: 'modal-pos-type',
+        mode: 'ios',
+      });
+  
+      await modal.present();
+      const { data, role } = await modal.onWillDismiss();
+  
+      if (role === 'confirm' && data && data.countdown) {
+        this.updateTableColor(combinedIndex); // เปลี่ยนสีเป็นสีเขียว
+        this.startCountdown(combinedIndex, data.countdown); // เริ่มนับเวลาถอยหลัง
+      }
     }
   }
+  
 
   // ฟังก์ชันเปลี่ยนสีของโต๊ะเป็นสีเขียว
   updateTableColor(combinedIndex: number) {
