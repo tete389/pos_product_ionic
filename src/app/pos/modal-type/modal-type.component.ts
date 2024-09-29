@@ -115,6 +115,7 @@ export class ModalTypeComponent  implements OnInit {
     await this.modalCtrl.dismiss();
   }
   async confirmSelection() {
-    await this.modalCtrl.dismiss(null, 'confirm');
+    const countdown =10; // ตั้งเวลาถอยหลัง 60 วินาที
+    await this.modalCtrl.dismiss({ countdown }, 'confirm'); // ส่งค่าถอยหลังกลับไปหน้าหลัก
   }
 }

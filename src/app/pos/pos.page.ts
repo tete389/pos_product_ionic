@@ -75,7 +75,7 @@ export class PosPage implements OnInit {
 
   zone_pos: string[] = ['zone 1', 'zone 2'];
   select_zone: number = 0;
-
+  basket : any
   is_charge_col = 4;
   table_pos: any[] = [
     'A1',
@@ -133,6 +133,8 @@ export class PosPage implements OnInit {
         'A19',
         'A20',
       ],
+      countdown:null,
+      orders: [],
     },
     {
       zone_id: 1,
@@ -154,6 +156,8 @@ export class PosPage implements OnInit {
         'B14',
         'B15',
       ],
+      countdown:null,
+      orders: [],
     },
   ];
 
@@ -198,32 +202,121 @@ export class PosPage implements OnInit {
       component: AddBasketComponent,
       cssClass: 'fullscreen',
       mode: 'ios',
-      // showBackdrop: false
     });
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
+  
     if (role === 'confirm') {
-      // this.message = `Hello, ${data}!`;
+      // รับข้อมูลที่ส่งกลับจาก modal
+      this.basket = data; // เก็บข้อมูลที่ส่งกลับมา
+      console.log(this.basket); // แสดงข้อมูลใน console เพื่อดูว่าได้ข้อมูลมาไหม
     }
   }
-
-  public async openModalType(zoneIndex: number, tableIndex: number) {
-    const combinedIndex = zoneIndex * 1000 + tableIndex; // Create a unique index
   
+  public async openModalType(zoneIndex: number, tableIndex: number) {
+    const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
     const modal = await this.modalCtrl.create({
       component: ModalTypeComponent,
       cssClass: 'modal-pos-type',
       mode: 'ios',
-      componentProps: { combinedIndex }, // Pass combined index
     });
-  
+
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
-  
-    if (role === 'confirm') {
-      this.updateTableColor(combinedIndex); // Pass combined index
+
+    if (role === 'confirm' && data && data.countdown) {
+      this.updateTableColor(combinedIndex); // เปลี่ยนสีเป็นสีเขียว
+      this.startCountdown(combinedIndex, data.countdown); // เริ่มนับเวลาถอยหลัง
     }
   }
+
+  // ฟังก์ชันเปลี่ยนสีของโต๊ะเป็นสีเขียว
+  updateTableColor(combinedIndex: number) {
+    const zoneIndex = Math.floor(combinedIndex / 1000);
+    const tableIndex = combinedIndex % 1000;
+
+    const greenColor = '#1BC64A'; // สีเขียว
+
+    // ตรวจสอบว่า table เป็น Object หรือไม่
+    if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
+      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+        ...this.table_zone_pos[zoneIndex].tables[tableIndex],
+        color: greenColor
+      };
+    } else {
+      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+        name: this.table_zone_pos[zoneIndex].tables[tableIndex],
+        color: greenColor
+      };
+    }
+
+    this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+  }
+
+ // ฟังก์ชันนับเวลาถอยหลัง
+startCountdown(combinedIndex: number, countdown: number) {
+  const zoneIndex = Math.floor(combinedIndex / 1000);
+  const tableIndex = combinedIndex % 1000;
+
+  const interval = setInterval(() => {
+    countdown--;
+
+    if (countdown >= 0) {
+      // อัปเดต countdown ของโต๊ะนั้น
+      if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
+        this.table_zone_pos[zoneIndex].tables[tableIndex].countdown = this.formatTime(countdown);
+      } else {
+        this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+          name: this.table_zone_pos[zoneIndex].tables[tableIndex],
+          countdown: this.formatTime(countdown),
+          color: '#1BC64A' // สีเขียวเมื่อเริ่มนับถอยหลัง
+        };
+      }
+
+      this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+    }
+
+    // เมื่อเวลาหมดให้เปลี่ยนสีเป็นสีแดง
+    if (countdown <= 0) {
+      clearInterval(interval);
+      this.updateTableColorToRed(combinedIndex);
+    }
+  }, 1000);
+}
+
+// ฟังก์ชันเปลี่ยนสีเป็นสีแดงเมื่อเวลาหมด
+updateTableColorToRed(combinedIndex: number) {
+  const zoneIndex = Math.floor(combinedIndex / 1000);
+  const tableIndex = combinedIndex % 1000;
+
+  const redColor = '#FF0000'; // สีแดง
+
+  if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
+    this.table_zone_pos[zoneIndex].tables[tableIndex].color = redColor;
+  } else {
+    this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+      name: this.table_zone_pos[zoneIndex].tables[tableIndex],
+      color: redColor
+    };
+  }
+
+  this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+}
+
+// ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที
+formatTime(seconds: number): string {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
+}
+
+// ฟังก์ชันเสริมเพื่อเติม 0 ถ้าค่ามีแค่หลักเดียว
+pad(num: number): string {
+  return num < 10 ? '0' + num : num.toString();
+}
+
   public async openModalTaxe() {
 
 
@@ -241,36 +334,8 @@ export class PosPage implements OnInit {
       console.log('confirm 1140');
     }
   }
-  updateTableColor(combinedIndex: number) {
-    const zoneIndex = Math.floor(combinedIndex / 1000);
-    const tableIndex = combinedIndex % 1000;
-  
-    // สร้าง array ของสีที่กำหนดไว้
-    const colors = ['#1BC64A'];
-    
-    // เลือกสีแบบสุ่มจาก array
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  
-    // ตรวจสอบว่า tableIndex มีการตั้งค่าเป็น Object หรือไม่
-    if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
-      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
-        ...this.table_zone_pos[zoneIndex].tables[tableIndex],
-        color: randomColor
-      };
-    } else {
-      // ถ้าไม่เป็น Object เปลี่ยนข้อมูลเป็น Object ใหม่
-      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
-        name: this.table_zone_pos[zoneIndex].tables[tableIndex],
-        color: randomColor
-      };
-    }
-  
-    // Force Angular to detect changes
-    this.table_zone_pos = [...this.table_zone_pos];
-  }
-  
-  
-  
+ 
+
   
 
 

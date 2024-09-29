@@ -93,52 +93,53 @@
       </div>
       <!-- ////////////// body ////////////// -->
       <div class="px-2 w-full h-[93vh] overflow-scroll scrollerBar">
-        <swiper-container
-          #swiper
-          (swiperreachbeginning)="swiperReady()"
-          (swiperslidechange)="swiperSlideCharge()"
-          class=""
-        >
-        <swiper-slide *ngFor="let table_zone of table_zone_pos; let j = index">
-          <div class="grid grid-cols-3 md:grid-cols-4 gap-4 pt-5 mx-auto max-w-[768px]"
-               [ngClass]="is_charge_col == 5 ? 'lg:grid-cols-5 ipad_air:grid-cols-5 2xl:grid-cols-5 xl:grid-cols-5' : 'lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-4'">
-            <div *ngFor="let table of table_zone.tables; let i = index">
-              <ion-card
-                (click)="openModalType(j, i)"
-                class="m-0 shadow-none rounded-3xl"
-                [ngStyle]="{ 'background-color': table.color || '#F1F4F9' }">
-                <ion-card-header class="text-center">
-                  <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
-                    <span>h</span>
-                  </div>
-                  <ion-card-title
-                    class="flex flex-col justify-center"
-                    [ngClass]="is_charge_col == 5 ? 'h-10':'md:h-10 sm:h-10 h-14'">
-                    {{ table.name || table }} <!-- Use table.name if it's an object -->
-                  </ion-card-title>
-                  <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
-                    <span>mm</span>
-                  </div>
-                </ion-card-header>
-              </ion-card>
+        <swiper-container>
+          <swiper-slide *ngFor="let table_zone of table_zone_pos; let j = index">
+            <div class="grid grid-cols-3 md:grid-cols-4 gap-4 pt-5 mx-auto max-w-[768px]"
+                 [ngClass]="is_charge_col == 5 ? 'lg:grid-cols-5 ipad_air:grid-cols-5 2xl:grid-cols-5 xl:grid-cols-5' : 'lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-4'">
+              <div *ngFor="let table of table_zone.tables; let i = index">
+                <ion-card
+                  (click)="openModalType(j, i)"
+                  class="m-0 shadow-none rounded-3xl"
+                  style="min-height: 150px;"
+                  [ngStyle]="{ 'background-color': table.color || '#F1F4F9' }">
+                  <ion-card-header class="text-center flex flex-col justify-center items-center">
+                    <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
+                      <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
+                        <span [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">{{ table.countdown || ' ' }}</span>
+                      </div>
+                      
+                    </div>
+                    <ion-card-title class="flex flex-col justify-center"
+                                    [ngClass]="is_charge_col == 5 ? 'h-10':'md:h-10 sm:h-10 h-14'"
+                                    [ngStyle]="{ 'color': table.countdown ? 'white' : 'black' }"> <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
+                      {{ table.name || table }} <!-- Use table.name if it's an object -->
+                    </ion-card-title>
+                    <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
+                      <span [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">300 THB</span> <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
+                    </div>
+                  </ion-card-header>
+                </ion-card>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-        
+          </swiper-slide>
         </swiper-container>
       </div>
+      
+      
+      
     </div>
     <!-- ////////////// right side ////////////// -->
     <div class="min-w-[27rem] border-l-2 h-[100vh]">
       <!-- ////////////// top ////////////// -->
-      <div class="flex flex-col basis-auto">
+      <div class="flex flex-col basis-auto fw-100">
         <div class="flex flex-row">
           <div class="basis-2/3">
             <div class="flex flex-row">
               <div
                 class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
               >
-                <span>ID :</span><span>ORD0000001</span>
+                <span >ID :</span><span>ORD0000001</span>
               </div>
               <div
                 class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
@@ -192,7 +193,18 @@
         </div>
       </div>
       <!-- /////////// center ///////////-->
-      <div class="overflow-scroll scrollerBar h-[55vh]">sss</div>
+      <div class="overflow-scroll scrollerBar h-[55vh]">
+        <div class="list-my-food" *ngFor="let item of basket">
+          <div class="img-product-myfood">
+               <img src="assets/image/img-product.png" alt="">
+          </div>
+       
+          <p class="p-item-name">{{ item.p_name }}</p> <!-- แสดงชื่ออาหารและราคา -->
+          <p  class="p-item-price">{{item.price}}</p>
+          <p  class="p-item-count">{{item.count}}</p>
+          <p  class="p-item-total">{{item.price * item.count}}</p>
+        </div>
+      </div>
       <!-- /////////// botton ///////////-->
       <div class="h-[29vh]">
         <ion-card class="shadow-none bg-slate-200 py-0 my-0">

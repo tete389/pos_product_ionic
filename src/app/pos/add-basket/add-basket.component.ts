@@ -298,7 +298,7 @@ export class AddBasketComponent implements OnInit, OnDestroy {
   }
 
   public confirm() {
-    return this.modalCtrl.dismiss('', 'confirm');
+    return this.modalCtrl.dismiss(this.basket, 'confirm');
   }
 
   // public cancelAddDetail() {

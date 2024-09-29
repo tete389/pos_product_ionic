@@ -118,3 +118,33 @@ ion-popover {
   display: flex;
   justify-content: flex-end;
 }
+
+.list-my-food{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  justify-content: space-around;
+
+.img-product-myfood{
+  max-width: 65px;
+  height: auto;
+
+img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+}
+
+.p-item-price{
+  font-weight: 100;
+}
+.p-item-count{
+  font-weight: 100;
+}
+  }
+  .fw-100{
+    font-size: 12px;
+  }
