@@ -1,37 +1,126 @@
 <ion-content scrollY="false">
 
   <div class="box-main">
-    <div class="box-left">  
+    <div class="box-left">
 
-      <div class="box-left-head">1</div>
+      <div class="box-left-head">
+        <swiper-container #swiper2 (swiperreachbeginning)="swiper2Ready()" (swiperslidechange)="swiper2SlideCharge()"
+          [slidesPerView]="1">
+          <swiper-slide class="slide-content-1">
+            <div class="slide-body">
 
-      <div class="row-content" >
-        <div class="col-content" *ngFor="let t of [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8] ;
-        let i = index"
-         (click)="{}">
-         
-         <div class="box-count">
-          <p *ngIf="i==1"
-            class="text-count">1</p>
-        </div>
+              <div class="slide-body-left">
 
-          <img class="img-group" src="assets/image/img-product.png">
-          <div class="name-order">
-            <p class="names">food names</p>
-          </div>
-          <div class="price-order">
-            <ion-label>50</ion-label>
-            <ion-label class="line-through" *ngIf="i == 2">60</ion-label>
-          </div>
-    
-          <div *ngIf="i== 0"  class="out-order">
-            <ion-label>หมด</ion-label>
-          </div>
-        </div>
+                <!-- ปุ่มกดเลือกกลุ่มอาหาร ถัดไปทสงซ้าย -->
+                <ion-button class="btn-select-seg" (click)="select_group_left(select_group_page)" size="small">
+                  <!-- [disabled]="select_group_page == 0" -->
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                </ion-button>
+
+                <ion-segment scrollable="true" class="" [value]="select_group_page"
+                  (ionChange)="select_group_even($event)">
+                  <ion-segment-button [value]="0">
+                    <ion-label> {{ "ทั้งหมด" }}</ion-label>
+                  </ion-segment-button>
+                  <ion-segment-button [value]="i + 1" type="submit"
+                    *ngFor="let group of prods_group_temp; let i = index">
+                    <ion-label>{{ group.pg_name }}</ion-label>
+                  </ion-segment-button>
+                </ion-segment>
+
+
+                <ion-button class="btn-select-seg" (click)="select_group_right(select_group_page)" size="small">
+                  <!-- [disabled]="select_group_page == prods_group_temp.length" -->
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+
+
+              </div>
+
+              <div class="slide-body-right">
+
+                <!-- ปุ่ม humberger -->
+                <ion-button (click)="openModalSelectFoodGroup()"  size="small">
+                  <ion-icon name="menu"></ion-icon>
+                </ion-button>
+
+                <!-- ปุ่ม search -->
+                <ion-button size="small" (click)="openSearch()">
+                  <ion-icon name="search"></ion-icon>
+                </ion-button>
+              </div>
+
+
+
+
+            </div>
+          </swiper-slide>
+
+          <!-- แผงค้นหาตอนกดปุ่ม search -->
+          <swiper-slide class="slide-content-2">
+            <div class="slide-body">
+
+              <div class="slide-body-left">
+                <ion-button class="btn-close-search" size="small" (click)="closeSli()">
+                  <ion-icon name="arrow-back-outline"></ion-icon>
+                </ion-button>
+              </div>
+
+              <div class="slide-body-right">
+                <ion-searchbar class="searches-foodses" show-clear-button="focus" placeholder="ค้นหา..." value="sadasd"
+                  clear-icon="close-circle"></ion-searchbar>
+
+              </div>
+
+
+            </div>
+
+          </swiper-slide>
+
+
+        </swiper-container>
       </div>
-   
+
+
+      <swiper-container class="swiper-container-2" #swiper (swiperreachbeginning)="swiperReady()" (swiperslidechange)="swiperSlideCharge()">
+        <swiper-slide *ngFor="let item of prods_group_temp">
+          <div class="row-content">
+            <ion-row>
+              <ion-col size-xl="3" size-lg="4" size-md="6"
+                *ngFor="let t of [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8] ; let i = index">
+                <div class="col-content" (click)="select_food(i)" style="margin: 0px auto;">
+
+                  <div class="box-count">
+                    <p *ngIf="i==1" class="text-count">1</p>
+                  </div>
+
+                  <div class="img-group">
+                    <img src="assets/image/img-product.png">
+                    <div *ngIf="i== 0" class="out-order">
+                      <ion-label>หมด</ion-label>
+                    </div>
+                  </div>
+
+                  <div class="name-order">
+                    <p class="names">food names</p>
+                  </div>
+                  <div class="price-order">
+                    <ion-label>50</ion-label>
+                    <ion-label class="line-through" *ngIf="i == 2">60</ion-label>
+                  </div>
+
+                 
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </div>
+        </swiper-slide>
+       
+      </swiper-container>
+
     </div>
-    
+
     <div class="box-right">
       <div class="box-right-head">
         <div class="box-text-sub">
@@ -45,30 +134,30 @@
       </div>
       <div class="box-right-detail">
         <ion-card *ngFor="let item of [1,2,3,4,5,6];let i = index">
-         <div class="box-food-name">
-          <div class="box-img">
-            <img src="assets/image/img-product.png" alt="">
-          </div>
-          <div class="box-food-body">
-            <ion-label>Food name</ion-label>
-            <ion-label><span>฿</span>60</ion-label>
-          </div>
-          <div class="box-food-count">
-         
-            <div class="box-1-top">
-              <div class="d-icon-1">
-                <ion-icon name="remove-circle"></ion-icon>
-              </div>
-              <div class="d-label">
-                <ion-label>1</ion-label>
-              </div>
-              <div class="d-icon-2">
-                <ion-icon name="add-circle"></ion-icon>
-              </div>
+          <div class="box-food-name">
+            <div class="box-img">
+              <img src="assets/image/img-product.png" alt="">
+            </div>
+            <div class="box-food-body">
+              <ion-label>Food name</ion-label>
+              <ion-label><span>฿</span>60</ion-label>
+            </div>
+            <div class="box-food-count">
 
+              <div class="box-1-top">
+                <div class="d-icon-1">
+                  <ion-icon name="remove-circle"></ion-icon>
+                </div>
+                <div class="d-label">
+                  <ion-label>1</ion-label>
+                </div>
+                <div class="d-icon-2">
+                  <ion-icon name="add-circle"></ion-icon>
+                </div>
+
+              </div>
             </div>
           </div>
-         </div>
           <div *ngIf="i+1 == 4" class="box-food-detail">
             <div class="food-detail">
               <span class="text-sub">ระดับความหวาน :</span>
@@ -76,7 +165,7 @@
             </div>
             <div class="food-detail">
               <span class="text-sub">Topping :</span>
-              <span class="text-detail">&nbsp;฿10 ไข่มุก      ฿10 เจลลี่     ฿10 ซอสChocolate</span>
+              <span class="text-detail">&nbsp;฿10 ไข่มุก ฿10 เจลลี่ ฿10 ซอสChocolate</span>
             </div>
             <div class="food-detail">
               <span class="text-sub">Note :</span>

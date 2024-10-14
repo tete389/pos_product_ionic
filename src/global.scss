@@ -207,6 +207,44 @@ ion-searchbar.searches-fuller {
   }
 }
 
+ion-searchbar.searches-foodses {
+  --box-shadow: none;
+  padding-inline-end: 10px;
+
+  .searchbar-input-container {
+
+    //    background: plum!important;
+    input {
+      // margin-left: 40px;
+      background: var(--light-gray-color3) !important;
+      // width: 233px;
+      height: 45px;
+      font-size: 18px;
+      padding: 7px 38px;
+      border-radius: 25px;
+      font-weight: var(--text-light);
+      // border: 1px solid var(--dark-gray-color);
+      padding-inline-start: 50px !important;
+    }
+
+    ion-icon {
+      padding-top: 8px;
+      inset-inline-start: 8px;
+      background: transparent !important;
+      color: var(--dark-gray-color);
+      width: 40px;
+      height: 30px;
+    }
+
+    button[aria-label="reset"] {
+      background: transparent !important;
+      width: 40px;
+      // padding-top: 8px;
+      inset-inline-end: 4px;
+    }
+  }
+}
+
 //===============================================
 //=================  CSS ion-popover ==========
 //===============================================
@@ -580,22 +618,23 @@ ion-popover.my-custom-customPopover-multiSelect-2::part(backdrop) {
 ion-popover.pop-datetimer {
   --width: fit-content;
   margin-top: 10px;
+
   ion-datetime.custom-css-dateitme {
-      // --background: rgb(245, 235, 247);
-      // --background-rgb: rgba(77,181,79,1);
-      --wheel-highlight-background: rgba(77, 181, 79, 0.1);
-      // --wheel-fade-background-rgb: 245, 235, 247;
-      /* border-radius: 50px; */
+    // --background: rgb(245, 235, 247);
+    // --background-rgb: rgba(77,181,79,1);
+    --wheel-highlight-background: rgba(77, 181, 79, 0.1);
+    // --wheel-fade-background-rgb: 245, 235, 247;
+    /* border-radius: 50px; */
   }
 
   ion-datetime.custom-css-dateitme::part(wheel-item) {
-      // color: rgb(255, 66, 97);
-      font-weight: var(--text-light);
+    // color: rgb(255, 66, 97);
+    font-weight: var(--text-light);
   }
 
   ion-datetime.custom-css-dateitme::part(wheel-item active) {
-      color: var(--green-color2);
-      font-weight: var(--text-regular);
+    color: var(--green-color2);
+    font-weight: var(--text-regular);
   }
 }
 
@@ -644,6 +683,7 @@ ion-input.custom-ion-input-number-3 input[type="number"] {
   border: none;
   border: 1px solid var(--dark-gray-color);
 }
+
 ion-input.custom-ion-input-text-3 input[type="text"] {
   border-radius: 12px;
   outline: none;
@@ -651,14 +691,19 @@ ion-input.custom-ion-input-text-3 input[type="text"] {
   height: 40px;
   border: 1px solid var(--dark-gray-color);
 }
-ion-input.custom-ion-input-text-3[disabled]{
-  opacity: 1 !important; /* ทำให้สีไม่จาง */
-  color: black; /* กำหนดสีข้อความ */
-  background-color: #F4F6F8 !important; /* กำหนดสีพื้นหลัง */
-  border-radius: 5px !important; 
-  padding: 0px 15px  !important;
-  min-height: 40px  !important;
+
+ion-input.custom-ion-input-text-3[disabled] {
+  opacity: 1 !important;
+  /* ทำให้สีไม่จาง */
+  color: black;
+  /* กำหนดสีข้อความ */
+  background-color: #F4F6F8 !important;
+  /* กำหนดสีพื้นหลัง */
+  border-radius: 5px !important;
+  padding: 0px 15px !important;
+  min-height: 40px !important;
 }
+
 ion-input.custom-ion-input-text-3 input[type="text"]:disabled {
   border: none;
 }
@@ -670,22 +715,27 @@ ion-input.custom-ion-input-text-3 input[type="text"]:not(:disabled) {
 ion-input.custom-ion-input-number-3 input[type="number"] {
   border-radius: 8px;
 }
+
 ion-input.custom-ion-input-text-3 input[type="text"] {
   border-radius: 8px;
 }
+
 ion-input.custom-ion-input-number-2 input[type="number"],
 ion-input.custom-ion-input-number-3 input[type="number"] {
   text-align: center;
 }
+
 ion-input.custom-ion-input-text-3 input[type="text"] {
   text-align: center;
 }
+
 ion-input.custom-ion-input-name-2 input[type="text"]:focus,
 ion-input.custom-ion-input-number-2 input[type="number"]:focus,
 ion-input.custom-ion-input-number-3 input[type="number"]:focus {
   outline: none;
   border: 1px solid var(--primary-color);
 }
+
 ion-input.custom-ion-input-text-3 input[type="text"]:focus {
   outline: none;
   border: 1px solid var(--primary-color);
@@ -721,7 +771,7 @@ ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-butto
 ion-input.custom-ion-input-number-2 input[type="number"]::-webkit-inner-spin-button,
 .custom-ion-input-number-2 input[type="number"]::-webkit-outer-spin-button,
 ion-input.custom-ion-input-number-3 input[type="number"]::-webkit-inner-spin-button,
-.custom-ion-input-number-3 input[type="number"]::-webkit-outer-spin-button  {
+.custom-ion-input-number-3 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -729,7 +779,7 @@ ion-input.custom-ion-input-number-3 input[type="number"]::-webkit-inner-spin-but
 }
 
 ion-input.custom-ion-input-text-3 input[type="text"]::-webkit-inner-spin-button,
-.custom-ion-input-text-3 input[type="text"]::-webkit-outer-spin-button  {
+.custom-ion-input-text-3 input[type="text"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1021,6 +1071,12 @@ ion-accordion-group.my-custum-accordion {
 //============== CSS ion-modal ==================
 //===============================================
 
+ion-modal.modal-default.show-modal ~ ion-modal.modal-default{
+  background-color: transparent !important;
+  background:rgba(0, 0, 0, 0.4);
+  --backdrop-opacity: 0.4;
+}
+
 ion-modal.css-modal-optioned {
   --width: fit-content;
   --width: 680px;
@@ -1031,6 +1087,7 @@ ion-modal.css-modal-optioned {
 
   .modal-wrapper {}
 }
+
 
 ion-modal.my-custom-modal-datetime {
   --width: fit-content;
@@ -1056,6 +1113,36 @@ ion-modal.css-modal-add-new-member {
   .modal-wrapper {}
 }
 
+ion-modal.css-modal-select-foodGroup {
+  --width: fit-content;
+  --width: 320px;
+  // --height: 90%;
+  --height: 490px;
+  --border-radius: 12px;
+  margin-top: 0px;
+  padding: 12px 0 10px;
+
+  .modal-wrapper {}
+}
+
+ion-modal.css-modal-select-food-detail{
+  --width: fit-content;
+  --width: 920px;
+  // --height: 90%;
+  --height: 680px;
+  --border-radius: 12px;
+  margin-top: 0px;
+  padding: 16px 0 10px;
+
+  .modal-wrapper {}
+}
+
+ion-modal.css-modal-select-foodGroup:part(backdrop) {
+  background-color: transparent;
+  background:var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
 .box-datetime {
 
   ion-datetime.date-timer {
@@ -1068,9 +1155,8 @@ ion-modal.css-modal-add-new-member {
 
   }
 
-  ion-datetime.date-timer::part(month-year-button) {
+  ion-datetime.date-timer::part(month-year-button) {}
 
-  }
   // ทุกวัน
   ion-datetime.date-timer::part(calendar-day) {
     color: var(--text-dark2);

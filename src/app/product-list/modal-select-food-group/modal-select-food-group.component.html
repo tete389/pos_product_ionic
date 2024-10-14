@@ -1,0 +1,12 @@
+<ion-content>
+
+
+  <div class="main">
+
+    <ion-card *ngFor="let item of product_group;let i = index" (click)="save_select_group(i)"
+    [ngClass]="{'select-group': select_group_page == i}">
+      {{item.pg_name}}
+    </ion-card>
+  </div>
+
+</ion-content>
