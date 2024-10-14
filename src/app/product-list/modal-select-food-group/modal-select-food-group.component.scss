@@ -1,0 +1,17 @@
+.main {
+    ion-card {
+        height: 60px;
+
+        font-size: 16px;
+        font-weight: var(--text-light);
+        color: var(--text-dark2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none;
+        margin: 0;
+    }
+    .select-group{
+        background: var(--light-sky-blue);
+    }
+}

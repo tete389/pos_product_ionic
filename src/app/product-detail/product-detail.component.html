@@ -1,3 +1,159 @@
-<p>
-  product-detail works!
-</p>
+<ion-content>
+  <div class="main">
+    <div class="box-1">
+      <div class="box-1-content-1" style="
+  background-image: url('assets/image/img-product.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;">
+      </div>
+      <div class="">
+        <div class="box-1-content-2">
+          <ion-label class="name-order">ข้าวหมูกรอบ</ion-label>
+          <ion-label class="price"><span>฿</span> 300</ion-label>
+        </div>
+        <div class="box-1-content-3">
+          <ion-label class="detail">
+            This is a Pad Thai recipe that truly stacks up to great Thai restaurants yet is totally doable for every
+            home
+            cook with just a trip to your every day grocery store. With the slippery noodles, signature sweet-savoury
+            flavour, sprinkle of peanuts and tang from lime, this is a Thai food favourite for good reason!
+          </ion-label>
+        </div>
+      </div>
+
+      <div class="box-1-content-4">
+        <ion-button (click)="{}">
+          <ion-label>ยกเลิก</ion-label>
+        </ion-button>
+
+      </div>
+    </div>
+
+    <div class="box-2">
+
+      <div class="box-2-top">
+
+        <!-- option check-box -->
+        <ion-card *ngIf="indexs == 3" class="option">
+
+          <ion-card-header class="card-head-option">
+            <ion-label class="label-head">
+              <ion-icon class="complete" name="checkmark-circle"></ion-icon>
+              Additional Request</ion-label>
+            <ion-label class="label-head2">Optional, max 2</ion-label>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <ion-list>
+
+              <ion-item *ngFor="let t of [1,2,3,4]; let i= index">
+                <ion-checkbox class="box-box" labelPlacement="end" justify="start" [checked]="false">
+                  มอสซาเรลล่าชีส
+                </ion-checkbox>
+                <span>+20</span>
+              </ion-item>
+
+            </ion-list>
+
+          </ion-card-content>
+        </ion-card>
+        <!-- option radio -->
+        <ion-card  *ngIf="indexs == 3" class="option">
+
+          <ion-card-header class="card-head-option">
+            <ion-label class="label-head">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              ขนาด (Pizza)</ion-label>
+            <ion-label class="label-head2">Pick 1</ion-label>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <ion-list>
+
+              <ion-item *ngFor="let t of [1,2,3,4]; let i= index">
+                <ion-checkbox class="box-pick" labelPlacement="end" justify="start" [checked]="false">
+                  มอสซาเรลล่าชีส
+                </ion-checkbox>
+                <span>+20</span>
+              </ion-item>
+
+            </ion-list>
+
+          </ion-card-content>
+        </ion-card>
+        
+        <!-- option check-box -->
+        <ion-card  *ngIf="indexs == 3" class="option">
+
+          <ion-card-header class="card-head-option">
+            <ion-label class="label-head">
+              <ion-icon class="complete" name="checkmark-circle"></ion-icon>
+              Additional Request</ion-label>
+            <ion-label class="label-head2">Optional, max 2</ion-label>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <ion-list>
+
+              <ion-item *ngFor="let t of [1,2,3,4]; let i= index">
+                <ion-checkbox class="box-box" labelPlacement="end" justify="start" [checked]="false">
+                  มอสซาเรลล่าชีส
+                </ion-checkbox>
+                <span>+20</span>
+              </ion-item>
+
+            </ion-list>
+
+          </ion-card-content>
+        </ion-card>
+
+        <!-- คอมเมนท์ -->
+        <ion-card class="commemt-counted">
+
+          <ion-card-header class="card-head-comment">
+            <ion-label class="label-head">Additional Request</ion-label>
+            <ion-label class="label-head2">50/50</ion-label>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-textarea class="custom-textarea " placeholder="E.g. No Veggies" rows="2">
+            </ion-textarea>
+
+            <div class="box-counter">
+
+              <div class="box-counter-top">
+                <div class="d-icon-1">
+                  <ion-icon name="remove-circle" (click)="{}"></ion-icon>
+                </div>
+                <div class="d-label">
+                  <ion-label>0</ion-label>
+                </div>
+                <div class="d-icon-2">
+                  <ion-icon name="add-circle" (click)="{}"></ion-icon>
+                </div>
+              </div>
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+
+
+
+      </div>
+      <div class="box-2-bottom">
+        <ion-button (click)="{}" 
+        [disabled]="indexs == 3"
+        [ngClass]="{'option-not-complete': indexs == 3}">
+          <ion-label>Add to Basket - ฿ 350</ion-label>
+        </ion-button>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>
