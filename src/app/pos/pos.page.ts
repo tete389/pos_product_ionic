@@ -34,6 +34,8 @@ import Swiper from 'swiper';
 import { AddBasketComponent } from './add-basket/add-basket.component';
 import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { ModalTaxeComponent } from '../discounts-taxe/modal-taxe/modal-taxe.component';
+import { ModalCancleComponent } from './modal-cancle/modal-cancle.component';
+import { ModalCalculateComponent } from './modal-calculate/modal-calculate.component';
 import { ProductListComponent } from '../product-list/product-list.component';
 @Component({
   selector: 'app-pos',
@@ -133,7 +135,7 @@ export class PosPage implements OnInit {
   
 
   ngOnInit() {
-    // this.openModalTaxe();
+    // this.openModalCalculate();
   }
 
   customPopoverOptionsStyle2 = {
@@ -343,6 +345,40 @@ updateTableColorToRed(combinedIndex: number) {
   }
 
   this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+}
+public async openModalCancle() {
+
+
+  const modal = await this.modalCtrl.create({
+    component: ModalCancleComponent,
+    cssClass: 'modal-pos-cancle',
+    mode: 'ios',
+    componentProps: { }, // Pass combined index
+  });
+
+  await modal.present();
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+    console.log('confirm cancle');
+  }
+}
+public async openModalCalculate() {
+  const modal = await this.modalCtrl.create({
+    component: ModalCalculateComponent,
+    cssClass: 'modal-pos-cancle',
+    mode: 'ios',
+    componentProps: {}, // หากต้องการส่งค่าเข้ามาใน modal ทำตรงนี้ได้
+  });
+
+  await modal.present();
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+    console.log('ยืนยันการชำระเงิน');
+    console.log(`เงินสด: ${data.cash.toFixed(2)} บาท`);
+    console.log(`เงินทอน: ${data.change.toFixed(2)} บาท`);
+  }
 }
 
 // ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที
