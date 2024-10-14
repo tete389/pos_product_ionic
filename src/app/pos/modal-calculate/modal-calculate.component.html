@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="head1">
+    <p>ชำระเงิน: A10</p>
+  </div>
+
+  <div class="head2">
+    <div class="left">
+      <div class="cash">
+        <ion-button>เงินสด</ion-button>
+      </div>
+      <div class="tranfer">
+        <ion-button>เงินโอน</ion-button>
+      </div>
+    </div>
+    <div class="right">
+      <div class="member">
+        <ion-button>สมาชิก</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tt-top">
+    <div class="s1">
+      <p class="th-title">ยอดชำระ</p>
+      <p class="total-b">{{ totalAmount.toFixed(2) }}</p>
+    </div>
+
+    <div class="cash-tt-top">
+      <p class="th-title">เงินสด</p>
+      <p class="total-c">{{ cashAmount.toFixed(2) }}</p>
+    </div>
+
+    <div class="change-tt-top">
+      <p class="change-title">เงินทอน</p>
+      <p class="total-change">{{ changeAmount.toFixed(2) }}</p>
+    </div>
+
+    <div class="grid-c">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(1000)">1000</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(500)">500</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(100)">100</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(50)">50</ion-col>
+          <ion-col size="2" class="custom-col green" (click)="payExact()">พอดี</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(20)">20</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(10)">10</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(5)">5</ion-col>
+          <ion-col size="2" class="custom-col" (click)="onCashInput(1)">1</ion-col>
+          <ion-col size="2" class="custom-col clear" (click)="clearCash()">Clear</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="section-end">
+    <div class="tick-qrcode">
+      <ion-checkbox></ion-checkbox>
+      <p>พิมพ์ใบเสร็จ</p>
+    </div>
+
+    <div class="tranfer">
+      <ion-button (click)="confirm()">ชำระเงิน</ion-button>
+    </div>
+  </div>
+</div>
