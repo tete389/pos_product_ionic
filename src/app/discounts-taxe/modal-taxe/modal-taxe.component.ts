@@ -60,29 +60,51 @@ interface Item {
 })
 
 export class ModalTaxeComponent  implements OnInit {
-  items:any = [
-    { label: 'ส่วนลดวันเกิด', value: '+7%' },
-    { label: 'ส่วนลดวันเกิด', value: '-20%' },
-    { label: 'ส่วนลดเดือนเกิด', value: '-15%' },
-    { label: 'ส่วนลดโปรเปิดร้าน', value: '-10%' },
-    { label: 'ส่วนลด 4 จ่าย 3', value: '-399 บาท' }
-  ];
-
+  items: Item[] = [];
   checkedCount = 0;
-  constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  constructor(private modalCtrl: ModalController) {}
+
+  ngOnInit() {
+    this.showDiscountItems(); // เริ่มต้นด้วยการแสดงส่วนลด
+  }
+
+  // แสดงข้อมูลส่วนลด
+  showDiscountItems() {
+    this.items = [
+      { label: 'ส่วนลดวันเกิด', value: '-20%', checked: false },
+      { label: 'ส่วนลดเดือนเกิด', value: '-15%', checked: false },
+      { label: 'ส่วนลดโปรเปิดร้าน', value: '-10%', checked: false },
+      { label: 'ส่วนลด 4 จ่าย 3', value: '-399 บาท', checked: false },
+    ];
+    this.updateCheckedCount();
+  }
+
+  // แสดงข้อมูล Service Charge
+  showServiceCharge() {
+    this.items = [{ label: 'Service Charge', value: '10%', checked: false }];
+    this.updateCheckedCount();
+  }
+
+  // แสดงข้อมูลเก็บเพิ่ม
+  showExtraCharge() {
+    this.items = [{ label: 'ค่าปรับอาหารเหลือ', value: '15%', checked: false }];
+    this.updateCheckedCount();
+  }
+
   toggleCheckbox(event: any, index: number) {
     this.items[index].checked = event.detail.checked;
-    this.updateCheckedCount(); // อัพเดทจำนวน checkbox ที่ถูกติ๊ก
+    this.updateCheckedCount();
   }
 
   updateCheckedCount() {
-    this.checkedCount = this.items.filter((item: Item) => item.checked).length;
+    this.checkedCount = this.items.filter((item) => item.checked).length;
   }
+
   async closeModal() {
     await this.modalCtrl.dismiss();
   }
+
   async confirmSelection() {
     await this.modalCtrl.dismiss(null, 'confirm');
   }

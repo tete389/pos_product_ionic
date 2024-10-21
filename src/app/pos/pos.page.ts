@@ -348,11 +348,14 @@ public async openModalCancle() {
   }
 }
 public async openModalCalculate() {
+  const totalAmount = this.calculateTotalAmount(); // คำนวณราคารวม
+  console.log(totalAmount);
+  
   const modal = await this.modalCtrl.create({
     component: ModalCalculateComponent,
-    cssClass: 'modal-pos-cancle',
+    cssClass: 'modal-pos-calculate',
     mode: 'ios',
-    componentProps: {}, // หากต้องการส่งค่าเข้ามาใน modal ทำตรงนี้ได้
+    componentProps: { totalAmount }, // ส่งราคารวมไปยัง Modal
   });
 
   await modal.present();
@@ -363,6 +366,24 @@ public async openModalCalculate() {
     console.log(`เงินสด: ${data.cash.toFixed(2)} บาท`);
     console.log(`เงินทอน: ${data.change.toFixed(2)} บาท`);
   }
+}
+calculateTotalAmount() {
+  let totalAmount = 0;
+
+  this.selectedTableBasket.forEach((item: any) => {
+    totalAmount += item.price * item.count; // ราคารายการคูณจำนวน
+   
+    
+    item.options.forEach((option: any) => {
+      option.choice.forEach((choice: any) => {
+        if (choice.selected) {
+          totalAmount += choice.po_price;
+        }
+      });
+    });
+  });
+
+  return totalAmount;
 }
 
 // ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที

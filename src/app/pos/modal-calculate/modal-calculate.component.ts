@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -56,46 +56,42 @@ import {
 
 })
 export class ModalCalculateComponent implements OnInit {
-  totalAmount: number = 540.00; // ยอดชำระทั้งหมด
-  cashAmount: number = 0; // เงินสดที่รับ
-  changeAmount: number = 0; // เงินทอน
+  @Input() totalAmount: number = 0; // รับค่า input โดยตรง
+  cashAmount: number = 0;
+  changeAmount: number = 0;
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('Received totalAmount:', this.totalAmount); // ตรวจสอบค่า
+  }
 
-  // คำนวณเงินทอน
   calculateChange() {
     this.changeAmount = this.cashAmount - this.totalAmount;
   }
 
-  // เมื่อผู้ใช้กดปุ่มเพิ่มเงินสด
   onCashInput(value: number) {
     this.cashAmount += value;
     this.calculateChange();
   }
 
-  // เคลียร์ยอดเงินสดและเงินทอน
   clearCash() {
     this.cashAmount = 0;
     this.changeAmount = 0;
   }
 
-  // เมื่อกดปุ่ม "พอดี" จะตั้งค่าเงินสดให้เท่ากับยอดชำระ
   payExact() {
     this.cashAmount = this.totalAmount;
     this.calculateChange();
   }
 
-  // ยืนยันการชำระเงิน
   async confirm() {
-    await this.modalCtrl.dismiss({
-      cash: this.cashAmount,
-      change: this.changeAmount,
-    }, 'confirm');
+    await this.modalCtrl.dismiss(
+      { cash: this.cashAmount, change: this.changeAmount },
+      'confirm'
+    );
   }
 
-  // ปิด Modal
   closed() {
     this.modalCtrl.dismiss();
   }

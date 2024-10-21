@@ -2,59 +2,37 @@
   <p class="head-th">ส่วนลดและภาษี</p>
   <p class="head-en">(Discount & Vat)</p>
 </div>
+
 <div class="container">
   <div class="section-1">
     <div class="discount-vat">
-      <ion-button>
-        ส่วนลด / vat
-      </ion-button>
+      <ion-button (click)="showDiscountItems()">ส่วนลด / VAT</ion-button>
     </div>
     <div class="service-charge">
-      <ion-button>
-        Service Charge
-      </ion-button>
+      <ion-button (click)="showServiceCharge()">Service Charge</ion-button>
     </div>
     <div class="extra-charge">
-      <ion-button>
-        เก็บเพิ่ม
-      </ion-button>
+      <ion-button (click)="showExtraCharge()">เก็บเพิ่ม</ion-button>
     </div>
   </div>
 
   <div class="section-2">
     <ng-container *ngFor="let item of items; let i = index">
-
       <ion-card>
         <div class="card">
-        <div class="left">
-          <ion-checkbox (ionChange)="toggleCheckbox($event, i)"></ion-checkbox>
-          <p [ngClass]="{'text-checked': item.checked}">{{ item.label }}</p>
-          <ion-icon class="icon" name="checkmark-circle-outline" *ngIf='item.checked' ></ion-icon>
+          <div class="left">
+            <ion-checkbox (ionChange)="toggleCheckbox($event, i)"></ion-checkbox>
+            <p [ngClass]="{ 'text-checked': item.checked }">{{ item.label }}</p>
+            <ion-icon class="icon" name="checkmark-circle-outline" *ngIf="item.checked"></ion-icon>
+          </div>
+          <div class="right">{{ item.value }}</div>
         </div>
-        <div class="right">
-          {{ item.value }}
-
-         
-        </div>
-      </div>
-        
       </ion-card>
-
-
     </ng-container>
   </div>
 
-
-
-
   <div class="section-3">
-    <ion-button class="closed" (click)="closeModal()">
-      ปิดออก
-    </ion-button>
-    <ion-button class="apply"  (click)="confirmSelection()">
-      ยืนยัน  ( {{ checkedCount }} )
-    </ion-button>
+    <ion-button class="closed" (click)="closeModal()">ปิดออก</ion-button>
+    <ion-button class="apply" (click)="confirmSelection()">ยืนยัน ( {{ checkedCount }} )</ion-button>
   </div>
-
-
 </div>
