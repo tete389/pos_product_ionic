@@ -36,6 +36,7 @@ import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { ModalTaxeComponent } from '../discounts-taxe/modal-taxe/modal-taxe.component';
 import { ModalCancleComponent } from './modal-cancle/modal-cancle.component';
 import { ModalCalculateComponent } from './modal-calculate/modal-calculate.component';
+import { ProductListComponent } from '../product-list/product-list.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -197,6 +198,21 @@ export class PosPage implements OnInit {
         }
     } else {
         console.error("Zone index or table index is null.");
+    }
+  }
+
+  public async openModal2() {
+    const modal = await this.modalCtrl.create({
+      // component: AddBasketComponent,
+      component: ProductListComponent,
+      cssClass: 'my-custom-modal-fullscreen',
+      mode: 'ios',
+      // showBackdrop: false
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    if (role === 'confirm') {
+      // this.message = `Hello, ${data}!`;
     }
   }
   
