@@ -1,0 +1,104 @@
+<div class="main-container">
+<div class="container">
+  <div class="head1">
+    <div class="profile-member">
+      <img src="https://image.tmdb.org/t/p/w500/4DwawZRFMdc11qfOom2qZ7Wj2QA.jpg" alt="">
+    </div>
+    <div class="name-h1">
+      <p class="uname-h1">Laphat</p>
+      <p class="tel-h1">090-000-0000</p>
+    </div>
+  </div>
+</div>
+
+<div class="form-container">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Member ID <span class="subtext">(Auto Generate)</span></label>
+      <div class="width">
+      
+        <ion-input value="MB-00005" readonly></ion-input>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label>Membership Type <span class="subtext">(Auto Generate)</span></label>
+      <div class="width">
+      
+        <ion-input value="General" readonly></ion-input>
+         </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>ชื่อ</label>
+        <div class="width">
+        <ion-input placeholder=""></ion-input>
+      </div>
+      </div>
+      <div class="form-group">
+   
+        <label>นามสกุล</label>
+        <div class="width">
+        <ion-input placeholder=""></ion-input>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>ชื่อเล่น <span class="required">*</span></label>
+        <ion-input value="อิ้ว" class="input-valid"></ion-input>
+      </div>
+      <div class="new">
+      <div class="form-group">
+        <label>วันเดือนปีเกิด <span class="required">*</span></label>
+        <ion-input value="13/11/1996" class="input-valid"></ion-input>
+      </div>
+      <div class="form-group age-group">
+        <label>อายุ</label>
+        <div class="w-age">
+        <ion-input value="28 ปี" readonly></ion-input>
+        </div>
+      
+      </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>เบอร์โทร <span class="required">*</span></label>
+        <ion-input value="0981299734" class="input-valid"></ion-input>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <ion-input placeholder=""></ion-input>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>เพศ</label>
+        <ion-select placeholder="ชาย">
+          <ion-select-option value="ชาย">ชาย</ion-select-option>
+          <ion-select-option value="หญิง">หญิง</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="form-group">
+        <label>Line</label>
+        <ion-input value="ยังไม่เพิ่มไลน์" class="input-valid"></ion-input>
+        <!-- <ion-icon name="checkmark-circle" color="success" class="icon-check"></ion-icon> -->
+      </div>
+    </div>
+  </div>
+  <div class="section3">
+    <ion-button class="cancle" (click)="closed()">
+      Cancle
+    </ion-button>
+    <ion-button class="ok" (click)="confirm()">
+    บันทึก      
+    </ion-button>
+  </div>
+</div>

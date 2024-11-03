@@ -1,0 +1,38 @@
+.flex-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 53px;
+    margin-top: 50px;
+    .section1 {
+        font-size: 42px;
+    }
+
+    .section2 {
+        font-size: 32px;
+    }
+
+}
+
+.section3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 200px;
+    .cancle{
+        width: 140px;
+        height: 45px;
+        --border-radius: 50px;
+        --background: var(--light-gray-color3);
+        color: black;
+        font-size: 16px;
+    }
+    .ok {
+        width: 140px;
+        height: 45px;
+        --border-radius: 50px;
+        --background: var(--primary-color);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+    }
+}

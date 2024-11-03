@@ -37,6 +37,9 @@ import { ModalTaxeComponent } from '../discounts-taxe/modal-taxe/modal-taxe.comp
 import { ModalCancleComponent } from './modal-cancle/modal-cancle.component';
 import { ModalCalculateComponent } from './modal-calculate/modal-calculate.component';
 import { ProductListComponent } from '../product-list/product-list.component';
+import { ModalApplyTableComponent } from './modal-apply-table/modal-apply-table.component';
+import { ModalAddNewMemberComponent } from '../all-member/modal-add-new-member/modal-add-new-member.component';
+import { ModalMemberTableComponent } from './modal-member-table/modal-member-table.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -135,7 +138,7 @@ export class PosPage implements OnInit {
   
 
   ngOnInit() {
-    // this.openModalCalculate();
+    // this.openModalMember();
   }
 
   customPopoverOptionsStyle2 = {
@@ -301,7 +304,7 @@ export class PosPage implements OnInit {
 startCountdown(combinedIndex: number, countdown: number) {
   const zoneIndex = Math.floor(combinedIndex / 1000);
   const tableIndex = combinedIndex % 1000;
-
+  this.openModalApply();
   const interval = setInterval(() => {
     countdown--;
 
@@ -351,7 +354,7 @@ public async openModalCancle() {
 
   const modal = await this.modalCtrl.create({
     component: ModalCancleComponent,
-    cssClass: 'modal-pos-cancle',
+    cssClass: 'modal-pos-cancle1',
     mode: 'ios',
     componentProps: { }, // Pass combined index
   });
@@ -362,6 +365,49 @@ public async openModalCancle() {
   if (role === 'confirm') {
     console.log('confirm cancle');
   }
+}
+public async openModalApply() {
+
+
+  const modal = await this.modalCtrl.create({
+    component: ModalApplyTableComponent,
+    cssClass: 'modal-pos-cancle1',
+    mode: 'ios',
+    componentProps: { }, // Pass combined index
+  });
+
+  await modal.present();
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+    console.log('confirm cancle');
+  }
+}
+public async openModalMember() {
+  const modal = await this.modalCtrl.create({
+    component: ModalMemberTableComponent,
+    cssClass: 'modal-pos-member',
+    mode: 'ios',
+    componentProps: {} // คุณสามารถส่งค่าเพิ่มเติมได้ถ้าต้องการ
+  });
+
+  await modal.present();
+  
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+    // ตรวจสอบว่ามีข้อมูล data ที่ส่งกลับมาจาก modal หรือไม่
+    console.log('Data received from modal:', data);
+
+    // ดำเนินการกับข้อมูลที่ได้รับ เช่น แสดงใน console หรือเก็บไว้ในตัวแปร
+    this.processReceivedData(data);
+  }
+}
+
+// ฟังก์ชันตัวอย่างสำหรับการใช้ข้อมูลที่ได้รับจาก modal
+private processReceivedData(data: any) {
+  console.log('Processing received data:', data);
+  // ดำเนินการกับข้อมูล เช่น อัปเดต UI หรือทำงานอื่น ๆ
 }
 public async openModalCalculate() {
   const totalAmount = this.calculateTotalAmount(); // คำนวณราคารวม
