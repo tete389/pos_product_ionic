@@ -40,6 +40,7 @@ import { ProductListComponent } from '../product-list/product-list.component';
 import { ModalApplyTableComponent } from './modal-apply-table/modal-apply-table.component';
 import { ModalAddNewMemberComponent } from '../all-member/modal-add-new-member/modal-add-new-member.component';
 import { ModalMemberTableComponent } from './modal-member-table/modal-member-table.component';
+import { OrderListComponent } from './order-list/order-list.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -501,4 +502,21 @@ pad(num: number): string {
   confirm() {
     this.modalMember?.dismiss('', 'confirm');
   }
+
+
+    // modal แสดงรายการอาหารที่สั่ง ของแต่ละโต๊ะ
+    async openOrderList() {
+      const modal = await this.modalCtrl.create({
+        // component: AddBasketComponent,
+        component: OrderListComponent,
+        cssClass: 'my-custom-modal-order-list',
+        mode: 'ios',
+        // showBackdrop: false
+      });
+      await modal.present();
+      const { data, role } = await modal.onWillDismiss();
+      if (role === 'confirm') {
+        // this.message = `Hello, ${data}!`;
+      }
+    }
 }
