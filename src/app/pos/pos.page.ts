@@ -302,35 +302,45 @@ export class PosPage implements OnInit {
   }
 
  // ฟังก์ชันนับเวลาถอยหลัง
-startCountdown(combinedIndex: number, countdown: number) {
+ startCountdown(combinedIndex: number, countdown: number) {
   const zoneIndex = Math.floor(combinedIndex / 1000);
   const tableIndex = combinedIndex % 1000;
   this.openModalApply();
+  
   const interval = setInterval(() => {
     countdown--;
 
-    if (countdown >= 0) {
-      // อัปเดต countdown ของโต๊ะนั้น
-      if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
-        this.table_zone_pos[zoneIndex].tables[tableIndex].countdown = this.formatTime(countdown);
-      } else {
-        this.table_zone_pos[zoneIndex].tables[tableIndex] = {
-          name: this.table_zone_pos[zoneIndex].tables[tableIndex],
-          countdown: this.formatTime(countdown),
-          color: '#1BC64A' // สีเขียวเมื่อเริ่มนับถอยหลัง
-        };
-      }
-
-      this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+    // อัปเดต countdown ของโต๊ะนั้น
+    if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
+      this.table_zone_pos[zoneIndex].tables[tableIndex].countdown = this.formatTime(countdown);
+      this.table_zone_pos[zoneIndex].tables[tableIndex].color = countdown < 0 ? '#FF0000' : '#1BC64A'; // สีแดงเมื่อติดลบ
+    } else {
+      this.table_zone_pos[zoneIndex].tables[tableIndex] = {
+        name: this.table_zone_pos[zoneIndex].tables[tableIndex],
+        countdown: this.formatTime(countdown),
+        color: countdown < 0 ? '#FF0000' : '#1BC64A'
+      };
     }
 
-    // เมื่อเวลาหมดให้เปลี่ยนสีเป็นสีแดง
-    if (countdown <= 0) {
-      clearInterval(interval);
-      this.updateTableColorToRed(combinedIndex);
-    }
+    this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
+
   }, 1000);
 }
+
+/// ฟังก์ชันช่วยแปลงเวลาเป็นหน่วย ชั่วโมง นาที วินาที โดยแสดงค่าติดลบด้วย
+formatTime(seconds: number): string {
+  const absSeconds = Math.abs(seconds);
+  const hours = Math.floor(absSeconds / 3600); // จำนวนชั่วโมง
+  const minutes = Math.floor((absSeconds % 3600) / 60); // นาทีที่เหลือจากชั่วโมง
+  const secs = absSeconds % 60; // วินาทีที่เหลือ
+
+  // แปลงเวลาเป็นฟอร์แมต Hh Mmin Ss โดยเพิ่มเลข 0 นำหน้าถ้าต่ำกว่า 10
+  const formattedTime = `${hours}h ${minutes}min ${secs < 10 ? '0' : ''}${secs}s`;
+  
+  return seconds < 0 ? `-${formattedTime}` : formattedTime; // เพิ่มเครื่องหมายลบถ้าเวลาติดลบ
+}
+
+
 
 // ฟังก์ชันเปลี่ยนสีเป็นสีแดงเมื่อเวลาหมด
 updateTableColorToRed(combinedIndex: number) {
@@ -449,14 +459,14 @@ calculateTotalAmount() {
   return totalAmount;
 }
 
-// ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที
-formatTime(seconds: number): string {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
+// // ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที
+// formatTime(seconds: number): string {
+//   const hours = Math.floor(seconds / 3600);
+//   const minutes = Math.floor((seconds % 3600) / 60);
+//   const secs = seconds % 60;
 
-  return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
-}
+//   return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
+// }
 
 // ฟังก์ชันเสริมเพื่อเติม 0 ถ้าค่ามีแค่หลักเดียว
 pad(num: number): string {
