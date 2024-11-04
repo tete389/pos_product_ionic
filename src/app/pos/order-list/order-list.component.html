@@ -5,6 +5,7 @@
     <div class="tabin">
       <div>
         <ion-button 
+        (click)="moveOrder()"
         [disabled]="select_items.length == 0" class="btn-move" 
         [ngClass]="{'btn-disabled': select_items.length == 0}">ย้าย</ion-button>
         <ion-button 
