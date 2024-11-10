@@ -16,6 +16,7 @@ import {
   ModalController,
   AlertController,
 } from '@ionic/angular/standalone';
+import { ModalMoveOrderComponent } from '../modal-move-order/modal-move-order.component';
 
 @Component({
   selector: 'app-order-list',
@@ -46,15 +47,36 @@ export class OrderListComponent implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    public alertController: AlertController
+    public alertController: AlertController,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // setTimeout(() => {
+    //   this.moveOrder();
+    // }, 500);
+  }
 
   selectItem() {
     this.select_items.length > 0
       ? (this.select_items = [])
       : this.select_items.push(1);
+  }
+
+  
+  // modal แสดงรายการอาหารที่สั่ง ของแต่ละโต๊ะ
+  async moveOrder() {
+    const modal = await this.modalController.create({
+      // component: AddBasketComponent,
+      component: ModalMoveOrderComponent,
+      cssClass: 'my-custom-modal-move-order',
+      mode: 'ios',
+      // showBackdrop: false
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    if (role === 'confirm') {
+      // this.message = `Hello, ${data}!`;
+    }
   }
 
   // alert confirm ยกเลิกรายการอาหาร
@@ -87,7 +109,7 @@ export class OrderListComponent implements OnInit {
   // alert confirm รายการอาหารนี้หมด
   async openConfirmOosOrder() {
     const alert = await this.alertController.create({
-      cssClass: 'app-alert-button-confirm-red-2',
+      cssClass: 'app-alert-button-confirm-black',
       mode: 'md',
       header: 'ยืนยันรายการอาหารหมด',
       message: `รายการที่หมดจะไม่สามารถสั่งได้อีก <br>
