@@ -23,6 +23,7 @@ import {
   IonModal,
   IonSearchbar
 } from '@ionic/angular/standalone';
+import { ModalSelectMemberComponent } from '../modal-select-member/modal-select-member.component';
 @Component({
   selector: 'app-modal-calculate',
   templateUrl: './modal-calculate.component.html',
@@ -59,9 +60,29 @@ export class ModalCalculateComponent implements OnInit {
   @Input() totalAmount: number = 0; // รับค่า input โดยตรง
   cashAmount: number = 0;
   changeAmount: number = 0;
-
+  memberData: any
   constructor(private modalCtrl: ModalController) {}
 
+  public async openModaSelectMember() {
+    const modal = await this.modalCtrl.create({
+      component: ModalSelectMemberComponent,
+      cssClass: 'modal-pos-member',
+      mode: 'ios',
+      componentProps: {} // คุณสามารถส่งค่าเพิ่มเติมได้ถ้าต้องการ
+    });
+  
+    await modal.present();
+    
+    const { data, role } = await modal.onWillDismiss();
+  
+    if (role === 'confirm') {
+      // ตรวจสอบว่ามีข้อมูล data ที่ส่งกลับมาจาก modal หรือไม่
+      console.log('Data received from modal:', data);
+  
+      // ดำเนินการกับข้อมูลที่ได้รับ เช่น แสดงใน console หรือเก็บไว้ในตัวแปร
+      this.memberData = data
+    }
+  }
   ngOnInit() {
     console.log('Received totalAmount:', this.totalAmount); // ตรวจสอบค่า
   }

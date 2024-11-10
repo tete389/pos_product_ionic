@@ -1,0 +1,56 @@
+<div class="flex flex-col w-full h-full">
+  <div class="ion-padding border-b border-[--dark-gray-color3]">
+    <ion-label class="text-3xl">{{'สมาชิก'}} <span class="font-extralight">(Member ship)</span></ion-label>
+  </div>
+  <div class="h-[78%]">
+    <ion-searchbar
+      class="min-h-[40px]"
+      animated="true"
+      placeholder=""
+      show-clear-button="always"
+    ></ion-searchbar>
+    <ion-list lines="none" class="">
+  
+      <ion-item class="h-[90px] rounded-xl item-member" style="--background: #f6f9ff;">
+        <div class="profile-member">
+    <ion-avatar slot="start" class="h-[88px] w-[88px]">
+            <img
+              alt=""
+              src="https://image.tmdb.org/t/p/w500/4DwawZRFMdc11qfOom2qZ7Wj2QA.jpg"
+              class=""
+            />
+          </ion-avatar>
+        </div>
+      
+        <div class="flex flex-row w-[60%] justify-evenly">
+          <div class="flex flex-col text-center">
+            <ion-label class="text-2xl">Laphat</ion-label>
+            <span class="text-lg font-light">090-000-0000</span>
+          </div>
+          <div class="flex flex-col text-center">
+            <ion-label class="text-2xl"> <span class="text-lg font-light">Platinum</span></ion-label>
+            <span class="text-lg font-light">090-000-0000</span>
+          </div>
+        </div>
+        <ion-checkbox class="ion-checkbox-member pl-5">
+          <ion-label class="text-lg text-[--primary-color]">P 2000</ion-label>
+        </ion-checkbox>
+      </ion-item>
+
+      <!-- <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        
+      </ion-item> -->
+    </ion-list>
+  </div>
+  <div class="flex flex-row justify-evenly">
+    <ion-button class="cancle " (click)="closed()"
+      >{{ "ปิดออก" }}
+    </ion-button>
+    <ion-button class="ok" (click)="confirm()"
+      >{{ "ตกลง" }}
+    </ion-button>
+  </div>
+</div>

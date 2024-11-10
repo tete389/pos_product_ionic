@@ -41,6 +41,8 @@ import { ModalApplyTableComponent } from './modal-apply-table/modal-apply-table.
 import { ModalAddNewMemberComponent } from '../all-member/modal-add-new-member/modal-add-new-member.component';
 import { ModalMemberTableComponent } from './modal-member-table/modal-member-table.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { ModalSelectDateComponent } from '../best-sale-menu/modal-select-date/modal-select-date.component';
+import { ModalSelectMemberComponent } from './modal-select-member/modal-select-member.component';
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.page.html',
@@ -82,6 +84,7 @@ export class PosPage implements OnInit {
   selectedZoneIndex: number | null = null; // ใช้ null เป็นค่าเริ่มต้น
   selectedTableIndex: number | null = null; // ใช้ null เป็นค่าเริ่มต้น
   selectedTableBasket: any[] = [];
+  selectedCombinedIndex: number | null = null;
   zone_pos: string[] = ['zone 1', 'zone 2'];
   select_zone: number = 0;
   basket : any
@@ -92,23 +95,23 @@ export class PosPage implements OnInit {
       zone_id: 0,
       zone_name: 'Zone1',
       tables: [
-        { name: 'A1', menu: [] },
-        { name: 'A2', menu: [] },
-        { name: 'A3', menu: [] },
-        { name: 'A4', menu: [] },
-        { name: 'A5', menu: [] },
-        { name: 'A6', menu: [] },
-        { name: 'A7', menu: [] },
-        { name: 'A8', menu: [] },
-        { name: 'A9', menu: [] },
-        { name: 'A10', menu: [] },
-        { name: 'A11', menu: [] },
-        { name: 'A12', menu: [] },
-        { name: 'A13', menu: [] },
-        { name: 'A14', menu: [] },
-        { name: 'A15', menu: [] },
+        { name: 'A1', menu: [], countdown: null, intervalId: null },
+        { name: 'A2', menu: [] , countdown: null, intervalId: null},
+        { name: 'A3', menu: [] , countdown: null, intervalId: null},
+        { name: 'A4', menu: [] , countdown: null, intervalId: null},
+        { name: 'A5', menu: [] , countdown: null, intervalId: null},
+        { name: 'A6', menu: [] , countdown: null, intervalId: null},
+        { name: 'A7', menu: [] , countdown: null, intervalId: null},
+        { name: 'A8', menu: [] , countdown: null, intervalId: null},
+        { name: 'A9', menu: [] , countdown: null, intervalId: null},
+        { name: 'A10', menu: [] , countdown: null, intervalId: null},
+        { name: 'A11', menu: [] , countdown: null, intervalId: null},
+        { name: 'A12', menu: [] , countdown: null, intervalId: null},
+        { name: 'A13', menu: [] , countdown: null, intervalId: null},
+        { name: 'A14', menu: [] , countdown: null, intervalId: null},
+        { name: 'A15', menu: [] , countdown: null, intervalId: null},
       ],
-      countdown: null,
+      // countdown: null,
       orders: [],
     },
     // Zone 2
@@ -116,30 +119,30 @@ export class PosPage implements OnInit {
       zone_id: 1,
       zone_name: 'Zone2',
       tables: [
-        { name: 'B1', menu: [] },
-        { name: 'B2', menu: [] },
-        { name: 'B3', menu: [] },
-        { name: 'B4', menu: [] },
-        { name: 'B5', menu: [] },
-        { name: 'B6', menu: [] },
-        { name: 'B7', menu: [] },
-        { name: 'B8', menu: [] },
-        { name: 'B9', menu: [] },
-        { name: 'B10', menu: [] },
-        { name: 'AB1', menu: [] },
-        { name: 'B12', menu: [] },
-        { name: 'B13', menu: [] },
-        { name: 'B14', menu: [] },
-        { name: 'B15', menu: [] },
+        { name: 'B1', menu: [] , countdown: null, intervalId: null},
+        { name: 'B2', menu: [] , countdown: null, intervalId: null},
+        { name: 'B3', menu: [] , countdown: null, intervalId: null},
+        { name: 'B4', menu: [] , countdown: null, intervalId: null},
+        { name: 'B5', menu: [] , countdown: null, intervalId: null},
+        { name: 'B6', menu: [] , countdown: null, intervalId: null},
+        { name: 'B7', menu: [] , countdown: null, intervalId: null},
+        { name: 'B8', menu: [] , countdown: null, intervalId: null},
+        { name: 'B9', menu: [] , countdown: null, intervalId: null},
+        { name: 'B10', menu: [] , countdown: null, intervalId: null},
+        { name: 'AB1', menu: [] , countdown: null, intervalId: null},
+        { name: 'B12', menu: [] , countdown: null, intervalId: null},
+        { name: 'B13', menu: [] , countdown: null, intervalId: null},
+        { name: 'B14', menu: [] , countdown: null, intervalId: null},
+        { name: 'B15', menu: [] , countdown: null, intervalId: null},
       ],
-      countdown: null,
-      orders: [],
+      // countdown: null,
+      orders: [], 
     },
   ];
   
 
   ngOnInit() {
-    // this.openModalMember();
+    this.openModaSelectMember();
   }
 
   customPopoverOptionsStyle2 = {
@@ -222,7 +225,15 @@ export class PosPage implements OnInit {
   
 
 
-
+  clearOrders(zoneIndex: number, tableIndex: number) {
+    // เคลียร์รายการอาหารที่โต๊ะนั้นๆ
+    this.table_zone_pos[zoneIndex].tables[tableIndex].menu = [];
+    // เคลียร์การสั่งซื้อ (ถ้าต้องการ)
+    this.table_zone_pos[zoneIndex].orders = [];
+  
+    // ทำให้ Angular อัปเดต UI
+    this.table_zone_pos = [...this.table_zone_pos];
+  }
   onTableClick(zoneIndex: number, tableIndex: number) { 
     const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
   
@@ -252,15 +263,39 @@ export class PosPage implements OnInit {
   
   
 
+  // public async openModalType(zoneIndex: number, tableIndex: number) {
+  //   const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
+  //   const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
+  
+  //   if (table.countdown) {
+  //     // ถ้ามีการนับเวลาถอยหลัง ให้แสดงชื่อโต๊ะใน console
+  //     console.log(`Table ${table.name} is already opened. Countdown: ${table.countdown}`);
+  //   } else {
+  //     // ถ้ายังไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
+  //     const modal = await this.modalCtrl.create({
+  //       component: ModalTypeComponent,
+  //       cssClass: 'modal-pos-type',
+  //       mode: 'ios',
+  //     });
+  
+  //     await modal.present();
+  //     const { data, role } = await modal.onWillDismiss();
+  
+  //     if (role === 'confirm' && data && data.countdown) {
+  //       this.updateTableColor(combinedIndex); // เปลี่ยนสีเป็นสีเขียว
+  //       this.startCountdown(combinedIndex, data.countdown); // เริ่มนับเวลาถอยหลัง
+  //     }
+  //   }
+  // }
   public async openModalType(zoneIndex: number, tableIndex: number) {
     const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
+    this.selectedCombinedIndex = combinedIndex; // เก็บค่า combinedIndex ที่เลือก
+
     const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
   
     if (table.countdown) {
-      // ถ้ามีการนับเวลาถอยหลัง ให้แสดงชื่อโต๊ะใน console
       console.log(`Table ${table.name} is already opened. Countdown: ${table.countdown}`);
     } else {
-      // ถ้ายังไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
       const modal = await this.modalCtrl.create({
         component: ModalTypeComponent,
         cssClass: 'modal-pos-type',
@@ -276,7 +311,6 @@ export class PosPage implements OnInit {
       }
     }
   }
-  
 
   // ฟังก์ชันเปลี่ยนสีของโต๊ะเป็นสีเขียว
   updateTableColor(combinedIndex: number) {
@@ -285,7 +319,6 @@ export class PosPage implements OnInit {
 
     const greenColor = '#1BC64A'; // สีเขียว
 
-    // ตรวจสอบว่า table เป็น Object หรือไม่
     if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
       this.table_zone_pos[zoneIndex].tables[tableIndex] = {
         ...this.table_zone_pos[zoneIndex].tables[tableIndex],
@@ -305,15 +338,14 @@ export class PosPage implements OnInit {
  startCountdown(combinedIndex: number, countdown: number) {
   const zoneIndex = Math.floor(combinedIndex / 1000);
   const tableIndex = combinedIndex % 1000;
-  this.openModalApply();
-  
-  const interval = setInterval(() => {
+
+  // สร้าง intervalId และเก็บไว้ในโต๊ะ
+  const intervalId = setInterval(() => {
     countdown--;
 
-    // อัปเดต countdown ของโต๊ะนั้น
     if (typeof this.table_zone_pos[zoneIndex].tables[tableIndex] === 'object') {
       this.table_zone_pos[zoneIndex].tables[tableIndex].countdown = this.formatTime(countdown);
-      this.table_zone_pos[zoneIndex].tables[tableIndex].color = countdown < 0 ? '#FF0000' : '#1BC64A'; // สีแดงเมื่อติดลบ
+      this.table_zone_pos[zoneIndex].tables[tableIndex].color = countdown < 0 ? '#FF0000' : '#1BC64A';
     } else {
       this.table_zone_pos[zoneIndex].tables[tableIndex] = {
         name: this.table_zone_pos[zoneIndex].tables[tableIndex],
@@ -323,9 +355,13 @@ export class PosPage implements OnInit {
     }
 
     this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
-
   }, 1000);
+
+  // เก็บ intervalId ลงในตาราง
+  this.table_zone_pos[zoneIndex].tables[tableIndex].intervalId = intervalId;
 }
+
+
 
 /// ฟังก์ชันช่วยแปลงเวลาเป็นหน่วย ชั่วโมง นาที วินาที โดยแสดงค่าติดลบด้วย
 formatTime(seconds: number): string {
@@ -414,6 +450,27 @@ public async openModalMember() {
     this.processReceivedData(data);
   }
 }
+public async openModaSelectMember() {
+  const modal = await this.modalCtrl.create({
+    component: ModalSelectMemberComponent,
+    cssClass: 'modal-pos-member',
+    mode: 'ios',
+    componentProps: {} // คุณสามารถส่งค่าเพิ่มเติมได้ถ้าต้องการ
+  });
+
+  await modal.present();
+  
+  const { data, role } = await modal.onWillDismiss();
+
+  if (role === 'confirm') {
+    // ตรวจสอบว่ามีข้อมูล data ที่ส่งกลับมาจาก modal หรือไม่
+    console.log('Data received from modal:', data);
+
+    // ดำเนินการกับข้อมูลที่ได้รับ เช่น แสดงใน console หรือเก็บไว้ในตัวแปร
+    this.processReceivedData(data);
+  }
+}
+
 
 // ฟังก์ชันตัวอย่างสำหรับการใช้ข้อมูลที่ได้รับจาก modal
 private processReceivedData(data: any) {
@@ -423,7 +480,7 @@ private processReceivedData(data: any) {
 public async openModalCalculate() {
   const totalAmount = this.calculateTotalAmount(); // คำนวณราคารวม
   console.log(totalAmount);
-  
+
   const modal = await this.modalCtrl.create({
     component: ModalCalculateComponent,
     cssClass: 'modal-pos-calculate',
@@ -438,15 +495,57 @@ public async openModalCalculate() {
     console.log('ยืนยันการชำระเงิน');
     console.log(`เงินสด: ${data.cash.toFixed(2)} บาท`);
     console.log(`เงินทอน: ${data.change.toFixed(2)} บาท`);
+
+    // เคลียร์คำสั่งและรายการอาหารหลังจากการชำระเงิน
+    if (this.selectedCombinedIndex !== null) {
+      const zoneIndex = Math.floor(this.selectedCombinedIndex / 1000);
+      const tableIndex = this.selectedCombinedIndex % 1000;
+      this.clearOrders(zoneIndex, tableIndex); // เคลียร์คำสั่ง
+      this.updateTableColorToBlack(this.selectedCombinedIndex); 
+      this.clearTableCountdown(zoneIndex, tableIndex); // เคลียร์การนับถอยหลัง
+    }
   }
+}
+
+
+clearTableCountdown(zoneIndex: number, tableIndex: number) {
+  const selectedTable = this.table_zone_pos[zoneIndex].tables[tableIndex];
+
+  // เคลียร์ค่าการนับถอยหลังของโต๊ะที่ถูกเลือก
+  selectedTable.countdown = null;
+
+  // รีเซ็ตสีของโต๊ะกลับไปเป็นปกติ
+  selectedTable.color = '#F1F4F9';
+
+  // ทำให้ Angular อัปเดต UI
+  this.table_zone_pos = [...this.table_zone_pos];
+}
+
+updateTableColorToBlack(combinedIndex: number) {
+  const zoneIndex = Math.floor(combinedIndex / 1000);
+  const tableIndex = combinedIndex % 1000;
+
+  const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
+
+  // หยุดการนับเวลาถอยหลังถ้ามีการนับเวลา
+  if (table.intervalId) {
+    clearInterval(table.intervalId);  // หยุดการนับเวลา
+    table.intervalId = null; // รีเซ็ต intervalId
+  }
+
+  // เปลี่ยนสีเป็นสีดำ
+  if (table && table.countdown) {
+    table.color = '#000000'; 
+  }
+
+  this.table_zone_pos = [...this.table_zone_pos]; // ทำให้ Angular อัปเดต UI
 }
 calculateTotalAmount() {
   let totalAmount = 0;
 
   this.selectedTableBasket.forEach((item: any) => {
     totalAmount += item.price * item.count; // ราคารายการคูณจำนวน
-   
-    
+
     item.options.forEach((option: any) => {
       option.choice.forEach((choice: any) => {
         if (choice.selected) {

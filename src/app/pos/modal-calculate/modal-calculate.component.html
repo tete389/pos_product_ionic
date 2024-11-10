@@ -14,9 +14,17 @@
     </div>
     <div class="right">
       <div class="member">
-        <ion-button>สมาชิก</ion-button>
+        <ion-button (click)="openModaSelectMember()">
+          <!-- ใช้ *ngIf เพื่อตรวจสอบ memberData.phone -->
+          <span *ngIf="memberData?.phone; else noPhone">
+            {{ memberData.phone }}
+          </span>
+          <!-- ถ้าไม่มี memberData.phone จะแสดงคำว่า "สมาชิก" -->
+          <ng-template #noPhone>สมาชิก</ng-template>
+        </ion-button>
       </div>
     </div>
+    
   </div>
 
   <div class="tt-top">

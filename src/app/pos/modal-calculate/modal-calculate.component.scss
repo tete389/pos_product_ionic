@@ -31,10 +31,11 @@
 }
 
 .head2 {
-    display: flex;
+      display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    font-family: 'Kanit';
+    font-family: "Kanit";
+    flex-wrap: nowrap;
+    justify-content: center;
     .left {
         display: flex;
         flex-direction: row;
