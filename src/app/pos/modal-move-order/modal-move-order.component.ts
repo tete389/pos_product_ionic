@@ -46,25 +46,44 @@ import Swiper from 'swiper';
     FormsModule,
   ],
 })
-export class ModalMoveOrderComponent  implements OnInit {
-
-  select_zone_page:number = 0;
+export class ModalMoveOrderComponent implements OnInit {
+  select_zone_page: number = 0;
   zone_page_arr: string[] = ['zone 1', 'zone 2'];
 
   constructor(
     private modalController: ModalController,
-    public alertController: AlertController,
-  ) { }
+    public alertController: AlertController
+  ) {}
 
   ngOnInit() {}
 
-
-   select_tab_event(event: any) {
+  select_tab_event(event: any) {
     console.log(event.detail.value);
-    
+
     // this.swiper?.enable();
     // this.swiper?.slideTo(this.select_member_page);
     // this.swiper?.disable();
+  }
+
+  // โต๊ะที่จะย้าย
+  table_current: any = 1;
+  table_new: any = 0;
+  is_select_table: boolean = false;
+
+  // เลือกโต๊ะที่จะย้าย
+  select_new_tabled(item: any) {
+    if (item !== 2) {
+      if (this.table_new == item && this.is_select_table) {
+        this.is_select_table = false;
+      }else{
+        this.is_select_table = true;
+      }
+
+      this.table_new = item;
+    }
+    console.log(this.table_current);
+    console.log(this.table_new);
+    
   }
 
   close() {

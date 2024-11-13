@@ -308,7 +308,7 @@ ion-content {
                 }
 
                 .box-table {
-                    // background: pink;
+
                     padding-top: 5px;
 
                     ion-button {
@@ -317,29 +317,56 @@ ion-content {
                         --border-radius: 16px;
                         margin: 5px 5px;
                         --background: var(--light-gray-color3);
-                        font-size: 24px;
-                        font-weight: var(--text-medium);
                         color: var(--text-dark2);
+
+                        .tabled {
+                            // background: pink;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-around;
+
+                            ion-label {
+                                font-size: 11px;
+                                font-weight: var(--text-light);
+                            }
+
+                            ion-label.name-table {
+                                font-size: 24px;
+                                font-weight: var(--text-medium);
+                            }
+                        }
                     }
-                    .table-status-1{
+
+                    .table-status-1 {
                         --background: var(--green-color);
                         color: var(--white-color);
                     }
-                    .table-status-2{
+
+                    .table-status-2 {
                         --background: var(--text-dark3);
                         color: var(--white-color);
                     }
-                    .table-status-3{
+
+                    .table-status-3 {
                         --background: var(--dark-gray-color2);
                         color: var(--text-dark2);
                     }
-                    .table-status-4{
+
+                    .table-status-4 {
                         --background: var(--box-type-color-3);
                         color: var(--text-dark2);
                     }
-                    .table-status-5{
+
+                    .table-status-5 {
                         --background: var(--red-color);
                         color: var(--white-color);
+                    }
+                    .select-new-table{
+                        --border-color:var(--text-dark2);
+                        --border-style:solid;
+                        --border-width:4px;
                     }
                 }
             }
@@ -356,7 +383,7 @@ ion-content {
                     font-size: 18px;
                     width: 30px;
                     height: 30px;
-                    border-radius: 6px;  
+                    border-radius: 6px;
                     border: 1px solid var(--dark-gray-color);
                     padding: 4px;
                     background: var(--white-color);
