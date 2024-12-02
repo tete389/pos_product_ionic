@@ -1424,9 +1424,9 @@ ion-modal.css-modal-select-foodGroup:part(backdrop) {
 
 ion-modal.my-custom-modal-order-list {
   --ion-background-color: var(--white-color);
-  --height: 100%;
+  --height: 98%;
   --width: 550px;
-  --border-radius: 0px;
+  --border-radius: 14px;
 }
 
 ion-modal.my-custom-modal-order-list:part(backdrop) {
@@ -1437,8 +1437,9 @@ ion-modal.my-custom-modal-order-list:part(backdrop) {
 
 ion-modal.my-custom-modal-move-order {
   --ion-background-color: var(--white-color);
-  --height: 711px;
-  --width: 100%;
+  --height: 98%;
+  --max-height: 711px;
+  --width: 98%;
   --max-width: 1172px;
   --border-radius: 16px;
 }

@@ -75,11 +75,13 @@ export class ModalMoveOrderComponent implements OnInit {
     if (item !== 2) {
       if (this.table_new == item && this.is_select_table) {
         this.is_select_table = false;
+        this.table_new = -1
       }else{
         this.is_select_table = true;
+        this.table_new = item;
       }
 
-      this.table_new = item;
+     
     }
     console.log(this.table_current);
     console.log(this.table_new);

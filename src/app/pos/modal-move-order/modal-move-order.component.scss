@@ -81,7 +81,8 @@ ion-content {
             }
 
             .box-left-3 {
-                height: calc(63vh - 130px);
+                // height: calc(63vh - 130px);
+                height: 540px;
                 background: var(--white-color);
                 overflow: hidden;
                 overflow-y: scroll;
@@ -283,7 +284,8 @@ ion-content {
             }
 
             .box-right-3 {
-                height: calc(59vh - 128px);
+                // height: calc(59vh - 128px);
+                height: 504px;
                 margin: 0 auto;
                 overflow: hidden;
                 overflow-y: scroll;
@@ -363,10 +365,15 @@ ion-content {
                         --background: var(--red-color);
                         color: var(--white-color);
                     }
-                    .select-new-table{
-                        --border-color:var(--text-dark2);
-                        --border-style:solid;
-                        --border-width:4px;
+
+
+                    .select-new-table {
+                        --border-color: var(--text-dark2);
+                        --border-style: solid;
+                        --border-width: 4px;
+                    }
+                    .disabled_table{
+                        --opacity: 0.5;
                     }
                 }
             }
