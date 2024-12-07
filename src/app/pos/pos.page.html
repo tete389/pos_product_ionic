@@ -221,17 +221,17 @@
             <div class="flex flex-col">
               <div class="flex flex-row justify-between">
                 <span>sub total</span>
-                <span>515</span>
+                <span>{{ subtotalAmount }}</span>
               </div>
               <div class="flex flex-row justify-between">
                 <span>discount (-10%)</span>
-                <span>51.50</span>
+                <span>{{ discountAmount }}</span>
               </div>
             </div>
             <div class="border-t-2 border-[#B6C0CF] border-dashed my-2"></div>
             <div class="flex flex-row justify-between">
               <span>รวมทั้งสิ้น</span>
-              <span>฿ 459.00</span>
+              <span>฿ {{ totalAmount }}</span>
             </div>
           </ion-card-content>
         </ion-card>

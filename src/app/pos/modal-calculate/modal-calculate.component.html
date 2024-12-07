@@ -6,11 +6,21 @@
   <div class="head2">
     <div class="left">
       <div class="cash">
-        <ion-button>เงินสด</ion-button>
+        <ion-button 
+          [color]="selectedPaymentMethod === 'cash' ? 'primary' : ''" 
+          (click)="selectPaymentMethod('cash')">
+          เงินสด
+        </ion-button>
       </div>
+      
       <div class="tranfer">
-        <ion-button>เงินโอน</ion-button>
+        <ion-button 
+          [color]="selectedPaymentMethod === 'tranfer' ? 'primary' : ''" 
+          (click)="selectPaymentMethod('tranfer')">
+          เงินโอน
+        </ion-button>
       </div>
+      
     </div>
     <div class="right">
       <div class="member">
@@ -27,9 +37,9 @@
     
   </div>
 
-  <div class="tt-top">
+  <div class="tt-top" style="border: none;">
     <div class="s1">
-      <p class="th-title">ยอดชำระ</p>
+      <p class="th-title" style="color: aliceblue;">ยอดชำระ</p>
       <p class="total-b">{{ totalAmount.toFixed(2) }}</p>
     </div>
 

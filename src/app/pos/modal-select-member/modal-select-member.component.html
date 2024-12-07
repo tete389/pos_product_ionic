@@ -1,27 +1,31 @@
 <div class="flex flex-col w-full h-full">
-  <div class="ion-padding border-b border-[--dark-gray-color3]">
-    <ion-label class="text-3xl">{{'สมาชิก'}} <span class="font-extralight">(Member ship)</span></ion-label>
+  <div class="flex-head border-b border-[--dark-gray-color3]">
+    <div class="ion-padding ">
+      <ion-label class="text-3xl">{{'สมาชิก'}} <span class="font-extralight">(Member ship)</span></ion-label>
+    </div>
+    <div class="btn-addmember">
+      <ion-button class="add-member" (click)="openModalMember()">{{ "เพิ่มสมาชิก" }}
+      </ion-button>
+    </div>
   </div>
+
   <div class="h-[78%]">
-    <ion-searchbar
-      
-      
-      placeholder="ค้นหาด้วยหมายเลขโทรศัพท์"
-      style="--background: #f6f9ff;"
-    ></ion-searchbar>
+    <div class="h-[60px] search-scss relative">
+      <input type="text" placeholder="ค้นหาด้วยหมายเลขโทรศัพท์" class="w-full h-full rounded-lg border" />
+      <div class="icon-search">
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+    </div>
+
     <ion-list lines="none" class="" style="padding: 20px;">
-  
+
       <ion-item class="h-[90px] rounded-xl item-member" style="--background: #f6f9ff;">
         <div class="profile-member">
-    <ion-avatar slot="start" class="h-[88px] w-[88px]">
-            <img
-              alt=""
-              src="https://image.tmdb.org/t/p/w500/4DwawZRFMdc11qfOom2qZ7Wj2QA.jpg"
-              class=""
-            />
+          <ion-avatar slot="start" class="h-[88px] w-[88px]">
+            <img alt="" src="https://image.tmdb.org/t/p/w500/4DwawZRFMdc11qfOom2qZ7Wj2QA.jpg" class="" />
           </ion-avatar>
         </div>
-      
+
         <div class="flex flex-row w-[60%] justify-evenly">
           <div class="flex flex-col text-center">
             <ion-label class="text-2xl">Laphat</ion-label>
@@ -46,11 +50,9 @@
     </ion-list>
   </div>
   <div class="flex flex-row justify-evenly">
-    <ion-button class="cancle " (click)="closed()"
-      >{{ "ปิดออก" }}
+    <ion-button class="cancle " (click)="closed()">{{ "ปิดออก" }}
     </ion-button>
-    <ion-button class="ok" (click)="confirm()"
-      >{{ "ตกลง" }}
+    <ion-button class="ok" (click)="confirm()">{{ "ตกลง" }}
     </ion-button>
   </div>
 </div>

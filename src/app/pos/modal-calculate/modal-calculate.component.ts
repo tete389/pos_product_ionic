@@ -61,6 +61,8 @@ export class ModalCalculateComponent implements OnInit {
   cashAmount: number = 0;
   changeAmount: number = 0;
   memberData: any
+  selectedPaymentMethod: string = '';
+
   constructor(private modalCtrl: ModalController) {}
 
   public async openModaSelectMember() {
@@ -86,7 +88,10 @@ export class ModalCalculateComponent implements OnInit {
   ngOnInit() {
     console.log('Received totalAmount:', this.totalAmount); // ตรวจสอบค่า
   }
-
+  selectPaymentMethod(method: string) {
+    this.selectedPaymentMethod = method;
+  }
+  
   calculateChange() {
     this.changeAmount = this.cashAmount - this.totalAmount;
   }

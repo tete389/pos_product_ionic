@@ -210,18 +210,14 @@
 }
 
 ion-checkbox {
-    --size: 32px;
-    --checkbox-background-checked: var(--text-primary);
-}
-
-ion-checkbox.checkbox-checked {
-    --checkbox-background-checked: var(--text-primary) /* เปลี่ยนเป็นสีแดงเมื่อคลิก */
-}
-
-ion-checkbox::part(container) {
+    // --size: 32px;
+    --checkbox-background-checked: var(--primary-color);
+  }
+  
+   ion-checkbox::part(container) {
     border-radius: 6px;
-    border: 2px solid var(--dark-gray-color3);
-}
+    border: 2px solid var(--primary-color);
+  }
 
 .text-checked {
     font-weight: 500; /* สีตัวหนังสือเปลี่ยนเมื่อ checkbox ถูกเลือก */

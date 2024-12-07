@@ -30,6 +30,7 @@ import {
   IonModal,
   IonSearchbar
 } from '@ionic/angular/standalone';
+import { ModalMemberTableComponent } from '../modal-member-table/modal-member-table.component';
 @Component({
   selector: 'app-modal-select-member',
   templateUrl: './modal-select-member.component.html',
@@ -60,7 +61,7 @@ import {
     IonSearchbar
   ],
 })
-export class ModalSelectMemberComponent  implements OnInit {
+export class ModalSelectMemberComponent implements OnInit {
   mockData = {
     memberId: 'MB-00005',
     name: 'Laphat',
@@ -74,9 +75,34 @@ export class ModalSelectMemberComponent  implements OnInit {
   };
   constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   // ปิด modal โดยไม่ส่งข้อมูลกลับ
+  private processReceivedData(data: any) {
+    console.log('Processing received data:', data);
+    // ดำเนินการกับข้อมูล เช่น อัปเดต UI หรือทำงานอื่น ๆ
+  }
+  public async openModalMember() {
+    const modal = await this.modalCtrl.create({
+      component: ModalMemberTableComponent,
+      cssClass: 'modal-pos-member',
+      mode: 'ios',
+      componentProps: {} // คุณสามารถส่งค่าเพิ่มเติมได้ถ้าต้องการ
+    });
+
+    await modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      // ตรวจสอบว่ามีข้อมูล data ที่ส่งกลับมาจาก modal หรือไม่
+      console.log('Data received from modal:', data);
+
+      // ดำเนินการกับข้อมูลที่ได้รับ เช่น แสดงใน console หรือเก็บไว้ในตัวแปร
+      this.processReceivedData(data);
+    }
+  }
   closed() {
+
     this.modalCtrl.dismiss();
   }
 

@@ -54,17 +54,17 @@
     .s1 {
         display: flex;
         justify-content: space-around;
-        border: solid 2px grey;
+        border: none;
         border-radius: 10px;
         align-items: center;
-        background-color: var(--light-gray-color3);
+        background-color: var(--primary-color);
         height: 75px;
         font-family: 'Kanit';
     }
     .cash-tt-top{
         display: flex;
         justify-content: space-around;
-        border: solid 2px grey;
+        border: solid 1px rgb(0, 0, 0);
         border-radius: 10px;
         align-items: center;
         height: 75px;
@@ -121,6 +121,7 @@ ion-row {
 }
 .total-b{
     font-size: 40px;
+    color: aliceblue;
 }
 .green{
     background-color: var( --primary-color);
@@ -146,15 +147,11 @@ ion-row {
 }
 
 ion-checkbox {
-    --size: 32px;
-    --checkbox-background-checked: var(--text-primary);
-}
-
-ion-checkbox.checkbox-checked {
-    --checkbox-background-checked: var(--text-primary) /* เปลี่ยนเป็นสีแดงเมื่อคลิก */
-}
-
-ion-checkbox::part(container) {
+    // --size: 32px;
+    --checkbox-background-checked: var(--primary-color);
+  }
+  
+   ion-checkbox::part(container) {
     border-radius: 6px;
-    border: 2px solid var(--dark-gray-color3);
-}
+    border: 2px solid var(--primary-color);
+  }

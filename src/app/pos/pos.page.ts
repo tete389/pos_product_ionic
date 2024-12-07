@@ -89,6 +89,9 @@ export class PosPage implements OnInit {
   select_zone: number = 0;
   basket : any
   is_charge_col = 4;
+  subtotalAmount: string = '0.00';
+discountAmount: string = '0.00';
+totalAmount: string = '0.00';
   public selectedTable: string | null = null;
   table_zone_pos: any[] = [
     {
@@ -142,7 +145,7 @@ export class PosPage implements OnInit {
   
 
   ngOnInit() {
-    this.openModaSelectMember();
+    // this.openModaSelectMember();
   }
 
   customPopoverOptionsStyle2 = {
@@ -234,59 +237,43 @@ export class PosPage implements OnInit {
     // ทำให้ Angular อัปเดต UI
     this.table_zone_pos = [...this.table_zone_pos];
   }
-  onTableClick(zoneIndex: number, tableIndex: number) { 
-    const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
-  
-    // เช็คว่าตารางนั้นมีเมนูอยู่หรือไม่
-    if (table.menu.length > 0) {
-        console.log(`Table ${table.name} already has existing menu items:`, table.menu);
-        // กำหนด selectedTableBasket ให้เป็นเมนูของโต๊ะนั้น
-        this.selectedTableBasket = table.menu; // เพิ่มการอัปเดตนี้
-        return; // ออกจากฟังก์ชันโดยไม่ทำอะไร
-    }
-  
-    // ถ้าไม่มีเมนู ตรวจสอบว่ามีการนับเวลาถอยหลังหรือไม่
-    if (table.countdown) {
-        console.log(`Table ${table.name} already has a countdown.`);
-        // เรียกใช้ฟังก์ชัน openModal()
-        this.openModal(zoneIndex, tableIndex);
-    } else {
-        // ถ้าไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
-        console.log(`Table ${table.name} has no existing orders. Opening confirmation modal.`);
-        this.openModalType(zoneIndex, tableIndex);
-    }
-  
-    // บันทึกค่าของ zoneIndex และ tableIndex
-    this.selectedZoneIndex = zoneIndex;
-    this.selectedTableIndex = tableIndex;
-  }
-  
-  
+onTableClick(zoneIndex: number, tableIndex: number) {
+  const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
 
-  // public async openModalType(zoneIndex: number, tableIndex: number) {
-  //   const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
-  //   const table = this.table_zone_pos[zoneIndex].tables[tableIndex];
-  
-  //   if (table.countdown) {
-  //     // ถ้ามีการนับเวลาถอยหลัง ให้แสดงชื่อโต๊ะใน console
-  //     console.log(`Table ${table.name} is already opened. Countdown: ${table.countdown}`);
-  //   } else {
-  //     // ถ้ายังไม่มีการนับเวลาถอยหลัง เปิด modal เพื่อรอการยืนยัน
-  //     const modal = await this.modalCtrl.create({
-  //       component: ModalTypeComponent,
-  //       cssClass: 'modal-pos-type',
-  //       mode: 'ios',
-  //     });
-  
-  //     await modal.present();
-  //     const { data, role } = await modal.onWillDismiss();
-  
-  //     if (role === 'confirm' && data && data.countdown) {
-  //       this.updateTableColor(combinedIndex); // เปลี่ยนสีเป็นสีเขียว
-  //       this.startCountdown(combinedIndex, data.countdown); // เริ่มนับเวลาถอยหลัง
-  //     }
-  //   }
-  // }
+  // กำหนด selectedTableBasket ให้เป็นเมนูของโต๊ะนั้น
+  this.selectedTableBasket = table.menu; 
+
+  // คำนวณ subtotal และอัปเดตการแสดงผล
+  this.updateSubtotal();
+
+  // เช็คเงื่อนไขการเปิด modal ต่าง ๆ ตามที่มีอยู่
+  if (table.menu.length > 0) {
+    console.log(`Table ${table.name} already has existing menu items:`, table.menu);
+    return;
+  }
+
+  if (table.countdown) {
+    this.openModal(zoneIndex, tableIndex);
+  } else {
+    this.openModalType(zoneIndex, tableIndex);
+  }
+
+  this.selectedZoneIndex = zoneIndex;
+  this.selectedTableIndex = tableIndex;
+}
+
+updateSubtotal() {
+  const subtotal = this.calculateTotalAmount();
+  const discount = subtotal * 0.10; // ตัวอย่าง: ส่วนลด 10%
+  const total = subtotal - discount;
+
+  // อัปเดตค่าใน UI โดยใช้ตัวแปรในคลาส เช่น
+  this.subtotalAmount = subtotal.toFixed(2);
+  this.discountAmount = discount.toFixed(2);
+  this.totalAmount = total.toFixed(2);
+}
+
+
   public async openModalType(zoneIndex: number, tableIndex: number) {
     const combinedIndex = zoneIndex * 1000 + tableIndex; // สร้าง index ที่ไม่ซ้ำกัน
     this.selectedCombinedIndex = combinedIndex; // เก็บค่า combinedIndex ที่เลือก
@@ -558,14 +545,6 @@ calculateTotalAmount() {
   return totalAmount;
 }
 
-// // ฟังก์ชันแปลงเวลาจากวินาทีเป็น ชั่วโมง:นาที:วินาที
-// formatTime(seconds: number): string {
-//   const hours = Math.floor(seconds / 3600);
-//   const minutes = Math.floor((seconds % 3600) / 60);
-//   const secs = seconds % 60;
-
-//   return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
-// }
 
 // ฟังก์ชันเสริมเพื่อเติม 0 ถ้าค่ามีแค่หลักเดียว
 pad(num: number): string {
