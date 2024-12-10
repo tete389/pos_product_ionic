@@ -47,6 +47,11 @@ export const routes: Routes = [
     path: 'all-member',
     loadComponent: () => import('./all-member/all-member.page').then( m => m.AllMemberPage)
   },
+  {
+    path: 'stock-products',
+    loadChildren:()=> import('./stock-products/stock-products.routes').then((m) => m.stockProductsRoutes),
+  }, 
+
 
 
 ];

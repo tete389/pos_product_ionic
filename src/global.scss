@@ -114,21 +114,24 @@
   --height: 80% !important;
   --border-radius: 20px;
 }
-.modal-pos-cancle1{
+
+.modal-pos-cancle1 {
 
   font-family: "kanit";
   --width: 50% !important;
   --height: 50% !important;
   --border-radius: 20px;
 }
-.modal-pos-member{
+
+.modal-pos-member {
 
   font-family: "kanit";
   --width: 50% !important;
   --height: 95% !important;
   --border-radius: 20px;
 }
-.modal-pos-calculate{
+
+.modal-pos-calculate {
   font-family: "kanit";
   --width: 45% !important;
   --height: 90% !important;
@@ -986,6 +989,102 @@ ion-accordion-group.my-custum-accordion {
     .ion-accordion-toggle-icon {
       color: var(--text-white);
       background: var(--dark-color);
+    }
+  }
+
+  // ใช้ตอน accordion กำลังปิด (3)
+  ion-accordion.accordion-collapsing {
+    // background: green;
+  }
+
+
+
+}
+
+ion-accordion-group.my-custum-accordion-2 {
+
+  ion-accordion {
+    // margin: 0 auto 5px;
+    // background: pink;
+    // border-radius: 12px;
+
+    .ion-accordion-toggle-icon {
+      display: none;
+    }
+  }
+
+  ion-accordion ion-item[slot="header"] {
+    // border-radius: 12px;
+    border-style: none;
+
+    // --background: red;
+    --ripple-color: transparent;
+    --background-hover: transparent;
+
+    ion-icon {
+      margin-right: 33px;
+      font-size: 24px;
+    }
+
+    ion-label {
+      font-size: 16px;
+      // font-weight: var(--text-medium);
+    }
+
+    .accord-head-toggle {
+      background: pink;
+    }
+  }
+
+  ion-accordion ion-item[slot="header"]::part(native) {
+    border-style: none;
+  }
+
+  ion-accordion div[slot="content"] {
+
+    // background: pink;
+    .accordion-content {
+      margin-left: 37px;
+      // width: calc(100% - 30px);
+      height: 55px;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+
+
+      color: var(--text-dark2);
+
+      ion-icon {
+        font-size: 6px;
+        margin-right: 20px;
+      }
+
+      ion-label {
+        font-size: 16px;
+      }
+    }
+
+    .select-acro {
+      background: #CCF8CC !important;
+      color: #007B22;
+    }
+  }
+
+  // ใช้ตอน accordion กำลังขยายตัว (1)
+  ion-accordion.accordion-expanding {
+
+    // background: gold;
+    ion-item[slot="header"] {
+      // border-radius: 12px 12px 0 0;
+    }
+  }
+
+  // ใช้ตอน accordion เปิดจนสุด (2)
+  ion-accordion.accordion-expanded {
+
+    // background: salmon;
+    ion-item[slot="header"] {
+      // border-radius: 12px 12px 0 0;
     }
   }
 
