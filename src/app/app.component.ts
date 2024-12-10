@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import {
   IonApp,
   IonSplitPane,
@@ -26,6 +26,8 @@ import {
   IonButton,
   MenuController,
 } from '@ionic/angular/standalone';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 // import { addIcons } from 'ionicons';
 // import {
 //   mailOutline,
@@ -77,7 +79,7 @@ register();
     IonRouterOutlet,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
     { title: 'Pos', url: '/pos', icon: 'apps' },
@@ -107,7 +109,11 @@ export class AppComponent {
   @ViewChild('accordionGroup', { static: true })
   accordionGroup!: IonAccordionGroup;
 
-  constructor(private menuCtrl: MenuController, private router: Router) {
+
+  private routerSubscription!: Subscription;
+  constructor(
+    private menuCtrl: MenuController,
+     private router: Router) {
     this.screen_width = window.screen.width;
     // addIcons({
     //   mailOutline,
@@ -127,9 +133,37 @@ export class AppComponent {
     //   addOutline,
     //   removeOutline,
     // });
+    
     setTimeout(() => {
       this.open_menu_toggle_stock();
     }, 500);
+  }
+
+  mainPath: string = '';
+
+  ngOnInit() {
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))// กรองเฉพาะ NavigationEnd
+      .subscribe(() => {
+        this.extractMainPath();
+      });
+  }
+  // ป้องกัน Memory Leak โดยการ unsubscribe เมื่อคอมโพเนนต์ถูกทำลาย:
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
+  extractMainPath() {
+    // ดึง path จาก URL
+    const fullPath = this.router.url; 
+    // ตัด path แยกด้วย '/' และดึงเฉพาะ path หลัก
+    this.mainPath = fullPath.split('/')[1];
+    console.log(this.mainPath); // แสดง /stock-products
+    if (this.mainPath !== 'stock-products') {
+      this.toggleAccordion(false);
+    }
   }
 
   menuTogle: boolean = false;
@@ -144,10 +178,11 @@ export class AppComponent {
   }
 
   open_menu_toggle_stock() {
-    console.log('open_menu_toggle_stock');
+    // console.log(this.router.url);
+    // console.log('open_menu_toggle_stock');
     this.menuCtrl.open('main-menu');
     setTimeout(() => {
-      this.toggleAccordion();
+      this.toggleAccordion(true);
     }, 500);
   }
 
@@ -159,8 +194,9 @@ export class AppComponent {
     // this.menuCtrl.close('main-menu');
   }
 
-  toggleAccordion = () => {
+  toggleAccordion = (bool:boolean) => {
     const nativeEl = this.accordionGroup;
-    nativeEl.value = 'stock-val';
+   ;
+    bool ?  nativeEl.value = 'stock-val' : nativeEl.value = undefined;
   };
 }

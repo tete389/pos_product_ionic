@@ -26,7 +26,8 @@
             <div slot="content" *ngFor="let stock_list of arr_stock_list" 
             (click)="select_stock_path(stock_list.url)" >
               <div class="accordion-content" 
-               [ngClass]="{'select-acro': path_stock_select === stock_list.url }">
+               [ngClass]="{'select-acro': path_stock_select === stock_list.url && 
+               mainPath === 'stock-products' }">
                 <ion-icon name="ellipse"></ion-icon>
                 <ion-label> {{stock_list.title}}</ion-label>
               </div>
