@@ -134,9 +134,9 @@ export class AppComponent implements OnInit {
     //   removeOutline,
     // });
     
-    setTimeout(() => {
-      this.open_menu_toggle_stock();
-    }, 500);
+    // setTimeout(() => {
+    //   this.open_menu_toggle_stock();
+    // }, 500);
   }
 
   mainPath: string = '';
