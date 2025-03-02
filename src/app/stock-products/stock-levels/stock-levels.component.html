@@ -3,156 +3,162 @@
   <div class="box-main">
     <!-- &nbsp; -->
 
-      <div class="box-content-1">
-       <div class="button-box-left">
+    <div class="box-content-1">
+      <div class="button-box-left">
         <ion-button class="actived" size="small">
           <ion-label>Stock Levels</ion-label>
         </ion-button>
-        <ion-button size="small">
+        <ion-button size="small" (click)="receive() ">
           <ion-icon name="arrow-down-outline"></ion-icon>
           <ion-label>รับเข้า</ion-label>
         </ion-button>
-        <ion-button size="small">
+        <ion-button size="small" (click)="widthdraw()">
           <ion-icon name="arrow-up-outline"></ion-icon>
           <ion-label>เบิกออก</ion-label>
         </ion-button>
-       </div>
+      </div>
 
-        <div class="button-box-right">
+      <div class="button-box-right">
 
-          <div class="popop">
-            <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
-              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
-              interface="popover" [(ngModel)]="sort_by">
-              <ion-select-option value="1">สินค้า</ion-select-option>
-              <ion-select-option value="2">General</ion-select-option>
-              <ion-select-option value="3">Silver</ion-select-option>
-              <ion-select-option value="4">Gold</ion-select-option>
-              <ion-select-option value="5">Daimond</ion-select-option>
-              <ion-select-option value="6">Platinum</ion-select-option>
-            </ion-select>
-          </div>
+        <div class="popop">
+          <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle3" class="css-pop-3"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
+            interface="popover" [(ngModel)]="sort_by">
+            <ion-select-option *ngFor="let item of product_type_arr"
+              [value]="item.pro_type_id">{{item.name}}</ion-select-option>
+          </ion-select>
+        </div>
 
-          <ion-label class="type-display">การแสดงผล:</ion-label>
+        <ion-label class="type-display">การแสดงผล:</ion-label>
 
-          <div class="popop-dot">
-            <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-4"
-              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
-              interface="popover" [(ngModel)]="sort_by">
-              <ion-select-option value="1">สินค้า</ion-select-option>
-              <ion-select-option value="2">General</ion-select-option>
-              <ion-select-option value="3">Silver</ion-select-option>
-              <ion-select-option value="4">Gold</ion-select-option>
-              <ion-select-option value="5">Daimond</ion-select-option>
-              <ion-select-option value="6">Platinum</ion-select-option>
-            </ion-select>
-          </div>
+        <div class="popop-dot">
+          <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle4" class="css-pop-4"
+            toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="Year"
+            interface="popover" [(ngModel)]="select_by">
+            <ion-select-option *ngFor="let item of sort_type_display;let i = index" [value]="item.std_id"
+              [ngClass]="getTabColorClass(i)">{{item.name}}</ion-select-option>
+          </ion-select>
         </div>
       </div>
+    </div>
 
-      <div class="box-content-2">
-            <div class="table-scroll">
-              <ion-grid class="box-member">
-                <ion-row class="header">
-                  <ion-col size="auto" class="ion-text-center">
-                    <div class="col-head-1">
-                      <ion-label>Image</ion-label>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <div class="col-head-2">
-                      <ion-label>ชื่อวัตถุดิบ</ion-label>
-                    </div>
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-3">
-                      <ion-label>Last Imported</ion-label>
-                    </div>
+    <div class="box-content-2">
+      <div class="table-scroll">
+        <ion-grid class="box-member">
+          <ion-row class="header">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-1">
+                <ion-label>Image</ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="col-head-2">
+                <ion-label>ชื่อวัตถุดิบ</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-3">
+                <ion-label>Last Imported</ion-label>
+              </div>
 
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-4">
-                      <ion-label>Last Exported</ion-label>
-                    </div>
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-5">
-                      <ion-label>Stock level</ion-label>
-                    </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-4">
+                <ion-label>Last Exported</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-5">
+                <ion-label>Stock level</ion-label>
+              </div>
 
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-6">
-                      <ion-label>EXP</ion-label>
-                    </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-6">
+                <ion-label>EXP</ion-label>
+              </div>
 
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-7">
-                      <ion-label>จุดสั่งซื้อ</ion-label>
-                    </div>
-                  </ion-col>
-                  <ion-col class="ion-text-center">
-                    <div class="col-head-8">
-                      <ion-label>Condition</ion-label>
-                    </div>
-                  </ion-col>
-                </ion-row>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-7">
+                <ion-label>จุดสั่งซื้อ</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-8">
+                <ion-label>Condition</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
 
 
-                <div class="data-body">
-                  <ion-row class="data-row"
-                    *ngFor="let item of ['Daimond','Daimond','Silver','Platinum','General','Platinum','Daimond','Gold','Gold','General','Daimond'];let i = index;">
-                    <ion-col size="auto" class="ion-text-center">
-                      <div class="col-body-1">
-                        <div class="box-img">
-                          <img src="assets/image/img-product.png" alt="">
-                        </div>
-                      </div>
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-2">
-                        <ion-label>Item name</ion-label>
-                      </div>
-                    </ion-col>
-    
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-4">
-                        <ion-label>12/03/2024</ion-label>
-                      </div>
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-5">
-                        <ion-label>098-129-9734</ion-label>
-                      </div>
-
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-7">
-                        <ion-label>1,256</ion-label>
-                      </div>
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-8">
-                        <ion-label>25</ion-label>
-                      </div>
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-9">
-                        <ion-label>12/03/2024</ion-label>
-                      </div>
-                    </ion-col>
-                    <ion-col class="ion-text-center">
-                      <div class="col-body-10">
-                        <ion-label>฿ 56,942</ion-label>
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
-                      </div>
-                    </ion-col>
-                  </ion-row>
+          <div class="data-body">
+            <ion-row class="data-row" *ngFor="let item of stock_items ;let i = index;">
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-body-1">
+                  <div class="box-img">
+                    <img src="assets/image/img-product.png" alt="">
+                  </div>
                 </div>
-              </ion-grid>
-            </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-2">
+                  <ion-label>Item name</ion-label>
+                </div>
+              </ion-col>
+
+              <ion-col class="ion-text-center">
+                <div class="col-body-3">
+                  <ion-label>2 พ.ย. 67 11:24</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-4">
+                  <ion-label>2 พ.ย. 67 11:24</ion-label>
+                </div>
+
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-5">
+                  <ion-label>40 / 200 pc</ion-label>
+                  <div class="box-progress">
+                    <ion-progress-bar class="po-{{i+1}}" value="0.{{item.percen}}"></ion-progress-bar>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-6">
+                  <ion-label>อีก 6 วัน</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-7">
+                  <ion-label>60 pc</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-8">
+                  <div class="body-10-left">
+                    <ion-label>About to expired</ion-label>
+                    <ion-icon name="ellipse"></ion-icon>
+                  </div>
+                  <div class="popop-dot-2">
+                    <ion-select [interfaceOptions]="customPopoverOptionsStyle1"
+                     class="css-pop-dot" toggleIcon="pencil-sharp"
+                      mode="md" interface="popover" 
+                      (ionChange)="changeStatus($event,item)"> >
+                      <ion-select-option value="1">รับเข้า</ion-select-option>
+                      <ion-select-option value="2">เบิกออก</ion-select-option>
+                    </ion-select>
+        
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-grid>
       </div>
+    </div>
 
 
 

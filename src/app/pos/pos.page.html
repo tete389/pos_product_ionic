@@ -22,22 +22,12 @@
     <!-- ////////////// left side ////////////// -->
     <div class="border-r-2" style="width: calc(100% - 27rem)">
       <!-- ////////////// heder ////////////// -->
-      <div
-        class="w-full border-b border-[--dark-gray-color3] flex flex-row h-[82px]"
-      >
+      <div class="w-full border-b border-[--dark-gray-color3] flex flex-row h-[82px]">
         <div class="top-scroll basis-4/5 flex flex-row">
-          <ion-segment
-            scrollable="true"
-            class="scrollerBar mx-[2px] py-3 h-[81px] "
-            [value]="select_zone"
-            (ionChange)="select_zone_event($event)"
-            mode="ios"
-          >
-            <ion-segment-button
-              [value]="i"
-              class="mx-[2px] shadow-md h-[51px] border"
-              *ngFor="let zone of zone_pos; let i = index"
-            >
+          <ion-segment scrollable="true" class="scrollerBar mx-[2px] py-3 h-[81px] " [value]="select_zone"
+            (ionChange)="select_zone_event($event)" mode="ios">
+            <ion-segment-button [value]="i" class="mx-[2px] shadow-md h-[51px] border"
+              *ngFor="let zone of zone_pos; let i = index">
               <ion-label>{{ zone }}</ion-label>
             </ion-segment-button>
           </ion-segment>
@@ -45,78 +35,62 @@
         <div class="basis-1/5">
           <div class="flex flex-row mx-[2px] h-full">
             <div class="basis-1/2 flex justify-center items-center">
-              <ion-button
-                aria-label="not"
-                fill="clear"
-                color="dark"
-                (click)="charge(5)"
-              >
-                <ion-badge
-                  class="absolute z-[9999] right-[-15px] top-[-10px] badge-size"
-                  >{{ " " }}{{ 1 }}{{ " " }}</ion-badge
-                >
+              <ion-button aria-label="not" fill="clear" color="dark" (click)="charge(5)">
+                <ion-badge class="absolute z-[9999] right-[-15px] top-[-10px] badge-size">{{ " " }}{{ 1 }}{{ " "
+                  }}</ion-badge>
                 <ion-icon name="fast-food"></ion-icon>
-                <p
-                  class="absolute z-[9999] right-[-15px] top-[21px] text-xs w-[56px]"
-                >
+                <p class="absolute z-[9999] right-[-15px] top-[21px] text-xs w-[56px]">
                   ยังไม่เสริฟ
                 </p>
               </ion-button>
 
-            
+
             </div>
-   
+
             <div class="basis-1/2 flex justify-center items-center">
-         
-              <ion-button
-                aria-label="notifications"
-                fill="clear"
-                color="dark"
-                (click)="charge(4)"
-              >
-                <ion-badge
-                  class="absolute z-[9999] right-[-15px] top-[-10px] badge-size"
-                  >{{ " " }}{{ 1 }}{{ " " }}</ion-badge
-                >
+
+              <ion-button aria-label="notifications" fill="clear" color="dark" (click)="charge(4)">
+                <ion-badge class="absolute z-[9999] right-[-15px] top-[-10px] badge-size">{{ " " }}{{ 1 }}{{ " "
+                  }}</ion-badge>
                 <ion-icon name="notifications"></ion-icon>
-                <span class="absolute right-[-15px] top-[21px] text-xs w-[56px]"
-                  >แจ้งเตือน</span
-                >
+                <span class="absolute right-[-15px] top-[21px] text-xs w-[56px]">แจ้งเตือน</span>
               </ion-button>
             </div>
           </div>
         </div>
       </div>
       <div class="col-4-5">
-        <p (click)="toggleCharge()">เปลี่ยนขนาด</p>  
-      
+        <p (click)="toggleCharge()">เปลี่ยนขนาด</p>
+
       </div>
       <!-- ////////////// body ////////////// -->
       <div class="px-2 w-full h-[93vh] overflow-scroll scrollerBar">
         <swiper-container>
           <swiper-slide *ngFor="let table_zone of table_zone_pos; let j = index">
             <div class="grid grid-cols-3 md:grid-cols-4 gap-4 pt-5 mx-auto max-w-[768px]"
-                 [ngClass]="is_charge_col == 5 ? 'lg:grid-cols-5 ipad_air:grid-cols-5 2xl:grid-cols-5 xl:grid-cols-5' : 'lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-4'">
+              [ngClass]="is_charge_col == 5 ? 'lg:grid-cols-5 ipad_air:grid-cols-5 2xl:grid-cols-5 xl:grid-cols-5' : 'lg:grid-cols-4 ipad_air:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-4'">
               <div *ngFor="let table of table_zone.tables; let i = index">
-                <ion-card
-                (click)="onTableClick(j, i)"
-                  class="m-0 shadow-none rounded-3xl"
-                  style="min-height: 150px;"
+                <ion-card (click)="onTableClick(j, i)" class="m-0 shadow-none rounded-3xl" style="min-height: 150px;"
                   [ngStyle]="{ 'background-color': table.color || '#F1F4F9' }">
                   <ion-card-header class="text-center flex flex-col justify-center items-center">
                     <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
                       <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
-                        <span [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">{{ table.countdown || ' ' }}</span>
+                        <span
+                          [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">{{
+                          table.countdown || ' ' }}</span>
                       </div>
-                      
+
                     </div>
                     <ion-card-title class="flex flex-col justify-center"
-                                    [ngClass]="is_charge_col == 5 ? 'h-10':'md:h-10 sm:h-10 h-14'"
-                                    [ngStyle]="{ 'color': table.countdown ? 'white' : 'black' }"> <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
+                      [ngClass]="is_charge_col == 5 ? 'h-10':'md:h-10 sm:h-10 h-14'"
+                      [ngStyle]="{ 'color': table.countdown ? 'white' : 'black' }">
+                      <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
                       {{ table.name || table }} <!-- Use table.name if it's an object -->
                     </ion-card-title>
                     <div [ngClass]="is_charge_col == 5 ? 'h-4':'md:h-4 sm:h-4 h-6'">
-                      <span [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">300 THB</span> <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
+                      <span
+                        [ngStyle]="{ visibility: table.countdown ? 'visible' : 'hidden', 'color': table.countdown ? 'white' : 'black' }">300
+                        THB</span> <!-- เปลี่ยนสีเมื่อมีการนับถอยหลัง -->
                     </div>
                   </ion-card-header>
                 </ion-card>
@@ -125,9 +99,9 @@
           </swiper-slide>
         </swiper-container>
       </div>
-      
-      
-      
+
+
+
     </div>
     <!-- ////////////// right side ////////////// -->
     <div class="min-w-[27rem] border-l-2 h-[100vh]">
@@ -137,82 +111,67 @@
           <div class="basis-2/3">
             <div class="flex flex-row">
               <div
-                class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
-              >
-                <span >ID :</span><span>ORD0000001</span>
+                class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md">
+                <span>ID :</span><span>ORD0000001</span>
               </div>
               <div
-                class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
-              >
+                class="basis-1/2 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md">
                 <span>โดย : </span> <span>Staff-01</span>
               </div>
             </div>
             <div class="flex flex-row">
               <div
-                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
-              >
+                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md">
                 <ion-icon name="time-outline"></ion-icon><span>09:00 AM</span>
               </div>
               <div
-                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
-              >
+                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md">
                 <ion-icon name="time-outline"></ion-icon><span>00:42 h</span>
               </div>
               <div
-                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md"
-              >
+                class="basis-1/3 flex flex-row justify-evenly items-center bg-slate-200 border-2 border-white rounded-md">
                 <ion-icon name="person-circle"></ion-icon><span>2</span>
               </div>
             </div>
           </div>
           <div
-            class="basis-1/3 flex flex-row justify-around items-center bg-slate-200 border-2 border-white rounded-md"
-          >
+            class="basis-1/3 flex flex-row justify-around items-center bg-slate-200 border-2 border-white rounded-md">
             <span class="text-2xl">โต๊ะ</span>
             <p class="text-4xl">A1</p>
           </div>
         </div>
         <div class="flex flex-row">
-          <ion-button
-          class="button-basket-confirm w-[125px]"
-          (click)="(selectedZoneIndex !== null && selectedTableIndex !== null) ? openModal(selectedZoneIndex, selectedTableIndex) : null">
-          <ion-icon slot="start" name="add"></ion-icon>
-          เพิ่มอาหาร
-      </ion-button>
-      <ion-button
-      class="button-basket-confirm w-[125px]"
-      (click)="openModal2()" style="display: none;">
-      <ion-icon slot="start" name="add"></ion-icon>
-      เพิ่มอาหาร2
-  </ion-button>
-          <ion-button class="button-basket-confirm w-[120px]" (click)="openModalTaxe()"
-            >ส่วนลด</ion-button
-          >
-          <ion-button
-            class="button-basket-confirm w-[120px]"
-            (click)="openModalMember()"
-            ><ion-icon slot="start" name="people"></ion-icon> สมาชิก</ion-button
-          >
-          <ion-button id="popover-button" class="button-basket-confirm"
-            ><ion-icon name="reorder-three"></ion-icon
-          ></ion-button>
+          <ion-button class="button-basket-confirm w-[125px]"
+            (click)="(selectedZoneIndex !== null && selectedTableIndex !== null) ? openModal(selectedZoneIndex, selectedTableIndex) : null">
+            <ion-icon slot="start" name="add"></ion-icon>
+            เพิ่มอาหาร
+          </ion-button>
+          <ion-button class="button-basket-confirm w-[125px]" (click)="openModal2()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            เพิ่มอาหาร2
+          </ion-button>
+          <ion-button class="button-basket-confirm w-[120px]" (click)="openModalTaxe()">ส่วนลด</ion-button>
+          <ion-button class="button-basket-confirm w-[120px]" (click)="openModalMember()"><ion-icon slot="start"
+              name="people"></ion-icon> สมาชิก</ion-button>
+          <ion-button id="popover-button" class="button-basket-confirm"><ion-icon
+              name="reorder-three"></ion-icon></ion-button>
         </div>
       </div>
-  <!-- /////////// center ///////////-->
-<div class="overflow-scroll scrollerBar h-[55vh]">
-  <div class="list-my-food" *ngFor="let item of selectedTableBasket">
-    <div class="img-product-myfood">
-      <img src="assets/image/img-product.png" alt="">
-    </div>
+      <!-- /////////// center ///////////-->
+      <div class="overflow-scroll scrollerBar h-[55vh]">
+        <div class="list-my-food" *ngFor="let item of selectedTableBasket">
+          <div class="img-product-myfood">
+            <img src="assets/image/img-product.png" alt="">
+          </div>
 
-    <p class="p-item-name">{{ item.p_name }}</p> <!-- แสดงชื่ออาหาร -->
-    <p class="p-item-price">{{ item.price }}</p> <!-- แสดงราคา -->
-    <p class="p-item-count">{{ item.count }}</p> <!-- แสดงจำนวน -->
-    <p class="p-item-total">{{ item.price * item.count }}</p> <!-- แสดงราคาทั้งหมด -->
-  </div>
-</div>
+          <p class="p-item-name">{{ item.p_name }}</p> <!-- แสดงชื่ออาหาร -->
+          <p class="p-item-price">{{ item.price }}</p> <!-- แสดงราคา -->
+          <p class="p-item-count">{{ item.count }}</p> <!-- แสดงจำนวน -->
+          <p class="p-item-total">{{ item.price * item.count }}</p> <!-- แสดงราคาทั้งหมด -->
+        </div>
+      </div>
 
-      
+
 
       <!-- /////////// botton ///////////-->
       <div class="h-[29vh]">
@@ -235,18 +194,15 @@
             </div>
           </ion-card-content>
         </ion-card>
-        <ion-card
-          class="pb-0 pt-4 my-0 shadow-none flex flex-row justify-between"
-        >
-          <ion-button class="button-basket-confirm3 w-[40%]"
-            ><ion-icon slot="start" name="print"></ion-icon>{{ "ใบแจ้ง" }}
+        <ion-card class="pb-0 pt-4 my-0 shadow-none flex flex-row justify-between">
+          <ion-button class="button-basket-confirm3 w-[40%]"><ion-icon slot="start" name="print"></ion-icon>{{ "ใบแจ้ง"
+            }}
           </ion-button>
-          <ion-button class="button-basket-confirm2 w-[55%]" (click)="openModalCalculate()"
-            ><ion-icon slot="start" name="print"></ion-icon>{{ "เช็คบิล" }}
+          <ion-button class="button-basket-confirm2 w-[55%]" (click)="openModalCalculate()"><ion-icon slot="start"
+              name="print"></ion-icon>{{ "เช็คบิล" }}
           </ion-button>
-          <ion-button (click)="openOrderList()"  class="button-basket-confirm2"
-            ><ion-icon name="chevron-down"></ion-icon
-          ></ion-button>
+          <ion-button (click)="openOrderList()" class="button-basket-confirm2"><ion-icon
+              name="chevron-down"></ion-icon></ion-button>
         </ion-card>
       </div>
     </div>
@@ -258,31 +214,22 @@
     <ion-content [scrollY]="false" class="">
       <ion-list lines="none" class="">
         <div class="h-4"></div>
-        <ion-item [button]="true" class="text-center w-full" [detail]="false"
-          ><ion-label class="p-2 text-center">
+        <ion-item [button]="true" class="text-center w-full" [detail]="false"><ion-label class="p-2 text-center">
             พิมพ์ QR Code สั่งอาหาร
-          </ion-label></ion-item
-        >
-        <ion-item [button]="true" class="" [detail]="false"
-          ><ion-label class="p-2 text-center">นำรายการอาหารออก</ion-label>
+          </ion-label></ion-item>
+        <ion-item [button]="true" class="" [detail]="false"><ion-label
+            class="p-2 text-center">นำรายการอาหารออก</ion-label>
         </ion-item>
-        <ion-item [button]="true" class="" [detail]="false"
-          ><ion-label class="p-2 text-center"
-            >ย้ายรายการอาหารไปโต๊ะอื่น</ion-label
-          ></ion-item
-        >
+        <ion-item [button]="true" class="" [detail]="false"><ion-label
+            class="p-2 text-center">ย้ายรายการอาหารไปโต๊ะอื่น</ion-label></ion-item>
         <ion-item [button]="true" class="" [detail]="false">
-          <ion-label class="p-2 text-center">ย้ายโต๊ะ</ion-label></ion-item
-        >
-        <ion-item [button]="true" class="" [detail]="false"
-          ><ion-label class="p-2 text-center">แยกบิล</ion-label></ion-item
-        >
+          <ion-label class="p-2 text-center">ย้ายโต๊ะ</ion-label></ion-item>
+        <ion-item [button]="true" class="" [detail]="false"><ion-label
+            class="p-2 text-center">แยกบิล</ion-label></ion-item>
         <ion-item [button]="true" class="" [detail]="false">
-          <ion-label class="p-2 text-center">รวมมบิล</ion-label></ion-item
-        >
+          <ion-label class="p-2 text-center">รวมมบิล</ion-label></ion-item>
         <ion-item [button]="true" class="" [detail]="false">
-          <ion-label class="p-2 text-center">เพิ่ม Vat</ion-label></ion-item
-        >
+          <ion-label class="p-2 text-center">เพิ่ม Vat</ion-label></ion-item>
         <ion-item [button]="true" class="" [detail]="false">
           <ion-label class="p-2 text-center">เพิ่ม ค่าปรับ</ion-label>
         </ion-item>
@@ -303,20 +250,11 @@
           <ion-label class="text-3xl">{{'สมาชิก'}} <span class="font-extralight">(Member ship)</span></ion-label>
         </div>
         <div class="h-[78%]">
-          <ion-searchbar
-            class="min-h-[40px]"
-            animated="true"
-            placeholder=""
-            show-clear-button="always"
-          ></ion-searchbar>
+          <ion-searchbar class="min-h-[40px]" animated="true" placeholder="" show-clear-button="always"></ion-searchbar>
           <ion-list lines="none" class="">
             <ion-item class="h-[90px] rounded-xl item-member">
               <ion-avatar slot="start" class="h-[88px] w-[88px]">
-                <img
-                  alt=""
-                  src="https://ionicframework.com/docs/img/demos/avatar.svg"
-                  class=""
-                />
+                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" class="" />
               </ion-avatar>
               <div class="flex flex-row w-[60%] justify-evenly">
                 <div class="flex flex-col text-center">
@@ -341,11 +279,9 @@
           </ion-list>
         </div>
         <div class="flex flex-row justify-evenly">
-          <ion-button class="button-basket-confirm3 w-[30%]"
-            >{{ "ปิดออก" }}
+          <ion-button class="button-basket-confirm3 w-[30%]">{{ "ปิดออก" }}
           </ion-button>
-          <ion-button class="button-basket-confirm3 w-[30%]"
-            >{{ "ตกลง" }}
+          <ion-button class="button-basket-confirm3 w-[30%]">{{ "ตกลง" }}
           </ion-button>
         </div>
       </div>

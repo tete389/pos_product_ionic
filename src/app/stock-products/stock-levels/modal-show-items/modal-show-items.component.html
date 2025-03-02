@@ -1,0 +1,85 @@
+<ion-content>
+  <div class="box-main">
+    <div class="box-left">
+      <div class="box-left-style-1">
+        <ion-label class="text-head">เลือก item ที่ต้องการนำเข้า</ion-label>
+      </div>
+      <div class="box-left-style-1">
+        <ion-label class="text-sub">ค้นหา</ion-label>
+        <div class="search">
+          <ion-searchbar #input class="searches-fuller" [formControl]="searchControl" (ionCancel)="onCancel()"
+            (ngModelChange)="onSearchInput(search_text)" [(ngModel)]="search_text"
+            (keyup.enter)="search_enter(input.value)" cancelButtonText="Cancel" animated search-icon="search-outline"
+            cancel-button-icon="chevron-back-outline" [placeholder]="placho_text" mode="md">
+          </ion-searchbar>
+        </div>
+      </div>
+      <div class="box-left-style-2">
+        <ion-label class="text-sub">ค้นหาตามหมวดหมู่</ion-label>
+        <ion-radio-group class="custom-radio" [(ngModel)]="search_by_category" mode="md">
+          <ion-radio value="1" labelPlacement="end">วัตถุดิบ</ion-radio>
+          <ion-radio value="2" labelPlacement="end">สินค้า</ion-radio>
+          <ion-radio value="3" labelPlacement="end">ทั้งหมด</ion-radio>
+        </ion-radio-group>
+      </div>
+      <div class="box-left-style-3">
+        <ion-label class="text-sub">status</ion-label>
+        <ion-radio-group class="custom-radio" value="4" mode="md">
+          <ion-radio value="1" labelPlacement="end">ใกล้หมด
+            <ion-progress-bar class="po-1" value="0.35"></ion-progress-bar>
+          </ion-radio>
+          <ion-radio value="2" labelPlacement="end">น้อย
+            <ion-progress-bar class="po-2" value="0.55"></ion-progress-bar>
+          </ion-radio>
+          <ion-radio value="3" labelPlacement="end">เพียงพอ
+            <ion-progress-bar class="po-3" value="0.75"></ion-progress-bar>
+          </ion-radio>
+          <ion-radio value="4" labelPlacement="end">ทั้งหมด</ion-radio>
+        </ion-radio-group>
+      </div>
+    </div>
+    <div class="box-right">
+
+      <div class="box-right-style-1">
+        <ion-card *ngFor="let item of [1,2,3,4,5,6,7,8,9,0,1,2,2,3,2,4,5];let i = index">
+          <ion-card-content>
+            <div class="card-box-left">
+              <div class="box-img">
+                <img src="assets/image/img-product.png" alt="">
+              </div>
+              <div class="box-name">
+                <ion-label>Food name</ion-label>
+              </div>
+            </div>
+            <div class="card-box-right">
+
+
+              <div class="box-progress">
+                <ion-label>
+                  4/5 Kg
+                </ion-label>
+                <ion-progress-bar class="po-{{i+1}}" value="0.45"></ion-progress-bar>
+              </div>
+
+              <ion-checkbox class="box-box" >
+                
+              </ion-checkbox>
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="box-right-style-2">
+        <ion-button (click)="{}" size="small" class="btn-close">
+          <ion-label>discard</ion-label>
+        </ion-button>
+        <ion-button (click)="{}" size="small" class="btn-save">
+          <ion-label>ถัดไป</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

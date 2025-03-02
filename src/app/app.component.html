@@ -16,7 +16,8 @@
       </ion-list>
 
       <ion-list id="stock-list" class="stocked">
-        <ion-accordion-group #accordionGroup class="my-custum-accordion-2" mode="md">
+        <ion-accordion-group #accordionGroup class="my-custum-accordion-2" mode="md"
+         (ionChange)="change_accordion($event)">
           <ion-accordion value="stock-val">
             <ion-item lines="none" slot="header" [routerLink]="['/stock-products']" routerLinkActive="selected">
               <ion-icon aria-hidden="true" name="cube-outline"></ion-icon>

@@ -1,0 +1,396 @@
+ion-content {
+    // --background: var(--light-gray-color3);
+    // --offset-top: -5px !important;
+    // --offset-bottom: -30px !important;
+    --overflow: hidden;
+
+    .box-main {
+        display: flex;
+        background: var(--white-color);
+        height: 100%;
+
+        .box-left {
+            margin: 30px 0;
+            width: 305px;
+            // height: 100%;
+            height: calc(100% - 60px);
+            padding: 30px;
+            padding-top: 0;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            ion-label.text-head {
+                font-size: 20px;
+                font-weight: var(--text-medium);
+            }
+
+            ion-label.text-sub {
+                font-size: 18px;
+                font-weight: var(--text-medium);
+            }
+
+            .box-left-style-1 {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--dark-gray-color);
+
+                ion-searchbar {
+                    padding: 10px 0 0;
+                }
+            }
+
+
+            .box-left-style-2 {
+                padding: 10px 0 20px;
+                border-bottom: 1px solid var(--dark-gray-color);
+
+                ion-radio-group.custom-radio {
+                    display: flex;
+                    // width: 100%;
+                    padding: 10px 0 0;
+                    align-items: flex-start;
+                    flex-direction: column;
+
+                    ion-radio {
+                        display: flex;
+                        align-items: center;
+                        height: 48px;
+                        width: 247px;
+                        padding: 9px 16px;
+                        // background: #fff;
+                    }
+
+                    ion-radio::part(label) {
+                        width: 100%;
+                        margin-inline-start: 16px;
+                        font-size: 16px;
+                        font-weight: var(--text-light);
+                        color: var(--text-dark2);
+                    }
+
+                    ion-radio::part(container) {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 6px;
+                        border: 1px solid var(--dark-gray-color2);
+                    }
+
+                    ion-radio::part(mark) {
+                        background: none;
+                        transition: none;
+                        transform: none;
+                        border-radius: 0;
+                    }
+
+                    ion-radio.radio-checked {
+                        background: var(--dark-gray-color5);
+                        border-radius: 10px;
+                    }
+
+                    ion-radio.radio-checked::part(container) {
+                        background: var(--green-color);
+                        border-color: transparent;
+                    }
+
+                    ion-radio.radio-checked::part(label) {
+                        font-weight: var(--text-regular);
+                    }
+
+                    ion-radio.radio-checked::part(mark) {
+                        width: 8px;
+                        height: 16px;
+                        border-width: 0px 4px 4px 0px;
+                        border-radius: 1px;
+                        border-style: solid;
+                        border-color: var(--white-color);
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+            .box-left-style-3 {
+                padding: 10px 0 20px;
+
+                ion-radio-group.custom-radio {
+                    display: flex;
+                    // width: 100%;
+                    padding: 10px 0 0;
+                    align-items: flex-start;
+                    flex-direction: column;
+
+                    ion-radio {
+                        display: flex;
+                        align-items: center;
+                        height: 48px;
+                        width: 247px;
+                        padding: 9px 16px;
+
+                        ion-progress-bar {
+                            width: 62px;
+                            height: 7px;
+                            border-radius: 5px;
+                            --background: var(--dark-brown-color);
+                            // --progress-background: var(--primary-color);
+                        }
+
+                        ion-progress-bar::part(progress) {
+                            border-radius: 5px;
+                        }
+
+                        ion-progress-bar.po-1 {
+                            --progress-background: var(--progress-color-6);
+                        }
+
+                        ion-progress-bar.po-2 {
+                            --progress-background: var(--box-type-color-3);
+                        }
+
+                        ion-progress-bar.po-3 {
+                            --progress-background: var(--green-color);
+                        }
+
+                    }
+
+                    ion-radio::part(label) {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        margin-inline-start: 16px;
+                        font-size: 16px;
+                        font-weight: var(--text-light);
+                        color: var(--text-dark2);
+                    }
+
+                    ion-radio::part(container) {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 6px;
+                        border: 1px solid var(--dark-gray-color2);
+                    }
+
+                    ion-radio::part(mark) {
+                        background: none;
+                        transition: none;
+                        transform: none;
+                        border-radius: 0;
+                    }
+
+                    ion-radio.radio-checked {
+                        background: var(--dark-gray-color5);
+                        border-radius: 10px;
+                    }
+
+                    ion-radio.radio-checked::part(container) {
+                        background: var(--green-color);
+                        border-color: transparent;
+                    }
+
+                    ion-radio.radio-checked::part(label) {
+                        font-weight: var(--text-regular);
+                    }
+
+                    ion-radio.radio-checked::part(mark) {
+                        width: 8px;
+                        height: 16px;
+                        border-width: 0px 4px 4px 0px;
+                        border-radius: 1px;
+                        border-style: solid;
+                        border-color: var(--white-color);
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+        }
+
+        .box-right {
+            width: calc(100% - 305px);
+            background: var(--light-gray-color);
+            padding: 0;
+            padding-top: 16px;
+            margin: 0 25px 0 0;
+
+            .box-right-style-1 {
+                // width: 100%;
+                height: calc(100% - 85px);
+                overflow: hidden;
+                overflow-y: scroll;
+                padding: 0px 10px 0 14px;
+
+                &::-webkit-scrollbar {
+                    // display: none;
+                    /* ความกว้าง scrollbar */
+                    width: 5px;
+                    // margin-left: 110px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    /* สีพื้นหลังแนว scrollbar */
+                    background: var(--light-gray-color3);
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    /* สีพื้นหลังตัว scrollbar*/
+                    background: var(--dark-gray-color3);
+                    border-radius: 3px;
+                }
+
+                ion-card {
+                    cursor: pointer;
+                    margin: 0;
+                    margin-bottom: 5px;
+                    border-radius: 12px;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    background: var(--white-color);
+
+                    ion-card-content {
+                        height: 80px;
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        padding-right: 20px;
+
+                        .card-box-left {
+                            width: calc(100% - 160px);
+                            display: flex;
+                            align-items: center;
+
+                            .box-img {
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 10px;
+                                overflow: hidden;
+
+                                img {
+                                    width: 100%;
+                                }
+                            }
+
+                            .box-name {
+                                margin-left: 20px;
+
+                                ion-label {
+                                    font-size: 18px;
+                                    font-weight: var(--text-light);
+                                    color: var(--text-dark2);
+                                }
+                            }
+                        }
+
+                        .card-box-right {
+                            width: 160px;
+                            height: 60px;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .box-progress {
+                                display: flex;
+                                align-items: flex-end;
+                                flex-direction: column;
+                                width: 100px;
+
+                                ion-label {
+                                    font-size: 14px;
+                                    color: var(--dark-gray-color);
+                                    margin-bottom: 10px;
+                                }
+
+                                ion-progress-bar {
+                                    width: 80px;
+                                    height: 7px;
+                                    border-radius: 5px;
+                                    --background: var(--dark-brown-color);
+                                    --progress-background: var(--dark-brown-color);
+                                }
+
+                                ion-progress-bar::part(progress) {
+                                    border-radius: 5px;
+                                }
+
+                                ion-progress-bar.po-1 {
+                                    --progress-background: var(--progress-color-6);
+                                }
+
+                                ion-progress-bar.po-2 {
+                                    --progress-background: var(--box-type-color-3);
+                                }
+
+                                ion-progress-bar.po-3 {
+                                    --progress-background: var(--green-color);
+                                }
+                            }
+
+                            ion-checkbox.box-box::part(container) {
+                                // margin-top: 5px;
+                                font-size: 18px;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 6px;
+                                border: 1px solid var(--dark-gray-color);
+                                padding: 4px;
+                                background: var(--white-color);
+                            }
+
+                            ion-checkbox.box-box::part(mark) {
+                                background: none;
+                                transition: none;
+                                transform: none;
+                                border-radius: 0;
+                            }
+
+                            ion-checkbox.box-box.checkbox-checked::part(container) {
+                                background: var(--primary-color);
+                                border-color: transparent;
+                                font-weight: var(--text-medium);
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+            .box-right-style-2 {
+                height: 85px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding: 0 10px;
+                background: var(--white-color);
+            
+                ion-button {
+                    width: 145px;
+                    height: 45px;
+                    --border-radius: 25px;
+                    margin: 0;
+                    --background: var(--light-gray-color3);
+                    --box-shadow: none;
+                    margin-left: 20px;
+                    --padding-left: 0;
+                    --padding-right: 0;
+                    font-size: 16px;
+                }
+            
+                .btn-close{
+
+                    --color: var(--text-dark3);
+                }
+                .btn-save{
+                    --background: var(--green-color);
+                    --color: var(--text-white);
+                    ion-icon {
+                        font-size: 22px;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+
+    
+    }
+}

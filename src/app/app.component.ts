@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Router,NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import {
   IonApp,
   IonSplitPane,
@@ -109,11 +109,8 @@ export class AppComponent implements OnInit {
   @ViewChild('accordionGroup', { static: true })
   accordionGroup!: IonAccordionGroup;
 
-
   private routerSubscription!: Subscription;
-  constructor(
-    private menuCtrl: MenuController,
-     private router: Router) {
+  constructor(private menuCtrl: MenuController, private router: Router) {
     this.screen_width = window.screen.width;
     // addIcons({
     //   mailOutline,
@@ -133,7 +130,7 @@ export class AppComponent implements OnInit {
     //   addOutline,
     //   removeOutline,
     // });
-    
+
     // setTimeout(() => {
     //   this.open_menu_toggle_stock();
     // }, 500);
@@ -143,7 +140,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))// กรองเฉพาะ NavigationEnd
+      .pipe(filter((event) => event instanceof NavigationEnd)) // กรองเฉพาะ NavigationEnd
       .subscribe(() => {
         this.extractMainPath();
       });
@@ -157,7 +154,7 @@ export class AppComponent implements OnInit {
 
   extractMainPath() {
     // ดึง path จาก URL
-    const fullPath = this.router.url; 
+    const fullPath = this.router.url;
     // ตัด path แยกด้วย '/' และดึงเฉพาะ path หลัก
     this.mainPath = fullPath.split('/')[1];
     console.log(this.mainPath); // แสดง /stock-products
@@ -177,13 +174,22 @@ export class AppComponent implements OnInit {
     this.menuTogle = !this.menuTogle;
   }
 
+  change_accordion(event: any) {
+    const val = event.detail.value;
+    if (!val) {
+      setTimeout(() => {
+        this.menuCtrl.close('main-menu');
+      }, 250);
+    }
+  }
+
   open_menu_toggle_stock() {
     // console.log(this.router.url);
-    // console.log('open_menu_toggle_stock');
+    console.log('open_menu_toggle_stock');
     this.menuCtrl.open('main-menu');
     setTimeout(() => {
       this.toggleAccordion(true);
-    }, 500);
+    }, 250);
   }
 
   path_stock_select: string = '/stock-levels';
@@ -191,12 +197,11 @@ export class AppComponent implements OnInit {
     this.path_stock_select = url;
     const basePath = '/stock-products'; // path หลัก
     this.router.navigate([basePath + this.path_stock_select]); // รวม path หลักกับ URL ที่เลือก
-    // this.menuCtrl.close('main-menu');
+    this.menuCtrl.close('main-menu');
   }
 
-  toggleAccordion = (bool:boolean) => {
+  toggleAccordion = (bool: boolean) => {
     const nativeEl = this.accordionGroup;
-   ;
-    bool ?  nativeEl.value = 'stock-val' : nativeEl.value = undefined;
+    bool ? (nativeEl.value = 'stock-val') : (nativeEl.value = undefined);
   };
 }

@@ -1,0 +1,113 @@
+<ion-content [fullscreen]="true" scrollY="false">
+
+  <div class="box-main">
+    <!-- &nbsp; -->
+
+    <div class="box-content-1">
+      <div class="box-content-1-left">
+        <ion-label>เบิกออก  Stock (Inbound)</ion-label>
+      </div>
+
+      <div class="box-content-1-right">
+
+        <ion-button size="small" (click)="{}">
+          <ion-icon name="cart-outline"></ion-icon>
+          <ion-label>+เลือก item</ion-label>
+        </ion-button>
+        <ion-button size="small" (click)="{}">
+          <ion-label>(3) Drafts</ion-label>
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="box-content-2">
+      <div class="table-scroll">
+        <ion-grid class="box-member">
+          <ion-row class="header">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-1">
+                <ion-label>Item</ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="col-head-2">
+                <ion-label>จำนวน</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-3">
+                <ion-label>ราคา</ion-label>
+              </div>
+
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-4">
+                <ion-label>ประเภทการรับเบิกออก</ion-label>
+              </div>
+            </ion-col>
+  
+          </ion-row>
+
+          <div class="data-body">
+            <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,1,2,3,3,4,5,5] ;let i = index;">
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-body-1">
+                  <div class="box-img">
+                    <img src="assets/image/img-product.png" alt="">
+                  </div>
+                  <ion-label>Item name</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-2">
+                  <ion-input class="custom-ion-input-number-4 active-edit" type="number" value="10">
+                  </ion-input>
+                  <ion-label>Pc</ion-label>
+                </div>
+              </ion-col>
+
+              <ion-col class="ion-text-center">
+                <div class="col-body-3">
+                  <ion-input class="custom-ion-input-number-4 active-edit" type="number" value="10">
+                  </ion-input>
+                  <ion-label>฿</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-4">
+                  <div class="popop">
+                    <ion-select [interfaceOptions]="customPopoverOptionsStyle3" class="css-pop-3"
+                    toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
+                    interface="popover">
+                    <ion-select-option *ngFor="let item of type_withdraw_arr "
+                    [value]="item.tr_id">{{item.name}}</ion-select-option>
+                  </ion-select>
+                  </div>
+                </div>
+
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-grid>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</ion-content>
+<ion-footer class="ion-no-border">
+<ion-buttons>
+  <ion-button (click)="close()" size="small" class="btn-close">
+    <ion-label>discard</ion-label>
+  </ion-button>
+  <ion-button (click)="close()" size="small" class="btn-close">
+    <ion-icon name="document-outline"></ion-icon>
+    <ion-label>Save draft</ion-label>
+  </ion-button>
+  <ion-button (click)="close()" size="small" class="btn-receive">
+    <ion-label>เบิกออก</ion-label>
+  </ion-button>
+</ion-buttons>
+</ion-footer>

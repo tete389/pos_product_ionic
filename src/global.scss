@@ -404,6 +404,201 @@ ion-popover.my-custom-customPopover-select-style-2::part(content) {
   border-radius: 12px;
 }
 
+// ion-popover style-3
+ion-popover.my-custom-customPopover-select-style-3 {
+  --min-width: 225px;
+  --width: fit-content;
+
+  // margin-top: 10px;
+  // margin-right: 40px;
+  // background: rgba(40, 173, 218, 0.6);
+  ion-select-popover {
+    ion-list {
+      padding: 14px 0;
+
+      ion-item {
+        // width: 100%;
+        --min-height: 40px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: var(--text-light);
+        color: var(--text-dark);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+
+      }
+
+      ion-item.item-radio-checked::part(native) {
+        background: var(--light-sky-blue);
+        font-weight: var(--text-medium);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --background-hover-opacity: 1;
+        color: var(--text-dark);
+      }
+
+
+
+      ion-item ion-radio {
+        // background: plum;
+        text-align: center;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      ion-item:last-child {
+        color: var(--primary-color);
+      }
+
+      // ion-item:not(:last-child) {
+      //   border-bottom: 1px solid var(--light-gray-color3);
+      // }
+
+      ion-item:hover,
+      ion-item:focus,
+      ion-item:active {
+        // --background: var(--light-sky-blue);
+        --background: transparent;
+        --color: var(--primary-light2);
+      }
+    }
+
+  }
+}
+
+ion-popover.my-custom-customPopover-select-style-3::part(content) {
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+ion-popover.my-custom-customPopover-select-style-3::part(backdrop) {
+  background: var(--text-dark);
+  --backdrop-opacity: 0.2;
+}
+
+// ion-popover style-4
+ion-popover.my-custom-customPopover-select-style-4 {
+  --min-width: 225px;
+  --width: fit-content;
+
+  // margin-top: 10px;
+  // margin-right: 40px;
+  // background: rgba(40, 173, 218, 0.6);
+  ion-select-popover {
+    ion-list {
+      padding: 14px 0;
+
+      ion-item {
+        // width: 100%;
+        --min-height: 55px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: var(--text-light);
+        color: var(--text-dark);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+
+      }
+
+      ion-item.item-radio-checked::part(native) {
+        background: var(--light-sky-blue);
+        font-weight: var(--text-medium);
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --background-hover-opacity: 1;
+        color: var(--text-dark);
+      }
+
+
+
+      ion-item ion-radio {
+        text-align: center;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+      }
+
+      ion-item ion-radio.sc-ion-select-popover-md {
+        &::part(container) {
+          display: flex;
+          width: 40px;
+          height: 10px;
+          border-radius: 5px;
+          border-style: none;
+          background:var(--white-color);
+          position: absolute;
+          left: -85px;
+        }
+        &::part(label) {
+          width: 140px;
+          position: absolute;
+          right: -95px;
+      
+        }
+
+        &::part(mark) {
+          display: none;
+        }
+
+  
+      }
+
+      ion-item.tab-color-0 .sc-ion-select-popover-md::part(container){
+        background: var(--white-color);
+      }
+      ion-item.tab-color-1 .sc-ion-select-popover-md::part(container){
+        background: var(--red-color);
+      }
+      ion-item.tab-color-2 .sc-ion-select-popover-md::part(container){
+        background: var(--box-type-color-3);
+      }
+      ion-item.tab-color-3 .sc-ion-select-popover-md::part(container){
+        background: var(--green-color);
+      }
+
+
+
+      ion-item:last-child {
+        color: var(--primary-color);
+      }
+
+      // ion-item:not(:last-child) {
+      //   border-bottom: 1px solid var(--light-gray-color3);
+      // }
+
+      ion-item:hover,
+      ion-item:focus,
+      ion-item:active {
+        // --background: var(--light-sky-blue);
+        --background: transparent;
+        --color: var(--primary-light2);
+      }
+    }
+
+  }
+}
+
+ion-popover.my-custom-customPopover-select-style-4::part(content) {
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+ion-popover.my-custom-customPopover-select-style-4::part(backdrop) {
+  background: var(--text-dark);
+  --backdrop-opacity: 0.2;
+}
+
+
 // ion-popover style-3 multi select
 ion-popover.my-custom-customPopover-multiSelect {
   --min-width: 180px;
@@ -693,13 +888,14 @@ ion-input.custom-ion-input-number input[type="number"] {
 
 ion-input.custom-ion-input-name-2 input[type="text"],
 ion-input.custom-ion-input-number-2 input[type="number"],
-ion-input.custom-ion-input-number-3 input[type="number"] {
+ion-input.custom-ion-input-number-3 input[type="number"],
+ion-input.custom-ion-input-number-4 input[type="number"] {
   border-radius: 12px;
   outline: none;
   padding: 7px 15px;
   height: 35px;
   border: none;
-  border: 1px solid var(--dark-gray-color);
+  border: 1.5px solid var(--dark-gray-color);
 }
 
 ion-input.custom-ion-input-text-3 input[type="text"] {
@@ -732,14 +928,14 @@ ion-input.custom-ion-input-text-3 input[type="text"]:not(:disabled) {
 
 ion-input.custom-ion-input-number-3 input[type="number"] {
   border-radius: 8px;
+  text-align: center;
 }
 
 ion-input.custom-ion-input-text-3 input[type="text"] {
   border-radius: 8px;
 }
 
-ion-input.custom-ion-input-number-2 input[type="number"],
-ion-input.custom-ion-input-number-3 input[type="number"] {
+ion-input.custom-ion-input-number-2 input[type="number"]{
   text-align: center;
 }
 
@@ -747,11 +943,19 @@ ion-input.custom-ion-input-text-3 input[type="text"] {
   text-align: center;
 }
 
+ion-input.custom-ion-input-number-4 input[type="number"] {
+  border-radius: 6px;
+  text-align: start;
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
 ion-input.custom-ion-input-name-2 input[type="text"]:focus,
 ion-input.custom-ion-input-number-2 input[type="number"]:focus,
-ion-input.custom-ion-input-number-3 input[type="number"]:focus {
+ion-input.custom-ion-input-number-3 input[type="number"]:focus,
+ion-input.custom-ion-input-number-4 input[type="number"]:focus {
   outline: none;
-  border: 1px solid var(--primary-color);
+  border: 1.5px solid var(--primary-color);
 }
 
 ion-input.custom-ion-input-text-3 input[type="text"]:focus {
@@ -772,7 +976,8 @@ ion-input.custom-ion-input-number.active-edit input[type="number"] {
 
 ion-input.custom-ion-input-number input[type="number"],
 ion-input.custom-ion-input-number-2 input[type="number"],
-ion-input.custom-ion-input-number-3 input[type="number"] {
+ion-input.custom-ion-input-number-3 input[type="number"],
+ion-input.custom-ion-input-number-4 input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
@@ -789,7 +994,9 @@ ion-input.custom-ion-input-number input[type="number"]::-webkit-inner-spin-butto
 ion-input.custom-ion-input-number-2 input[type="number"]::-webkit-inner-spin-button,
 .custom-ion-input-number-2 input[type="number"]::-webkit-outer-spin-button,
 ion-input.custom-ion-input-number-3 input[type="number"]::-webkit-inner-spin-button,
-.custom-ion-input-number-3 input[type="number"]::-webkit-outer-spin-button {
+.custom-ion-input-number-3 input[type="number"]::-webkit-outer-spin-button,
+ion-input.custom-ion-input-number-4 input[type="number"]::-webkit-inner-spin-button,
+.custom-ion-input-number-4 input[type="number"]::-webkit-outer-spin-button  {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -807,7 +1014,8 @@ ion-input.custom-ion-input-text-3 input[type="text"]::-webkit-inner-spin-button,
 
 ion-input.custom-ion-input-number input[type="number"]:focus,
 ion-input.custom-ion-input-number-2 input[type="number"]:focus,
-ion-input.custom-ion-input-number-3 input[type="number"]:focus {
+ion-input.custom-ion-input-number-3 input[type="number"]:focus,
+ion-input.custom-ion-input-number-4 input[type="number"]:focus {
   // border: none;
   outline: none;
 }
@@ -1544,6 +1752,36 @@ ion-modal.my-custom-modal-move-order {
 }
 
 ion-modal.my-custom-modal-move-order:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-show-draft {
+  --ion-background-color: var(--white-color);
+  --height: 98%;
+  --max-height: 594px;
+  --width: 98%;
+  --max-width: 619px;
+  --border-radius: 24px;
+}
+
+ion-modal.my-custom-modal-show-draft:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-show-items {
+  --ion-background-color: var(--white-color);
+  --height: 98%;
+  --max-height: 748px;
+  --width: 98%;
+  --max-width: 922px;
+  --border-radius: 12px;
+}
+
+ion-modal.my-custom-modal-show-items:part(backdrop) {
   background-color: transparent;
   background: var(--text-dark2);
   --backdrop-opacity: 0.8;
