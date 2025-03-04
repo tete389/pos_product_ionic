@@ -1,0 +1,141 @@
+
+.top-flex {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    .btn-left {
+        display: flex;
+        flex-direction: row;
+        .btn-a ion-button{
+            min-width:140px;
+            max-height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+            
+            &.active {
+                --background: var(--primary-color-hover); // เปลี่ยนสีปุ่มเมื่อคลิก
+                color: white; // เปลี่ยนสีฟอนต์เป็นสีขาวเมื่อปุ่มถูกเลือก
+              }
+        }
+        .btn-b ion-button{
+            min-width:140px;
+            max-height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+            &.active {
+                --background: var(--primary-color-hover); // เปลี่ยนสีปุ่มเมื่อคลิก
+                color: white; // เปลี่ยนสีฟอนต์เป็นสีขาวเมื่อปุ่มถูกเลือก
+              }
+        }
+    }
+
+    .btn-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .btn-aa ion-button{
+            min-width:140px;
+            max-height: 45px;
+            --border-radius: 50px;
+            --background: var(--light-gray-color3);
+            color: black;
+            font-size: 16px;
+            &.active {
+                --background: var(--primary-color-hover); // เปลี่ยนสีปุ่มเมื่อคลิก
+                color: white; // เปลี่ยนสีฟอนต์เป็นสีขาวเมื่อปุ่มถูกเลือก
+              }
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f4f7fc;  // สีพื้นหลังอ่อนๆ
+            border-radius: 25px;
+            padding: 5px 15px;
+            min-width: 297px;
+              max-height: 45px;
+          
+            .search-icon {
+              font-size: 18px;
+              color: gray;
+              margin-right: 8px;
+            }
+          
+            ion-input {
+              flex: 1;
+              font-size: 16px;
+              color: black;
+              --placeholder-color: gray;
+              --padding-start: 0;
+            }
+          }
+          
+        .btn-cc ion-button{
+            min-width:140px;
+            max-height: 45px;
+            --border-radius: 50px;
+            --background: var(--primary-color-hover); 
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            &.active {
+                --background: var(--primary-color-hover); // เปลี่ยนสีปุ่มเมื่อคลิก
+                color: white; // เปลี่ยนสีฟอนต์เป็นสีขาวเมื่อปุ่มถูกเลือก
+              }
+        }
+    }
+}
+
+.custom-table {
+    width: 100%;
+    padding: 10px;
+
+    .header {
+        font-weight: 400;
+        background: var(--light-sky-blue);
+        text-align: center;
+        border: none;
+    }
+
+    ion-row {
+        border-bottom: 1px solid #ddd;
+        align-items: center;
+        text-align: center;
+    }
+
+    .flex-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .item-image {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .edit-icon {
+        font-size: 18px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    .edit-icon:hover {
+        color: #000;
+    }
+
+    .category,
+    .unit,
+    .orderQuantity,
+    .location,
+    .supplier,
+    .price {
+        color: #838C98;
+        font-size: 14px;
+    }
+}

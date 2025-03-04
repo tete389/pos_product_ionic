@@ -1,3 +1,73 @@
-<p>
-  stock-item works!
-</p>
+<ion-content>
+  <div class="top-flex"> 
+    <div class="btn-left">
+      <div class="btn-a">
+        <ion-button [ngClass]="{ 'active': activeButton === 'วัตถุดิบ' }" (click)="setActive('วัตถุดิบ')">
+          วัตถุดิบ
+        </ion-button>
+      </div>
+      <div class="btn-b">        
+        <ion-button [ngClass]="{ 'active': activeButton === 'สินค้า' }" (click)="setActive('สินค้า')">
+          สินค้า
+        </ion-button>
+      </div>
+    </div>
+    
+    <div class="btn-right">
+      <div class="btn-aa">
+        <ion-button [ngClass]="{ 'active': activeButton === 'ทั้งหมด' }" (click)="setActive('ทั้งหมด')">
+          ทั้งหมด
+        </ion-button>
+      </div>
+      <div class="search-box">
+        <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        <ion-input placeholder="ค้นหา"></ion-input>
+      </div>
+      <div class="btn-cc">
+        <ion-button [ngClass]="{ 'active': activeButton === '+เพิ่ม' }" (click)="setActive('+เพิ่ม')">
+          +เพิ่ม
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  
+
+  <ion-grid class="custom-table">
+    <!-- Header Row -->
+    <ion-row class="header">
+      <ion-col size="1">Image</ion-col>
+      <ion-col>ชื่อวัตถุดิบ</ion-col>
+      <ion-col>Category</ion-col>
+      <ion-col>หน่วย</ion-col>
+      <ion-col>Max Level</ion-col>
+      <ion-col>จุดสั่งซื้อ</ion-col>
+      <ion-col>จำนวนสั่งซื้อ</ion-col>
+      <ion-col>Location</ion-col>
+      <ion-col>Supplier</ion-col>
+      <ion-col>ราคาซื้อ/หน่วย</ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+    <!-- Data Rows -->
+    <ion-row *ngFor="let item of items">
+      <ion-col size="1">
+        <div class="flex-img">
+          <img [src]="item.image" alt="image" class="item-image" />
+        </div>
+
+      </ion-col>
+      <ion-col class="name">{{ item.name }}</ion-col>
+      <ion-col class="category">{{ item.category }}</ion-col>
+      <ion-col class="unit">{{ item.unit }}</ion-col>
+      <ion-col class="maxLevel">{{ item.maxLevel }}</ion-col>
+      <ion-col class="reorderPoint">{{ item.reorderPoint }}</ion-col>
+      <ion-col class="orderQuantity">{{ item.orderQuantity }}</ion-col>
+      <ion-col class="location">{{ item.location }}</ion-col>
+      <ion-col class="supplier">{{ item.supplier }}</ion-col>
+      <ion-col class="price">{{ item.price }}</ion-col>
+      <ion-col size="1">
+        <ion-icon name="pencil-outline" class="edit-icon"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
