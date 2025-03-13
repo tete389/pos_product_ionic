@@ -11,9 +11,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class StockItemsComponent implements OnInit {
 
-
-  activeButton: string = ''; // เก็บค่าปุ่มที่ถูกคลิก
-  items = [
+  rawMaterials = [
     {
       image: 'assets/images/eggs.png',
       name: 'ไข่ไก่',
@@ -49,16 +47,253 @@ export class StockItemsComponent implements OnInit {
       location: 'B1',
       supplier: 'Makro',
       price: 250,
-    }
+    },
+    {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },   {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },   {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },   {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },   {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
   ];
+
+  products = [
+    {
+      image: 'assets/images/eggs.png',
+      name: 'ไข่ไก่',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 100,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/beef.png',
+      name: 'สันในวัว',
+      category: 'Meat',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    {
+      image: 'assets/images/s.png',
+      name: 'กุ้งสด',
+      category: 'ซีฟู้ด',
+      unit: 'Kg',
+      maxLevel: 5,
+      reorderPoint: '> 20%',
+      orderQuantity: 100,
+      location: 'B1',
+      supplier: 'Makro',
+      price: 250,
+    },
+    // เพิ่มข้อมูลเพิ่มเติมตามต้องการ
+  ];
+  searchText:string = '';
+  activeButton: string = '';
+  filteredItems = [...this.rawMaterials];
   constructor() { }
-
-
-
-
+  ngOnInit() { 
+    this.updateFilterItems();
+  }
   setActive(buttonName: string) {
     this.activeButton = buttonName;
+    this.updateFilterItems();
   }
-  ngOnInit() { }
-
+  updateFilterItems(){
+    if(this.activeButton === 'วัตถุดิบ'){
+      this.filteredItems = this.rawMaterials;
+    } else if(this.activeButton === 'สินค้า'){
+      this.filteredItems = this.products;
+    }
+    this.applySearchFilter();
+  }
+  filterItems(event:any){
+    this.searchText = event.target.value.toLowerCase();
+    this.applySearchFilter();
+  }
+  applySearchFilter(){
+    this.filteredItems  = (this.activeButton === "วัตถุดิบ" ? this.rawMaterials : this.products).filter(item =>
+    item.name.toLowerCase().includes(this.searchText) ||
+    item.category.toLowerCase().includes(this.searchText) ||
+    item.location.toLowerCase().includes(this.searchText) ||
+    item.supplier.toLowerCase().includes(this.searchText)
+  );
+  }
 }
