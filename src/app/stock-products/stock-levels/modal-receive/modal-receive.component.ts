@@ -36,7 +36,9 @@ import {
 } from '@ionic/angular/standalone';
 import { ModalShowDraftComponent } from '../modal-show-draft/modal-show-draft.component';
 import { ModalShowItemsComponent } from '../modal-show-items/modal-show-items.component';
-
+import { ModalExpirationDateComponent } from '../shared/modal-expiration-date/modal-expiration-date.component';
+import { ModalSelectTransactionTypeComponent } from '../shared/modal-select-transaction-type/modal-select-transaction-type.component';
+import { ModalCreateReceiveAndWithdrawComponent } from '../shared/modal-create-receive-and-withdraw/modal-create-receive-and-withdraw.component';
 
 @Component({
   selector: 'app-modal-receive',
@@ -156,14 +158,14 @@ export class ModalReceiveComponent implements OnInit {
 
   ngOnInit() {
     // setTimeout(() => {
-    //   this.select_items();
+      // this.add_receive();
+      // this.select_expiration_date(0);
     // }, 500);
   }
 
   close() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
-
 
   //เลือบสินค้าที่จะรับเข้า
   async select_items() {
@@ -175,11 +177,12 @@ export class ModalReceiveComponent implements OnInit {
     });
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
-    if (role === 'confirm') {
-      // this.message = `Hello, ${data}!`;
+
+    if (role === 'save') {
+      console.log(data.items);
     }
   }
-  
+
   //แสดงข้อมูลที่ draft ทั้งหมด
   async show_all_draft() {
     const modal = await this.modalCtrl.create({
@@ -195,7 +198,6 @@ export class ModalReceiveComponent implements OnInit {
     }
   }
 
-
   save_draft() {
     // this.modalCtrl.dismiss(null, 'save_draft');
   }
@@ -204,4 +206,68 @@ export class ModalReceiveComponent implements OnInit {
   recrive() {
     // this.modalCtrl.dismiss(null, 'recrive');
   }
+
+  //modal เลือกประเภทการรับเข้า | เลือก supplier
+  async select_transection_type(type_select: string, id: number = 0) {
+    const modal = await this.modalCtrl.create({
+      component: ModalSelectTransactionTypeComponent,
+      cssClass: 'my-custom-modal-select-transaction-type',
+      mode: 'md',
+      // showBackdrop: false
+      componentProps: {
+        type_select: type_select,
+        id_select: id,
+      },
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'save') {
+      console.log(data);
+      switch (type_select) {
+        case 'receive':
+          //  set receive
+          break;
+        case 'supplier':
+          //  set supplier
+          break;
+      }
+    }
+  }
+
+  //modal เพิ่มวันหมดอายุของสินค้า
+  async select_expiration_date(id: number) {
+    const modal = await this.modalCtrl.create({
+      component: ModalExpirationDateComponent,
+      cssClass: 'my-custom-modal-select-expiration-date',
+      mode: 'md',
+      // showBackdrop: false
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'save') {
+      console.log(data.items);
+    }
+  }
+
+  //modal รับเข้าสินค้า
+  async add_receive() {
+    const modal = await this.modalCtrl.create({
+      component: ModalCreateReceiveAndWithdrawComponent,
+      cssClass: 'my-custom-modal-create-receive-and-withdraw',
+      mode: 'md',
+      componentProps:{
+        type_select:'receive'
+      }
+      // showBackdrop: false
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'save') {
+      console.log(data.items);
+    }
+  }
+
 }

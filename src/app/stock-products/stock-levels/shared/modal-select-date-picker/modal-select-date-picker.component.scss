@@ -1,0 +1,32 @@
+ion-footer {
+
+    padding: 25px 40px;
+
+    ion-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        ion-button {
+
+            width: 110px;
+            height: 40px;
+            --background: var(--primary-color);
+            --color: var(--text-white);
+            --border-radius: 25px;
+            --box-shadow: none;
+        }
+
+        .btn-close {
+            --background: var(--light-gray-color3);
+            --color: var(--text-dark3);
+        }
+
+        .btn-save {
+            --background: var(--green-color);
+            --color: var(--text-white);
+        }
+    }
+
+
+}

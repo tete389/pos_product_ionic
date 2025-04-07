@@ -535,34 +535,38 @@ ion-popover.my-custom-customPopover-select-style-4 {
           height: 10px;
           border-radius: 5px;
           border-style: none;
-          background:var(--white-color);
+          background: var(--white-color);
           position: absolute;
           left: -85px;
         }
+
         &::part(label) {
           width: 140px;
           position: absolute;
           right: -95px;
-      
+
         }
 
         &::part(mark) {
           display: none;
         }
 
-  
+
       }
 
-      ion-item.tab-color-0 .sc-ion-select-popover-md::part(container){
+      ion-item.tab-color-0 .sc-ion-select-popover-md::part(container) {
         background: var(--white-color);
       }
-      ion-item.tab-color-1 .sc-ion-select-popover-md::part(container){
+
+      ion-item.tab-color-1 .sc-ion-select-popover-md::part(container) {
         background: var(--red-color);
       }
-      ion-item.tab-color-2 .sc-ion-select-popover-md::part(container){
+
+      ion-item.tab-color-2 .sc-ion-select-popover-md::part(container) {
         background: var(--box-type-color-3);
       }
-      ion-item.tab-color-3 .sc-ion-select-popover-md::part(container){
+
+      ion-item.tab-color-3 .sc-ion-select-popover-md::part(container) {
         background: var(--green-color);
       }
 
@@ -935,7 +939,7 @@ ion-input.custom-ion-input-text-3 input[type="text"] {
   border-radius: 8px;
 }
 
-ion-input.custom-ion-input-number-2 input[type="number"]{
+ion-input.custom-ion-input-number-2 input[type="number"] {
   text-align: center;
 }
 
@@ -996,7 +1000,7 @@ ion-input.custom-ion-input-number-2 input[type="number"]::-webkit-inner-spin-but
 ion-input.custom-ion-input-number-3 input[type="number"]::-webkit-inner-spin-button,
 .custom-ion-input-number-3 input[type="number"]::-webkit-outer-spin-button,
 ion-input.custom-ion-input-number-4 input[type="number"]::-webkit-inner-spin-button,
-.custom-ion-input-number-4 input[type="number"]::-webkit-outer-spin-button  {
+.custom-ion-input-number-4 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1653,6 +1657,46 @@ ion-accordion-group.my-custum-accordion-2 {
   }
 }
 
+// alert นำเข้าสำเร็จ
+.app-alert-receive-succes {
+  --backdrop-opacity: 0.7;
+  // background: #707070;
+
+  .alert-wrapper {
+    // background: red;
+    // height: 70%;
+    width: 400px;
+    height: 245px;
+    border-radius: 24px;
+
+    .alert-head,
+    .alert-button-group {
+      display: none;
+    }
+
+
+    .alert-message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+    height: 100%;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+
+    span {
+      font-size: 30px;
+      color: var(--text-dark2);
+      font-weight: var(--text-medium);
+    }
+  }
+}
+}
+
 //===============================================
 //============== CSS ion-modal ==================
 //===============================================
@@ -1742,6 +1786,34 @@ ion-modal.my-custom-modal-order-list:part(backdrop) {
   --backdrop-opacity: 0.8;
 }
 
+ion-modal.my-custom-modal-select-expiration-date {
+  --ion-background-color: var(--white-color);
+  --height: 98%;
+  --max-height: 490px;
+  --width: 432px;
+  --border-radius: 12px;
+}
+
+ion-modal.my-custom-modal-select-expiration-date:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-select-transaction-type {
+  --ion-background-color: var(--white-color);
+  --height: 98%;
+  --max-height: 490px;
+  --width: 323px;
+  --border-radius: 12px;
+}
+
+ion-modal.my-custom-modal-select-transaction-type:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
 ion-modal.my-custom-modal-move-order {
   --ion-background-color: var(--white-color);
   --height: 98%;
@@ -1752,6 +1824,49 @@ ion-modal.my-custom-modal-move-order {
 }
 
 ion-modal.my-custom-modal-move-order:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-create-receive-and-withdraw {
+  --ion-background-color: var(--white-color);
+  --height: 98%;
+  --max-height: 729px;
+  --width: 98%;
+  --max-width: 1189px;
+  --border-radius: 16px;
+}
+
+ion-modal.my-custom-modal-create-receive-and-withdraw:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-add-note {
+  --ion-background-color: var(--white-color);
+  --height: 460px;
+  /* --width: 98%; */
+  --width: 595px;
+  --border-radius: 24px;
+}
+
+ion-modal.my-custom-modal-add-note:part(backdrop) {
+  background-color: transparent;
+  background: var(--text-dark2);
+  --backdrop-opacity: 0.8;
+}
+
+ion-modal.my-custom-modal-upload-file {
+  --ion-background-color: var(--white-color);
+  --height: 610px;
+  /* --width: 98%; */
+  --width: 595px;
+  --border-radius: 24px;
+}
+
+ion-modal.my-custom-modal-upload-file:part(backdrop) {
   background-color: transparent;
   background: var(--text-dark2);
   --backdrop-opacity: 0.8;
@@ -1799,7 +1914,11 @@ ion-modal.my-custom-modal-show-items:part(backdrop) {
 
   }
 
-  ion-datetime.date-timer::part(month-year-button) {}
+  // กล่องแสดง เดือน ปี บนซ้าย
+  ion-datetime.date-timer::part(month-year-button) {
+    font-size: 20px;
+    color: var(--text-dark3);
+  }
 
   // ทุกวัน
   ion-datetime.date-timer::part(calendar-day) {

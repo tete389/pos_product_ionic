@@ -231,6 +231,21 @@ ion-content {
                             align-items: center;
                             justify-content: center;
 
+                            ion-button.btn-select-type{
+                                width: 200px;
+                                height: 35px;
+                                --color: var(--text-dark2);
+                                --font-size: 14px;
+                                --border-radius: 6px;
+                                --background: var(--light-gray-color3);
+                                --box-shadow: none;
+                                ion-icon{
+                                    position: absolute;
+                                    right: 0;
+                                    color: var(--dark-gray-color);
+                                }
+                            }
+
                             ion-select.css-pop-3 {
                                 width: 200px;
                                 height: 35px;

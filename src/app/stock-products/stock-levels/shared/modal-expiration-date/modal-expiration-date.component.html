@@ -1,0 +1,29 @@
+<ion-content scrollY="false">
+
+  <div class="box-1">
+    <ion-label>วันหมดอายุ</ion-label>
+    <ion-button (click)="addNewDate(0)">+เพิ่มวัน</ion-button>
+  </div>
+
+  <div class="box-2">
+
+    <ion-card *ngFor="let item of date_arr">
+      <div class="card-left">
+        <ion-label>{{item.date}}</ion-label>
+      </div>
+      <div class="card-right">
+        <ion-icon name="trash"></ion-icon>
+        <ion-icon (click)="addNewDate(1)" name="pencil-outline"></ion-icon>
+      </div>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-buttons>
+    <ion-button class="btn-close" (click)="save()" >Discard</ion-button>
+    <ion-button class="btn-save" (click)="close()">ถัดไป</ion-button>
+  </ion-buttons>
+</ion-footer>

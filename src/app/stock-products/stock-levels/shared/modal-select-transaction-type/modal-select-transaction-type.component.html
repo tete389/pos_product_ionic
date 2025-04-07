@@ -1,0 +1,41 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      {{text_title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- เลือกประเภทการรับเข้า -->
+  <ng-container *ngIf="type_select ==='receive'">
+    <ion-card 
+    *ngFor="let item of type_receive_arr;" 
+    (click)="select_transection_type(item.tr_id)"
+    [ngClass]="{'selected': id_select === item.tr_id}">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-card>
+  </ng-container>
+
+  <!-- เลือกประเภทการเบิกออก -->
+  <ng-container *ngIf="type_select ==='withdraw'">
+    <ion-card 
+    *ngFor="let item of type_withdraw_arr;" 
+    (click)="select_transection_type(item.tw_id)"
+    [ngClass]="{'selected': id_select === item.tw_id}">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-card>
+  </ng-container>
+
+  <!-- เลือก Supplier  -->
+  <ng-container *ngIf="type_select === 'supplier'">
+    <ion-card 
+    *ngFor="let item of all_supplier_arr;" 
+    (click)="select_transection_type(item.as_id)"
+    [ngClass]="{'selected': id_select === item.as_id}">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-card>
+  </ng-container>
+
+</ion-content>

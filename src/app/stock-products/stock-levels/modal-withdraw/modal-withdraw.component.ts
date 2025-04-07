@@ -34,6 +34,8 @@ import {
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
+import { ModalSelectTransactionTypeComponent } from '../shared/modal-select-transaction-type/modal-select-transaction-type.component';
+import { ModalCreateReceiveAndWithdrawComponent } from '../shared/modal-create-receive-and-withdraw/modal-create-receive-and-withdraw.component';
 @Component({
   selector: 'app-modal-withdraw',
   templateUrl: './modal-withdraw.component.html',
@@ -116,4 +118,54 @@ export class ModalWithdrawComponent implements OnInit {
   close() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
+
+    //modal เลือกประเภทการรับเข้า | เลือก supplier
+    async select_transection_type(type_select: string, id: number = 0) {
+      const modal = await this.modalCtrl.create({
+        component: ModalSelectTransactionTypeComponent,
+        cssClass: 'my-custom-modal-select-transaction-type',
+        mode: 'md',
+        // showBackdrop: false
+        componentProps: {
+          type_select: type_select,
+          id_select: id,
+        },
+      });
+      await modal.present();
+      const { data, role } = await modal.onWillDismiss();
+  
+      if (role === 'save') {
+        console.log(data);
+        switch (type_select) {
+          case 'withdraw':
+            //  set receive
+            break;
+        default: return;
+        }
+      }
+    }
+
+    save_draft() {
+      // this.modalCtrl.dismiss(null, 'save_draft');
+    }
+
+  //modal รับเข้าสินค้า
+  async add_withdraw() {
+    const modal = await this.modalCtrl.create({
+      component: ModalCreateReceiveAndWithdrawComponent,
+      cssClass: 'my-custom-modal-create-receive-and-withdraw',
+      mode: 'md',
+      componentProps:{
+        type_select:'withdraw'
+      }
+      // showBackdrop: false
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'save') {
+      console.log(data.items);
+    }
+  }
+
 }
