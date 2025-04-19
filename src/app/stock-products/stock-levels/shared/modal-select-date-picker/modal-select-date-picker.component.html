@@ -1,0 +1,26 @@
+<ion-content>
+
+
+  <div class="box-datetime">
+    <ion-datetime 
+    mode="md" 
+    size="cover"
+    class="date-timer" 
+    presentation="date" 
+    displayFormat="D MMM YYYY"
+     pickerFormat="D MMM YYYY"
+      [(ngModel)]="selectedDate" 
+      (ionChange)="onDateChange($event)">
+    </ion-datetime>
+  </div>
+
+
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-buttons>
+    <ion-button class="btn-close" (click)="close()">ยกเลิก</ion-button>
+    <ion-button class="btn-save" (click)="confirmDate()">ตกลง</ion-button>
+  </ion-buttons>
+</ion-footer>

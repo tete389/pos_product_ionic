@@ -1,0 +1,26 @@
+<ion-content>
+
+  <div class="box-main">
+    <div class="box-1">
+      <ion-label>Add note</ion-label>
+      <ion-icon (click)="close()" name="close-outline"></ion-icon>
+    </div>
+
+    <div class="box-2">
+      <ion-textarea class="custom-textarea" placeholder="add note" rows="3">
+      </ion-textarea>
+      <ion-label>0/1000</ion-label>
+    </div>
+
+    <div class="box-3">
+      <ion-button (click)="close()" size="small" class="btn-close">
+        <ion-label>ยกเลิก</ion-label>
+      </ion-button>
+      <ion-button (click)="save()" size="small" class="btn-save">
+        <ion-label>ถัดไป</ion-label>
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

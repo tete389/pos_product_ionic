@@ -1,0 +1,133 @@
+<ion-content [fullscreen]="true" scrollY="false">
+
+  <div class="box-main">
+    <!-- &nbsp; -->
+
+    <div class="box-content-1">
+      <div class="box-content-1-left">
+        <ion-label>รับเข้า Stock (Inbound)</ion-label>
+      </div>
+
+      <div class="box-content-1-right">
+        <ion-label>รับเข้าโดย:&nbsp;&nbsp;&nbsp;<span>Sunicha</span></ion-label>
+      </div>
+    </div>
+
+    <div class="box-content-2">
+      <div class="table-scroll">
+        <ion-grid class="box-member">
+          <ion-row class="header" [ngClass]="{
+            'receive-color': type_select === 'receive',
+            'withdraw-color': type_select === 'withdraw'}">
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-1">
+                <ion-label>รูปภาพ</ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="col-head-2">
+                <ion-label>Item</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-3">
+                <ion-label>จำนวน</ion-label>
+              </div>
+
+            </ion-col>
+            <ion-col size="auto" class="ion-text-center">
+              <div class="col-head-4">
+                <ion-label>หน่วย</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-5">
+                <ion-label>รวม</ion-label>
+              </div>
+
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-6">
+                <ion-label>Purpose</ion-label>
+              </div>
+
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="col-head-7">
+                <ion-label>วันหมดอายุ</ion-label>
+              </div>
+
+            </ion-col>
+
+          </ion-row>
+
+          <div class="data-body">
+            <ion-row class="data-row" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,1,2,3,3,4,5,5] ;let i = index;">
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-body-1">
+                  <div class="box-img">
+                    <img src="assets/image/img-product.png" alt="">
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="col-body-2">
+                  <ion-label>Item name</ion-label>
+                </div>
+              </ion-col>
+
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-body-3">
+                  <ion-label>10</ion-label>
+                </div>
+              </ion-col>
+              <ion-col size="auto" class="ion-text-center">
+                <div class="col-body-4">
+                  <ion-label>Kg</ion-label>
+                </div>
+
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-5">
+                  <ion-label>2,500.00</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-6">
+                  <ion-label>ซื้อมาใหม่</ion-label>
+                </div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <div class="col-body-7">
+                  <ion-label>31 June, 2024</ion-label>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-grid>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-buttons>
+    <ion-button (click)="close()" size="small" class="btn-close">
+      <ion-label>ย้อนกลับ</ion-label>
+    </ion-button>
+    <ion-button (click)="add_note()" size="small" class="btn-close">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>เพิ่มโน๊ต</ion-label>
+    </ion-button>
+    <ion-button (click)="upload_file()" size="small" class="btn-close">
+      <ion-icon name="attach-outline"></ion-icon>
+      <ion-label>แนบไฟล์</ion-label>
+    </ion-button>
+    <ion-button (click)="save()" size="small" class="btn-save">
+      <ion-label>ยืนยัน</ion-label>
+    </ion-button>
+  </ion-buttons>
+</ion-footer>

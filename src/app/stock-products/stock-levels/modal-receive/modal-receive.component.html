@@ -87,32 +87,42 @@
               </ion-col>
               <ion-col class="ion-text-center">
                 <div class="col-body-4">
-                  <div class="popop">
+
+                  <ion-button class="btn-select-type" (click)="select_transection_type('receive',2)">
+                    <ion-label>เลือก</ion-label>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </ion-button>
+
+                  <!-- <div class="popop">
                     <ion-select [interfaceOptions]="customPopoverOptionsStyle3" class="css-pop-3"
                     toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
                     interface="popover">
                     <ion-select-option *ngFor="let item of type_receive_arr "
                     [value]="item.tr_id">{{item.name}}</ion-select-option>
                   </ion-select>
-                  </div>
+                  </div> -->
                 </div>
 
               </ion-col>
               <ion-col class="ion-text-center">
                 <div class="col-body-5">
-                  <div class="popop">
+                  <ion-button class="btn-select-type" (click)="select_transection_type('supplier',5)">
+                    <ion-label>เลือก</ion-label>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </ion-button>
+                  <!-- <div class="popop">
                     <ion-select [interfaceOptions]="customPopoverOptionsStyle3" class="css-pop-3"
                     toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
                     interface="popover">
                     <ion-select-option *ngFor="let item of all_supplier_arr "
                     [value]="item.as_id">{{item.name}}</ion-select-option>
                   </ion-select>
-                  </div>
+                  </div> -->
                 </div>
               </ion-col>
               <ion-col class="ion-text-center">
                 <div class="col-body-6">
-                  <ion-label>31 ต.ค. 67 </ion-label>
+                  <ion-label (click)="select_expiration_date(i)">31 ต.ค. 67 </ion-label>
                   <ion-icon name="trash"></ion-icon>
                 </div>
               </ion-col>
@@ -136,7 +146,7 @@
     <ion-icon name="document-outline"></ion-icon>
     <ion-label>Save draft</ion-label>
   </ion-button>
-  <ion-button (click)="close()" size="small" class="btn-receive">
+  <ion-button (click)="add_receive()" size="small" class="btn-receive">
     <ion-label>รับเข้า</ion-label>
   </ion-button>
 </ion-buttons>

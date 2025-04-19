@@ -25,7 +25,7 @@ import {
   selector: 'app-modal-show-items',
   templateUrl: './modal-show-items.component.html',
   styleUrls: ['./modal-show-items.component.scss'],
-  standalone:true,
+  standalone: true,
   imports: [
     IonContent,
     IonButtons,
@@ -48,26 +48,40 @@ import {
     ReactiveFormsModule,
   ],
 })
-export class ModalShowItemsComponent  implements OnInit {
-
+export class ModalShowItemsComponent implements OnInit {
   searchControl: FormControl;
   search_text = '';
   placho_text = 'ค้นหา';
 
   // ค้นหาสินค้าตามหมวดหมู่
-  search_by_category:string = '3';
+  search_by_category: string = '3';
 
-
-  constructor(
-    private modalController: ModalController,
-  ) {
+  constructor(private modalController: ModalController) {
     this.searchControl = new FormControl();
-   }
+  }
 
   ngOnInit() {}
 
+  save() {
+    this.modalController.dismiss(
+      {
+        items: [
+          {
+            id: 1,
+            name: 'banana',
+          },
+          {
+            id: 2,
+            name: 'potato',
+          },
+        ],
+      },
+      'save'
+    );
+  }
+
   close() {
-    this.modalController.dismiss(null, 'cancel');
+    this.modalController.dismiss({}, 'close');
   }
 
   onSearchInput(text: string) {}
@@ -77,5 +91,4 @@ export class ModalShowItemsComponent  implements OnInit {
   search_enter(val: any) {
     console.log(typeof val);
   }
-
 }

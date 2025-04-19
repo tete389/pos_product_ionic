@@ -1,0 +1,43 @@
+<ion-content>
+
+  <div class="box-main">
+    <div class="box-1">
+      <ion-label>Add note</ion-label>
+      <ion-icon (click)="close()" name="close-outline"></ion-icon>
+    </div>
+
+    <div class="box-2">
+
+      <div class="box-list">
+        <ion-card *ngFor="let item of [1,2,]">
+          <div class="card-left">
+            <ion-label>Screenshot1234560.JPG</ion-label>
+          </div>
+          <div class="card-right">
+            <ion-label>2.5 MB</ion-label>
+            <ion-icon name="trash"></ion-icon>
+          </div>
+        </ion-card>
+      </div>
+      <div class="labled">
+        <ion-label>รองรับไฟล์ประเภท: JPG, PNG, PDF</ion-label>
+        <ion-label>0/1000</ion-label>
+      </div>
+
+      <ion-button class="btn-choose-file">Choose file</ion-button>
+
+
+    </div>
+
+    <div class="box-3">
+      <ion-button (click)="close()" size="small" class="btn-close">
+        <ion-label>ยกเลิก</ion-label>
+      </ion-button>
+      <ion-button (click)="save()" size="small" class="btn-save">
+        <ion-label>ถัดไป</ion-label>
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

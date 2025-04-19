@@ -29,20 +29,25 @@
                 <ion-label>Item</ion-label>
               </div>
             </ion-col>
-            <ion-col>
+            <ion-col size="auto" > 
               <div class="col-head-2">
                 <ion-label>จำนวน</ion-label>
               </div>
             </ion-col>
-            <ion-col class="ion-text-center">
+            <ion-col size="auto" >
               <div class="col-head-3">
                 <ion-label>ราคา</ion-label>
               </div>
 
             </ion-col>
-            <ion-col class="ion-text-center">
+            <ion-col >
               <div class="col-head-4">
                 <ion-label>ประเภทการรับเบิกออก</ion-label>
+              </div>
+            </ion-col>
+            <ion-col >
+              <div class="col-head-5">
+                <!-- <ion-label>วันหมดอายุ</ion-label> -->
               </div>
             </ion-col>
   
@@ -58,7 +63,7 @@
                   <ion-label>Item name</ion-label>
                 </div>
               </ion-col>
-              <ion-col class="ion-text-center">
+              <ion-col size="auto" class="ion-text-center">
                 <div class="col-body-2">
                   <ion-input class="custom-ion-input-number-4 active-edit" type="number" value="10">
                   </ion-input>
@@ -66,26 +71,31 @@
                 </div>
               </ion-col>
 
-              <ion-col class="ion-text-center">
+              <ion-col size="auto" class="ion-text-center">
                 <div class="col-body-3">
                   <ion-input class="custom-ion-input-number-4 active-edit" type="number" value="10">
                   </ion-input>
                   <ion-label>฿</ion-label>
                 </div>
               </ion-col>
-              <ion-col class="ion-text-center">
+              <ion-col size="auto" class="ion-text-center">
                 <div class="col-body-4">
-                  <div class="popop">
-                    <ion-select [interfaceOptions]="customPopoverOptionsStyle3" class="css-pop-3"
-                    toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" placeholder="เลือก"
-                    interface="popover">
-                    <ion-select-option *ngFor="let item of type_withdraw_arr "
-                    [value]="item.tr_id">{{item.name}}</ion-select-option>
-                  </ion-select>
-                  </div>
+               
+                  <ion-button class="btn-select-type" (click)="select_transection_type('withdraw',2)">
+                    <ion-label>เลือก</ion-label>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </ion-button>
+
                 </div>
 
               </ion-col>
+
+              <ion-col>
+                <div class="col-body-5">
+                  <ion-icon name="trash"></ion-icon>
+                </div>
+              </ion-col>
+
             </ion-row>
           </div>
         </ion-grid>
@@ -102,11 +112,11 @@
   <ion-button (click)="close()" size="small" class="btn-close">
     <ion-label>discard</ion-label>
   </ion-button>
-  <ion-button (click)="close()" size="small" class="btn-close">
+  <ion-button (click)="save_draft()" size="small" class="btn-close">
     <ion-icon name="document-outline"></ion-icon>
     <ion-label>Save draft</ion-label>
   </ion-button>
-  <ion-button (click)="close()" size="small" class="btn-receive">
+  <ion-button (click)="add_withdraw()" size="small" class="btn-receive">
     <ion-label>เบิกออก</ion-label>
   </ion-button>
 </ion-buttons>

@@ -1,0 +1,42 @@
+ion-toolbar {
+    ion-title {
+        color: var(--text-dark3);
+        padding: 22px 0 6px;
+    }
+}
+
+ion-content {
+
+    ion-card {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        margin: 0;
+        box-shadow: none;
+
+        ion-label {
+            text-align: center;
+            font-size: 16px;
+            font-weight: var(--text-light);
+            color: var(--text-dark2);
+        }
+    }
+
+    // ion-card:hover,
+    // ion-card:focus,
+    ion-card:active{
+        background: var(--dark-gray-color5);
+    
+        ion-label{
+            font-weight: var(--text-medium);
+        }
+    }
+   .selected {
+        background: var(--dark-gray-color5);
+        ion-label{
+            font-weight: var(--text-medium);
+        }
+    }
+}

@@ -42,11 +42,38 @@ export class ModalShowDraftComponent  implements OnInit {
 
   constructor(
     private modalController: ModalController,
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {}
 
-
+  // alert confirm ลบรายการที่ Draft
+  async openConfirmDeleteDraft() {
+    const alert = await this.alertController.create({
+      cssClass: 'app-alert-button-confirm-red-2',
+      mode: 'md',
+      header: 'Delete',
+      message: `ลบรายการ Draft?`,
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: `ปิดออก`,
+          role: 'cancel',
+          cssClass: 'danger',
+          handler: (blah: any) => {},
+        },
+        {
+          text: `ยืนยัน`,
+          cssClass: 'success',
+          handler: () => {
+            console.log('ยืนยัน');
+            this.close();
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
  
 
   close() {
