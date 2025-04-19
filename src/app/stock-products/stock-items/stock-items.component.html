@@ -24,7 +24,7 @@
         <ion-input placeholder="ค้นหา" (ionInput)="filterItems($event)"></ion-input>
       </div>
       <div class="btn-cc">
-        <ion-button [ngClass]="{ 'active': activeButton === '+เพิ่ม' }" (click)="setActive('+เพิ่ม')">
+        <ion-button [ngClass]="{ 'active': activeButton === '+เพิ่ม' }" (click)="openModalApply()">
           +เพิ่ม
         </ion-button>
       </div>

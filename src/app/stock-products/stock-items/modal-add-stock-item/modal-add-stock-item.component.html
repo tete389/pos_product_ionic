@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="flex-header">
+    <div class="left-head">
+      <p>เพิ่มวัตถุดิบ</p>
+    </div>
+    <div class="right-head">
+      <p>other setting</p>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="flex-left">
+      <div class="img-div">
+        <img src="" alt="abc">
+      </div>
+      <div class="input-group">
+        <label for="name">ชื่อวัตถุดิบ</label>
+        <input type="text" id="name">
+      </div>
+      <div class="input-group">
+        <label for="unit">หน่วยของวัตถุดิบ (Units of Measure)</label>
+        <select id="unit">
+          <option value="Kg">Kg</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="category">ประเภทวัตถุดิบ</label>
+        <select id="category">
+          <option value="เนื้อสัตว์">เนื้อสัตว์</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex-right">
+      <div class="input-group">
+        <label for="code">Code (Auto Generate)</label>
+        <input type="text" id="code" value="ING-0001" disabled>
+      </div>
+      <div class="input-group">
+        <label for="price">ราคาซื้อ</label>
+        <input type="number" id="price" value="250">
+      </div>
+      <div class="input-group">
+        <label for="location">Location</label>
+        <select id="location">
+          <option value="โกดัง 1">โกดัง 1</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="supplier">Supplier</label>
+        <select id="supplier">
+          <option value="Makro">Makro</option>
+        </select>
+      </div>
+
+<div class="input-group-two">
+  <div class="two-cols">
+    <div class="form-block">
+      <label for="maxLevel">Max Level</label>
+      <div class="input-with-unit">
+        <input class="in-left" type="number" id="maxLevel" value="150">
+        <span>Kg</span>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <label for="orderAmount">จำนวนสั่งซื้อ</label>
+      <div class="input-with-unit">
+        <input class="in-right" type="number" id="orderAmount" value="10">
+        <span>Kg</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="input-group">
+        <label>Stock status ranges</label>
+        <div class="range-inputs">
+          <div class="range-input">
+            <input class="input1" type="number" value="25">
+            <span>%</span>
+          </div>
+          <div class="range-input">
+            <input class="input2" type="number" value="50">
+            <span>%</span>
+          </div>
+          <div class="range-input">
+            <input class="input3" type="number" value="100">
+            <span>%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="cancel-btn">ยกเลิก</button>
+    <button class="save-btn">บันทึก</button>
+  </div>
+</div>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-
+import { ModalAddStockItemComponent } from './modal-add-stock-item/modal-add-stock-item.component';
+import {
+  ModalController,
+} from '@ionic/angular/standalone';
 @Component({
   selector: 'app-stock-items',
   standalone: true,
@@ -266,9 +269,9 @@ export class StockItemsComponent implements OnInit {
     // เพิ่มข้อมูลเพิ่มเติมตามต้องการ
   ];
   searchText:string = '';
-  activeButton: string = '';
+  activeButton: string = 'วัตถุดิบ';
   filteredItems = [...this.rawMaterials];
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
   ngOnInit() { 
     this.updateFilterItems();
   }
@@ -295,5 +298,23 @@ export class StockItemsComponent implements OnInit {
     item.location.toLowerCase().includes(this.searchText) ||
     item.supplier.toLowerCase().includes(this.searchText)
   );
+  }
+
+  public async openModalApply() {
+  
+  
+    const modal = await this.modalCtrl.create({
+      component: ModalAddStockItemComponent,
+      cssClass: 'modal-stockItem-add',
+      mode: 'ios',
+      componentProps: { }, // Pass combined index
+    });
+  
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+  
+    if (role === 'confirm') {
+      console.log('confirm cancle');
+    }
   }
 }
