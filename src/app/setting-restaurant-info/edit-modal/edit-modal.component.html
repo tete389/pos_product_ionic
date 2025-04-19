@@ -1,0 +1,17 @@
+    <div class="modal-wrapper">
+      <label>{{ getLabel(field) }}</label>
+      <div class="char-count">{{ value.length }}/{{ maxLength }}</div>
+        <ion-input
+          [(ngModel)]="value"
+          [placeholder]="getPlaceholder(field)"
+          [maxlength]="maxLength"
+          fill="outline"
+          class="input-box"
+        ></ion-input>
+
+
+      <div class="section-3">
+        <ion-button class="closed"(click)="dismiss()">ยกเลิก</ion-button>
+        <ion-button class="apply" (click)="save()">บันทึก</ion-button>
+      </div>
+    </div>

@@ -89,6 +89,7 @@ export class AppComponent implements OnInit {
     { title: 'โต๊ะและโซน', url: '/table-zone', icon: 'paper-plane' },
     { title: 'เมนูขายดี', url: '/best-sale-menu', icon: 'bar-chart' },
     { title: 'ส่วนลดและภาษี', url: '/discounts-taxe', icon: 'bar-chart' },
+    { title: 'ข้อมูลร้านอาหาร', url: '/setting-restaurant-info', icon: 'bar-chart' },
     // { title: 'สต็อคสินค้า', url: '/stock-products', icon: 'cube' },
     // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/archived', icon: 'archive' },

@@ -1,0 +1,46 @@
+.modal-wrapper {
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+  }
+  .char-count {
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  .input-box {
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  .section-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:40px;
+    padding: 0px 20px;
+
+    .closed{
+      width: 140px;
+      height: 45px;
+      --border-radius: 10px;
+      font-size: 16px;
+      --box-shadow: none;
+      --background: #ffffff;
+      color: #11C542;
+      border: 2px solid;
+      border-radius: 10px;
+    }
+    .apply {
+      width: 140px;
+      height: 45px;
+      --border-radius: 10px;
+      font-size: 16px;
+      --box-shadow: none;
+      --background: #11C542;
+      color: #ffffff;
+      border: 2px solid;
+      border-radius: 10px;
+    }
+
+}

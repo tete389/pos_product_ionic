@@ -50,7 +50,12 @@ export const routes: Routes = [
   {
     path: 'stock-products',
     loadChildren:()=> import('./stock-products/stock-products.routes').then((m) => m.stockProductsRoutes),
-  }, 
+  },   
+  {
+    path: 'setting-restaurant-info',
+    loadComponent: () => import('./setting-restaurant-info/setting-restaurant-info.page').then( m => m.SettingRestaurantInfoPage)
+  },
+
 
 
 
