@@ -17,35 +17,43 @@
 
       <ion-list id="stock-list" class="stocked">
         <ion-accordion-group #accordionGroup class="my-custum-accordion-2" mode="md"
-         (ionChange)="change_accordion($event)">
+          (ionChange)="change_accordion($event)">
           <ion-accordion value="stock-val">
             <ion-item lines="none" slot="header" [routerLink]="['/stock-products']" routerLinkActive="selected">
               <ion-icon aria-hidden="true" name="cube-outline"></ion-icon>
               <ion-label class="text-light">สต็อกสินค้า</ion-label>
             </ion-item>
 
-            <div slot="content" *ngFor="let stock_list of arr_stock_list" 
-            (click)="select_stock_path(stock_list.url)" >
-              <div class="accordion-content" 
-               [ngClass]="{'select-acro': path_stock_select === stock_list.url && 
+            <div slot="content" *ngFor="let stock_list of arr_stock_list" (click)="select_stock_path(stock_list.url)">
+              <div class="accordion-content" [ngClass]="{'select-acro': path_stock_select === stock_list.url && 
                mainPath === 'stock-products' }">
                 <ion-icon name="ellipse"></ion-icon>
                 <ion-label> {{stock_list.title}}</ion-label>
               </div>
             </div>
-            
+
           </ion-accordion>
         </ion-accordion-group>
       </ion-list>
 
-      <ion-list id="labels-list">
+      <ion-list id="settings-list">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of arr_settings_list; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+            routerLinkActive="selected">
+            <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- <ion-list id="labels-list">
         <ion-list-header>Labels</ion-list-header>
 
         <ion-item *ngFor="let label of labels" lines="none">
           <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
           <ion-label>{{ label }}</ion-label>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
     </ion-content>
   </ion-menu>
 
@@ -101,10 +109,18 @@
               <ion-icon aria-hidden="true" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
             </ion-item>
           </div>
+          <!-- stock -->
           <div class="ion-text-center" (click)="open_menu_toggle_stock()">
-            <ion-item routerDirection="root" [routerLink]="['/stock-products'+path_stock_select]" lines="none" detail="false"
-              routerLinkActive="selected">
+            <ion-item routerDirection="root" [routerLink]="['/stock-products'+path_stock_select]" lines="none"
+              detail="false" routerLinkActive="selected">
               <ion-icon aria-hidden="true" name="cube-outline"></ion-icon>
+            </ion-item>
+          </div>
+          <!-- settings -->
+          <div class="ion-text-center" *ngFor="let p of arr_settings_list; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon aria-hidden="true" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
             </ion-item>
           </div>
         </ion-list>

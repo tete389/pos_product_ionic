@@ -55,6 +55,11 @@ export const routes: Routes = [
     path: 'setting-restaurant-info',
     loadComponent: () => import('./setting-restaurant-info/setting-restaurant-info.page').then( m => m.SettingRestaurantInfoPage)
   },
+   {
+    path: 'settings',
+    loadChildren:()=> import('./settings/settings.routes').then((m) => m.stockProductsRoutes),
+  },
+
 
 
 

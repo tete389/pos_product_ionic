@@ -103,6 +103,10 @@ export class AppComponent implements OnInit {
     { title: 'Report', url: '/stock-report' },
   ];
 
+  public arr_settings_list = [  
+        { title: 'setting ', url: '/settings', icon: 'settings' },
+  ];
+
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   screen_width: number = 0;

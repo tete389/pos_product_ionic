@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div class="settings-container">
+    <div class="sidebar">
+      <ion-label class="text-sub-head">ตั้งค่า</ion-label>
+      <div class="box-1">
+        <div class="box-img">
+          <img src="" alt="">
+        </div>
+        <span>Wildmutt</span>
+      </div>
+      <ion-list>
+        <ion-item routerLink="restaurant-info" routerLinkActive="active">ข้อมูลร้านอาหาร</ion-item>
+        <ion-item routerLink="receipt" routerLinkActive="active">ตั้งค่าใบเสร็จ</ion-item>
+        <ion-item routerLink="meal-bill" routerLinkActive="active">ตั้งค่าใบแจ้งค่าอาหาร</ion-item>
+        <ion-item routerLink="customer-type" routerLinkActive="active">ประเภทลูกค้า</ion-item>
+        <ion-item routerLink="employee" routerLinkActive="active">พนักงาน</ion-item>
+        <ion-item routerLink="expiration" routerLinkActive="active">วันหมดอายุ</ion-item>
+        <ion-item routerLink="other" routerLinkActive="active">ตั้งค่าอื่นๆ</ion-item>
+      </ion-list>
+    </div>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,21 @@
+/* ข้อมูล Structure ของหน้าตั้งค่า(Setting Page) */
+
+/settings                => ตั้งค่า
+  ├── restaurant-info/   => ตั้งค่า -> ข้อมูลร้าน
+  ├── receipt/           => ตั้งค่า -> ใบเสร็จ
+  ├── meal-bill/         => ตั้งค่า -> ใบแจ้งค่าอาหาร      
+  ├── customer-type/     => ตั้งค่า -> ประเภทลูกค้า
+  ├── employee/          => ตั้งค่า -> พนักงาน  
+  ├── expiration/        => ตั้งค่า -> วันหมดอายุ
+  └── other/             => ตั้งค่า -> ตั้งค่าอื่นๆ
+
+/* generate page for setting page */
+ionic generate page settings
+
+ionic generate page settings/restaurant-info
+ionic generate page settings/receipt
+ionic generate page settings/meal-bill
+ionic generate page settings/customer-type
+ionic generate page settings/employee
+ionic generate page settings/expiration
+ionic generate page settings/other
