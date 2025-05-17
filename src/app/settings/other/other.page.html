@@ -1,9 +1,107 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>other</ion-title>
+    <ion-title>ตั้งค่าอื่นๆ (Other setiing)</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-other
+<div class="settings-section">
+  <h2>การเปิดโต๊ะ และการขาย</h2>
+
+  <div class="card-row">
+    <span>ใส่จำนวนลูกค้าเวลาเปิดโต๊ะ</span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="setting.enableCustomerCount">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="card-row">
+    <span>เปลี่ยน QRcode โต๊ะเมื่อเช็คบิล</span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="setting.changeQROnCheckout">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="card-row select-row">
+    <label for="tableLayout">Table layout</label>
+    <select id="tableLayout" [(ngModel)]="setting.tableLayout">
+      <option value="2">2 column</option>
+      <option value="3">3 column</option>
+      <option value="4">4 column</option>
+    </select>
+  </div>
+
+  <div class="card-row">
+    <span>ฟังก์ชันการ Update สถานะอาหาร</span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="setting.autoUpdateFoodStatus">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+<div class="settings-section">
+  <h2>การจับเวลา</h2>
+
+<div class="card-row input-row">
+  <label>การจับเวลาทานอาหาร</label>
+  <div class="input-group">
+    <input type="number" [(ngModel)]="setting.mealTime" />
+    <span>นาที</span>
+  </div>
+</div>
+
+<div class="card-row input-row">
+  <label>แจ้งเตือนก่อนครบเวลาทานอาหาร</label>
+  <div class="input-group">
+    <input type="number" [(ngModel)]="setting.mealTimeWarning" />
+    <span>นาที</span>
+  </div>
+</div>
+
+  <div class="card-row">
+    <span>เปิดใช้งานระบบแจ้งเตือน</span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="setting.enableTimerAlert">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+<div class="settings-section">
+  <h2>สกุลเงิน และ ภาษีมูลค่าเพิ่ม</h2>
+
+  <div class="card-row select-row">
+    <label for="currency">Currency</label>
+    <select id="currency" [(ngModel)]="setting.currency">
+      <option value="THB">THB</option>
+      <option value="USD">USD</option>
+      <option value="JPY">JPY</option>
+    </select>
+  </div>
+
+  <div class="card-row select-row">
+    <label for="taxOption">Tax options</label>
+    <select id="taxOption" [(ngModel)]="setting.taxOption">
+      <option value="inclusive">Inclusive (Vat ใน)</option>
+      <option value="exclusive">Exclusive (Vat นอก)</option>
+    </select>
+  </div>
+
+  
+</div>
+<div class="settings-section">
+  <h2>ภาษา</h2>
+  <div class="card-row select-row">
+    <label for="taxOption">Tax options</label>
+    <select id="taxOption" >
+      <option value="inclusive">ไทย</option>
+      <option value="exclusive">Eng</option>
+    </select>
+  </div>
+  
+</div>
+
 </ion-content>
