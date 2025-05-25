@@ -1,9 +1,90 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>restaurant-info</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-restaurant-info
+  <div class="header">
+    <div class="title-text">
+      <p>ข้อมูลร้านอาหาร</p>
+    </div>
+
+    <div class="card-section">
+      <ion-card>
+        <div class="flex-custom">
+
+
+          <div class="img-profile">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D560BAQGeCe68TLYfMQ/company-logo_200_200/company-logo_200_200/0/1706241527243/pizza_hut_th_logo?e=2147483647&v=beta&t=xTli3h6U2eeIeBlOpoJp5lltcW7_fOPabd7waOqJdDg"
+              alt="" >
+          </div>
+          <div class="infomation">
+            <p class="name">Macdonal shabu buffet</p>
+            <p class="phone">Phone: <span>+66******9734</span> </p>
+          </div>
+
+
+        </div>
+      </ion-card>
+    </div>
+
+    <div class="info-list">
+
+      <ion-card class="info-row" (click)="openEditModal('name', restaurantInfo.name)">
+        <span class="label">ชื่อร้าน:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.name }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('phone', restaurantInfo.phone)">
+        <span class="label">เบอร์โทรศัพท์:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.phone }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('email', restaurantInfo.email)">
+        <span class="label">อีเมล:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.email }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('taxId', restaurantInfo.taxId)">
+        <span class="label">เลขประจำตัวผู้เสียภาษีอากรของผู้ประกอบการร้านค้า:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.taxId }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('address', restaurantInfo.address)">
+        <span class="label">ที่อยู่ร้าน:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.address }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('generalAddress', restaurantInfo.generalAddress)">
+        <span class="label">ที่อยู่ร้านที่ดำเนินการให้บริการทั่วไป:</span>
+        <div class="value-with-icon">
+          <span class="value">{{ restaurantInfo.generalAddress }}</span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+      <ion-card class="info-row" (click)="openEditModal('website', restaurantInfo.website)">
+        <span class="label">Link Fanpage or Website:</span>
+        <div class="value-with-icon">
+          <span class="value">
+            <a [href]="restaurantInfo.website" target="_blank">{{ restaurantInfo.website }}</a>
+          </span>
+          <ion-icon name="chevron-forward-outline" class="chevron-icon"></ion-icon>
+        </div>
+      </ion-card>
+    
+    </div>
+    
+</div>
 </ion-content>
