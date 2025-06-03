@@ -9,6 +9,8 @@ import {
   IonLabel,
   IonList,
   IonItem,
+  IonCard,
+  IonCardContent,
 } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 
@@ -25,6 +27,8 @@ import { RouterModule } from '@angular/router';
     IonLabel,
     IonList,
     IonItem,
+    IonCard,
+    IonCardContent,
     CommonModule,
     FormsModule,
 
