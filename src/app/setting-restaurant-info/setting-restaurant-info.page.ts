@@ -5,7 +5,7 @@ import { IonCard,IonCol,IonRow,IonContent, IonHeader, IonTitle, IonToolbar , Ion
   ,IonInfiniteScrollContent,IonList,IonItem,IonButtons,IonMenuButton,IonInput,ModalController,
 } from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { EditModalComponent } from '../settings/restaurant-info/edit-modal/edit-modal.component';
 @Component({
   selector: 'app-setting-restaurant-info',
   templateUrl: './setting-restaurant-info.page.html',

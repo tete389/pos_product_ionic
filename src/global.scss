@@ -138,11 +138,12 @@
   --border-radius: 20px;
 }
 
-.modal-stockItem-add{
+.modal-stockItem-add {
   --width: 50% !important;
   --height: 90% !important;
   --border-radius: 20px;
 }
+
 .modal-pos-cancle {
 
   font-family: "kanit";
@@ -150,7 +151,8 @@
   --height: 90% !important;
   --border-radius: 20px;
 }
-.edit-setting-res{
+
+.edit-setting-res {
   --width: 50% !important;
   --height: 30% !important;
   --border-radius: 15px;
@@ -986,6 +988,13 @@ ion-input.custom-ion-input-number.active-edit input[type="number"] {
   border: 1px solid var(--dark-gray-color);
 }
 
+ion-input.custom-ion-input-name.input-selection input[type="text"],
+ion-input.custom-ion-input-number.input-selection input[type="number"],
+ion-textarea.custom-textarea.input-selection {
+  background: var(--white-color);
+  border: 1px solid var(--primary-light);
+}
+
 // ซ่อนลูกศร ขึ้น-ลง ใน input type number
 
 ion-input.custom-ion-input-number input[type="number"],
@@ -1691,20 +1700,20 @@ ion-accordion-group.my-custum-accordion-2 {
       align-items: center;
       justify-content: center;
 
-    height: 100%;
+      height: 100%;
 
-    img {
-      width: 120px;
-      height: 120px;
-    }
+      img {
+        width: 120px;
+        height: 120px;
+      }
 
-    span {
-      font-size: 30px;
-      color: var(--text-dark2);
-      font-weight: var(--text-medium);
+      span {
+        font-size: 30px;
+        color: var(--text-dark2);
+        font-weight: var(--text-medium);
+      }
     }
   }
-}
 }
 
 //===============================================

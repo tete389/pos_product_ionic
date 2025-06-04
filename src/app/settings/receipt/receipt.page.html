@@ -1,9 +1,311 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>receipt</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-receipt
+
+  <div class="box-main">
+
+    <!-- ซ้าย: แสดงตัวอย่างใบเสร็จ -->
+    <div class="box-left">
+
+      <div class="box-receipt">
+        1
+      </div>
+
+      <!-- <div [ngClass]="{'bg-blue-100': activeInput() === 'storeName'}">
+        <strong>ชื่อร้าน:</strong> {{ formGroup.value.storeName }}
+      </div>
+      <div [ngClass]="{'bg-blue-100': activeInput() === 'branchName'}">
+        <strong>สาขา:</strong> {{ formGroup.value.branchName }}
+      </div>
+      <div [ngClass]="{'bg-blue-100': activeInput() === 'branchCode'}">
+        <strong>รหัสสาขา:</strong> {{ formGroup.value.branchCode }}
+      </div>
+      <div [ngClass]="{'bg-blue-100': activeInput() === 'address'}">
+        <strong>ที่อยู่:</strong> {{ formGroup.value.address }}
+      </div> -->
+    </div>
+
+    <div class="box-right">
+
+      <form [formGroup]="formGroup">
+
+        <div class="row-right-setting">
+          <ion-label>ตั้งค่าใบเสร็จ</ion-label>
+        </div>
+
+        <!-- 1. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">1. ภาษาของใบเสร็จที่เลือกใช้ (ตอนพิมพ์)</ion-label>
+          </div>
+          <div class="popop">
+            <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" interface="popover"
+              formControlName="receipt_language">
+              <ion-select-option value="th">ภาษาไทย (TH)</ion-select-option>
+              <ion-select-option value="en">English (EN)</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <!-- 2. -->
+        <div class="row-right-setting-logo">
+          <div class="box-label">
+            <ion-label class="text-sub-title">2. โลโก้</ion-label>
+          </div>
+          <div class="box-img-main">
+            <div class="box-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+            <ion-icon (click)="img_pic.click()" class="btn-upload-logo" name="camera"></ion-icon>
+            <input type="file" #img_pic (change)="fileNameChanged($event)" style="display: none" id="img_pic"
+              accept="image/x-png, image/gif, image/jpeg" />
+          </div>
+        </div>
+
+        <!-- 3. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">3. แสดง LOGO ในใบเสร็จ</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_logo_on_receipt" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_logo_on_receipt" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_logo_on_receipt" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 4. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">4. ชื่อร้าน</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'store_name'}"
+              formControlName="store_name" (ionFocus)="setActiveInput('store_name')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 5. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">5. สาขา (Branch Name)</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'branch_name'}"
+              formControlName="branch_name" (ionFocus)="setActiveInput('branch_name')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 6. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">6. รหัสสาขา (Branch Code)</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'branch_code'}"
+              formControlName="branch_code" (ionFocus)="setActiveInput('branch_code')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+
+        <!-- 7. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">7. ที่อยู่ร้าน</ion-label>
+            <ion-label class="text-sub-lenght">150/150</ion-label>
+          </div>
+          <div class="box-textarea">
+            <ion-textarea class="custom-textarea" [ngClass]="{'input-selection': activeInput() === 'store_address'}"
+              formControlName="store_address" (ionFocus)="setActiveInput('store_address')"
+              (ionBlur)="clearActiveInput()" class="custom-textarea" rows="3">
+            </ion-textarea>
+          </div>
+          <div class="box-checkbox">
+            <ion-checkbox labelPlacement="end" class="box-box"
+              formControlName="use_store_address">ใช้ที่อยู่ตามข้อมูลร้าน</ion-checkbox>
+          </div>
+        </div>
+
+        <!-- 8. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">8. เบอร์โทร</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="number" [ngClass]="{'input-selection': activeInput() === 'store_phone'}"
+              formControlName="store_phone" (ionFocus)="setActiveInput('store_phone')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-number" placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 9. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">9. แสดงการปัดเศษ</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_rounding" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_rounding" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_rounding" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 10. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">10. แสดงราคาหลังส่วนลด</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_discount_refund" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_discount_refund" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_discount_refund" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 11. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">11. แสดงราคาก่อนปัด</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_price_before_rounding" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_price_before_rounding" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_price_before_rounding" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 12. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">12. Member ที่ใช้รับคะแนน</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_member_point_earning" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_member_point_earning" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_member_point_earning" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 13. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">13. คะแนนคงเหลือ</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_point_expiry" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_point_expiry" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_point_expiry" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 14. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">14. ข้อความ *VAT Included / Excluded</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_vat_note" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_vat_note" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_vat_note" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 15. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">15. ข้อความท้ายใบเสร็จ</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'receipt_footer_text'}"
+              formControlName="receipt_footer_text" (ionFocus)="setActiveInput('receipt_footer_text')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 16. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">16. แสดงข้อความท้ายใบเสร็จ</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_receipt_footer_text" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_receipt_footer_text" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_receipt_footer_text" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 17. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">17. แสดงเฉพาะประเภทบุฟเฟ่ต์ที่ลูกค้าสั่ง</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_store_promotion_message" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_store_promotion_message" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_store_promotion_message" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+        <div class="box-text-detail">
+          <p>* สำหรับร้าน Buffet ที่มีเมนูเยอะ หากแสดงทุกจานในใบเสร็จ อาจทำให้ใบเสร็จ ยาวเกินไป และ อ่านยาก
+            เนื่องจากส่วนใหญ่ราคาต่อจานจะเป็น 0 บาท หรือรวมอยู่ในราคาบุฟเฟ่ต์แล้ว
+            โดยให้แสดงเฉพาะประเภทบุฟเฟ่ต์ที่ลูกค้า เลือกหรือสั่ง</p>
+        </div>
+
+        <!-- 18. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">18. ส่งใบเสร็จเข้าอีเมลอัตโนมัติ (E-Receipt)</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_e_receipt" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_e_receipt" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_e_receipt" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <div class="box-text-detail">
+          <p>เมื่อร้านค้าเพิ่มข้อมูลสมาชิกตอนเช็คบิล ระบบควรสามารถส่งใบเสร็จไปยังอีเมลของสมาชิกโดยอัตโนมัติ
+            เพื่อลดการใช้กระดาษ และเพิ่มความสะดวกให้ลูกค้า</p>
+        </div>
+
+
+
+        <!-- btn save -->
+        <!-- <div class="content-bottom">
+
+          <div class="box-bottom-left">
+            <ion-button *ngIf="isEdited" (click)="resetForm()">cancels</ion-button>
+          </div>
+          <div class="box-bottom-right">
+            <ion-button (click)="save()" [disabled]="!isEdited">save</ion-button>
+          </div>
+
+
+
+        </div> -->
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
 </ion-content>
