@@ -10,35 +10,52 @@
 
   <div class="card-row">
     <span>ใส่จำนวนลูกค้าเวลาเปิดโต๊ะ</span>
-    <label class="switch">
+
+            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" color="success" (ionChange)="openprintSystem($event)">
+              <ion-label *ngIf="!ischangeToggle" class="close">ไม่ใช้</ion-label>
+              <ion-label *ngIf="ischangeToggle" class="open">ใช้</ion-label>
+            </ion-toggle>
+
+    <!-- <label class="switch">
       <input type="checkbox" [(ngModel)]="setting.enableCustomerCount">
       <span class="slider"></span>
-    </label>
+    </label> -->
   </div>
 
   <div class="card-row">
     <span>เปลี่ยน QRcode โต๊ะเมื่อเช็คบิล</span>
-    <label class="switch">
-      <input type="checkbox" [(ngModel)]="setting.changeQROnCheckout">
-      <span class="slider"></span>
-    </label>
+            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" color="success" (ionChange)="openprintSystem($event)">
+              <ion-label *ngIf="!ischangeToggle" class="close">ไม่ใช้</ion-label>
+              <ion-label *ngIf="ischangeToggle" class="open">ใช้</ion-label>
+            </ion-toggle>
   </div>
 
-  <div class="card-row select-row">
-    <label for="tableLayout">Table layout</label>
-    <select id="tableLayout" [(ngModel)]="setting.tableLayout">
-      <option value="2">2 column</option>
-      <option value="3">3 column</option>
-      <option value="4">4 column</option>
-    </select>
+<div class="card-row select-row">
+  <label for="tableLayout">Table layout</label>
+
+  <div class="custom-select-wrapper">
+    <ion-select
+      interface="popover"
+      id="tableLayout"
+      [(ngModel)]="setting.tableLayout"
+      placeholder="Select layout"
+      mode="ios"
+      toggleIcon="chevron-forward-outline"
+    >
+      <ion-select-option value="2">2 column</ion-select-option>
+      <ion-select-option value="3">3 column</ion-select-option>
+      <ion-select-option value="4">4 column</ion-select-option>
+    </ion-select>
   </div>
+</div>
+
 
   <div class="card-row">
     <span>ฟังก์ชันการ Update สถานะอาหาร</span>
-    <label class="switch">
-      <input type="checkbox" [(ngModel)]="setting.autoUpdateFoodStatus">
-      <span class="slider"></span>
-    </label>
+            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" color="success" (ionChange)="openprintSystem($event)">
+              <ion-label *ngIf="!ischangeToggle" class="close">ไม่ใช้</ion-label>
+              <ion-label *ngIf="ischangeToggle" class="open">ใช้</ion-label>
+            </ion-toggle>
   </div>
 </div>
 
@@ -46,62 +63,94 @@
   <h2>การจับเวลา</h2>
 
 <div class="card-row input-row">
-  <label>การจับเวลาทานอาหาร</label>
-  <div class="input-group">
+  <label>การจับเวลาทานอาหาร
+      <div class="input-group">
     <input type="number" [(ngModel)]="setting.mealTime" />
     <span>นาที</span>
   </div>
+  </label>
 </div>
 
 <div class="card-row input-row">
-  <label>แจ้งเตือนก่อนครบเวลาทานอาหาร</label>
-  <div class="input-group">
+  <label>แจ้งเตือนก่อนครบเวลาทานอาหาร
+      <div class="input-group">
     <input type="number" [(ngModel)]="setting.mealTimeWarning" />
-    <span>นาที</span>
+        <span>นาที</span>
   </div>
+  </label>
 </div>
 
   <div class="card-row">
     <span>เปิดใช้งานระบบแจ้งเตือน</span>
-    <label class="switch">
-      <input type="checkbox" [(ngModel)]="setting.enableTimerAlert">
-      <span class="slider"></span>
-    </label>
+            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" color="success" (ionChange)="openprintSystem($event)">
+              <ion-label *ngIf="!ischangeToggle" class="close">ไม่ใช้</ion-label>
+              <ion-label *ngIf="ischangeToggle" class="open">ใช้</ion-label>
+            </ion-toggle>
   </div>
 </div>
 
 <div class="settings-section">
   <h2>สกุลเงิน และ ภาษีมูลค่าเพิ่ม</h2>
 
-  <div class="card-row select-row">
-    <label for="currency">Currency</label>
-    <select id="currency" [(ngModel)]="setting.currency">
-      <option value="THB">THB</option>
-      <option value="USD">USD</option>
-      <option value="JPY">JPY</option>
-    </select>
-  </div>
+<div class="card-row select-row"> 
+  <label for="currency">Currency</label>
+
+  <ion-select
+    interface="popover"
+    id="currency"
+    class="currency"
+    [(ngModel)]="setting.currency"
+    mode="ios"
+    toggleIcon="chevron-down-outline"
+  >
+    <ion-select-option value="THB">THB</ion-select-option>
+    <ion-select-option value="USD">USD</ion-select-option>
+    <ion-select-option value="JPY">JPY</ion-select-option>
+  </ion-select>
+</div>
 
   <div class="card-row select-row">
     <label for="taxOption">Tax options</label>
-    <select id="taxOption" [(ngModel)]="setting.taxOption">
-      <option value="inclusive">Inclusive (Vat ใน)</option>
-      <option value="exclusive">Exclusive (Vat นอก)</option>
-    </select>
+      <ion-select
+    interface="popover"
+    id="currency"
+    class="currency"
+    [(ngModel)]="setting.taxOption"
+    mode="ios"
+    toggleIcon="chevron-down-outline"
+  >
+       <ion-select-option value="inclusive">Inclusive (Vat ใน)</ion-select-option>
+      <ion-select-option value="exclusive">Exclusive (Vat นอก)</ion-select-option>
+    </ion-select>
   </div>
 
-  
+    <div class="card-row">
+    <span>เปิดใช้งานระบบภาษีมูลค่าเพิ่ม</span>
+            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" color="success" (ionChange)="openprintSystem($event)">
+              <ion-label *ngIf="!ischangeToggle" class="close">ไม่ใช้</ion-label>
+              <ion-label *ngIf="ischangeToggle" class="open">ใช้</ion-label>
+            </ion-toggle>
+  </div>
 </div>
 <div class="settings-section">
   <h2>ภาษา</h2>
   <div class="card-row select-row">
-    <label for="taxOption">Tax options</label>
-    <select id="taxOption" >
-      <option value="inclusive">ไทย</option>
-      <option value="exclusive">Eng</option>
-    </select>
+    <label for="taxOption">ภาษา</label>
+      <ion-select
+    interface="popover"
+    id="currency"
+    class="currency"
+    [(ngModel)]="setting.taxOption"
+    mode="ios"
+    toggleIcon="chevron-down-outline"
+  >
+      <ion-select-option value="inclusive">ไทย</ion-select-option >
+      <ion-select-option value="exclusive">Eng</ion-select-option >
+    </ion-select>
   </div>
   
 </div>
-
+<div class="settings-section">
+  </div>
+  
 </ion-content>

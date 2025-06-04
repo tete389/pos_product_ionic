@@ -1,17 +1,74 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { IonicModule } from '@ionic/angular'; 
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  IonContent,
+  IonButtons,
+  IonButton,
+  IonMenuButton,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonLabel,
+  IonSearchbar,
+  IonSelect,
+  IonSelectOption,
+  IonCard,
+  IonCardContent,
+  IonInput,
+  IonList,
+  IonItem,
+  IonToggle,
+  IonTextarea,
+  IonCheckbox,
+  IonAccordionGroup,
+  IonAccordion,
+  IonIcon,
+  IonRadioGroup,
+  IonRadio,
+  ModalController,
+  AlertController,
+} from '@ionic/angular/standalone';
+
 @Component({
   selector: 'app-other',
   templateUrl: './other.page.html',
   styleUrls: ['./other.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,]
+  imports: [
+    IonContent,
+    IonButtons,
+    IonButton,
+    IonMenuButton,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonLabel,
+    IonSearchbar,
+    IonSelect,
+    IonSelectOption,
+    IonCard,
+    IonCardContent,
+    IonInput,
+    IonList,
+    IonItem,
+    IonToggle,
+    IonTextarea,
+    IonCheckbox,
+    IonAccordionGroup,
+    IonAccordion,
+    IonIcon,
+    IonRadioGroup,
+    IonRadio,
+  ],
 })
 export class OtherPage implements OnInit {
 
+  ischangeToggle: boolean = false;
+  ischangeToggle2: boolean = false;
   constructor() { }
   setting = {
     enableCustomerCount: true,
@@ -26,5 +83,7 @@ export class OtherPage implements OnInit {
   };
   ngOnInit() {
   }
-
+  openprintSystem(event: any) {
+    console.log(event.detail.checked);
+  }
 }

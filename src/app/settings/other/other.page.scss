@@ -3,7 +3,34 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+ion-toggle {
+  transform: scale(0.8); // ย่อขนาด toggle ทั้งหมดลงเล็กน้อย
 
+  &::part(track) {
+    width: 80px; // ความกว้างของ toggle โดยรวม
+    padding: 0 5px;
+  }
+
+}
+  ion-label,
+  ion-label.close {
+    position: absolute;
+    top: 7px;
+    left: 60px;
+    font-size: 12px;
+    z-index: 1;
+  }
+  ion-label.open {
+    position: absolute;
+    top: 7px;
+    left: 50px;
+    font-size: 12px;
+    z-index: 1;
+  }
+  ion-label {
+    left: 10px;
+    color: white;
+  }
 /* Container หลักของแต่ละหมวด */
 .settings-section {
   background-color: #f0f0f0; /* สีเทาอ่อน */
@@ -33,14 +60,29 @@ body {
 }
 
 /* สไตล์ select */
-.select-row select {
+.select-row ion-select  {
   width: auto;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 0.4rem;
   background-color: #fff;
 }
 
+.select-row ion-select.currency {
+  width: 200px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;        /* จัดข้อความกึ่งกลางแนวนอน */
+  --padding-start: 10px;      /* ลบ padding ด้านซ้าย (ถ้ามี) */
+}
+
+
+// .custom-select-icon {
+//   position: absolute;
+//   right: 12px;
+//    top: 50%;
+//   font-size: 20px;
+//   pointer-events: none;
+//   color: var(--ion-color-medium);
+// }
 /* Toggle Switch */
 .switch {
   position: relative;
@@ -97,6 +139,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+      display: ruby;
+      padding-left: 50px;
 }
 
 .input-group input {
@@ -106,6 +150,10 @@ body {
   border-radius: 6px;
   background-color: #f2f2f2;
   text-align: right;
+  color: #5e8fe9;
+}
+.input-group span {
+  width: 80px;
 }
 
 .input-group span {
