@@ -5,6 +5,7 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import {
   IonContent,
@@ -19,7 +20,7 @@ import {
   IonIcon,
   IonInput,
   IonTextarea,
-  IonCheckbox
+  IonCheckbox,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -59,30 +60,33 @@ export class ReceiptPage implements OnInit {
   isEdited: boolean = true;
 
   constructor(private fb: FormBuilder) {
+
+
+    // ถ้าจะใช้ validate ให้ครอบด้วย [] ก่อน
     this.formGroup = this.fb.group({
       receipt_language: 'th',
       store_logo: '',
       show_logo_on_receipt: true,
-      store_name:'',
+      store_name: ['Hello Boi Cafe', [Validators.maxLength(50)]],
       // store_name: this.fb.group({
       //   th: [''],
       //   en: [''],
       // }),
-      branch_name: '',
+      branch_name: 'สาขาเมืองเก่าภูเก็ต',
       branch_code: '',
       store_address: '', //7
       use_store_address: true, //7.1
       store_phone: '', //8
-      show_rounding: true,//9
-      show_discount_refund: true,//10
-      show_price_before_rounding: true,//11
-      show_member_point_earning: true,//12
-      show_point_expiry: true,//13
-      show_vat_note: true,//14
-      receipt_footer_text: '',//15
-      show_receipt_footer_text: true,//16
-      show_store_promotion_message: true,//17
-      show_e_receipt: true,//18
+      show_rounding: true, //9
+      show_discount_refund: true, //10
+      show_price_before_rounding: true, //11
+      show_member_point_earning: true, //12
+      show_point_expiry: true, //13
+      show_vat_note: true, //14
+      receipt_footer_text: '', //15
+      show_receipt_footer_text: true, //16
+      show_store_promotion_message: true, //17
+      show_e_receipt: true, //18
     });
   }
 

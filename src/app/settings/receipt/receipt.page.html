@@ -6,21 +6,163 @@
     <div class="box-left">
 
       <div class="box-receipt">
-        1
+
+        <div class="row-left-setting">
+
+          <div class="box-show-img-main">
+            <div class="box-show-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+          </div>
+
+          <div class="box-show-label-store">
+            <ion-label class="text-header">ใบเสร็จรับเงิน</ion-label>
+            <ion-label class="text-header"    [ngClass]="{'label-selection': activeInput() === 'store_name'}">{{ formGroup.value.store_name }}</ion-label>
+            <ion-label class="text-sub-title" [ngClass]="{'label-selection': activeInput() === 'branch_name'}">({{ formGroup.value.branch_name }})</ion-label>
+            <ion-label class="text-title">ที่อยู่: 123 / 456 หมู่ 12 ต.ศิลา จ.ขอนแก่น 40000, Facebook Shabu
+              Shabu-กังสดาล</ion-label>
+            <ion-label class="text-title">โทร: 098-765-4321</ion-label>
+            <ion-label class="text-title">เลขประจำตัวผู้เสียภาษี: 0123456789123</ion-label>
+          </div>
+
+          <div class="box-show-label-between-main">
+
+            <div class="box-show-label-between">
+              <ion-label class="text-left">เลขที่ใบเสร็จ :</ion-label>
+              <ion-label class="text-right">CNX-01-20250301-000001</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">ทานที่ร้าน :</ion-label>
+              <ion-label class="text-right">A12</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">ชื่อพนักงาน :</ion-label>
+              <ion-label class="text-right">tanin</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">Guest :</ion-label>
+              <ion-label class="text-right">2</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">วันที่ (Check out) :</ion-label>
+              <ion-label class="text-right">12-12-2024 17:00</ion-label>
+            </div>
+
+
+
+
+          </div>
+
+          <div class="box-show-label-items">
+            <div class="box-head">
+              <ion-label>รายการอาหาร</ion-label>
+              <ion-label>QTY</ion-label>
+              <ion-label>ราคารวม</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Buffet 299 (ผู้ใหญ่)</ion-label>
+              <ion-label>2</ion-label>
+              <ion-label>598.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label> - Topping 1</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>0</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label> - Topping 2</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>20.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-total-main">
+
+            <div class="box-show-label-between-total">
+              <ion-label>Sub total</ion-label>
+              <ion-label>750.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Discount (-10%)</ion-label>
+              <ion-label>-75.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>ราคาหลังส่วนลด</ion-label>
+              <ion-label>675.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Service charge (+10%)</ion-label>
+              <ion-label>+67.50</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Vat 7% (+7%)</ion-label>
+              <ion-label>+51.96</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Rounding</ion-label>
+              <ion-label>-0.46</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-net-total-main">
+            <div class="box-show-label-between-net-total">
+              <ion-label>Net Total</ion-label>
+              <ion-label>1000.00</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-total-main">
+
+            <div class="box-show-label-between-total">
+              <ion-label>รับมา (เงินสด)</ion-label>
+              <ion-label>1000.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>เงินทอน</ion-label>
+              <ion-label>206.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>สมาชิก</ion-label>
+              <ion-label>(อิว) 098-129-9734</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>ได้รับ point</ion-label>
+              <ion-label>+250 P</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>คะแนนคงเหลือ</ion-label>
+              <ion-label>2,460 P</ion-label>
+            </div>
+
+          </div>
+
+          <div class="box-show-label-footer">
+            <ion-label class="text-title">VAT EXCLOUDED</ion-label>
+            <ion-label class="text-header">ขอบคุณที่ใช้บริการค่ะ</ion-label>
+            <ion-label class="text-title">Powered by MY POS</ion-label>
+          </div>
+
+
+        </div>
+
       </div>
 
-      <!-- <div [ngClass]="{'bg-blue-100': activeInput() === 'storeName'}">
-        <strong>ชื่อร้าน:</strong> {{ formGroup.value.storeName }}
-      </div>
-      <div [ngClass]="{'bg-blue-100': activeInput() === 'branchName'}">
-        <strong>สาขา:</strong> {{ formGroup.value.branchName }}
-      </div>
-      <div [ngClass]="{'bg-blue-100': activeInput() === 'branchCode'}">
-        <strong>รหัสสาขา:</strong> {{ formGroup.value.branchCode }}
-      </div>
-      <div [ngClass]="{'bg-blue-100': activeInput() === 'address'}">
-        <strong>ที่อยู่:</strong> {{ formGroup.value.address }}
-      </div> -->
+
     </div>
 
     <div class="box-right">
@@ -78,10 +220,10 @@
         <div class="row-right-setting-input">
           <div class="box-label-between">
             <ion-label class="text-sub-title">4. ชื่อร้าน</ion-label>
-            <ion-label class="text-sub-lenght">50/50</ion-label>
+            <ion-label class="text-sub-lenght">{{ formGroup.get('store_name')?.value?.length || 0 }}/50</ion-label>
           </div>
           <div class="box-input">
-            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'store_name'}"
+            <ion-input maxlength="50" type="text" [ngClass]="{'input-selection': activeInput() === 'store_name'}"
               formControlName="store_name" (ionFocus)="setActiveInput('store_name')" (ionBlur)="clearActiveInput()"
               class="custom-ion-input-name " placeholder=""></ion-input>
           </div>
@@ -230,8 +372,8 @@
           </div>
           <div class="box-input">
             <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'receipt_footer_text'}"
-              formControlName="receipt_footer_text" (ionFocus)="setActiveInput('receipt_footer_text')" (ionBlur)="clearActiveInput()"
-              class="custom-ion-input-name " placeholder=""></ion-input>
+              formControlName="receipt_footer_text" (ionFocus)="setActiveInput('receipt_footer_text')"
+              (ionBlur)="clearActiveInput()" class="custom-ion-input-name " placeholder=""></ion-input>
           </div>
         </div>
 
