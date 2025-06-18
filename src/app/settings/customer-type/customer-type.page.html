@@ -1,76 +1,64 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ประเภทลูกค้า</ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="success">
-        <ion-label>การเปิดใช้งาน</ion-label>
-        <ion-toggle color="success" checked></ion-toggle>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="page-header">
+  <div class="page-title">ประเภทลูกค้า</div>
+  <div class="page-actions">
+    <span class="toggle-label">การเปิดใช้งาน</span>
+    <div class="custom-toggle" [class.active]="isActive" (click)="isActive = !isActive">
+      <div class="toggle-text">{{ isActive ? 'ใช้งาน' : 'ไม่ใช้งาน' }}</div>
+      <div class="toggle-handle"></div>
+    </div>
+  </div>
+</div>
 
 <ion-content>
   <div class="customer-type-list">
     <ion-card *ngFor="let item of customerTypes; let i = index">
       <ion-card-content>
         <ion-grid>
-          <ion-row class="ion-align-items-center">
-            <ion-col size="5">
+          <ion-row>
+            <ion-col class="course-name">
               <div class="label-heading">ชื่อประเภทลูกค้า / Course</div>
-              <ion-input
-                [(ngModel)]="item.courseName"
-                [readonly]="!item.editMode"
-              ></ion-input>
+              <ion-input [(ngModel)]="item.courseName" [readonly]="!item.editMode"></ion-input>
             </ion-col>
-            <ion-col size="2">
-              <div class="label-heading">ราคาผู้ใหญ่</div>
-              <ion-input
-                type="number"
-                [(ngModel)]="item.adultPrice"
-                [readonly]="!item.editMode"
-              ></ion-input>
-            </ion-col>
-            <ion-col size="1" class="currency-label">บาท</ion-col>
-            <ion-col size="2">
-              <div class="label-heading">ราคาเด็ก</div>
-              <ion-input
-                type="number"
-                [(ngModel)]="item.childPrice"
-                [readonly]="!item.editMode"
-              ></ion-input>
-            </ion-col>
-            <ion-col size="1" class="currency-label">บาท</ion-col>
-<ion-col size="1" class="status-col">
-  <div class="label-heading">สถานะ</div>
-  <div class="status-inner">
-    <div class="toggle-wrapper">
-      <span class="toggle-label-text">
-        {{ item.visible ? 'Show' : 'Hide' }}
-      </span>
-      <ion-toggle
-        [(ngModel)]="item.visible"
-        (ionChange)="toggleStatus(item)"
-        [color]="item.visible ? 'primary' : 'medium'"
-        class="status-toggle-with-label"
-      ></ion-toggle>
-    </div>
 
-    <div class="edit-group" *ngIf="!item.editMode">
-      <ion-icon
-        name="create-outline"
-        class="edit-icon"
-        (click)="enterEditMode(item)"
-      ></ion-icon>
-    </div>
+            <ion-col class="adult-price">
+              <div class="label-heading">ราคาผู้ใหญ่</div>
+              <div class="price-input-wrapper">
+                <ion-input type="number" [(ngModel)]="item.adultPrice" [readonly]="!item.editMode"></ion-input>
+                <span class="price-unit">บาท</span>
+              </div>
+            </ion-col>
+
+
+
+            <ion-col class="child-price">
+              <div class="label-heading">ราคาเด็ก</div>
+              <div class="price-input-wrapper">
+                <ion-input type="number" [(ngModel)]="item.childPrice" [readonly]="!item.editMode"></ion-input>
+                <span class="price-unit">บาท</span>
+              </div>
+            </ion-col>
+
+
+
+            <ion-col class="status-col">
+              <div class="label-heading">สถานะ</div>
+              <div class="status-inner">
+                <div class="custom-toggle toggle-blue" [class.active]="item.visible"
+                  (click)="item.visible = !item.visible; toggleStatus(item)">
+                  <div class="toggle-text">{{ item.visible ? 'Show' : 'Hide' }}</div>
+                  <div class="toggle-handle"></div>
+                </div>
+
+
+              </div>
+            </ion-col>
+<ion-col class="edit-icon-col">
+  <div class="edit-flex">
+    <ion-icon name="create-outline" class="edit-icon" (click)="enterEditMode(item)" *ngIf="!item.editMode"></ion-icon>
 
     <div class="edit-actions" *ngIf="item.editMode">
-      <ion-button size="small" color="primary" (click)="saveEdit(item)">
-        บันทึก
-      </ion-button>
-      <ion-button size="small" fill="outline" (click)="cancelEdit(item)">
-        ยกเลิก
-      </ion-button>
+      <ion-button class="save" (click)="saveEdit(item)">บันทึก</ion-button>
+      <ion-button class="cancel" (click)="cancelEdit(item)">ยกเลิก</ion-button>
     </div>
   </div>
 </ion-col>

@@ -1,9 +1,111 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>other</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="setting-section">
+    <div class="section-title">ตั้งค่าอื่นๆ (Other setting)</div>
 
-<ion-content [fullscreen]="true">
-other
+    <div class="section-subtitle">การเปิดโต๊ะ และการขาย</div>
+    <div class="setting-list">
+      <div class="setting-item">
+        <div class="item-label">ใส่จำนวนลูกค้าเวลาเปิดโต๊ะ</div>
+        <div class="custom-toggle" [class.active]="toggleOpenTable" (click)="toggleOpenTable = !toggleOpenTable">
+          <div class="toggle-text">{{ toggleOpenTable ? 'ใช้' : 'ไม่ใช้' }}</div>
+          <div class="toggle-handle"></div>
+        </div>
+      </div>
+
+      <div class="setting-item">
+        <div class="item-label">เปลี่ยน QRCode โต๊ะเมื่อเช็คบิล</div>
+        <div class="custom-toggle" [class.active]="toggleChangeQR" (click)="toggleChangeQR = !toggleChangeQR">
+          <div class="toggle-text">{{ toggleChangeQR ? 'ใช้' : 'ไม่ใช้' }}</div>
+          <div class="toggle-handle"></div>
+        </div>
+      </div>
+
+      <div class="setting-item" (click)="openTableLayoutModal()">
+        <div class="item-label">Table layout</div>
+        <div class="item-value">{{ selectedColumn }} column ></div>
+      </div>
+
+      <div class="setting-item">
+        <div class="item-label">ฟังก์ชั่นการ Update สถานะอาหาร</div>
+        <div class="custom-toggle" [class.active]="toggleUpdateFood" (click)="toggleUpdateFood = !toggleUpdateFood">
+          <div class="toggle-text">{{ toggleUpdateFood ? 'ใช้' : 'ไม่ใช้' }}</div>
+          <div class="toggle-handle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-subtitle">การจับเวลา</div>
+    <div class="setting-list">
+      <div class="setting-item">
+        <div class="item-label">การจับเวลาทานอาหาร</div>
+        <div class="setting-item-right">
+          <div class="item-input">120 นาที</div>
+          <div class="custom-toggle" [class.active]="toggleTimeCount" (click)="toggleTimeCount = !toggleTimeCount">
+            <div class="toggle-text">{{ toggleTimeCount ? 'ใช้' : 'ไม่ใช้' }}</div>
+            <div class="toggle-handle"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-item">
+        <div class="item-label">แจ้งเตือนก่อนครบเวลาทานอาหาร</div>
+        <div class="item-input">15 นาที</div>
+      </div>
+    </div>
+
+    <div class="section-subtitle">สกุลเงิน และ ภาษีมูลค่าเพิ่ม</div>
+    <div class="setting-list">
+      <div class="setting-item">
+        <div class="item-label">Currency</div>
+        <div class="item-dropdown">THB</div>
+      </div>
+
+      <div class="setting-item">
+        <div class="item-label">tax options</div>
+        <div class="item-dropdown">Inclusive (Vat ใน)</div>
+      </div>
+
+      <div class="setting-item">
+        <div class="item-label">เปิดใช้งานระบบภาษีมูลค่าเพิ่ม</div>
+        <div class="custom-toggle" [class.active]="toggleVat" (click)="toggleVat = !toggleVat">
+          <div class="toggle-text">{{ toggleVat ? 'ใช้' : 'ไม่ใช้' }}</div>
+          <div class="toggle-handle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-subtitle">ภาษา</div>
+    <div class="setting-list">
+      <div class="setting-item">
+        <div class="item-label">ภาษา</div>
+        <div class="item-dropdown">ภาษาไทย</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="table-layout-modal" *ngIf="showTableModal">
+    <div class="modal-content">
+      <div class="column-group">
+        <div class="column-title">4 คอลัมน์</div>
+        <div class="table-grid grid-4">
+          <div class="table-cell" *ngFor="let item of column4">A{{item}}</div>
+        </div>
+        <div class="select-button" [class.active]="selectedColumn === 4" (click)="selectColumn(4)">ใช้งาน</div>
+      </div>
+
+      <div class="column-group">
+        <div class="column-title">5 คอลัมน์</div>
+        <div class="table-grid grid-5">
+          <div class="table-cell" *ngFor="let item of column5">A{{item}}</div>
+        </div>
+        <div class="select-button" [class.active]="selectedColumn === 5" (click)="selectColumn(5)">ใช้งาน</div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="cancel" (click)="closeTableModal()">Cancel</button>
+      <button class="apply" (click)="applyTableLayout()">Apply</button>
+    </div>
+  </div>
 </ion-content>

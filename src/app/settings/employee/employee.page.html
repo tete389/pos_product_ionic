@@ -1,9 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>employee</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="page-header">
+  <div class="page-title">พนักงาน</div>
+  <div class="page-actions">
+    <div class="toggle-filter">
+      <ion-icon name="checkmark-circle" class="icon-checked"></ion-icon>
+      <span>แสดง user ที่เปิดใช้งาน</span>
+    </div>
+    <ion-button class="btn-add">+ เพิ่มพนักงาน</ion-button>
+  </div>
+</div>
 
-<ion-content [fullscreen]="true">
-employee
-</ion-content>
+<div class="table-wrapper">
+  <table class="table-staff">
+    <thead>
+      <tr>
+        <th>รหัสพนักงาน</th>
+        <th>ชื่อเล่น</th>
+        <th>ชื่อ-นามสกุล</th>
+        <th>Role</th>
+        <th>สถานะบัญชี</th>
+        <th>last login</th>
+        <th>การดำเนินการ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>M0001</td>
+        <td>ยามาโมโตะ</td>
+        <td>ยามาโมโตะ ทาเคชิ</td>
+        <td>Admin</td>
+        <td class="active">เปิดใช้งาน</td>
+        <td>3 days ago</td>
+        <td class="actions">
+          <ion-icon name="eye-outline" class="icon-action"></ion-icon>
+          <ion-icon name="create-outline" class="icon-action"></ion-icon>
+        </td>
+      </tr>
+      <tr>
+        <td>M0002</td>
+        <td>ยามาโมโตะ</td>
+        <td>ยามาโมโตะ ทาเคชิ</td>
+        <td>Admin</td>
+        <td class="active">เปิดใช้งาน</td>
+        <td>3 days ago</td>
+        <td class="actions">
+          <ion-icon name="eye-outline" class="icon-action"></ion-icon>
+          <ion-icon name="create-outline" class="icon-action"></ion-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -47,7 +47,7 @@ import { createOutline } from 'ionicons/icons'; // <--- Add this for the specifi
   ]
 })
 export class CustomerTypePage implements OnInit {
-
+ isActive = true;
   constructor() {
     // Add the desired icon to the Ionicons library
     addIcons({ createOutline });
