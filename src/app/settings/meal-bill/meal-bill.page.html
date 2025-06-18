@@ -1,9 +1,474 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>meal-bill</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-meal-bill
+
+  <div class="box-main">
+
+    <!-- ซ้าย: แสดงตัวอย่างใบแจ้ง -->
+    <div class="box-left">
+
+      <div class="box-receipt">
+
+        <div class="row-left-setting">
+
+          <div class="box-show-img-main">
+            <div class="box-show-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+          </div>
+
+          <div class="box-show-label-store">
+            <ion-label class="text-header">ใบแจ้งค่าอาหาร</ion-label>
+            <ion-label class="text-header" [ngClass]="{'label-selection': activeInput() === 'store_name'}">{{
+              formGroup.value.store_name }}</ion-label>
+            <ion-label class="text-sub-title" [ngClass]="{'label-selection': activeInput() === 'branch_name'}">({{
+              formGroup.value.branch_name }})</ion-label>
+            <ion-label class="text-title">ที่อยู่: 123 / 456 หมู่ 12 ต.ศิลา จ.ขอนแก่น 40000, Facebook Shabu
+              Shabu-กังสดาล</ion-label>
+            <ion-label class="text-title">โทร: 098-765-4321</ion-label>
+            <ion-label class="text-title">เลขประจำตัวผู้เสียภาษี: 0123456789123</ion-label>
+          </div>
+
+          <div class="box-show-label-between-main">
+
+            <div class="box-show-label-between">
+              <ion-label class="text-left">เลขที่ใบเสร็จ :</ion-label>
+              <ion-label class="text-right">CNX-01-20250301-000001</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">ทานที่ร้าน :</ion-label>
+              <ion-label class="text-right">A12</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">ชื่อพนักงาน :</ion-label>
+              <ion-label class="text-right">tanin</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">Guest :</ion-label>
+              <ion-label class="text-right">2</ion-label>
+            </div>
+            <div class="box-show-label-between">
+              <ion-label class="text-left">วันที่ (Check out) :</ion-label>
+              <ion-label class="text-right">12-12-2024 17:00</ion-label>
+            </div>
+
+
+
+
+          </div>
+
+          <div class="box-show-label-items">
+            <div class="box-head">
+              <ion-label>รายการอาหาร</ion-label>
+              <ion-label>QTY</ion-label>
+              <ion-label>ราคารวม</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Buffet 299 (ผู้ใหญ่)</ion-label>
+              <ion-label>2</ion-label>
+              <ion-label>598.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label> - Topping 1</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>0</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label> - Topping 2</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>20.00</ion-label>
+            </div>
+            <div class="box-show-order">
+              <ion-label>Item name</ion-label>
+              <ion-label>1</ion-label>
+              <ion-label>50.00</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-total-main">
+
+            <div class="box-show-label-between-total">
+              <ion-label>Sub total</ion-label>
+              <ion-label>750.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Discount (-10%)</ion-label>
+              <ion-label>-75.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>ราคาหลังส่วนลด</ion-label>
+              <ion-label>675.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Service charge (+10%)</ion-label>
+              <ion-label>+67.50</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Vat 7% (+7%)</ion-label>
+              <ion-label>+51.96</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>Rounding</ion-label>
+              <ion-label>-0.46</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-net-total-main">
+            <div class="box-show-label-between-net-total">
+              <ion-label>Net Total</ion-label>
+              <ion-label>1000.00</ion-label>
+            </div>
+          </div>
+
+          <div class="box-show-label-between-total-main">
+
+            <div class="box-show-label-between-total">
+              <ion-label>รับมา (เงินสด)</ion-label>
+              <ion-label>1000.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>เงินทอน</ion-label>
+              <ion-label>206.00</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>สมาชิก</ion-label>
+              <ion-label>(อิว) 098-129-9734</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>ได้รับ point</ion-label>
+              <ion-label>+250 P</ion-label>
+            </div>
+            <div class="box-show-label-between-total">
+              <ion-label>คะแนนคงเหลือ</ion-label>
+              <ion-label>2,460 P</ion-label>
+            </div>
+
+          </div>
+
+              <div class="box-show-img-main">
+            <div class="box-show-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+          </div>
+
+          <div class="box-show-label-store">
+            <ion-label class="text-header">Promptpay พิมลภัทร์ สุดสวย</ion-label>
+          </div>
+
+          <div class="box-show-label-footer">
+            <ion-label class="text-title">VAT EXCLOUDED</ion-label>
+            <ion-label class="text-header">ขอบคุณที่ใช้บริการค่ะ</ion-label>
+            <ion-label class="text-title">Powered by MY POS</ion-label>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="box-right">
+
+      <form [formGroup]="formGroup">
+
+        <div class="row-right-setting">
+          <ion-label>ตั้งค่าใบแจ้งค่าอาหาร</ion-label>
+        </div>
+
+        <!-- 1. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">1. ภาษาของใบเสร็จที่เลือกใช้ (ตอนพิมพ์)</ion-label>
+          </div>
+          <div class="popop">
+            <ion-select mode="md" [interfaceOptions]="customPopoverOptionsStyle1" class="css-pop-3"
+              toggleIcon="chevron-down-outline" expandedIcon="chevron-forward-outline" interface="popover"
+              formControlName="receipt_language">
+              <ion-select-option value="th">ภาษาไทย (TH)</ion-select-option>
+              <ion-select-option value="en">English (EN)</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+
+
+        <!-- 2. QR-Code -->
+        <div class="row-right-setting-logo">
+          <div class="box-label">
+            <ion-label class="text-sub-title">2. QR Code รับเงิน</ion-label>
+          </div>
+          <div class="box-img-main">
+            <div class="box-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+            <ion-icon (click)="img_pic.click()" class="btn-upload-logo" name="camera"></ion-icon>
+            <input type="file" #img_pic (change)="fileNameChanged($event)" style="display: none" id="img_pic"
+              accept="image/x-png, image/gif, image/jpeg" />
+          </div>
+        </div>
+
+        <!-- 3. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">3. ชื่อบัญชี ตาม QR Code</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input maxlength="50" type="text" [ngClass]="{'input-selection': activeInput() === 'store_name'}"
+              formControlName="store_name" (ionFocus)="setActiveInput('store_name')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 4. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">4. แสดง QR Code รับเงิน ในใบแจ้งค่าอาหาร</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_logo_on_receipt" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_logo_on_receipt" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_logo_on_receipt" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 5. -->
+        <div class="row-right-setting-logo">
+          <div class="box-label">
+            <ion-label class="text-sub-title">5. โลโก้ (ใช้ภาพเดียวกับใบเสร็จ)</ion-label>
+          </div>
+          <div class="box-img-main">
+            <div class="box-img">
+              <img [src]="formGroup.value.store_logo" alt>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 6. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">6. แสดง LOGO ในใบแจ้งค่าอาหาร</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_logo_on_receipt" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_logo_on_receipt" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_logo_on_receipt" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 7. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">7. ชื่อร้าน</ion-label>
+            <ion-label class="text-sub-lenght">{{ formGroup.get('store_name')?.value?.length || 0 }}/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input maxlength="50" type="text" [ngClass]="{'input-selection': activeInput() === 'store_name'}"
+              formControlName="store_name" (ionFocus)="setActiveInput('store_name')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 8. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">8. สาขา (Branch Name)</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'branch_name'}"
+              formControlName="branch_name" (ionFocus)="setActiveInput('branch_name')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 9. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">9. รหัสสาขา (Branch Code)</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'branch_code'}"
+              formControlName="branch_code" (ionFocus)="setActiveInput('branch_code')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+
+        <!-- 10. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">10. ที่อยู่ร้าน</ion-label>
+            <ion-label class="text-sub-lenght">150/150</ion-label>
+          </div>
+          <div class="box-textarea">
+            <ion-textarea class="custom-textarea" [ngClass]="{'input-selection': activeInput() === 'store_address'}"
+              formControlName="store_address" (ionFocus)="setActiveInput('store_address')"
+              (ionBlur)="clearActiveInput()" class="custom-textarea" rows="3">
+            </ion-textarea>
+          </div>
+          <div class="box-checkbox">
+            <ion-checkbox labelPlacement="end" class="box-box"
+              formControlName="use_store_address">ใช้ที่อยู่ตามข้อมูลร้าน</ion-checkbox>
+          </div>
+        </div>
+
+        <!-- 11. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">11. เบอร์โทร</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="number" [ngClass]="{'input-selection': activeInput() === 'store_phone'}"
+              formControlName="store_phone" (ionFocus)="setActiveInput('store_phone')" (ionBlur)="clearActiveInput()"
+              class="custom-ion-input-number" placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 12. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">12. แสดงการปัดเศษ</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_rounding" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_rounding" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_rounding" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 13. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">13. แสดงราคาหลังส่วนลด</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_discount_refund" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_discount_refund" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_discount_refund" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 14. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">14. แสดงราคาก่อนปัด</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_price_before_rounding" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_price_before_rounding" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_price_before_rounding" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 15. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">15. ข้อความ *VAT Included / Excluded</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_vat_note" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_vat_note" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_vat_note" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 16. -->
+        <div class="row-right-setting-input">
+          <div class="box-label-between">
+            <ion-label class="text-sub-title">16. ข้อความท้ายใบแจ้งค่าอาหาร</ion-label>
+            <ion-label class="text-sub-lenght">50/50</ion-label>
+          </div>
+          <div class="box-input">
+            <ion-input type="text" [ngClass]="{'input-selection': activeInput() === 'receipt_footer_text'}"
+              formControlName="receipt_footer_text" (ionFocus)="setActiveInput('receipt_footer_text')"
+              (ionBlur)="clearActiveInput()" class="custom-ion-input-name " placeholder=""></ion-input>
+          </div>
+        </div>
+
+        <!-- 17. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">17. แสดงข้อความท้ายใบแจ้งค่าอาหาร</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_receipt_footer_text" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_receipt_footer_text" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_receipt_footer_text" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+
+        <!-- 18. -->
+        <div class="row-right-setting">
+          <div class="box-label">
+            <ion-label class="text-sub-title">18. แสดงเฉพาะประเภทบุฟเฟ่ต์ที่ลูกค้าสั่ง</ion-label>
+          </div>
+          <div class="box-toggle">
+            <ion-toggle class="box-toggle-swicth" formControlName="show_store_promotion_message" (ionChange)="{}">
+              <ion-label *ngIf="!formGroup.value.show_store_promotion_message" class="close">ไม่แสดง</ion-label>
+              <ion-label *ngIf="formGroup.value.show_store_promotion_message" class="open">แสดง</ion-label>
+            </ion-toggle>
+          </div>
+        </div>
+        <div class="box-text-detail">
+          <p>* สำหรับร้าน Buffet ที่มีเมนูเยอะ หากแสดงทุกจานในใบเสร็จ อาจทำให้ใบเสร็จ ยาวเกินไป และ อ่านยาก
+            เนื่องจากส่วนใหญ่ราคาต่อจานจะเป็น 0 บาท หรือรวมอยู่ในราคาบุฟเฟ่ต์แล้ว
+            โดยให้แสดงเฉพาะประเภทบุฟเฟ่ต์ที่ลูกค้า เลือกหรือสั่ง</p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- btn save -->
+        <!-- <div class="content-bottom">
+
+          <div class="box-bottom-left">
+            <ion-button *ngIf="isEdited" (click)="resetForm()">cancels</ion-button>
+          </div>
+          <div class="box-bottom-right">
+            <ion-button (click)="save()" [disabled]="!isEdited">save</ion-button>
+          </div>
+
+
+
+        </div> -->
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
 </ion-content>
