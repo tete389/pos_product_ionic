@@ -137,7 +137,12 @@
   --height: 90% !important;
   --border-radius: 20px;
 }
-
+.modal-pos-columns {
+  font-family: "kanit";
+  --width: 100% !important;
+  --height: 100% !important;
+  --border-radius: 20px;
+}
 .modal-stockItem-add {
   --width: 50% !important;
   --height: 90% !important;
@@ -1965,5 +1970,19 @@ ion-modal.my-custom-modal-show-items:part(backdrop) {
     color: var(--text-white);
     border: none;
   }
+ion-segment.column-selector::part(indicator) {
+  background: transparent ;
+  box-shadow: none ;
+  border-radius: 20px ;
+}
 
+ion-segment.column-selector::part(indicator-background) {
+  display: none ;
+}
+
+ion-segment.column-selector {
+  --background: transparent ;
+  background: transparent ;
+  box-shadow: none ;
+}
 }

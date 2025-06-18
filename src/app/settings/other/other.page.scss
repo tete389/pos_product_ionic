@@ -134,6 +134,18 @@ ion-toggle {
   flex-shrink: 0;
   width: 60%;         /* ✅ ปรับให้ label มีพื้นที่แน่นอน */
 }
+.input-row {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+//   margin-bottom: 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0; /* สีเทาอ่อน */
+
+  /* เงานิดๆ ให้ลอยเบาๆ */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
 
 .input-group {
   display: flex;
@@ -159,4 +171,59 @@ ion-toggle {
 .input-group span {
   white-space: nowrap;
   font-weight: 500;
+}
+ion-button.custom-color {
+  --color: red; /* เปลี่ยนสีข้อความเป็นแดง */
+}
+.input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background-color: #f8f9fa;
+}
+
+.input-wrapper input[type="number"] {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 60px;
+  text-align: right;
+  color: #007aff; /* สีฟ้าแบบในรูป */
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.input-wrapper .unit {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}
+.input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background-color: #f8f9fa;
+}
+
+.input-wrapper input[type="number"] {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 60px;
+  text-align: right;
+  color: #007aff; /* สีฟ้าแบบในรูป */
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.input-wrapper .unit {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
 }

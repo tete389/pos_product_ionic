@@ -34,18 +34,15 @@
   <label for="tableLayout">Table layout</label>
 
   <div class="custom-select-wrapper">
-    <ion-select
-      interface="popover"
-      id="tableLayout"
-      [(ngModel)]="setting.tableLayout"
-      placeholder="Select layout"
-      mode="ios"
-      toggleIcon="chevron-forward-outline"
-    >
-      <ion-select-option value="2">2 column</ion-select-option>
-      <ion-select-option value="3">3 column</ion-select-option>
-      <ion-select-option value="4">4 column</ion-select-option>
-    </ion-select>
+<ion-button 
+  mode="ios" 
+  fill="outline" 
+  color="medium" 
+  (click)="openModalCalculate()"
+>
+  {{ selectedColumn ? selectedColumn + ' Columns' : 'เลือก Columns' }}
+  <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+</ion-button>
   </div>
 </div>
 
@@ -62,23 +59,22 @@
 <div class="settings-section">
   <h2>การจับเวลา</h2>
 
-<div class="card-row input-row">
-  <label>การจับเวลาทานอาหาร
-      <div class="input-group">
+<div class=" input-row">
+  <label class="input-label">การจับเวลาทานอาหาร</label>
+  <div class="input-wrapper">
     <input type="number" [(ngModel)]="setting.mealTime" />
-    <span>นาที</span>
+    <span class="unit">นาที</span>
   </div>
-  </label>
 </div>
 
 <div class="card-row input-row">
-  <label>แจ้งเตือนก่อนครบเวลาทานอาหาร
-      <div class="input-group">
+  <label class="input-label">แจ้งเตือนก่อนครบเวลาทานอาหาร</label>
+  <div class="input-wrapper">
     <input type="number" [(ngModel)]="setting.mealTimeWarning" />
-        <span>นาที</span>
+    <span class="unit">นาที</span>
   </div>
-  </label>
 </div>
+
 
   <div class="card-row">
     <span>เปิดใช้งานระบบแจ้งเตือน</span>
