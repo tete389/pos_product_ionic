@@ -260,7 +260,7 @@
           </div>
           <div class="box-toggle">
 
-            <ion-button size="small" class="box-toggle-btn-cancel" (click)="cancelAddNewProduct()">ยกเลิก</ion-button>
+            <ion-button size="small" class="box-toggle-btn-cancel" >ยกเลิก</ion-button>
             <ion-button size="small" class="box-toggle-btn-save">บันทึก</ion-button>
             <!-- <div class="box-toggle-btn-close"></div> -->
           </div>
@@ -419,10 +419,12 @@
             </ion-toggle>
 
 
-            <ion-button *ngIf="!is_edit" (click)="is_edit = true" size="small"
+            <!-- <ion-button *ngIf="!is_edit" (click)="is_edit = true" size="small"
               class="box-toggle-btn-edit">แก้ไข</ion-button>
             <ion-button *ngIf="is_edit" (click)="is_edit = false" size="small"
-              class="box-toggle-btn-save">บันทึก</ion-button>
+              class="box-toggle-btn-save">บันทึก</ion-button> -->
+              <ion-button *ngIf="!is_edit[i]" (click)="toggleEdit(i)" size="small" class="box-toggle-btn-edit">แก้ไข</ion-button>
+            <ion-button *ngIf="is_edit[i]" (click)="toggleEdit(i)" size="small" class="box-toggle-btn-save">บันทึก</ion-button>
             <!-- <div class="box-toggle-btn-close"></div> -->
           </div>
 
@@ -435,165 +437,157 @@
   <!-- จัดการหมวดหมู่ select_tab_menu == 2 -->
   <div *ngIf="select_tab_menu == 2">
     <!-- new-product ปิดไว้ก่อน-->
-    <div class="content-2" *ngFor="let item of new_product">
-      <ion-card class="carded">
-        <ion-card-content>
+   <div class="content-2" *ngFor="let item of new_product; let i = index">
+  <ion-card class="carded">
+    <ion-card-content>
 
-          <div class="box-img">
-            <img src="assets/image/img-product.png" alt="">
+      <div class="box-img">
+        <img src="assets/image/img-product.png" alt="">
+      </div>
+
+      <!-- ชื่ออาหาร (TH) -->
+      <div class="box-name">
+        <div class="box-style-1">
+          <div class="box-style-1-top">
+            <ion-label class="text-sub-name">ชื่ออาหาร (TH)</ion-label>
+            <ion-label class="text-sub-count">100/100</ion-label>
           </div>
-          <!-- ชื่ออาหาร -->
-          <div class="box-name">
-            <div class="box-style-1">
-              <div class="box-style-1-top">
-                <ion-label class="text-sub-name">ชื่ออาหาร (TH)</ion-label>
-                <ion-label class="text-sub-count">100/100</ion-label>
-              </div>
-              <div class="box-style-1-bottom">
-                <ion-input class="custom-ion-input-name active-edit" placeholder="ชื่อสินค้า"></ion-input>
-              </div>
-            </div>
-            <div class="box-style-1">
-              <div class="box-style-1-top">
-                <ion-label class="text-sub-name">ชื่ออาหาร (TH)</ion-label>
-                <ion-label class="text-sub-count">100/100</ion-label>
-              </div>
-              <div class="box-style-1-bottom">
-                <ion-input class="custom-ion-input-name active-edit" placeholder="ชื่อสินค้า"></ion-input>
-              </div>
-            </div>
+          <div class="box-style-1-bottom">
+            <ion-input
+              class="custom-ion-input-name active-edit"
+              placeholder="ชื่อสินค้า (TH)"
+              [(ngModel)]="item.nameTH">
+            </ion-input>
           </div>
-          <!-- หมวดหมู่ -->
-          <div class="box-detail">
-            <div class="box-style-4">
-              <div class="box-style-4-top">
-                <ion-label class="text-sub-name">คำอธิบาย</ion-label>
-                <ion-label class="text-sub-count">250/250</ion-label>
-              </div>
-              <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3">
-                </ion-textarea>
-              </div>
-            </div>
+        </div>
 
+        <!-- ชื่ออาหาร (EN) -->
+        <div class="box-style-1">
+          <div class="box-style-1-top">
+            <ion-label class="text-sub-name">ชื่ออาหาร (EN)</ion-label>
+            <ion-label class="text-sub-count">100/100</ion-label>
           </div>
-          <!-- คำอธิบาย -->
-          <div class="box-detail">
-            <div class="box-style-4">
-              <div class="box-style-4-top">
-                <ion-label class="text-sub-name">คำอธิบาย</ion-label>
-                <ion-label class="text-sub-count">250/250</ion-label>
-              </div>
-              <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3">
-                </ion-textarea>
-              </div>
-            </div>
-
+          <div class="box-style-1-bottom">
+            <ion-input
+              class="custom-ion-input-name active-edit"
+              placeholder="ชื่อสินค้า (EN)"
+              [(ngModel)]="item.nameEN">
+            </ion-input>
           </div>
-          <div class="box-toggle">
+        </div>
+      </div>
 
-            <ion-button size="small" class="box-toggle-btn-cancel" (click)="cancelAddNewProduct()">ยกเลิก</ion-button>
-            <ion-button size="small" class="box-toggle-btn-save">บันทึก</ion-button>
-            <!-- <div class="box-toggle-btn-close"></div> -->
+      <!-- คำอธิบาย -->
+      <div class="box-detail">
+        <div class="box-style-4">
+          <div class="box-style-4-top">
+            <ion-label class="text-sub-name">คำอธิบาย</ion-label>
+            <ion-label class="text-sub-count">250/250</ion-label>
           </div>
+          <div class="box-style-4-bottom">
+            <ion-textarea
+              class="custom-textarea active-edit"
+              placeholder="คำอธิบาย"
+              rows="3"
+              [(ngModel)]="item.description">
+            </ion-textarea>
+          </div>
+        </div>
+      </div>
 
+      <div class="box-toggle">
+          <ion-button size="small" class="box-toggle-btn-cancel" (click)="cancelAddNewProduct(i)">ยกเลิก</ion-button>
+        <ion-button size="small" class="box-toggle-btn-save" (click)="saveNewProduct(i)">บันทึก</ion-button>
+      </div>
 
-        </ion-card-content>
-      </ion-card>
-    </div>
+    </ion-card-content>
+  </ion-card>
+</div>
 
     <!-- all-product -->
-    <div class="content-2" *ngFor="let item of [1,2,3,4,5,6];let i = index">
-      <ion-card class="carded">
-        <ion-card-content>
+<div class="content-2" *ngFor="let item of categories; let i = index">
+  <ion-card class="carded">
+    <ion-card-content>
 
-          <div class="box-img">
-            <img src="assets/image/img-product.png" alt="">
+      <div class="box-img">
+        <img src="assets/image/img-product.png" alt="">
+      </div>
 
+      <div *ngIf="i === 1" class="out-stock">
+        <ion-label>หมด</ion-label>
+      </div>
+
+      <!-- ชื่ออาหาร -->
+      <div class="box-name">
+        <div class="box-style-1">
+          <div class="box-style-1-top">
+            <ion-label class="text-sub-name">ชื่อหมวดหมู่ (TH): {{ item.name.TH }}</ion-label>
+            <ion-label class="text-sub-count">{{ item.name.TH.length }}/100</ion-label>
           </div>
-          <div *ngIf="i==1" class="out-stock">
-            <ion-label>หมด</ion-label>
+          <div class="box-style-1-bottom">
+            <ion-input
+              class="custom-ion-input-name"
+              [(ngModel)]="item.name.TH"
+              [disabled]="!is_edit[i]"
+              [ngClass]="{'active-edit': is_edit[i]}">
+            </ion-input>
           </div>
-          <!-- ชื่ออาหาร -->
-          <div class="box-name">
-            <div class="box-style-1">
-              <div class="box-style-1-top">
-                <ion-label class="text-sub-name">ชื่ออาหาร (TH){{i}}</ion-label>
-                <ion-label class="text-sub-count">100/100</ion-label>
-              </div>
-              <div class="box-style-1-bottom">
-                <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า" [disabled]="!is_edit"
-                  [ngClass]="{'active-edit': is_edit}"></ion-input>
-              </div>
-            </div>
-            <div class="box-style-1">
-              <div class="box-style-1-top">
-                <ion-label class="text-sub-name">ชื่ออาหาร (TH)</ion-label>
-                <ion-label class="text-sub-count">100/100</ion-label>
-              </div>
-              <div class="box-style-1-bottom">
-                <ion-input class="custom-ion-input-name" placeholder="ชื่อสินค้า" [disabled]="!is_edit"
-                  [ngClass]="{'active-edit': is_edit}"></ion-input>
-              </div>
-            </div>
+        </div>
+
+        <div class="box-style-1">
+          <div class="box-style-1-top">
+            <ion-label class="text-sub-name">ชื่อหมวดหมู่ (EN): {{ item.name.EN }}</ion-label>
+            <ion-label class="text-sub-count">{{ item.name.EN.length }}/100</ion-label>
           </div>
-
-          <!-- หมวดหมู่ -->
-          <div class="box-detail">
-            <div class="box-style-4">
-              <div class="box-style-4-top">
-                <ion-label class="text-sub-name">คำอธิบาย</ion-label>
-                <ion-label class="text-sub-count">250/250</ion-label>
-              </div>
-              <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" [disabled]="!is_edit"
-                  [ngClass]="{'active-edit': is_edit}">
-                </ion-textarea>
-              </div>
-            </div>
-
+          <div class="box-style-1-bottom">
+            <ion-input
+              class="custom-ion-input-name"
+              [(ngModel)]="item.name.EN"
+              [disabled]="!is_edit[i]"
+              [ngClass]="{'active-edit': is_edit[i]}">
+            </ion-input>
           </div>
-          <!-- คำอธิบาย -->
-          <div class="box-detail">
-            <div class="box-style-4">
-              <div class="box-style-4-top">
-                <ion-label class="text-sub-name">คำอธิบาย</ion-label>
-                <ion-label class="text-sub-count">250/250</ion-label>
-              </div>
-              <div class="box-style-4-bottom">
-                <ion-textarea class="custom-textarea active-edit" placeholder="Address" rows="3" [disabled]="!is_edit"
-                  [ngClass]="{'active-edit': is_edit}">
-                </ion-textarea>
-              </div>
-            </div>
+        </div>
+      </div>
 
+      <!-- คำอธิบาย -->
+      <div class="box-detail">
+        <div class="box-style-4">
+          <div class="box-style-4-top">
+            <ion-label class="text-sub-name">คำอธิบาย</ion-label>
+            <ion-label class="text-sub-count">250/250</ion-label>
           </div>
-
-          <div class="box-toggle">
-
-            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle" (ionChange)="openprintSystem($event)">
-              <ion-label *ngIf="!ischangeToggle" class="close">หมด</ion-label>
-              <ion-label *ngIf="ischangeToggle" class="open">มีอยู่</ion-label>
-            </ion-toggle>
-
-            <ion-toggle class="box-toggle-swicth" [(ngModel)]="ischangeToggle2" (ionChange)="openprintSystem($event)">
-              <ion-label *ngIf="!ischangeToggle2" class="close">ซ่อน</ion-label>
-              <ion-label *ngIf="ischangeToggle2" class="open">แสดง</ion-label>
-            </ion-toggle>
-
-
-            <ion-button *ngIf="!is_edit" (click)="is_edit = true" size="small"
-              class="box-toggle-btn-edit">แก้ไข</ion-button>
-            <ion-button *ngIf="is_edit" (click)="is_edit = false" size="small"
-              class="box-toggle-btn-save">บันทึก</ion-button>
-            <!-- <div class="box-toggle-btn-close"></div> -->
+          <div class="box-style-4-bottom">
+            <ion-textarea
+              class="custom-textarea"
+              placeholder="รายละเอียดเพิ่มเติม"
+              [(ngModel)]="item.description"
+              [disabled]="!is_edit[i]"
+              [ngClass]="{'active-edit': is_edit[i]}">
+            </ion-textarea>
           </div>
+        </div>
+      </div>
 
+      <!-- toggle และปุ่ม -->
+      <div class="box-toggle">
+        <ion-toggle class="box-toggle-swicth" [(ngModel)]="item.inStock" (ionChange)="openprintSystem($event)">
+          <ion-label *ngIf="!item.inStock" class="close">หมด</ion-label>
+          <ion-label *ngIf="item.inStock" class="open">มีอยู่</ion-label>
+        </ion-toggle>
 
-        </ion-card-content>
-      </ion-card>
-    </div>
+        <ion-toggle class="box-toggle-swicth" [(ngModel)]="item.visible" (ionChange)="openprintSystem($event)">
+          <ion-label *ngIf="!item.visible" class="close">ซ่อน</ion-label>
+          <ion-label *ngIf="item.visible" class="open">แสดง</ion-label>
+        </ion-toggle>
+
+        <ion-button *ngIf="!is_edit[i]" (click)="toggleEdit(i)" size="small" class="box-toggle-btn-edit">แก้ไข</ion-button>
+        <ion-button *ngIf="is_edit[i]" (click)="toggleEdit(i)" size="small" class="box-toggle-btn-save">บันทึก</ion-button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</div>
   </div>
 
   <!-- จัดการ Options select_tab_menu == 3 -->

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   IonContent,
   IonButtons,
@@ -30,7 +31,23 @@ import {
   AlertController,
 } from '@ionic/angular/standalone';
 import { ModalOptionedComponent } from './modal-optioned/modal-optioned.component';
-
+interface CategoryName {
+  TH: string;
+  EN: string;
+}
+interface NewProduct {
+  nameTH: string;
+  nameEN: string;
+  description: string;
+  // ถ้ามีฟิลด์อื่น ๆ ก็เพิ่มได้
+}
+interface MenuCategory {
+  id: number;
+  name: CategoryName;
+  inStock?: boolean;
+  visible?: boolean;
+  description?: string;  // เพิ่ม optional description
+}
 @Component({
   selector: 'app-menu-managment',
   templateUrl: './menu-managment.page.html',
@@ -64,6 +81,7 @@ import { ModalOptionedComponent } from './modal-optioned/modal-optioned.componen
     IonIcon,
     IonRadioGroup,
     IonRadio,
+    HttpClientModule,
   ],
 })
 export class MenuManagmentPage implements OnInit {
@@ -102,11 +120,13 @@ export class MenuManagmentPage implements OnInit {
   customPopoverOptions = {};
 
   select_multi_options: string = '1';
-
+new_product: NewProduct[] = [];
   select_tab_menu: number = 1;
   searchControl: FormControl;
   search_text = '';
   placho_text = 'ค้นหา';
+  categories: MenuCategory[] = [];  // เปลี่ยน type เป็น MenuCategory[]
+  is_edit: boolean[] = [];          // เก็บสถานะ edit ทีละรายการ
 
   ischangeToggle: boolean = false;
   ischangeToggle2: boolean = false;
@@ -114,8 +134,8 @@ export class MenuManagmentPage implements OnInit {
   sort_by: any = '1';
   screened: string = '1';
 
-  new_product: any = [];
-  is_edit: boolean = false;
+  // new_product: any = [];
+  // is_edit: boolean = false;
 
   @ViewChild('accordionGroup', { static: true })
   accordionGroup!: IonAccordionGroup;
@@ -130,7 +150,8 @@ export class MenuManagmentPage implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    public alertController: AlertController
+    public alertController: AlertController,
+      private http: HttpClient,
   ) {
     this.searchControl = new FormControl();
   }
@@ -139,6 +160,7 @@ export class MenuManagmentPage implements OnInit {
     // setTimeout(() => {
     //   this.openModalDetailOption() 
     // }, 500);
+     this.loadMenuCategories();
   }
 
   onCancel() {}
@@ -148,19 +170,116 @@ export class MenuManagmentPage implements OnInit {
   search_enter(val: any) {
     console.log(typeof val);
   }
+  loadMenuCategories() {
+    this.http.get<MenuCategory[]>('http://localhost:8080/menu_categories').subscribe({
+      next: (data) => {
+        // กำหนดค่าเริ่มต้น toggle ถ้า backend ไม่มีข้อมูลมา
+        this.categories = data.map(cat => ({
+          ...cat,
+          inStock: true,   // สมมติเริ่มต้นมีสินค้า
+          visible: true,   // สมมติเริ่มต้นแสดง
+          description: '',
+        }));
+        // กำหนด is_edit เป็น array false ทั้งหมด
+        this.is_edit = new Array(this.categories.length).fill(false);
+
+        console.log('หมวดหมู่ที่โหลดมา:', this.categories);
+      },
+      error: (err) => {
+        console.error('โหลดหมวดหมู่ล้มเหลว:', err);
+      },
+    });
+  }
+
+toggleEdit(index: number) {
+  const before = this.is_edit[index];
+  this.is_edit[index] = !before;
+
+  if (before === true && this.is_edit[index] === false) {
+    // นี่คือการกด "บันทึก" เพราะสถานะเปลี่ยนจากแก้ไข (true) เป็นไม่แก้ไข (false)
+    console.log(`บันทึกข้อมูลรายการที่ ${index} แล้ว`);
+    // เรียกฟังก์ชันบันทึกข้อมูลลง backend ที่นี่ได้เลย
+    this.saveItem(index);
+  } else if (before === false && this.is_edit[index] === true) {
+    // นี่คือการเข้าสู่โหมดแก้ไข
+    console.log(`เข้าสู่โหมดแก้ไขรายการที่ ${index}`);
+  }
+}
+
+saveItem(index: number) {
+  const item = this.categories[index];
+  const url = `http://localhost:8080/menu_categories/${item.id}`;
+
+  // สร้าง payload สำหรับส่งไป backend
+  const payload = {
+    id: item.id,
+    name: item.name,
+    inStock: item.inStock ?? true, // กำหนดค่า default ถ้าไม่มี
+    visible: item.visible ?? true,
+    description: item.description ?? ''
+  };
+
+  this.http.put(url, payload).subscribe({
+    next: (res) => {
+      this.is_edit[index] = false;
+    },
+    error: (err) => {
+      console.error(`บันทึกข้อมูลรายการที่ ${index} ล้มเหลว`, err);
+    }
+  });
+}
+
+
+  // ฟังก์ชันอื่นๆ ของคุณยังคงเหมือนเดิม
+
 
   openprintSystem(event: any) {
     console.log(event.detail.checked);
   }
 
-  addNewProduct() {
-    this.new_product.push(1);
-  }
+addNewProduct() {
+  this.new_product.push({ nameTH: '', nameEN: '', description: '' });
+}
 
-  cancelAddNewProduct() {
-    this.new_product.pop();
-  }
+  // cancelAddNewProduct() {
+  //   this.new_product.pop();
+  // }
+  cancelAddNewProduct(index: number) {
+  this.new_product.splice(index, 1);
+}
+saveNewProduct(index: number) {
+  const product = this.new_product[index];
 
+  // เตรียมข้อมูลตามโครงสร้าง backend ต้องการ
+  const payload = {
+    name: {
+      TH: product.nameTH,
+      EN: product.nameEN
+    },
+    description: product.description
+  };
+
+  this.http.post('http://localhost:8080/menu_categories', payload).subscribe({
+    next: (res: any) => {
+      console.log('บันทึกสำเร็จ', res);
+
+      // ✅ เพิ่มข้อมูลใหม่เข้าไปใน categories (สมมุติว่า backend ส่งกลับ id และ name)
+      this.categories.push({
+        id: res.id,
+        name: res.name,
+        description: res.description || '',
+        inStock: true,
+        visible: true
+      });
+
+      // ลบจาก new_product
+      this.new_product.splice(index, 1);
+    },
+    error: (err) => {
+      console.error('บันทึกล้มเหลว', err);
+    }
+  });
+}
   // เปิด accordion
   select_accordion(event: any) {
     console.log('event', event);
